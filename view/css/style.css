@@ -1,0 +1,42 @@
+.navbar {
+    width: 100%;
+    margin: auto;
+}
+
+.carousel-inner {
+    width: 60%;
+    height: 40%;
+    max-width: 400px !important;
+    max-height: 400px !important;
+}
+
+.card-img-top {
+    width: 60%;
+    height: 60%;
+    max-width: 500px;
+    max-height: 400px;
+}
+
+.col {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+a {
+    color: gray;
+    text-decoration: none;
+}
+
+body {
+    margin: 0px auto;
+    padding: 0px;
+    max-width: 50%;
+    text-align: center;
+    padding-top: 5rem;
+}
+
+wrapper {
+    margin: 0px auto;
+    text-align: left;
+    overflow: hidden;
+}

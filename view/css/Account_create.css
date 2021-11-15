@@ -1,0 +1,12 @@
+input{
+    display: block;
+    width: 400px;
+}
+textarea{
+    display: block;
+    width: 600px;
+    height:120px;
+}
+.button_wrapper{
+    text-align:center;
+ }
