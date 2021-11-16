@@ -1,16 +1,15 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
-    <jsp:include page="frame/basic_style_info.jsp" flush="true" />
+    <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Product_Details.css" rel="stylesheet" />
     <title>谷原らぁめん</title>
 </head>
 <body>
 <!------------------------------------------- header ------------------------------------------->
-<jsp:include page="frame/header.jsp" flush="true" />
+<?php include 'frame/header.php'; ?>
 <!------------------------------------------- header ------------------------------------------->
 <table class="table" width="100%">
     <tr>
@@ -32,11 +31,11 @@
         <td>
             <table class="table table-bordered">
                 <tr>
-                    <% for(int i=1; i<=4; i++){ %>
+                    <?php for ($i=0; $i < 4; $i++) { ?>
                     <td >
                         <img src="../img/food_ramen.png" class="img-fluid min-vh-25 min-vw-25"  alt="img" /> 
                     </td>
-                    <% } %>
+                    <?php } ?>
                 </tr>
             </table>
         </td>
@@ -68,13 +67,13 @@
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                 <% for (int i=0; i < 3; i++) {%>
+            <?php for ($i=0; $i < 3; $i++) { ?>
                 <div class="col-sm-3">
                     <div class="card text-dark bg-light h-100">
                         <table class="table-light">
                             <tr>
                                 <td>
-                                    <a href="Product_Details.jsp">
+                                    <a href="Product_Details.php">
                                         <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
                                     </a>
                                     <div class="card-body">
@@ -88,13 +87,13 @@
                         </table>
                     </div>
                 </div>
-                <% }%>
+                <?php } ?>
             </div>
         </td>
     </tr>
 </table>
  <!------------------------------------------- footer ------------------------------------------->
- <jsp:include page="frame/footer.jsp" flush="true" />
+ <?php include 'frame/footer.php'; ?>
  <!------------------------------------------- footer ------------------------------------------->
 </body>
 </html>
