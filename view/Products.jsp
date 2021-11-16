@@ -41,11 +41,27 @@
             </tr>
         </table>
         </td>
-        <ul id="menu">
-            <li><a href="#">全ての商品</a></li>
-            <li><a href="#">ラーメン</a></li>
-            <li><a href="#">サイドメニュー</a></li>
-        </ul>
+        <tr>
+            <td align="center">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="sort" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary" for="btnradio1">全ての商品</label>
+
+                    <input type="radio" class="btn-check" name="sort" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradio2">ラーメン</label>
+
+                    <input type="radio" class="btn-check" name="sort" id="btnradio3" autocomplete="off">
+                    <label class="btn btn-outline-secondary" for="btnradio3">サイドメニュー</label>
+                </div>
+                <!--
+                    <ul id="menu">
+                        <li><a href="#">全ての商品</a></li>
+                        <li><a href="#">ラーメン</a></li>
+                        <li><a href="#">サイドメニュー</a></li>
+                    </ul>
+                -->
+            </td>
+        </tr>
         <tr>
             <td>
                 <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
@@ -73,6 +89,20 @@
                 </div>
             </td>
         </tr>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">次へ</a>
+                </li>
+            </ul>
+        </nav>
+        <!--
         <ul id="nav">
             <li><button type="submit"><a href="#">〈前へ</a></button></li>
             <li><button type="submit"><a href="#">1</a></button></li>
@@ -80,10 +110,12 @@
             <li><button type="submit"><a href="#">3</a></button></li>
             <li><button type="submit"><a href="#">次へ〉</a></button></li>
         </ul>
-            <p>９商品中 １～９商品</p>
+        -->
+        <p>９商品中 １～９商品</p>
         </table>
         <!------------------------------------------- footer ------------------------------------------->
         <jsp:include page="frame/footer.jsp" flush="true" />
         <!------------------------------------------- footer ------------------------------------------->
     </body>
+
     </html>
