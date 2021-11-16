@@ -21,7 +21,7 @@
                             <form action="list.html" method="get">
                                 <tr>
                                     <th>
-                                        お名前
+                                        谷原
                                     </th>
                                     <td>
                                         <input type="text" name="user_name" size="24">
