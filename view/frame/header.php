@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+
 <!------------------------------------------- header ------------------------------------------->
 <header>
     <table width="100%">
@@ -17,7 +17,7 @@
                     </p>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto"> 
-                            <button type="submit" class="btn btn-primary" onclick="location.href='Login.jsp'">
+                            <button type="submit" class="btn btn-primary" onclick="location.href='Login.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">ログインする</i></font>
                             </button>
                             <button type="submit" class="nav-item btn btn-dark text-nowrap">
@@ -33,8 +33,8 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="collapse navbar-collapse justify-content-center container-fluid" id="navbar2">
                         <div class="navbar-nav">
-                            <div class="col-auto"><a class="nav-item nav-link" href="Home.jsp">ホーム</a></div>
-                            <div class="col-auto"><a class="nav-item nav-link" href="Products.jsp">商品一覧</a></div>
+                            <div class="col-auto"><a class="nav-item nav-link" href="Home.php">ホーム</a></div>
+                            <div class="col-auto"><a class="nav-item nav-link" href="Products.php">商品一覧</a></div>
                             <div class="col-auto"><a class="nav-item nav-link" href="#">アレルギー情報</a></div>
                             <div class="col-auto"><a class="nav-item nav-link" href="#">お問い合わせ</a></div>
                         </div>
