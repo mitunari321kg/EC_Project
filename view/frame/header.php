@@ -45,7 +45,7 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a class="nav-item nav-link" href="#">
+                                <a class="nav-item nav-link" href="allergy.php">
                                     アレルギー情報
                                 </a>
                             </div>
