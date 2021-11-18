@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -19,12 +18,32 @@
                 <div align="center">
                     <table border="0">
                         <form action="list.html" method="get">
+                        <tr>
+                                <th>
+                                    性別
+                                </th>
+                                <td align="center">
+                                    <label>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                    </label>
+                                    男性
+                                    <label>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                    </label>
+                                    女性
+                                    <label>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                    </label>
+                                    その他
+                                    <!--<input type="radio" name="gender" size="24">-->
+                                </td>
+                            </tr>
                             <tr>
                                 <th>
                                     お名前
                                 </th>
                                 <td>
-                                    <input type="text" name="user_name" size="24">
+                                    <input type="text" name="furigana" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -32,7 +51,15 @@
                                     フリガナ
                                 </th>
                                 <td>
-                                    <input type="text" name="furigana" size="24">
+                                    <input type="text" name="furigana" size="24" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    生年月日
+                                </th>
+                                <td>
+                                    <input type="text" name="Birthday" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -40,8 +67,7 @@
                                     郵便番号
                                 </th>
                                 <td>
-                                    <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required
-                                        size="7">
+                                    <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7">
                                 </td>
                             </tr>
                             <tr>
@@ -49,8 +75,7 @@
                                     住所
                                 </th>
                                 <td>
-                                    <input type="text" name="address" 　placeholder="数字は半角で入力してください" required
-                                        size="56">
+                                    <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56">
                                 </td>
                             </tr>
                             <tr>
@@ -58,8 +83,7 @@
                                     電話番号
                                 </th>
                                 <td>
-                                    <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required
-                                        size="24">
+                                    <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24">
                                 </td>
                             </tr>
                             <tr>
@@ -67,8 +91,7 @@
                                     メールアドレス
                                 </th>
                                 <td>
-                                    <input type="email" name="usermail" placeholder="半角で入力してください" required
-                                        size="56">
+                                    <input type="email" name="usermail" placeholder="半角で入力してください" required size="56">
                                 </td>
                             </tr>
                             <tr>
@@ -76,7 +99,7 @@
                                     ユーザID
                                 </th>
                                 <td>
-                                    <input type="text" name="user_id" size="24">
+                                    <input type="text" name="user_id" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -84,7 +107,7 @@
                                     パスワード
                                 </th>
                                 <td>
-                                    <input type="password" name="password" size="24">
+                                    <input type="password" name="password" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -92,14 +115,14 @@
                                     確認用パスワード
                                 </th>
                                 <td>
-                                    <input type="password" name="re_password" size="24">
+                                    <input type="password" name="re_password" size="24" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">
-                                        <button class="button1">作成</button>
-                                    </div>  
+                                        <button class="button1" type="submit">作成</button>
+                                    </div>
                                 </td>
                             </tr>
                         </form>
@@ -112,4 +135,5 @@
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
+
 </html>
