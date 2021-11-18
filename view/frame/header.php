@@ -32,12 +32,28 @@
         <tr>
             <td width="100%">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="collapse navbar-collapse justify-content-center container-fluid" id="navbar2">
-                        <div class="navbar-nav">
-                            <div class="col-auto" id="header-nav-item"><a class="nav-item nav-link" href="Home.php">ホーム</a></div>
-                            <div class="col-auto" id="header-nav-item"><a class="nav-item nav-link" href="Products.php">商品一覧</a></div>
-                            <div class="col-auto" id="header-nav-item"><a class="nav-item nav-link" href="#">アレルギー情報</a></div>
-                            <div class="col-auto" id="header-nav-item"><a class="nav-item nav-link" href="inquiry.php">お問い合わせ</a></div>
+                    <div class="collapse navbar-collapse justify-content-center container-fluid " id="navbar2">
+                        <div class="navbar-nav w-100 nav-justified">
+                            <div class="col">
+                                <a class="nav-item nav-link" href="Home.php">
+                                    ホーム
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="nav-item nav-link" href="Products.php">
+                                    商品一覧
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="nav-item nav-link" href="#">
+                                    アレルギー情報
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="nav-item nav-link" href="inquiry.php">
+                                    お問い合わせ
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </nav>
