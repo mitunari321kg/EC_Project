@@ -18,8 +18,14 @@
                     </p>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto">
+                            <button type="submit" class="btn btn-warning" onclick="location.href='#'">
+                                <font color="black"><i class="bi bi-plus text-nowrap">商品登録</i></font>
+                            </button>
+                            <button type="submit" class="btn btn-success" onclick="location.href='#'">
+                                <font color="white"><i class="bi bi-person-fill text-nowrap">マイページ</i></font>
+                            </button>
                             <button type="submit" class="btn btn-primary" onclick="location.href='Login.php'">
-                                <font color="white"><i class="bi bi-person-fill text-nowrap">ログインする</i></font>
+                                <font color="white"><i class="bi bi-person-fill text-nowrap">ログイン</i></font>
                             </button>
                             <button type="submit" class="nav-item btn btn-dark text-nowrap">
                                 <font color="white"><i class="bi bi-cart-fill">買い物かごを見る</i></font>

@@ -28,7 +28,7 @@
         </tr>
         <tr>
             <td align="center">
-                <div class="card border-dark w-100">
+                <div class="card border-muted w-100 border-2">
                     <div class="card-body overflow-auto text-muted" id="order-history-overflow">
                         <table class="table h-50" style="max-height:300px">
                             <tr>
@@ -36,7 +36,7 @@
                                     <table class="table">
                                         <!------------------------------------------- Sample Data ------------------------------------------->
                                         <tr>
-                                            <td rowspan="4" align="center" class="w-25">
+                                            <td rowspan="4" align="center" class="w-25 border-0">
                                                 <figure class="figure">
                                                     <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
                                                 </figure>
@@ -77,7 +77,7 @@
                                 <td>
                                     <table class="table">
                                         <tr>
-                                            <td rowspan="4" align="center" class="w-25">
+                                            <td rowspan="4" align="center" class="w-25 border-0">
                                                 <figure class="figure">
                                                     <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
                                                 </figure>
@@ -118,7 +118,7 @@
                                 <td>
                                     <table class="table">
                                         <tr>
-                                            <td rowspan="4" align="center" class="w-25">
+                                            <td rowspan="4" align="center" class="w-25 border-0">
                                                 <figure class="figure">
                                                     <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
                                                 </figure>
@@ -159,7 +159,7 @@
                                 <td>
                                     <table class="table">
                                         <tr>
-                                            <td rowspan="4" align="center" class="w-25">
+                                            <td rowspan="4" align="center" class="w-25 border-0">
                                                 <figure class="figure">
                                                     <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
                                                 </figure>
@@ -200,7 +200,7 @@
                                 <td>
                                     <table class="table">
                                         <tr>
-                                            <td rowspan="4" align="center" class="w-25">
+                                            <td rowspan="4" align="center" class="w-25 border-0">
                                                 <figure class="figure">
                                                     <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
                                                 </figure>
@@ -241,7 +241,7 @@
                                 <td>
                                     <table class="table">
                                         <tr>
-                                            <td rowspan="4" align="center" class="w-25">
+                                            <td rowspan="4" align="center" class="w-25 border-0">
                                                 <figure class="figure">
                                                     <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
                                                 </figure>
