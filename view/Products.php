@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td>
-                <table width="100%" class="surch">
+                <table width="100%">
                     <tr>
                         <td align="left">
                             <form action="cgi-bin/example.cgi" method="post">
