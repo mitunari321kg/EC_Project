@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Verifivation.css" rel="stylesheet" />
+    <link href="css/Verification.css" rel="stylesheet" />
     <title>谷原らぁめん</title>
 </head>
 
@@ -12,68 +11,276 @@
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
-    <div class="table-responsive">
-        <table width="100%">
-            <tr>
-                <td>
-                    <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                        <?php for ($i = 0; $i < 5; $i++) { ?>
-                            <div class="col-sm-3">
-                                <div class="card text-dark bg-light h-100">
-                                    <table class="table-light">
+    <table width="100%" align="center" class="min-vw-50">
+        <tr>
+            <td height="80px">
+                <p class="h2">
+                    注文内容
+                </p>
+            </td>
+        <tr>
+            <td align="center">
+                <div class="card border-dark w-100">
+                    <div class="card-body overflow-auto text-muted" id="verification-overflow">
+                        <table class="table h-50" style="max-height:300px">
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <!------------------------------------------- Sample Data ------------------------------------------->
                                         <tr>
-                                            <td>
-                                                <a href="Product_Details.php">
-                                                    <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
-                                                </a>
-                                                <div class="card-body">
-                                                    <a class="card-text" href="#">豚骨ラーメン</a>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p class="card-text">500円</p>
-                                                </div>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="verification-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                商品名：
+                                            </td>
+                                            <td align="center">
+                                                豚骨ラーメン
+                                            </td>
+                                        </tr>
+                                        <td align="right">
+                                            値段：
+                                        </td>
+                                        <td align="center">
+                                            ￥
+                                        </td>
+                                        <tr>
+                                            <td align="right">
+                                                購入数：
+                                            </td>
+                                            <td align="center">
+                                                8
+                                            </td>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <tr>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="verification-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                商品名：
+                                            </td>
+                                            <td align="center">
+                                                豚骨ラーメン
+                                            </td>
+                                        </tr>
+                                        <td align="right">
+                                            値段：
+                                        </td>
+                                        <td align="center">
+                                            ￥
+                                        </td>
+                                        <tr>
+                                            <td align="right">
+                                                購入数：
+                                            </td>
+                                            <td align="center">
+                                                8
                                             </td>
                                         </tr>
                                     </table>
-                                </div>
-                            </div>
-                        <?php } ?>
+                                </td>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <tr>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="verification-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                商品名：
+                                            </td>
+                                            <td align="center">
+                                                豚骨ラーメン
+                                            </td>
+                                        </tr>
+                                        <td align="right">
+                                            値段：
+                                        </td>
+                                        <td align="center">
+                                            ￥
+                                        </td>
+                                        <tr>
+                                            <td align="right">
+                                                購入数：
+                                            </td>
+                                            <td align="center">
+                                                8
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <tr>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="verification-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                商品名：
+                                            </td>
+                                            <td align="center">
+                                                豚骨ラーメン
+                                            </td>
+                                        </tr>
+                                        <td align="right">
+                                            値段：
+                                        </td>
+                                        <td align="center">
+                                            ￥
+                                        </td>
+                                        <tr>
+                                            <td align="right">
+                                                購入数：
+                                            </td>
+                                            <td align="center">
+                                                8
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <tr>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="verification-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                商品名：
+                                            </td>
+                                            <td align="center">
+                                                豚骨ラーメン
+                                            </td>
+                                        </tr>
+                                        <td align="right">
+                                            値段：
+                                        </td>
+                                        <td align="center">
+                                            ￥
+                                        </td>
+                                        <tr>
+                                            <td align="right">
+                                                購入数：
+                                            </td>
+                                            <td align="center">
+                                                8
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <tr>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="verification-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                商品名：
+                                            </td>
+                                            <td align="center">
+                                                豚骨ラーメン
+                                            </td>
+                                        </tr>
+                                        <td align="right">
+                                            値段：
+                                        </td>
+                                        <td align="center">
+                                            ￥
+                                        </td>
+                                        <tr>
+                                            <td align="right">
+                                                購入数：
+                                            </td>
+                                            <td align="center">
+                                                8
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <!------------------------------------------- Sample Data ------------------------------------------->
+                        </table>
                     </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <tr>
-        <tb rowspan="1">
-            <p>数量</p>
-        </tb>
-        <tb>
-            <p>ご請求額</p>
-        </tb>
-    </tr>
-    <tr>
-        <tb colspan="1">
-            <p>名前</p>
-        </tb>
-        <tb>
-            <p>お届け先</p>
-        </tb>
-    </tr>
-    <tr>
-        <tb colspan="2">
-            <p>支払い情報</p>
-        </tb>
-        <tb>
-            <p>代金引換</p>
-        </tb>
-    </tr>
-<div class="container">
-    <from action="hoge">
-        <button class="btn btn-verification">注文確定</button>
-    </from>
-</div>
-<!------------------------------------------- footer ------------------------------------------->
-<?php include 'frame/footer.php'; ?>
- <!------------------------------------------- footer ------------------------------------------->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table">
+                    <tr>
+                        <td align="left">
+                            <p class="h6" align="left">
+                                合計数量:
+                            </p>
+                        </td>
+                        <td align="right">
+                            <p class="h6" align="right">
+                                ご請求額:
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <div class="card border-dark w-100">
+                    <p>名前</p>
+                    <p class="border-top">お届け先住所</p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+            <a href="inquiry.php" class="h6">
+                    お支払方法
+                </a>
+                <div class="card border-dark w-100">
+                    <p></p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" class="nav-item btn btn-dark text-nowrap">
+                    <font color="white">注文確定</font>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <!------------------------------------------- footer ------------------------------------------->
+    <?php include 'frame/footer.php'; ?>
+    <!------------------------------------------- footer ------------------------------------------->
 </body>
+
 </html>
