@@ -6,7 +6,6 @@
 }
 
 h1 {
-    color: black;
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 80px;
@@ -14,12 +13,7 @@ h1 {
 }
 
 p {
-    color: black;
     margin-top: 0px;
-}
-
-a:hover {
-    color: blue;
 }
 
 .p_info {
@@ -36,6 +30,7 @@ a:hover {
 }
 
 .pass_info {
+    float: right;
     margin-left: 50px;
     border: 1px solid;
 }

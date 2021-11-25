@@ -49,7 +49,7 @@
                 </td>
                 <td>
                     <div class="pass_info">
-                        <a href="User_pass.php">
+                        <a href="User_passchange.php">
                             <h1>パスワード</h1>
                             <p class="p_info">パスワードの変更</p>
                         </a>
