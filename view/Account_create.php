@@ -43,7 +43,7 @@
                                     お名前
                                 </th>
                                 <td>
-                                    <input type="text" name="furigana" size="24" required>
+                                    <input type="text" name="name" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -59,7 +59,7 @@
                                     生年月日
                                 </th>
                                 <td>
-                                    <input type="text" name="Birthday" size="24" required>
+                                    <input type="text" name="birthday" size="24" required>
                                 </td>
                             </tr>
                             <tr>
