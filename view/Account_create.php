@@ -18,7 +18,6 @@
                 <div align="center">
                     <form action="list.html" method="get">
                         <table>
-
                             <tr>
                                 <td>
                                     姓
@@ -58,7 +57,7 @@
                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
                                     </label>
                                     その他
-                                    <!--<input type="radio" name="gender" size="24">-->
+        
                                 </td>
                             </tr>
                             <tr>
@@ -151,14 +150,14 @@
                                     市町村名
                                 </td>
                                 <td>
-                                    <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56">
+                                    <input type="text" name="municipality" 　placeholder="数字は半角で入力してください" required size="56">
                                 </td>
                             <tr>
                                 <td>
                                     部屋番号
                                 </td>
                                 <td>
-                                    <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56">
+                                    <input type="text" name="room_number" 　placeholder="数字は半角で入力してください" required size="56">
                                 </td>
                             </tr>
                             <tr>
