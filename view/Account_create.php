@@ -65,48 +65,23 @@
                                 <td>西暦</td>
                                 <td>
                                     <select name="year">
-                                            <option value="">--</option>
-                                            <?php foreach (range(1920, 2022) as $year) : ?>
-                                                <option value="<?= $year ?>"><?= $year ?></option>
-                                            <?php endforeach; ?>
-                                        </select>年
-                                        <select name="month">
-                                           
-                                        </select>月
-                                        <select name="day">
-                                            <option value="">-</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                            <option value="25">25</option>
-                                            <option value="26">26</option>
-                                            <option value="27">27</option>
-                                            <option value="28">28</option>
-                                            <option value="29">29</option>
-                                            <option value="30">30</option>
-                                            <option value="31">31</option>
-                                        </select>日
+                                        <option value="">--</option>
+                                        <?php foreach (range(1920, 2022) as $year) : ?>
+                                            <option value="<?= $year ?>"><?= $year ?></option>
+                                        <?php endforeach; ?>
+                                    </select>年
+                                    <select name="month">
+                                        <option value="">--</option>
+                                        <?php foreach (range(1, 12) as $month) : ?>
+                                            <option value="<?= str_pad($month, 2, 0, STR_PAD_LEFT) ?>"><?= $month ?></option>
+                                        <?php endforeach; ?>
+                                    </select>月
+                                    <select name="day">
+                                        <option value="">--</option>
+                                        <?php foreach (range(1, 31) as $day) : ?>
+                                            <option value="<?= str_pad($day, 2, 0, STR_PAD_LEFT) ?>"><?= $day ?></option>
+                                        <?php endforeach; ?>
+                                    </select>日
                             </tr>
                             <tr>
                                 <td>
