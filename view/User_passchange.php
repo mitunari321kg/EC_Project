@@ -25,27 +25,27 @@
                     <table border="0">
                         <form action="list.html" method="get">
                             <tr>
-                                <th>
-                                    現在のパスワード
-                                </th>
                                 <td>
-                                    <input type="password" name="now_pass" placeholder="" required size="56">
+                                    現在のパスワード　
+                                </td>
+                                <td>
+                                    <input type="password" name="now_pass" size="24" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th>
-                                    新しいパスワード
-                                </th>
                                 <td>
-                                    <input type="password" name="new_pass" placeholder="※半角英数字で8～24文字。" required size="56">
+                                    パスワード　
+                                </td>
+                                <td>
+                                    <input type="password" name="password" size="24" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th>
-                                    確認用パスワード
-                                </th>
                                 <td>
-                                    <input type="password" name="new_pass" placeholder="※確認のためもう一度入力をお願いします。" required size="56">
+                                    確認用パスワード　
+                                </td>
+                                <td>
+                                    <input type="password" name="re_password" size="24" required>
                                 </td>
                             </tr>
                             <tr>

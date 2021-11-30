@@ -6,3 +6,13 @@ input{
 .button_wrapper{
     text-align:center;
 }
+
+.mandatory {
+    color: red;
+    text-align: left;
+}
+
+.emphasis {
+    color: red;
+    font-weight: 500;
+}
