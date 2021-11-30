@@ -62,7 +62,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>西暦</td>
+                                <td>生年月日</td>
                                 <td>
                                     <select name="year">
                                         <option value="">--</option>
