@@ -48,7 +48,7 @@
             <p>賞味期限</p>
         </td>
         <td>
-            購入数: <input type="number" name="example" value="0">
+            購入数: <input type="number" name="example" value="0" min="0">
         </td>
     </tr>
     <tr>
