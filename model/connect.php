@@ -11,7 +11,7 @@ class Connect{
      * コネクト用の関数
      * 【TODO】
      *  ・オーバーヘッドをなくすべきか考慮する
-     * 　⇒永続的接続やセッションによる共有など
+     *  ⇒永続的接続やセッションによる共有など
      */
     public function connect_to_database(){
         return new PDO(self::DSN, self::DB_USERNAME, self::DB_PASSWORD);

@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 
 <html>
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <?php include '../controller/Control_Products.php' ?>
     <link href="css/products.css" rel="stylesheet" />
     <title>谷原らぁめん</title>
 </head>
@@ -57,29 +57,9 @@
     </tr>
     <tr>
         <td>
-            <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-            <?php for ($i=0; $i < 9; $i++) { ?>
-                    <div class="col-sm-3">
-                        <div class="card text-dark bg-light h-100">
-                            <table class="table-light">
-                                <tr>
-                                    <td>
-                                        <a href="Product_Details.php">
-                                            <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
-                                        </a>
-                                        <div class="card-body">
-                                            <a class="card-text" href="#">豚骨ラーメン</a>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-text">500円</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <?php } ?>
-            </div>
+            <?php 
+            $products = new Control_Products();
+            $products -> get_Products(); ?>
         </td>
     </tr>
     <nav aria-label="Page navigation example">
@@ -101,4 +81,5 @@
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
+
 </html>
