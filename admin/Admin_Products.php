@@ -59,13 +59,13 @@
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-            <?php for ($i=0; $i < 9; $i++) { ?>
+                <?php for ($i=0; $i < 9; $i++) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
                             <table class="table-light">
                                 <tr>
                                     <td>
-                                        <a href="Product_Details.php">
+                                        <a href="Admin_Product_Update.php">
                                             <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
                                         </a>
                                         <div class="card-body">
@@ -79,7 +79,7 @@
                             </table>
                         </div>
                     </div>
-                    <?php } ?>
+                <?php } ?>
             </div>
         </td>
     </tr>

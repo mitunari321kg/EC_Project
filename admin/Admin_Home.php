@@ -57,15 +57,28 @@
                 </a>
             </td>
             <td>
-                <button class="btn btn-primary w-75" type="button"><p class="h6">従業員一覧</p></button>
+                <a href="Admin_Employees.php">
+                    <button class="btn btn-primary w-75" type="button"><p class="h6">従業員一覧</p></button>
+                </a>
             </td>
         </tr>
         <tr class="border-white">
             <td>
-                <button class="btn btn-primary w-75" type="button"><p class="h6">従業員登録</p></button>
+                <a href="Admin_Employee_Registoration.php">
+                    <button class="btn btn-primary w-75" type="button"><p class="h6">従業員登録</p></button>
+                </a>
             </td>
             <td>
-                <button class="btn btn-primary w-75" type="button"><p class="h6">従業員更新・削除</p></button>
+                <a href="Admin_Earings.php">
+                    <button class="btn btn-primary w-75" type="button"><p class="h6">売上一覧</p></button>
+                </a>
+            </td>
+        </tr>
+        <tr class="border-white">
+            <td>
+                <a href="Admin_Users.php">
+                    <button class="btn btn-primary w-75" type="button"><p class="h6">登録者情報一覧</p></button>
+                </a>
             </td>
         </tr>
     </table>

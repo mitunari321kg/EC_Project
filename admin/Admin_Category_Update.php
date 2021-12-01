@@ -25,6 +25,13 @@
                 <td align="center">
                     <table width="50%">
                         <tr>
+                            <td height="70px" align="left" valign="top">
+                                <a href="Admin_Category_Registoration.php">
+                                    <button type="button" class="btn btn-secondary w-25">一覧へ戻る</button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <p class="h6 text-muted">
                                     [選択したカテゴリ名]
@@ -32,9 +39,9 @@
                             </td>
                         </tr>
                         <tr>
-                        <td align="center">
-                            <input type="text" class="form-control" placeholder="新しいカテゴリ名" aria-label="新しいカテゴリ名" >
-                        </td>
+                            <td align="center">
+                                <input type="text" class="form-control" placeholder="新しいカテゴリ名" aria-label="新しいカテゴリ名">
+                            </td>
                         </tr>
                     </table>
                 </td>

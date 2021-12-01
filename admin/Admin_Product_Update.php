@@ -4,7 +4,7 @@
 <head>
     <?php include 'frame/Admin_Basic_Style_Info.php'; ?>
     <!--script src="script/input_file.js"></script-->
-    <title>商品登録</title>
+    <title>商品更新・削除</title>
 </head>
 
 <body>
@@ -15,8 +15,15 @@
         <tr>
             <td height="80px" colspan="2">
                 <p class="h2">
-                    商品登録
+                    商品更新・削除
                 </p>
+            </td>
+        </tr>
+        <tr>
+            <td align="left"  height="50px">
+                <a href="Admin_Products.php">
+                    <button type="button" class="btn btn-secondary w-25">一覧へ戻る</button>
+                </a>
             </td>
         </tr>
         <tr>
@@ -99,15 +106,22 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" class="w-50">
-                <button class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">
-                    <p class="h6">確認</p>
-                </button>
+            <td colspan="2">
+                <table width="100%">
+                    <tr>
+                        <td align="left">
+                            <button type="button" class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#Delete_Modal">削除</button>
+                        </td>
+                        <td align="right">
+                            <button type="button" class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#Update_Modal">更新</button>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>
-    <!--modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--update_modal-->
+    <div class="modal fade" id="Update_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -118,7 +132,7 @@
 
                         <tr>
                             <th class="text-muted" colspan="2">
-                                以下の入力内容で商品を登録するか確認してください。
+                                以下の入力内容で商品を更新するか確認してください。
                             </th>
                         </tr>
                         <tr>
@@ -170,7 +184,7 @@
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">入力画面に戻る</button>
                             </td>
                             <td align="right">
-                                <button type="button" class="btn btn-primary">登録</button>
+                                <button type="button" class="btn btn-primary">更新</button>
                             </td>
                         </tr>
                     </table>
@@ -178,7 +192,31 @@
             </div>
         </div>
     </div>
-    <!-------->
+    <!-- Delete_Modal -->
+    <div class="modal fade" id="Delete_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">削除の確認</h5>
+                </div>
+                <div class="modal-body text-muted">
+                    [選択した商品名]を削除してもよろしいですか？
+                </div>
+                <div class="modal-footer">
+                    <table width="100%">
+                        <tr>
+                            <td align="left">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">入力画面に戻る</button>
+                            </td>
+                            <td align="right">
+                                <button type="button" class="btn btn-danger">削除</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         function handleFileSelect(evt) {
             var files = evt.target.files; // FileList object
