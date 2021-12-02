@@ -5,7 +5,7 @@
             <td>
                 <a href="Admin_Home.php">
                     <figure class="figure">
-                        <img src="../img/logo_M.png" class="figure-img img-fluid rounded" alt="谷原らぁめん" />
+                        <img src="../../img/logo_M.png" class="figure-img img-fluid rounded" alt="谷原らぁめん" />
                     </figure>
                 </a>
             </td>
