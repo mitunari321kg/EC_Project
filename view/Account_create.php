@@ -31,7 +31,7 @@
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" requiredHTML テキストボックス>
+                                    <input type="text" name="user_last_furigana" size="24" required>
                                 </td>
                                 <td>
                                     名フリガナ
@@ -166,7 +166,7 @@
                                     電話番号
                                 </td>
                                 <td>
-                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="24">
+                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11">
                                 </td>
                             </tr>
                             <tr>
