@@ -21,21 +21,21 @@
                             <tr>
                                 <td>
                                     姓
-                                    <input type="text" name="surname" size="24" required>
+                                    <input type="text" name="user_last_name" size="24" required>
                                 </td>
                                 <td>
                                     名
-                                    <input type="text" name="name" size="24" required>
+                                    <input type="text" name="user_first_name" size="24" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="surname_furigana" size="24" requiredHTML テキストボックス>
+                                    <input type="text" name="user_last_furigana" size="24" requiredHTML テキストボックス>
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="name_furigana" size="24" required>
+                                    <input type="text" name="user_first_furigana" size="24" required>
                                 </td>
                             </tr>
                         </table>
@@ -46,15 +46,15 @@
                                 </td>
                                 <td align="center">
                                     <label>
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                        <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
                                     </label>
                                     男性
                                     <label>
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                        <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
                                     </label>
                                     女性
                                     <label>
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                        <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
                                     </label>
                                     その他
         
@@ -80,14 +80,15 @@
                                         <?php foreach (range(1, 31) as $day) : ?>
                                             <option value="<?= str_pad($day, 2, 0, STR_PAD_LEFT) ?>"><?= $day ?></option>
                                         <?php endforeach; ?>
-                                    </select>日
+                                        
+                                    </select>日   
                             </tr>
                             <tr>
                                 <td>
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7">
+                                    <input type="text" name="user_postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7">
                                 </td>
                             </tr>
                             <tr>
@@ -150,14 +151,14 @@
                                     市町村名
                                 </td>
                                 <td>
-                                    <input type="text" name="municipality" 　placeholder="数字は半角で入力してください" required size="56">
-                                </td>
-                            <tr>
+                                    <input type="text" name="user_address" 　placeholder="数字は半角で入力してください" required size="56">
+                             </td>
+                          <tr>
                                 <td>
                                     部屋番号
                                 </td>
                                 <td>
-                                    <input type="text" name="room_number" 　placeholder="数字は半角で入力してください" required size="56">
+                                    <input type="text" name="user_address" 　placeholder="数字は半角で入力してください" required size="56">
                                 </td>
                             </tr>
                             <tr>
@@ -165,7 +166,7 @@
                                     電話番号
                                 </td>
                                 <td>
-                                    <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24">
+                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="24">
                                 </td>
                             </tr>
                             <tr>
@@ -173,7 +174,7 @@
                                     メールアドレス
                                 </td>
                                 <td>
-                                    <input type="email" name="usermail" placeholder="半角で入力してください" required size="56">
+                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56">
                                 </td>
                             </tr>
                             <tr>
@@ -181,7 +182,7 @@
                                     ユーザID
                                 </td>
                                 <td>
-                                    <input type="text" name="user_id" size="24" required>
+                                    <input type="text" name="login_id" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -189,7 +190,7 @@
                                     パスワード
                                 </td>
                                 <td>
-                                    <input type="password" name="password" size="24" required>
+                                    <input type="password" name="login_password" size="24" required>
                                 </td>
                             </tr>
                             <tr>
@@ -197,7 +198,7 @@
                                     確認用パスワード
                                 </td>
                                 <td>
-                                    <input type="password" name="re_password" size="24" required>
+                                    <input type="password" name="login_repassword" size="24" required>
                                 </td>
                             </tr>
                             <tr>
