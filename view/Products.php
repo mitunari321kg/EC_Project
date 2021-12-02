@@ -1,3 +1,10 @@
+<!-- 
+*@file Products.php
+*@brief 商品一覧画面
+*@author 佐藤大介
+*@date 2021/11/12
+-->
+
 <!DOCTYPE html>
 
 <html>
@@ -57,9 +64,30 @@
     </tr>
     <tr>
         <td>
-            <?php 
-            $products = new Control_Products();
-            $products -> get_Products(); ?>
+            <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
+                <?php $products = new Control_Products();
+                for ($i = 0; $i < 9; $i++) { ?>
+                    <div class="col-sm-3">
+                        <div class="card text-dark bg-light h-100">
+                            <table class="table-light">
+                                <tr>
+                                    <td>
+                                        <a href="Product_Details.php">
+                                            <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
+                                        </a>
+                                        <div class="card-body">
+                                            <a class="card-text" href="#"><? $products['product_name']?></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text"><? $products['product_unit_price']?></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
         </td>
     </tr>
     <nav aria-label="Page navigation example">
