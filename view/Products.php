@@ -13,6 +13,7 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php include '../controller/Control_Products.php' ?>
     <link href="css/products.css" rel="stylesheet" />
+    <meta charset="utf8_unicode_ci">
     <title>商品一覧</title>
 </head>
 
@@ -66,7 +67,7 @@
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
                 <?php $products = new Control_Products();
-                $products_data = $products->display_product();
+                $products_data = $products->get_products();
                 foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
@@ -74,13 +75,13 @@
                                 <tr>
                                     <td>
                                         <a href="Product_Details.php">
-                                            <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
+                                        <img src="<?php echo $value['porduct_img']; ?>" class="card-img-top" alt="img" />
                                         </a>
                                         <div class="card-body">
-                                            <a class="card-text" href="#"><? print $value['product_name']; ?></a>
+                                            <a class="card-text" href="#"><?php echo $value['product_name']; ?></a>
                                         </div>
                                         <div class="card-body">
-                                            <p class="card-text"><? print $value['product_unit_price']; ?></p>
+                                            <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
                                         </div>
                                     </td>
                                 </tr>

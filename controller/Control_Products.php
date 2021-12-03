@@ -1,35 +1,40 @@
 <?php
+
 /**
  * @file Control_Products.php
  * @brief 商品一覧取得コントローラ
  * @author 佐藤大介
  * @date 2021/12/01
  */
-include '../model/Connect_Products.php';
+include '../model/Model_Products.php';
 
-try {
-    class Control_Products
+class Control_Products
+{
+    private $model;
+
+    public function __construct()
     {
-        private $model;
-        private $products;
-
-        public function __construct()
-        {
+        try {
             //モデルオブジェクト生成
-            $this->model = new Connect_Products();
-
-            //商品一覧を取得
-            $this->products = $this->model->getProducts();
-        }
-
-        /**
-         * 商品一覧を投げる
-         */
-        public function display_product() {
-            return $this->products;
+            $this->model = new Model_Products();
+        } catch (PDOException $e) {
+            die($e->getMessage());
         }
     }
-} catch (PDOException $e) {
-    print('Connection failed:' . $e->getMessage());
-    die();
+
+    /**
+     * 商品一覧を投げる
+     */
+    public function get_products()
+    {
+        try {
+            $sql = "SELECT product_table.product_name, product_table.product_unit_price, product_img_table.porduct_img
+                    FROM product_table
+                    RIGHT OUTER JOIN product_img_table
+                    ON product_table.product_id = product_img_table.product_id";
+            return $this->model->exec_select($sql);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
 }
