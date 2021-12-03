@@ -1,4 +1,10 @@
 <?php
+/* 
+ *  @file       model.php
+ *  @brief      DB接続：操作
+ *  @author     大森　光成
+ *  @date       2021/12/03
+ */
 /**
  * データベース接続用クラス
 */
@@ -16,13 +22,18 @@ class Model{
         }
     }
 
-
-
+    /**
+     * SQL文実行
+     */
     public function exec_sql($sql){
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        try{
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
 
-        return $stmt->fetchAll();
+            return $stmt->fetchAll();
+        } catch(PDOException $e) {
+            die ($e->getMessage());
+        }
     }
 }
 
