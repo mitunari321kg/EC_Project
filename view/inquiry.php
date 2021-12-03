@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include('/controller/contact_form.php'); ?>
+<?php include '../controller/contact_form.php'; ?>
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <title>お問い合わせ</title>
@@ -13,24 +13,8 @@
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
+    <form method="post" action=inquiry.php>
     <table width="50%" align="center" class=" min-vw-50">
-        <?php
-
-        // 1.まずはデータベースに接続しましょう
-        $pdo = new PDO(
-            "mysql:dbname=tanihara_test02;host=localhost;",
-            "tanihara",
-            "1234"
-        );
-
-        // 2.データベースに繋がっているか確認しましょう
-        if ($pdo) {
-            //繋がってるときはこんな表示したくないのでコメントアウト
-            //echo "データベースに繋がっています";
-        } else {
-            "データベースに繋がってないでござる";
-        }
-        ?>
         <tr>
             <td height="80px">
                 <p class="h2">
@@ -67,7 +51,7 @@
                 <td align="center">
                     <div class="mb-3" align="left" id="inquiry-form">
                         <label for="inquiry-name" class="form-label text-muted">件名（必須）</label>
-                        <input type="mail" class="form-control" id="inquiry-name"name="contact_contents" required>
+                        <input type="mail" class="form-control" id="inquiry-name"name="contact_subject" required>
                     </div>
                 </td>
             </tr>
@@ -75,7 +59,7 @@
                 <td align="center">
                     <div class="mb-3" align="left" id="inquiry-form">
                         <label for="inquiry-name" class="form-label text-muted">お問い合わせ内容（必須）</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" required></textarea>
+                        <input type="textarea" class="form-control" id="exampleFormControlTextarea1" rows="6" name="contact_contents" required></textarea>
                     </div>
                 </td>
             </tr>
