@@ -1,3 +1,5 @@
+<!-------入力項目確認画面
+作成者　梅原-------->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,6 @@
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%">
-        <tr>
-            <td>
-                <p></p>
-            </td>
-        </tr>
         <tr>
             <td>
                 <div align="center">
