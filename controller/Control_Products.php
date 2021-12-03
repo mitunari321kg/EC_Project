@@ -12,9 +12,6 @@ try {
     {
         private $model;
         private $products;
-        private $product_img;
-        private $product_name;
-        private $product_price;
 
         public function __construct()
         {
@@ -26,19 +23,10 @@ try {
         }
 
         /**
-         * 商品名を取得
+         * 商品一覧を投げる
          */
-        public function display_product_name() {
-            $this->product_name = $this->products['product_name'];
-            return $this->product_name;
-        }
-
-        /**
-         * 値段を取得
-         */
-        public function display_product_price() {
-            $this->product_price = $this->products['product_unit_price'];
-            return $this->product_price;
+        public function display_product() {
+            return $this->products;
         }
     }
 } catch (PDOException $e) {

@@ -13,7 +13,7 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php include '../controller/Control_Products.php' ?>
     <link href="css/products.css" rel="stylesheet" />
-    <title>谷原らぁめん</title>
+    <title>商品一覧</title>
 </head>
 
 <body>
@@ -66,7 +66,8 @@
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
                 <?php $products = new Control_Products();
-                for ($i = 0; $i < 9; $i++) { ?>
+                $products_data = $products->display_product();
+                foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
                             <table class="table-light">
@@ -76,10 +77,10 @@
                                             <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
                                         </a>
                                         <div class="card-body">
-                                            <a class="card-text" href="#"><? $products['product_name']?></a>
+                                            <a class="card-text" href="#"><? print $value['product_name']; ?></a>
                                         </div>
                                         <div class="card-body">
-                                            <p class="card-text"><? $products['product_unit_price']?></p>
+                                            <p class="card-text"><? print $value['product_unit_price']; ?></p>
                                         </div>
                                     </td>
                                 </tr>
