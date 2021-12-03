@@ -1,7 +1,7 @@
 <?php
-    include '../controller/controll.php';
-    $controll = new Controll();
-    $result = $controll->Employees();
+    include '../controller/Employees.php';
+    $controll = new Employees();
+    $result = $controll->get_employees();
 ?>
 <!DOCTYPE html>
 <html lang="en">

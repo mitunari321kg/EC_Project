@@ -20,11 +20,12 @@
         </tr>
         <tr>
             <td>
+                <form action="">
                 <table class="w-50" align="center">
                     <tr>
                         <td colspan="2">
                             <div class="form-floating mb-3 g-2">
-                                <input type="text" class="form-control" id="employee_id" placeholder="従業員IDを入力してください" required>
+                                <input type="text" name="emp_id" class="form-control" id="employee_id" placeholder="従業員IDを入力してください" required>
                                 <label for="employee_id">従業員ID</label>
                             </div>
                         </td>
@@ -32,14 +33,28 @@
                     <tr>
                         <td class="w-50">
                             <div class="form-floating mb-3 g-2">
-                                <input type="text" class="form-control" id="employee_last_name" placeholder="姓を入力してください" required>
+                                <input type="text" name="emp_last_name" class="form-control" id="employee_last_name" placeholder="姓を入力してください" required>
                                 <label for="employee_last_name">姓</label>
                             </div>
                         </td>
                         <td class="w-50">
                             <div class="form-floating mb-3 g-2">
-                                <input type="text" class="form-control" id="employee_first_name" placeholder="名を入力してください" required>
+                                <input type="text" name="emp_first_name" class="form-control" id="employee_first_name" placeholder="名を入力してください" required>
                                 <label for="employee_first_name">名</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w-50">
+                            <div class="form-floating mb-3 g-2">
+                                <input type="text" name="emp_last_furigana" class="form-control" id="esmployee_last_furigana" placeholder="姓(フリガナ)を入力してください" required>
+                                <label for="employee_last_furigana">姓(フリガナ)</label>
+                            </div>
+                        </td>
+                        <td class="w-50">
+                            <div class="form-floating mb-3 g-2">
+                                <input type="text" name="emp_first_furigana" class="form-control" id="employee_first_furigana" placeholder="名(フリガナ)を入力してください" required>
+                                <label for="employee_first_furigana">名(フリガナ)</label>
                             </div>
                         </td>
                     </tr>
