@@ -44,7 +44,7 @@
                                 <td>
                                     性別
                                 </td>
-                                <td align="center">
+                                <td>
                                     <label>
                                         <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
                                     </label>
