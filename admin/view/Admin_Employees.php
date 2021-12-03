@@ -1,3 +1,8 @@
+<?php
+    include '../controller/Employees.php';
+    $controll = new Employees();
+    $result = $controll->get_employees();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,27 +65,27 @@
                         </thead>
                         <tbody>
                             <?php
-                            for ($cnt = 1; $cnt <= 25; $cnt++) {
+                            foreach($result as $row) {
                             ?>
                                 <tr>
                                     <td>
                                         <a href="Admin_Employee_Update.php">
-                                            test01
+                                            <?php echo $row['emp_id']; ?>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="Admin_Employee_Update.php">
-                                            山田太郎
+                                            <?php echo $row['emp_last_name']; ?>&nbsp<?php echo $row['emp_first_name']; ?>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="Admin_Employee_Update.php">
-                                            ヤマタロウ
+                                            <?php echo $row['emp_last_furigana']; ?>&nbsp<?php echo $row['emp_first_furigana']; ?>
                                         </a>
                                     </td>
                                     <td>
                                         <a href="Admin_Employee_Update.php">
-                                            5
+                                            <?php echo $row['emp_authority']; ?>
                                         </a>
                                     </td>
                                 </tr>

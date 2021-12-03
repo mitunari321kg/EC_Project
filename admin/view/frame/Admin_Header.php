@@ -5,9 +5,16 @@
             <td>
                 <a href="Admin_Home.php">
                     <figure class="figure">
-                        <img src="../img/logo_M.png" class="figure-img img-fluid rounded" alt="谷原らぁめん" />
+                        <img src="../../img/logo_M.png" class="figure-img img-fluid rounded" alt="谷原らぁめん" />
                     </figure>
                 </a>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <button type="submit" class="btn btn-dark" onclick="location.href='Admin_Login.php'">
+                    <font color="white"><i class="bi bi-person-fill text-nowrap">ログアウト</i></font>
+                </button>
             </td>
         </tr>
         <tr>
