@@ -39,7 +39,7 @@
              */
             public function create_account(){
                 // Account_create内の入力項目名を設定
-                $nameList = array("user_id", "user_gender", "user_birthday", "user_mailadress",
+                $nameList = array("login_id", "user_gender", "user_birthday", "user_mailadress",
                  "user_tell", "user_postal_code", "user_prefectures", "user_adress", "user_name",
                  "user_furigana","user_password", "user_password_conf");
 
