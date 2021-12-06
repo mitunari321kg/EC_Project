@@ -75,7 +75,7 @@
                                 <tr>
                                     <td>
                                         <a href="Product_Details.php">
-                                        <img src="<?php echo $value['porduct_img']; ?>" class="card-img-top" alt="img" />
+                                            <img src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
                                         </a>
                                         <div class="card-body">
                                             <a class="card-text" href="#"><?php echo $value['product_name']; ?></a>

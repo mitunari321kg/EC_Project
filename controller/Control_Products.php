@@ -28,7 +28,7 @@ class Control_Products
     public function get_products()
     {
         try {
-            $sql = "SELECT product_table.product_name, product_table.product_unit_price, product_img_table.porduct_img
+            $sql = "SELECT product_table.product_name, product_table.product_unit_price, product_img_table.product_img
                     FROM product_table
                     RIGHT OUTER JOIN product_img_table
                     ON product_table.product_id = product_img_table.product_id";
