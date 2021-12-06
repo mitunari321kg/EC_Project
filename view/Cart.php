@@ -1,32 +1,20 @@
 <!----カート画面
 作成者　梅原---->
 
-<<<<<<< HEAD
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php include 'frame/basic_style_info.php'; ?>
-    <title>谷原らぁめん</title>
-</head>
-=======
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Cart.css" rel="stylesheet" />
-    <title>谷原らぁめん</title>
+    <link href="css/Item confirmation.css" rel="stylesheet" />
+    <title>カート画面</title>
 </head>
 
->>>>>>> umehara
 <body>
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
-<<<<<<< HEAD
 
-=======
     <table width="100%" align="center" class="min-vw-50">
         <br>
         <tr>
@@ -75,8 +63,6 @@
                                                 <input type="number" name="example" value="0" min="0" style="width:50px">
                                             </td>
                                         </tr>
-                                        <!------------------------------------------- Sample Data ------------------------------------------->
-                                        <!------------------------------------------- Sample Data ------------------------------------------->
                                         <tr>
                                             <td rowspan="5" align="left" valign="middle">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -148,13 +134,9 @@
         </td>
     </tr>
     </table>
->>>>>>> umehara
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
-<<<<<<< HEAD
-=======
 
->>>>>>> umehara
 </html>

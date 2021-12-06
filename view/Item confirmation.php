@@ -69,7 +69,11 @@
                             <tr>
                                 <td>
                                     <button type="submit" class="nav-item btn btn-dark text-nowrap">
-                                        <font color="white"><i class="bi bi-cart-fill">確認画面へ</i></font>
+                                        <font color="white">確認画面へ</font>
+                                    </button>
+                                    
+                                    <button type="submit" class="nav-item btn btn-dark text-nowrap">
+                                        <font color="white">別住所にお届けの方</font>
                                     </button>
                                 </td>
                             </tr>
