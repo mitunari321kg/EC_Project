@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @file Connect_Products.php
- * @brief 商品一覧取得モデルクラス
+ * @file Model.php
+ * @brief データベース操作モデル
  * @author 佐藤大介
  * @date 2021/12/02
  */
-class Model_Products
+class Model
 {
 
     private $pdo;

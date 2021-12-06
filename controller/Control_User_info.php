@@ -2,9 +2,9 @@
 
 /**
  * @file Control_Products.php
- * @brief 商品一覧取得コントローラ
+ * @brief 登録者情報取得、更新コントローラ
  * @author 佐藤大介
- * @date 2021/12/01
+ * @date 2021/12/06
  */
 include '../model/Model.php';
 
@@ -23,9 +23,9 @@ class Control_Products
     }
 
     /**
-     * 商品一覧を投げる
+     * 登録者情報一覧を投げる
      */
-    public function get_products()
+    public function get_user_info()
     {
         try {
             $sql = "SELECT product_table.product_name, product_table.product_unit_price, product_img_table.product_img
