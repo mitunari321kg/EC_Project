@@ -3,7 +3,9 @@
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <?php include '../controller/Control_User_info.php'; ?>
     <link href="css/user_info.css" rel="stylesheet" />
+    <meta charset="utf8-unicode-ci">
     <title>登録者情報</title>
 </head>
 
@@ -23,31 +25,34 @@
             <table>
                 <tr><span class="mandatory">*</span>は<span class="emphasis">必須項目</span>ですので必ずご入力ください。</tr>
             </table>
+            <?php $user_data = new Control_User_info(); ?>
+            <?php $user_info = $user_data->get_user_info(); ?>
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="list.html" method="get">
+                        <form action="Change_result.php" method="GET">
                             <table>
-                                <tr>
-                                    <td>
-                                        姓<span class="mandatory">*</span>
-                                        <input type="text" name="surname" size="24" required value="山田">
-                                    </td>
-                                    <td>
-                                        名<span class="mandatory">*</span>
-                                        <input type="text" name="name" size="24" required value="太郎">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        姓フリガナ<span class="mandatory">*</span>
-                                        <input type="text" name="surname_furigana" size="24" required HTML テキストボックス value="ヤマダ">
-                                    </td>
-                                    <td>
-                                        名フリガナ<span class="mandatory">*</span>
-                                        <input type="text" name="name_furigana" size="24" required value="タロウ">
-                                    </td>
-                                </tr>
+                                <?php foreach ($user_info as $value) { ?>
+                                    <tr>
+                                        <td>
+                                            姓<span class="mandatory">*</span>
+                                            <input type="text" name="surname" size="24" required value="<?php print $value['user_last_name']; ?>">
+                                        </td>
+                                        <td>
+                                            名<span class="mandatory">*</span>
+                                            <input type="text" name="name" size="24" required value="<?php print $value['user_first_name']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            姓フリガナ<span class="mandatory">*</span>
+                                            <input type="text" name="surname_furigana" size="24" required value="<?php print $value['user_last_furigana']; ?>">
+                                        </td>
+                                        <td>
+                                            名フリガナ<span class="mandatory">*</span>
+                                            <input type="text" name="name_furigana" size="24" required value="<?php print $value['user_first_furigana']; ?>">
+                                        </td>
+                                    </tr>
                             </table>
                             <table>
                                 <tr>
@@ -55,7 +60,7 @@
                                         ユーザーID
                                     </td>
                                     <td>
-                                        abcdef012
+                                        <?php echo $value['user_id']; ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -64,15 +69,15 @@
                                     </td>
                                     <td>
                                         <label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required checked="checked">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required <?php if ($value['user_gender'] == 0) { ?> checked="check" <?php } ?>>
                                         </label>
                                         男性
                                         <label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required <?php if ($value['user_gender'] == 1) { ?> checked="check" <?php } ?>>
                                         </label>
                                         女性
                                         <label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required <?php if ($value['user_gender'] == 2) { ?> checked="check" <?php } ?>>
                                         </label>
                                         その他
                                         <!--<input type="radio" name="gender" size="24">-->
@@ -81,8 +86,7 @@
                                 <tr>
                                     <td>生年月日</td>
                                     <td>
-                                        2000年　1月　30日
-                                        <!--データベースから情報を取得して表示させるようにする-->
+                                        <?php echo $value['user_birthday']; ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -90,71 +94,70 @@
                                         郵便番号<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7" value="0123456">
+                                        <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7" value="<?php print $value['user_postal_code']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>都道府県<span class="mandatory">*</span></td>
-                                    <!--selectedは登録者情報に応じて変更したい-->
                                     <td>
                                         <select name="user_prefectures">
                                             <option value="選択">選択してください</option>
-                                            <option value="北海道">北海道</option>
-                                            <option value="青森県">青森県</option>
-                                            <option value="岩手県">岩手県</option>
-                                            <option value="宮城県">宮城県</option>
-                                            <option value="秋田県">秋田県</option>
-                                            <option value="山形県">山形県</option>
-                                            <option value="福島県">福島県</option>
-                                            <option value="茨城県">茨城県</option>
-                                            <option value="栃木県">栃木県</option>
-                                            <option value="群馬県">群馬県</option>
-                                            <option value="埼玉県">埼玉県</option>
-                                            <option value="千葉県">千葉県</option>
-                                            <option value="東京都" selected>東京都</option>
-                                            <option value="神奈川県">神奈川県</option>
-                                            <option value="新潟県">新潟県</option>
-                                            <option value="富山県">富山県</option>
-                                            <option value="石川県">石川県</option>
-                                            <option value="福井県">福井県</option>
-                                            <option value="山梨県">山梨県</option>
-                                            <option value="長野県">長野県</option>
-                                            <option value="岐阜県">岐阜県</option>
-                                            <option value="静岡県">静岡県</option>
-                                            <option value="愛知県">愛知県</option>
-                                            <option value="三重県">三重県</option>
-                                            <option value="滋賀県">滋賀県</option>
-                                            <option value="京都府">京都府</option>
-                                            <option value="大阪府">大阪府</option>
-                                            <option value="兵庫県">兵庫県</option>
-                                            <option value="奈良県">奈良県</option>
-                                            <option value="和歌山県">和歌山県</option>
-                                            <option value="鳥取県">鳥取県</option>
-                                            <option value="島根県">島根県</option>
-                                            <option value="岡山県">岡山県</option>
-                                            <option value="広島県">広島県</option>
-                                            <option value="山口県">山口県</option>
-                                            <option value="徳島県">徳島県</option>
-                                            <option value="香川県">香川県</option>
-                                            <option value="愛媛県">愛媛県</option>
-                                            <option value="高知県">高知県</option>
-                                            <option value="福岡県">福岡県</option>
-                                            <option value="佐賀県">佐賀県</option>
-                                            <option value="長崎県">長崎県</option>
-                                            <option value="熊本県">熊本県</option>
-                                            <option value="大分県">大分県</option>
-                                            <option value="宮崎県">宮崎県</option>
-                                            <option value="鹿児島県">鹿児島県</option>
-                                            <option value="沖縄県">沖縄県</option>
+                                            <option value="北海道" <?php if ($value['user_prefectures'] == '北海道') { ?> selected <?php } ?>>北海道</option>
+                                            <option value="青森県" <?php if ($value['user_prefectures'] == '青森県') { ?> selected <?php } ?>>青森県</option>
+                                            <option value="岩手県" <?php if ($value['user_prefectures'] == '岩手県') { ?> selected <?php } ?>>岩手県</option>
+                                            <option value="宮城県" <?php if ($value['user_prefectures'] == '宮城県') { ?> selected <?php } ?>>宮城県</option>
+                                            <option value="秋田県" <?php if ($value['user_prefectures'] == '秋田県') { ?> selected <?php } ?>>秋田県</option>
+                                            <option value="山形県" <?php if ($value['user_prefectures'] == '山形県') { ?> selected <?php } ?>>山形県</option>
+                                            <option value="福島県" <?php if ($value['user_prefectures'] == '福島県') { ?> selected <?php } ?>>福島県</option>
+                                            <option value="茨城県" <?php if ($value['user_prefectures'] == '茨城県') { ?> selected <?php } ?>>茨城県</option>
+                                            <option value="栃木県" <?php if ($value['user_prefectures'] == '栃木県') { ?> selected <?php } ?>>栃木県</option>
+                                            <option value="群馬県" <?php if ($value['user_prefectures'] == '群馬県') { ?> selected <?php } ?>>群馬県</option>
+                                            <option value="埼玉県" <?php if ($value['user_prefectures'] == '埼玉県') { ?> selected <?php } ?>>埼玉県</option>
+                                            <option value="千葉県" <?php if ($value['user_prefectures'] == '千葉県') { ?> selected <?php } ?>>千葉県</option>
+                                            <option value="東京都" <?php if ($value['user_prefectures'] == '東京都') { ?> selected <?php } ?>>東京都</option>
+                                            <option value="神奈川県" <?php if ($value['user_prefectures'] == '神奈川県') { ?> selected <?php } ?>>神奈川県</option>
+                                            <option value="新潟県" <?php if ($value['user_prefectures'] == '新潟県') { ?> selected <?php } ?>>新潟県</option>
+                                            <option value="富山県" <?php if ($value['user_prefectures'] == '富山県') { ?> selected <?php } ?>>富山県</option>
+                                            <option value="石川県" <?php if ($value['user_prefectures'] == '石川県') { ?> selected <?php } ?>>石川県</option>
+                                            <option value="福井県" <?php if ($value['user_prefectures'] == '福井県') { ?> selected <?php } ?>>福井県</option>
+                                            <option value="山梨県" <?php if ($value['user_prefectures'] == '山梨県') { ?> selected <?php } ?>>山梨県</option>
+                                            <option value="長野県" <?php if ($value['user_prefectures'] == '長野県') { ?> selected <?php } ?>>長野県</option>
+                                            <option value="岐阜県" <?php if ($value['user_prefectures'] == '岐阜県') { ?> selected <?php } ?>>岐阜県</option>
+                                            <option value="静岡県" <?php if ($value['user_prefectures'] == '静岡県') { ?> selected <?php } ?>>静岡県</option>
+                                            <option value="愛知県" <?php if ($value['user_prefectures'] == '愛知県') { ?> selected <?php } ?>>愛知県</option>
+                                            <option value="三重県" <?php if ($value['user_prefectures'] == '三重県') { ?> selected <?php } ?>>三重県</option>
+                                            <option value="滋賀県" <?php if ($value['user_prefectures'] == '滋賀県') { ?> selected <?php } ?>>滋賀県</option>
+                                            <option value="京都府" <?php if ($value['user_prefectures'] == '京都府') { ?> selected <?php } ?>>京都府</option>
+                                            <option value="大阪府" <?php if ($value['user_prefectures'] == '大阪府') { ?> selected <?php } ?>>大阪府</option>
+                                            <option value="兵庫県" <?php if ($value['user_prefectures'] == '兵庫県') { ?> selected <?php } ?>>兵庫県</option>
+                                            <option value="奈良県" <?php if ($value['user_prefectures'] == '奈良県') { ?> selected <?php } ?>>奈良県</option>
+                                            <option value="和歌山県" <?php if ($value['user_prefectures'] == '和歌山県') { ?> selected <?php } ?>>和歌山県</option>
+                                            <option value="鳥取県" <?php if ($value['user_prefectures'] == '鳥取県') { ?> selected <?php } ?>>鳥取県</option>
+                                            <option value="島根県" <?php if ($value['user_prefectures'] == '島根県') { ?> selected <?php } ?>>島根県</option>
+                                            <option value="岡山県" <?php if ($value['user_prefectures'] == '岡山県') { ?> selected <?php } ?>>岡山県</option>
+                                            <option value="広島県" <?php if ($value['user_prefectures'] == '広島県') { ?> selected <?php } ?>>広島県</option>
+                                            <option value="山口県" <?php if ($value['user_prefectures'] == '山口県') { ?> selected <?php } ?>>山口県</option>
+                                            <option value="徳島県" <?php if ($value['user_prefectures'] == '徳島県') { ?> selected <?php } ?>>徳島県</option>
+                                            <option value="香川県" <?php if ($value['user_prefectures'] == '香川県') { ?> selected <?php } ?>>香川県</option>
+                                            <option value="愛媛県" <?php if ($value['user_prefectures'] == '愛媛県') { ?> selected <?php } ?>>愛媛県</option>
+                                            <option value="高知県" <?php if ($value['user_prefectures'] == '高知県') { ?> selected <?php } ?>>高知県</option>
+                                            <option value="福岡県" <?php if ($value['user_prefectures'] == '福岡県') { ?> selected <?php } ?>>福岡県</option>
+                                            <option value="佐賀県" <?php if ($value['user_prefectures'] == '佐賀県') { ?> selected <?php } ?>>佐賀県</option>
+                                            <option value="長崎県" <?php if ($value['user_prefectures'] == '長崎県') { ?> selected <?php } ?>>長崎県</option>
+                                            <option value="熊本県" <?php if ($value['user_prefectures'] == '熊本県') { ?> selected <?php } ?>>熊本県</option>
+                                            <option value="大分県" <?php if ($value['user_prefectures'] == '大分県') { ?> selected <?php } ?>>大分県</option>
+                                            <option value="宮崎県" <?php if ($value['user_prefectures'] == '宮崎県') { ?> selected <?php } ?>>宮崎県</option>
+                                            <option value="鹿児島県" <?php if ($value['user_prefectures'] == '鹿児島県') { ?> selected <?php } ?>>鹿児島県</option>
+                                            <option value="沖縄県" <?php if ($value['user_prefectures'] == '沖縄県') { ?> selected <?php } ?>>沖縄県</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        市町村名<span class="mandatory">*</span>
+                                        市区町村<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56" value="中央区銀座10丁目">
+                                        <input type="text" name="address" placeholder="数字は全角で入力してください" required size="56" value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -162,7 +165,7 @@
                                         番地以下<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="数字は半角で入力してください" required size="56" value="9番地8号">
+                                        <input type="text" name="" placeholder="数字は全角で入力してください" size="56" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -171,7 +174,7 @@
                                         部屋番号
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="数字は半角で入力してください" required size="56" value="晴朗荘2号室">
+                                        <input type="text" name="" placeholder="数字は全角で入力してください" size="56" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -179,7 +182,7 @@
                                         電話番号<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24" value="0123456789">
+                                        <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24" value="<?php print $value['user_tel']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,16 +190,17 @@
                                         メールアドレス<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="email" name="usermail" 　placeholder="半角で入力してください" required size="56" value="alice@company-a.com">
+                                        <input type="email" name="user_mail" placeholder="半角で入力してください" required size="56" value="<?php print $value['user_email']; ?>">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="2" align="center">
-                                        <div class="button_wrapper">
-                                            <button class="button1" type="submit">確定</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                            <?php } ?>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <div class="button_wrapper">
+                                        <button class="button1" type="submit">確定</button>
+                                    </div>
+                                </td>
+                            </tr>
                         </form>
                     </table>
                 </div>

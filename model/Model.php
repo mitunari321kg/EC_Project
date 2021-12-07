@@ -10,7 +10,7 @@ class Model
 {
 
     private $pdo;
-    private $db_name = 'mysql:dbname=satou;host=localhost;';
+    private $db_name = 'mysql:dbname=ec_project;host=localhost;';
     private $db_user_name = 'test';
     private $db_user_pass = '1234';
 
@@ -27,9 +27,9 @@ class Model
     }
 
     /**
-     * 商品一覧を取得
+     * sql実行
      */
-    public function exec_select($sql)
+    public function exec_sql($sql)
     {
         try {
             $stmt = $this->pdo->prepare($sql);

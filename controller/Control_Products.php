@@ -32,7 +32,7 @@ class Control_Products
                     FROM product_table
                     RIGHT OUTER JOIN product_img_table
                     ON product_table.product_id = product_img_table.product_id";
-            return $this->model->exec_select($sql);
+            return $this->model->exec_sql($sql);
         } catch (PDOException $e) {
             die($e->getMessage());
         }

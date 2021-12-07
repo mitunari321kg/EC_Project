@@ -8,9 +8,13 @@
  */
 include '../model/Model.php';
 
-class Control_Products
+class Control_User_info
 {
+    /* モデルオブジェクト生成用変数 */
     private $model;
+
+    /* ユーザーID */
+    private $user_id;
 
     public function __construct()
     {
@@ -28,11 +32,11 @@ class Control_Products
     public function get_user_info()
     {
         try {
-            $sql = "SELECT product_table.product_name, product_table.product_unit_price, product_img_table.product_img
-                    FROM product_table
-                    RIGHT OUTER JOIN product_img_table
-                    ON product_table.product_id = product_img_table.product_id";
-            return $this->model->exec_select($sql);
+            $sql = "SELECT user_id, user_last_name, user_first_name, user_last_furigana, user_first_furigana,
+                    DATE_FORMAT(user_birthday, '%Y年　%m月　%d日') AS user_birthday, user_gender, user_postal_code, user_prefectures, user_address, user_tel, user_email
+                    FROM user_table
+                    WHERE user_id = 'abc012'";
+            return $this->model->exec_sql($sql);
         } catch (PDOException $e) {
             die($e->getMessage());
         }
