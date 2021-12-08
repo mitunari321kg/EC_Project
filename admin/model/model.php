@@ -65,7 +65,7 @@ class Model{
             $stmt->bindParam($nobindparam, $params[$keys[$cnt]], $styles[$cnt]);
             $cnt++;
         }
-        return print_r($stmt->execute());
+        return $stmt->execute();
         //return print_r($sql);
     }
 }
