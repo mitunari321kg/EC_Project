@@ -1,3 +1,5 @@
+<!----注文内容確認画面
+作成者　梅原------->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +14,6 @@
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%" align="center" class="min-vw-50">
-        <tr>
-            <td height="80px">
-                <p class="h2">
-                    注文内容
-                </p>
-            </td>
         <tr>
             <td align="center">
                 <div class="card border-dark w-100">

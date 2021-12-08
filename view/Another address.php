@@ -1,11 +1,13 @@
+<!---別の住所の場合
+作成者　梅原----->
 <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Account_create.css" rel="stylesheet" />
-    <title>アカウント作成</title>
+    <link href="css/Another address.css" rel="stylesheet" />
+    <title>別住所登録</title>
 </head>
 
 <body>
@@ -18,77 +20,35 @@
                 <div align="center">
                     <form action="list.html" method="get">
                         <table>
+
                             <tr>
                                 <td>
                                     姓
-                                    <input type="text" name="user_last_name" size="24" required>
+                                    <input type="text" name="surname" size="24" required>
                                 </td>
                                 <td>
                                     名
-                                    <input type="text" name="user_first_name" size="24" required>
+                                    <input type="text" name="name" size="24" required>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" required>
+                                    <input type="text" name="surname_furigana" size="24" requiredHTML テキストボックス>
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="user_first_furigana" size="24" required>
+                                    <input type="text" name="name_furigana" size="24" required>
                                 </td>
                             </tr>
                         </table>
                         <table>
                             <tr>
                                 <td>
-                                    性別
-                                </td>
-                                <td>
-                                    <label>
-                                        <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
-                                    </label>
-                                    男性
-                                    <label>
-                                        <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
-                                    </label>
-                                    女性
-                                    <label>
-                                        <input class="form-check-input" type="radio" name="user_gender" id="flexRadioDefault1" required>
-                                    </label>
-                                    その他
-        
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>生年月日</td>
-                                <td>
-                                    <select name="year">
-                                        <option value="">--</option>
-                                        <?php foreach (range(1920, 2022) as $year) : ?>
-                                            <option value="<?= $year ?>"><?= $year ?></option>
-                                        <?php endforeach; ?>
-                                    </select>年
-                                    <select name="month">
-                                        <option value="">--</option>
-                                        <?php foreach (range(1, 12) as $month) : ?>
-                                            <option value="<?= str_pad($month, 2, 0, STR_PAD_LEFT) ?>"><?= $month ?></option>
-                                        <?php endforeach; ?>
-                                    </select>月
-                                    <select name="day">
-                                        <option value="">--</option>
-                                        <?php foreach (range(1, 31) as $day) : ?>
-                                            <option value="<?= str_pad($day, 2, 0, STR_PAD_LEFT) ?>"><?= $day ?></option>
-                                        <?php endforeach; ?>
-                                        
-                                    </select>日   
-                            </tr>
-                            <tr>
-                                <td>
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="user_postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7">
+                                    <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7">
                                 </td>
                             </tr>
                             <tr>
@@ -151,60 +111,21 @@
                                     市町村名
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address" 　placeholder="数字は半角で入力してください" required size="56">
-                             </td>
-                          <tr>
+                                    <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56">
+                                </td>
+                            <tr>
                                 <td>
                                     部屋番号
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address" 　placeholder="数字は半角で入力してください" required size="56">
+                                    <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    電話番号
-                                </td>
-                                <td>
-                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    メールアドレス
-                                </td>
-                                <td>
-                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    ユーザID
-                                </td>
-                                <td>
-                                    <input type="text" name="login_id" size="24" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    パスワード
-                                </td>
-                                <td>
-                                    <input type="password" name="login_password" size="24" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    確認用パスワード
-                                </td>
-                                <td>
-                                    <input type="password" name="login_repassword" size="24" required>
-                                </td>
-                            </tr>
+
                             <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">
-                                        <button class="button1" type="submit">作成</button>
+                                        <button class="button1" type="submit">登録</button>
                                     </div>
                                 </td>
                             </tr>
