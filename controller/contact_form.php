@@ -1,4 +1,5 @@
 <?php
+
 /*  @file   ファイル名
  *  @brief  お問い合わせ・フォームDB
  *  @author  谷原直樹

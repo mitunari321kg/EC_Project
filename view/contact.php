@@ -66,7 +66,7 @@
                 </tr>
                 <tr>
                     <td align="right">
-                      <input class="btn btn-primary btn-lg w-25"  type="submit" value="送信" >
+                        <input class="btn btn-primary btn-lg w-25" type="submit" value="送信">
                     </td>
                 </tr>
             </form>
