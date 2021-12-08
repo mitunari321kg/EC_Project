@@ -11,7 +11,6 @@ $result_msg = $_SESSION['result_msg'];
     include 'frame/Admin_Basic_Style_Info.php';
     include 'frame/Import_Datepicker.php'
     ?>
-    <script src="script/emp_registoration_modal.js"></script>
     <title>従業員登録</title>
 </head>
 
@@ -45,7 +44,7 @@ $result_msg = $_SESSION['result_msg'];
                         <tr>
                             <td colspan="2">
                                 <div class="form-floating mb-3 g-2">
-                                    <input type="text" name="emp_id" class="form-control" id="emp_id" placeholder="従業員IDを入力してください" required>
+                                    <input type="text" name="emp_id" class="form-control" id="emp_id" placeholder="従業員IDを入力してください" required oninput="check_id()">
                                     <label for="employee_id">従業員ID</label>
                                 </div>
                             </td>
@@ -53,13 +52,13 @@ $result_msg = $_SESSION['result_msg'];
                         <tr>
                             <td class="w-50">
                                 <div class="form-floating mb-3 g-2">
-                                    <input type="text" name="emp_last_name" class="form-control" id="emp_last_name" placeholder="姓を入力してください" required>
+                                    <input type="text" name="emp_last_name" class="form-control" id="emp_last_name" placeholder="姓を入力してください" required oninput="check_last_name()">
                                     <label for="employee_last_name">姓</label>
                                 </div>
                             </td>
                             <td class="w-50">
                                 <div class="form-floating mb-3 g-2">
-                                    <input type="text" name="emp_first_name" class="form-control" id="emp_first_name" placeholder="名を入力してください" required>
+                                    <input type="text" name="emp_first_name" class="form-control" id="emp_first_name" placeholder="名を入力してください" required oninput="check_first_name()">
                                     <label for="employee_first_name">名</label>
                                 </div>
                             </td>
@@ -67,13 +66,13 @@ $result_msg = $_SESSION['result_msg'];
                         <tr>
                             <td class="w-50">
                                 <div class="form-floating mb-3 g-2">
-                                    <input type="text" name="emp_last_furigana" class="form-control" id="emp_last_furigana" placeholder="姓(フリガナ)を入力してください" required>
+                                    <input type="text" name="emp_last_furigana" class="form-control" id="emp_last_furigana" placeholder="姓(フリガナ)を入力してください"　 required oninput="check_last_furigana()">
                                     <label for="employee_last_furigana">姓(フリガナ)</label>
                                 </div>
                             </td>
                             <td class="w-50">
                                 <div class="form-floating mb-3 g-2">
-                                    <input type="text" name="emp_first_furigana" class="form-control" id="emp_first_furigana" placeholder="名(フリガナ)を入力してください" required>
+                                    <input type="text" name="emp_first_furigana" class="form-control" id="emp_first_furigana" placeholder="名(フリガナ)を入力してください" required oninput="check_first_furigana()">
                                     <label for="emp_first_furigana">名(フリガナ)</label>
                                 </div>
                             </td>
@@ -81,7 +80,7 @@ $result_msg = $_SESSION['result_msg'];
                         <tr>
                             <td colspan="2">
                                 <div class="form-floating mb-3 g-2">
-                                    <input type="password" class="form-control" id="emp_password" placeholder="パスワードを入力してください" required>
+                                    <input type="password" class="form-control" id="emp_password" placeholder="パスワードを入力してください" required oninput="check_password()">
                                     <label for="employee_password">パスワード</label>
                                 </div>
                             </td>
@@ -211,6 +210,7 @@ $result_msg = $_SESSION['result_msg'];
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/Admin_Footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
+    <script src="script/emp_registoration_modal.js"></script>
 </body>
 
 </html>
