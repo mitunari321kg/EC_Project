@@ -38,7 +38,7 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a class="nav-item nav-link" href="../view/Home.php">
+                                <a class="nav-item nav-link" href="../../view/Home.php">
                                     販売画面へ移動
                                 </a>
                             </div>
