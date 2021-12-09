@@ -1,9 +1,14 @@
+<?php
+include '../controller/Control_User_info.php';
+$user_data = new Control_User_info();
+$user_info = $user_data->get_user_info();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <?php include '../controller/Control_User_info.php'; ?>
     <link href="css/user_info.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
     <title>登録者情報</title>
@@ -30,10 +35,6 @@
                     <table border="0">
                         <form action="Change_result.php" method="post">
                             <table>
-                                <?php
-                                $user_data = new Control_User_info();
-                                $user_info = $user_data->get_user_info();
-                                ?>
                                 <?php foreach ($user_info as $value) { ?>
                                     <tr>
                                         <td>
@@ -59,7 +60,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        ユーザーID
+                                        ユーザーID　
                                     </td>
                                     <td>
                                         <?php echo $value['user_id']; ?>
@@ -67,7 +68,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        性別<span class="mandatory">*</span>
+                                        性別<span class="mandatory">*</span>　
                                     </td>
                                     <td>
                                         <select name="user_gender">
@@ -78,21 +79,21 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>生年月日</td>
+                                    <td>生年月日　</td>
                                     <td>
                                         <?php echo $value['user_birthday']; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        郵便番号<span class="mandatory">*</span>
+                                        郵便番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
                                         <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7" value="<?php print $value['user_postal_code']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>都道府県<span class="mandatory">*</span></td>
+                                    <td>都道府県<span class="mandatory">*</span>　</td>
                                     <td>
                                         <select name="user_prefectures">
                                             <option value="選択">選択してください</option>
@@ -148,7 +149,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <!-- 市区町村 -->住所<span class="mandatory">*</span>
+                                        <!-- 市区町村　 -->住所<span class="mandatory">*</span>　
                                     </td>
                                     <td>
                                         <input type="text" name="address" placeholder="数字は半角で入力してください" required size="56" value="<?php print $value['user_address']; ?>">
@@ -157,7 +158,7 @@
                                 <!--
                                 <tr>
                                     <td>
-                                        番地以下<span class="mandatory">*</span>
+                                        番地以下<span class="mandatory">*　</span>
                                     </td>
                                     <td>
                                         <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
@@ -165,8 +166,8 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        建物名・<span class="mandatory">*</span><br>
-                                        部屋番号
+                                        建物名・<span class="mandatory">*</span>　<br>
+                                        部屋番号　
                                     </td>
                                     <td>
                                         <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
@@ -175,7 +176,7 @@
                                 -->
                                 <tr>
                                     <td>
-                                        電話番号<span class="mandatory">*</span>
+                                        電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
                                         <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24" value="<?php print $value['user_tel']; ?>">
@@ -183,7 +184,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Eメール<span class="mandatory">*</span>
+                                        Eメール<span class="mandatory">*</span>　
                                     </td>
                                     <td>
                                         <input type="email" name="user_mail" placeholder="半角で入力してください" required size="56" value="<?php print $value['user_email']; ?>">

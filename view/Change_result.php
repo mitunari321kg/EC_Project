@@ -1,4 +1,7 @@
 <?php
+include '../controller/Control_User_info.php';
+$user_data = new Control_User_info();
+$user_info = $user_data->get_user_info();
 $surname = $_POST["surname"];
 $name = $_POST["name"];
 $surname_furigana = $_POST["surname_furigana"];
@@ -10,12 +13,12 @@ $address = $_POST["address"];
 $tel = $_POST["tel"];
 $user_mail = $_POST["user_mail"];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <?php include '../controller/Control_User_info.php'; ?>
     <link href="css/user_info.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
     <title>変更確認</title>
@@ -42,14 +45,10 @@ $user_mail = $_POST["user_mail"];
                     <table width="100%">
                         <form action="Complete.php" method="post">
                             <table border="1">
-                                <?php
-                                $user_data = new Control_User_info();
-                                $user_info = $user_data->get_user_info();
-                                ?>
                                 <?php foreach ($user_info as $value) { ?>
                                     <tr>
-                                        <td>
-                                            姓
+                                        <td align="right">
+                                            姓　
                                         </td>
                                         <td>
                                             <?php echo $surname; ?>
@@ -57,8 +56,8 @@ $user_mail = $_POST["user_mail"];
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            名
+                                        <td align="right">
+                                            名　
                                         </td>
                                         <td>
                                             <?php echo $name; ?>
@@ -67,7 +66,7 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            姓フリガナ
+                                            姓フリガナ　
                                         </td>
                                         <td>
                                             <?php echo $surname_furigana; ?>
@@ -76,7 +75,7 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            名フリガナ
+                                            名フリガナ　
                                         </td>
                                         <td>
                                             <?php echo $name_furigana; ?>
@@ -85,7 +84,7 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            ユーザーID
+                                            ユーザーID　
                                         </td>
                                         <td>
                                             <?php echo $value['user_id']; ?>
@@ -93,7 +92,7 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            性別
+                                            性別　
                                         </td>
                                         <td>
                                             <?php if ($user_gender == 0) {
@@ -107,14 +106,14 @@ $user_mail = $_POST["user_mail"];
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>生年月日</td>
+                                        <td>生年月日　</td>
                                         <td>
                                             <?php echo $value['user_birthday']; ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            郵便番号
+                                            郵便番号　
                                         </td>
                                         <td>
                                             <?php echo $postal_code; ?>
@@ -122,7 +121,7 @@ $user_mail = $_POST["user_mail"];
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>都道府県
+                                        <td>都道府県　
                                         <td>
                                             <?php echo $user_prefectures; ?>
                                             <input type="hidden" name="user_prefectures" value="<?php echo $user_prefectures ?>">
@@ -130,7 +129,7 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            <!-- 市区町村 -->住所
+                                            <!-- 市区町村 -->住所　
                                         </td>
                                         <td>
                                             <?php echo $address; ?>
@@ -140,7 +139,7 @@ $user_mail = $_POST["user_mail"];
                                     <!--
                                     <tr>
                                         <td>
-                                            番地以下
+                                            番地以下　
                                         </td>
                                         <td>
                                             <?php //echo $address; 
@@ -149,8 +148,8 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            建物名・<br>
-                                            部屋番号
+                                            建物名・　<br>
+                                            部屋番号　
                                         </td>
                                         <td>
                                             <?php //echo $address; 
@@ -160,7 +159,7 @@ $user_mail = $_POST["user_mail"];
                                     -->
                                     <tr>
                                         <td>
-                                            電話番号
+                                            電話番号　
                                         </td>
                                         <td>
                                             <?php echo $tel; ?>
@@ -169,7 +168,7 @@ $user_mail = $_POST["user_mail"];
                                     </tr>
                                     <tr>
                                         <td>
-                                            Eメール
+                                            Eメール　
                                         </td>
                                         <td>
                                             <?php echo $user_mail; ?>

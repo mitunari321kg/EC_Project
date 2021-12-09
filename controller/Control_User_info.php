@@ -46,7 +46,7 @@ class Control_User_info
     }
 
     /**
-     * 登録情報を更新する
+     * 登録情報を更新
      */
     public function update_user_info(
         $surname,

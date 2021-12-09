@@ -1,9 +1,17 @@
+<?php
+include '../controller/Control_user_pass.php';
+$user_pass_change = new Control_User_pass();
+$user_old_pass = $user_pass_change->get_now_pass();
+$user_new_pass;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
+    <meta charset="utf8-unicode-ci">
     <title>パスワード</title>
 </head>
 
@@ -23,7 +31,7 @@
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="list.html" method="get">
+                        <form action="Pass_result.html" method="POST">
                             <tr>
                                 <td>
                                     現在のパスワード　
