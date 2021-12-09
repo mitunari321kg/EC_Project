@@ -1,3 +1,15 @@
+<?php
+$surname = $_POST["surname"];
+$name = $_POST["name"];
+$surname_furigana = $_POST["surname_furigana"];
+$name_furigana = $_POST["name_furigana"];
+$user_gender = $_POST["user_gender"];
+$postal_code = $_POST["postal_code"];
+$user_prefectures = $_POST["user_prefectures"];
+$address = $_POST["address"];
+$tel = $_POST["tel"];
+$user_mail = $_POST["user_mail"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,68 +25,62 @@
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
-    <?php
-    $user_data = new Control_User_info();
-    $user_info = $user_data->get_user_info();
-    $surname = $_GET["surname"];
-    $name = $_GET["name"];
-    $surname_furigana = $_GET["surname_furigana"];
-    $name_furigana = $_GET["name_furigana"];
-    $flexRadioDefault = $_GET["flexRadioDefault"];
-    $postal_code = $_GET["postal_code"];
-    $user_prefectures = $_GET["user_prefectures"];
-    $address = $_GET["address"];
-    $tel = $_GET["tel"];
-    $user_mail = $_GET["user_mail"];
-    ?>
     <table width="100%">
-        <table width="100%">
-            <tr>
-                <th>
-                    <h3>変更した情報の確認</h3>
-                </th>
-            </tr>
-        </table>
         <tr>
-            <table>
-                <tr>間違いがなければ下の送信ボタンをクリックしてください。</tr>
-            </table>
+            <th>
+                <h3>変更した情報の確認</h3>
+            </th>
+        </tr>
+        <table>
+            <tr>間違いがなければ下の送信ボタンをクリックしてください。</tr>
+        </table>
+    </table>
+    <table width="100%">
+        <tr>
             <td>
                 <div align="center">
-                    <table border="0">
-                        <form action="Change_result.php" method="GET">
+                    <table width="100%">
+                        <form action="Complete.php" method="post">
                             <table border="1">
+                                <?php
+                                $user_data = new Control_User_info();
+                                $user_info = $user_data->get_user_info();
+                                ?>
                                 <?php foreach ($user_info as $value) { ?>
-                                    <tr border="1">
-                                        <td border="1">
+                                    <tr>
+                                        <td>
                                             姓
                                         </td>
-                                        <td border="1">
+                                        <td>
                                             <?php echo $surname; ?>
+                                            <input type="hidden" name="surname" value="<?php echo $surname ?>">
                                         </td>
                                     </tr>
-                                    <tr border="1">
-                                        <td border="1">
+                                    <tr>
+                                        <td>
                                             名
                                         </td>
-                                        <td border="1">
+                                        <td>
                                             <?php echo $name; ?>
+                                            <input type="hidden" name="name" value="<?php echo $name ?>">
                                         </td>
                                     </tr>
-                                    <tr border="1">
-                                        <td border="1">
+                                    <tr>
+                                        <td>
                                             姓フリガナ
                                         </td>
-                                        <td border="1">
+                                        <td>
                                             <?php echo $surname_furigana; ?>
+                                            <input type="hidden" name="surname_furigana" value="<?php echo $surname_furigana ?>">
                                         </td>
                                     </tr>
-                                    <tr border="1">
-                                        <td border="1">
+                                    <tr>
+                                        <td>
                                             名フリガナ
                                         </td>
-                                        <td border="1">
+                                        <td>
                                             <?php echo $name_furigana; ?>
+                                            <input type="hidden" name="name_furigana" value="<?php echo $name_furigana ?>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,7 +96,14 @@
                                             性別
                                         </td>
                                         <td>
-                                            <?php echo $flexRadioDefault; ?>
+                                            <?php if ($user_gender == 0) {
+                                                echo "男性";
+                                            } elseif ($user_gender == 1) {
+                                                echo "女性";
+                                            } else {
+                                                echo "その他";
+                                            } ?>
+                                            <input type="hidden" name="user_gender" value="<?php echo $user_gender ?>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -105,28 +118,33 @@
                                         </td>
                                         <td>
                                             <?php echo $postal_code; ?>
+                                            <input type="hidden" name="postal_code" value="<?php echo $postal_code ?>">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>都道府県
                                         <td>
                                             <?php echo $user_prefectures; ?>
+                                            <input type="hidden" name="user_prefectures" value="<?php echo $user_prefectures ?>">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            市区町村
+                                            <!-- 市区町村 -->住所
                                         </td>
                                         <td>
                                             <?php echo $address; ?>
+                                            <input type="hidden" name="address" value="<?php echo $address ?>">
                                         </td>
                                     </tr>
+                                    <!--
                                     <tr>
                                         <td>
                                             番地以下
                                         </td>
                                         <td>
-                                            <?php echo $address; ?>
+                                            <?php //echo $address; 
+                                            ?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -135,23 +153,27 @@
                                             部屋番号
                                         </td>
                                         <td>
-                                            <?php echo $address; ?>
+                                            <?php //echo $address; 
+                                            ?>
                                         </td>
                                     </tr>
+                                    -->
                                     <tr>
                                         <td>
                                             電話番号
                                         </td>
                                         <td>
                                             <?php echo $tel; ?>
+                                            <input type="hidden" name="tel" value="<?php echo $tel ?>">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            メールアドレス
+                                            Eメール
                                         </td>
                                         <td>
                                             <?php echo $user_mail; ?>
+                                            <input type="hidden" name="user_mail" value="<?php echo $user_mail ?>">
                                         </td>
                                     </tr>
                             </table>
@@ -160,20 +182,17 @@
                             <button class="button1" type="submit">送信</button>
                         </div>
                         </form>
+                        <div class="button_wrapper">
+                            <a href="User_info.php">
+                                <button>確認画面へ戻る</button>
+                            </a>
+                        </div>
+                    </table>
                 </div>
             </td>
         </tr>
     </table>
     <table width="100%">
-    <tr>
-            <td>
-                <div class="button_wrapper">
-                    <a href="User_info.php">
-                        <button>確認画面へ戻る</button>
-                    </a>
-                </div>
-            </td>
-        </tr>
         <tr>
             <td>
                 <div class="button_wrapper">

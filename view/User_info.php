@@ -25,13 +25,15 @@
             <table>
                 <tr><span class="mandatory">*</span>は<span class="emphasis">必須項目</span>ですので必ずご入力ください。</tr>
             </table>
-            <?php $user_data = new Control_User_info(); ?>
-            <?php $user_info = $user_data->get_user_info(); ?>
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="Change_result.php" method="GET">
+                        <form action="Change_result.php" method="post">
                             <table>
+                                <?php
+                                $user_data = new Control_User_info();
+                                $user_info = $user_data->get_user_info();
+                                ?>
                                 <?php foreach ($user_info as $value) { ?>
                                     <tr>
                                         <td>
@@ -68,19 +70,11 @@
                                         性別<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required <?php if ($value['user_gender'] == 0) { ?> checked="check" <?php } ?>>
-                                        </label>
-                                        男性
-                                        <label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required <?php if ($value['user_gender'] == 1) { ?> checked="check" <?php } ?>>
-                                        </label>
-                                        女性
-                                        <label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required <?php if ($value['user_gender'] == 2) { ?> checked="check" <?php } ?>>
-                                        </label>
-                                        その他
-                                        <!--<input type="radio" name="gender" size="24">-->
+                                        <select name="user_gender">
+                                            <option value=0 <?php if ($value['user_gender'] == 0) { ?> selected <?php } ?>>男性</option>
+                                            <option value=1 <?php if ($value['user_gender'] == 1) { ?> selected <?php } ?>>女性</option>
+                                            <option value=2 <?php if ($value['user_gender'] == 2) { ?> selected <?php } ?>>その他</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -154,18 +148,19 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        市区町村<span class="mandatory">*</span>
+                                        <!-- 市区町村 -->住所<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="数字は全角で入力してください" required size="56" value="<?php print $value['user_address']; ?>">
+                                        <input type="text" name="address" placeholder="数字は半角で入力してください" required size="56" value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
+                                <!--
                                 <tr>
                                     <td>
                                         番地以下<span class="mandatory">*</span>
                                     </td>
                                     <td>
-                                        <input type="text" name="" placeholder="数字は全角で入力してください" size="56" value="">
+                                        <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,9 +169,10 @@
                                         部屋番号
                                     </td>
                                     <td>
-                                        <input type="text" name="" placeholder="数字は全角で入力してください" size="56" value="">
+                                        <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
                                     </td>
                                 </tr>
+                                -->
                                 <tr>
                                     <td>
                                         電話番号<span class="mandatory">*</span>
@@ -187,7 +183,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        メールアドレス<span class="mandatory">*</span>
+                                        Eメール<span class="mandatory">*</span>
                                     </td>
                                     <td>
                                         <input type="email" name="user_mail" placeholder="半角で入力してください" required size="56" value="<?php print $value['user_email']; ?>">
