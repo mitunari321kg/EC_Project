@@ -10,6 +10,9 @@
     <?php include 'frame/Admin_Header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%" class="table">
+        <?php
+        if($_SESSION['logined_authority'] >= 1) {
+        ?>
         <tr>
             <br>
             <td align="left" colspan="2" class="w-100">
@@ -30,6 +33,10 @@
                 </a>
             </td>
         </tr>
+        <?php
+        }
+        if($_SESSION['logined_authority'] >= 2){
+        ?>
         <tr>
             <td align="left" colspan="2" class="w-100">
                 <br>
@@ -81,6 +88,9 @@
                 </a>
             </td>
         </tr>
+        <?php
+        }
+        ?>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/Admin_Footer.php'; ?>

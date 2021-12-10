@@ -1,3 +1,9 @@
+<?php
+    include '../controller/Categorys.php';
+    $controll = new Categorys();
+    $result = $controll->get_categorys();
+    $cnt = 1;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,13 +40,13 @@
                         <tr>
                             <td class="min-vw-25">
                             <?php
-                            for($cnt = 1; $cnt <= 25; $cnt++){
+                            foreach($result as $row){
                             ?>
-                                <div>
-                                ・セットメニュー
+                                <div align="left">
+                                ・<?php echo($row['category_name']) ?>
                                 </div>
                                 <?php
-                                if($cnt % 5 == 0){
+                                if($cnt++ % 5 == 0){
                                     echo '</td><td class="min-vw-25">';
                                 }
                                 ?>
@@ -56,7 +62,10 @@
         </tr>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
-    <?php include 'frame/Admin_Footer.php'; ?>
+    <?php 
+    include 'frame/Admin_Footer.php'; 
+    $cnt = 1;
+    ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
 </html>
