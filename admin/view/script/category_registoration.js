@@ -17,7 +17,7 @@ function open_modal() {
 
 function check_category_name() {
     const input_category_name = document.getElementById('input_category_name').value;
-    if (!input_category_name) {
+    if (input_category_name.trim() == '') {
         document.getElementById('input_category_name').setCustomValidity('空白を使用せず入力してください');
         return;
     } else {
