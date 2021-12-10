@@ -6,7 +6,7 @@
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <title>お問い合わせ</title>
+    <title>お問い合わせ完了</title>
     <link href="css/inquiry.css" rel="stylesheet" />
 </head>
 

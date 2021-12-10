@@ -1,30 +1,81 @@
 <?php
+/* 
+ *  @file       Employees_Registoration.php
+ *  @brief      従業員登録：操作
+ *  @author     大森　光成
+ *  @date       2021/12/07
+ */
+include '../controller/controll.php';
+//$emp_registoration->insert_employee();
+/**
+ * 従業員一覧表示
+ */
+session_start();
+class Account_create_db extends Controll
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    /**
+     * 登録者情報取得
+     */
+    public function insert_employee()
+{
+        $user_id = $_POST['user_id'];
 
-/*  @file   Account_create_db.php
- *  @brief  アカウント作成 DB
- *  @author  谷原直樹
- *  @date   2021/12/07~
- * */
+        $sql = "SELECT COUNT(*) AS count FROM user_table WHERE user_id= ?;";
+        $params = array($user_id);
+        $result = $this->db->exec_sql_search($sql, $params);
 
-// ドライバ呼び出しを使用して MySQL データベースに接続します
+        if ($result[0]['count'] == 0) {
+            //登録処理に入る
+            $params = array(
+                'user_id'                            => $_POST['user_id'],
+                 'user_birthday'                     => $_POST['user_birthday'],
+                'user_last_name'                     => $_POST['user_last_name'],
+                'user_first_name'                    => $_POST['user_first_name'],
+                'user_last_furigana'                 => $_POST['user_last_furigana'],
+                'user_first_furigana'                => $_POST['user_first_furigana'],
+                'login_password'                     => password_hash($_POST['login_password'], PASSWORD_DEFAULT),
+                'user_gender'                        => $_POST['user_gender'],
+                'user_postal_code'                   => $_POST['user_postal_code'],
+                'user_prefectures'                   => $_POST['user_prefectures'],
+                'user_address'                       => $_POST['user_address'],
+                'user_tel'                           => $_POST['user_tel'],
+                'user_email'                         => $_POST['user_email'],
+               
 
-ini_set('mbstring.internal_encoding', 'UTF-8');
-
-//データベース接続
-try {
-    $dsn = 'mysql:dbname=tanihara_test04;host=localhost;charset=utf8;';
-    $user = 'tanihara';
-    $password = '1234';
-
-    $db = new PDO($dsn, $user, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //しゅてきな処理
-    $sql = $db->prepare('INSERT INTO user_table(`user_id`,`login_password`,`user_last_name`,`user_first_name`,`user_last_furigana`,`user_first_furigana`,
-`user_birthday`,`user_gender`,`user_postal_code`,`user_prefectures`,
-`user_address`,`user_tel`,`user_email`,`user_order_id`,`user_delete_flag`)
-VALUES(:`user_id`,:`login_password`,:`user_last_name`,:`user_first_name`,:`user_last_furigana`,:`user_first_furigana`
-,:`user_birthday`,:`user_gender`,:`user_postal_code`,:`user_prefectures`,:`user_address`,:`user_tel`,:`user_email`
-,:`user_order_id`,:`user_delete_flag`)');
-} catch (PDOException $e) {
-    echo 'データベースにアクセスできません！' . $e->getMessage();
+            );
+            $styles = array(
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
+                PDO::PARAM_STR
+            );
+            if ($this->db->exec_sql_insert('user_table', $params, $styles)) {
+                //登録完了
+                $_SESSION['result_msg'] = "<br><font color=GREEN>登録が完了しました。</font></br>";
+                header('Location: ../view/Account_create.php');
+            } else {
+                $_SESSION['result_msg'] = "<br><font color=RED>※エラーが発生しました。</font></br>";
+                header('Location: ../view/Account_create.php');
+            }
+        } else {
+            //既に登録されている
+            $_SESSION['result_msg'] = "<br><font color=RED>※既に同じユーザIDで登録されています。</font></br>";
+            header('Location: ../view/Account_create.php');
+        }
+    }
 }
+$account_create_db = new Account_create_db();
+$account_create_db->insert_employee();
