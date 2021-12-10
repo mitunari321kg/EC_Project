@@ -121,7 +121,22 @@
                                     <input type="text" name="address" 　placeholder="数字は半角で入力してください" required size="56">
                                 </td>
                             </tr>
-
+                            <tr>
+                                <td>
+                                    電話番号
+                                </td>
+                                <td>
+                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    メールアドレス
+                                </td>
+                                <td>
+                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56">
+                                </td>
+                            </tr>
                             <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">

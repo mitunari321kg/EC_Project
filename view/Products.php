@@ -1,3 +1,9 @@
+<!-- 
+*@file Products.php
+*@brief 商品一覧画面
+*@author 佐藤大介
+*@date 2021/11/12
+-->
 
 <!DOCTYPE html>
 
@@ -5,8 +11,10 @@
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <?php include '../controller/Control_Products.php' ?>
     <link href="css/products.css" rel="stylesheet" />
-    <title>谷原らぁめん</title>
+    <meta charset="utf8_unicode_ci">
+    <title>商品一覧</title>
 </head>
 
 <body>
@@ -58,27 +66,29 @@
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-            <?php for ($i=0; $i < 9; $i++) { ?>
+                <?php $products = new Control_Products();
+                $products_data = $products->get_products();
+                foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
                             <table class="table-light">
                                 <tr>
                                     <td>
                                         <a href="Product_Details.php">
-                                            <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
+                                            <img src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
                                         </a>
                                         <div class="card-body">
-                                            <a class="card-text" href="#">豚骨ラーメン</a>
+                                            <a class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a>
                                         </div>
                                         <div class="card-body">
-                                            <p class="card-text">500円</p>
+                                            <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-                    <?php } ?>
+                <?php } ?>
             </div>
         </td>
     </tr>
@@ -101,4 +111,5 @@
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
+
 </html>
