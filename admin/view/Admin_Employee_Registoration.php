@@ -36,7 +36,7 @@ $result_msg = $_SESSION['result_msg'];
                 ?>
             </td>
         </tr>
-        <form onsubmit="return open_modal()" action="../controller/Employee_Registoration.php" method="post" >
+        <form onsubmit="return open_modal()" action="#" method="post" >
         <!--form class="needs-validation" novalidate-->
             <tr>
                 <td>
