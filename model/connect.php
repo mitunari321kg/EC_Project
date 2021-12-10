@@ -1,20 +1,40 @@
 <?php
+/* 
+ *  @file       connect.php
+ *  @brief      DB接続：操作
+ *  @author     umehara
+ *  @date       2021/12/06
+ */
 /**
  * データベース接続用クラス
- */
-class Connect{
-    private const DSN ='mysql:tanihara_ramen;host=localhost';
-    private const DB_USERNAME ='test';
-    private const DB_PASSWORD = '1234';
-    
+*/
+class Model{
+    private $DSN ='mysql:dbname=ec_project;host=localhost';
+    private $DB_USERNAME ='umehara';
+    private $DB_PASSWORD = '1234';
+
+    private $db;
+    function __construct(){
+        try{
+            $this->db = new PDO($this->DSN,$this->DB_USERNAME,$this->DB_PASSWORD);
+        } catch(PDOException $e) {
+            die ($e->getMessage());
+        }
+    }
+
     /**
-     * コネクト用の関数
-     * 【TODO】
-     *  ・オーバーヘッドをなくすべきか考慮する
-     * 　⇒永続的接続やセッションによる共有など
+     * SQL文実行
      */
-    public function connect_to_database(){
-        return new PDO(self::DSN, self::DB_USERNAME, self::DB_PASSWORD);
+    public function exec_sql($sql){
+        try{
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch(PDOException $e) {
+            die ($e->getMessage());
+        }
     }
 }
+
 ?>
