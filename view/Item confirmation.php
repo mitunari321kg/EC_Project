@@ -1,3 +1,5 @@
+<!-------入力項目確認画面
+作成者　梅原-------->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,6 @@
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%">
-        <tr>
-            <td>
-                <p></p>
-            </td>
-        </tr>
         <tr>
             <td>
                 <div align="center">
@@ -72,7 +69,11 @@
                             <tr>
                                 <td>
                                     <button type="submit" class="nav-item btn btn-dark text-nowrap">
-                                        <font color="white"><i class="bi bi-cart-fill">確認画面へ</i></font>
+                                        <font color="white">確認画面へ</font>
+                                    </button>
+                                    
+                                    <button type="submit" class="nav-item btn btn-dark text-nowrap">
+                                        <font color="white">別住所にお届けの方</font>
                                     </button>
                                 </td>
                             </tr>
