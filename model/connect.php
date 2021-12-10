@@ -1,16 +1,21 @@
 <?php
 /* 
- *  @file       model.php
+ *  @file       connect.php
  *  @brief      DB接続：操作
- *  @author     大森　光成
- *  @date       2021/12/03
+ *  @author     umehara
+ *  @date       2021/12/06
  */
 /**
  * データベース接続用クラス
 */
 class Model{
+<<<<<<< HEAD
     private $DSN ='mysql:dbname=ec_project;host=localhost;charset=utf8;';
     private $DB_USERNAME ='tanihara';
+=======
+    private $DSN ='mysql:dbname=ec_project;host=localhost';
+    private $DB_USERNAME ='umehara';
+>>>>>>> main
     private $DB_PASSWORD = '1234';
 
     private $db;
@@ -23,14 +28,11 @@ class Model{
     }
 
     /**
-<<<<<<< HEAD
      * コネクト用の関数
      * 【TODO】
      *  ・オーバーヘッドをなくすべきか考慮する
      *  ⇒永続的接続やセッションによる共有など
-=======
      * SQL文実行
->>>>>>> tanihara
      */
     public function exec_sql_select($sql){
         try{
@@ -74,6 +76,19 @@ class Model{
         }
         return $stmt->execute();
         //return print_r($sql);
+    }
+    /**
+     * SQL文実行
+     */
+    public function exec_sql($sql){
+        try{
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch(PDOException $e) {
+            die ($e->getMessage());
+        }
     }
 }
 
