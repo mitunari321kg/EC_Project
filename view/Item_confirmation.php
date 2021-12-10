@@ -1,7 +1,14 @@
 <!-------入力項目確認画面
 作成者　梅原-------->
+<?php
+include '../controller/Item_confirmation.php';
+$controll = new Item_confirmation();
+$result = $controll->get_Item_confirmation();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
@@ -22,11 +29,11 @@
                             <tr>
                                 <td>
                                     姓
-                                    <input type="text" name="surname" size="24" required>
+                                    <input type="text" value=<?php echo $result[0]['user_first_name'];?>>
                                 </td>
                                 <td>
                                     名
-                                    <input type="text" name="name" size="24" required>
+                                    <input type="text" value=<?php echo $result[0]['user_last_name']; ?>>
                                 </td>
                             </tr>
                         </table>
@@ -36,7 +43,7 @@
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="postal_code" required size="7">
+                                <input type="text" value=<?php echo $result[0]['user_postal_code']; ?>>
                                 </td>
                             </tr>
                             <tr>
@@ -44,7 +51,7 @@
                                     お届け先住所
                                 </td>
                                 <td>
-                                    <input type="text" name="surname" size="24" required>
+                                <input type="text" value=<?php echo $result[0]['user_address']; ?>>
                                 </td>
                             </tr>
 
@@ -53,7 +60,7 @@
                                     電話番号
                                 </td>
                                 <td>
-                                    <input type="tel" name="tel" required size="24">
+                                <input type="text" value=<?php echo $result[0]['user_tel']; ?>>
                                 </td>
                             </tr>
                             <tr>
@@ -61,7 +68,7 @@
                                     メールアドレス
                                 </td>
                                 <td>
-                                    <input type="email" name="usermail" required size="56">
+                                <input type="text" value=<?php echo $result[0]['user_email']; ?>>
                                 </td>
                             </tr>
                         </table>
@@ -71,7 +78,7 @@
                                     <button type="submit" class="nav-item btn btn-dark text-nowrap">
                                         <font color="white">確認画面へ</font>
                                     </button>
-                                    
+
                                     <button type="submit" class="nav-item btn btn-dark text-nowrap">
                                         <font color="white">別住所にお届けの方</font>
                                     </button>
