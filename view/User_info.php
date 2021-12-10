@@ -7,8 +7,6 @@ $user_info = $user_data->get_user_info();
 <!DOCTYPE html>
 <html lang="en">
 
-<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
-
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/user_info.css" rel="stylesheet" />
@@ -91,13 +89,14 @@ $user_info = $user_data->get_user_info();
                                         郵便番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" placeholder="ハイフンなし半角で入力してください 例：0001122" required size="7" value="<?php print $value['user_postal_code']; ?>" maxlength="7">
+                                        <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7" value="<?php print $value['user_postal_code']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>都道府県<span class="mandatory">*</span>　</td>
                                     <td>
                                         <select name="user_prefectures">
+                                            <option value="選択">選択してください</option>
                                             <option value="北海道" <?php if ($value['user_prefectures'] == '北海道') { ?> selected <?php } ?>>北海道</option>
                                             <option value="青森県" <?php if ($value['user_prefectures'] == '青森県') { ?> selected <?php } ?>>青森県</option>
                                             <option value="岩手県" <?php if ($value['user_prefectures'] == '岩手県') { ?> selected <?php } ?>>岩手県</option>
@@ -180,7 +179,7 @@ $user_info = $user_data->get_user_info();
                                         電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="ハイフンなし半角で入力してください 例：000111222" required size="24" value="<?php print $value['user_tel']; ?>" maxlength="11">
+                                        <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24" value="<?php print $value['user_tel']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -188,7 +187,7 @@ $user_info = $user_data->get_user_info();
                                         Eメール<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="email" name="user_mail" placeholder="" required size="56" value="<?php print $value['user_email']; ?>">
+                                        <input type="email" name="user_mail" placeholder="半角で入力してください" required size="56" value="<?php print $value['user_email']; ?>">
                                     </td>
                                 </tr>
                             <?php } ?>
