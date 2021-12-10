@@ -1,3 +1,12 @@
+<?php
+session_start();
+ini_set('display_errors', 0);
+$result_msg = $_SESSION['result_msg'];
+if(isset($_SESSION['logined_id'])){
+    unset($_SESSION['logined_id']);
+    unset($_SESSION['logined_authority']);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,29 +28,41 @@
         </tr>
         <tr>
             <td>
-                <table class="w-50" align="center">
-                    <tr>
-                        <td>
-                            <div class="form-floating mb-3 g-2">
-                                <input type="text" class="form-control" id="admin_id" placeholder="従業員IDを入力してください" required>
-                                <label for="admin_id">従業員ID</label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-floating mb-3 g-2">
-                                <input type="password" class="form-control" id="admin_password" placeholder="パスワードを入力してください" required>
-                                <label for="admin_password">パスワード</label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button type="button" class="btn btn-primary w-25 btn-lg">ログイン</button>
-                        </td>
-                    </tr>
-                </table>
+                <?php
+                if(!empty($result_msg)){
+                    echo $result_msg;
+                    unset($_SESSION['result_msg']);
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form action="../controller/Login.php" method="post">
+                    <table class="w-50" align="center">
+                        <tr>
+                            <td>
+                                <div class="form-floating mb-3 g-2">
+                                    <input type="text" class="form-control" id="emp_id" placeholder="従業員IDを入力してください" name="emp_id" required>
+                                    <label for="emp_id">従業員ID</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-floating mb-3 g-2">
+                                    <input type="password" class="form-control" id="emp_password" placeholder="パスワードを入力してください" name="emp_password" required>
+                                    <label for="emp_password">パスワード</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn btn-primary w-25 btn-lg">ログイン</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </td>
         </tr>
     </table>
