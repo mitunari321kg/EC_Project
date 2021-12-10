@@ -66,7 +66,7 @@
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="user_postal_code" class="p-postal-code" size="8" maxlength="8">
+                                    <input type="text" name="user_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="7" maxlength="7">
                                 </td>
                             </tr>
                             <tr>
