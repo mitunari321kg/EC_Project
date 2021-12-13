@@ -33,11 +33,11 @@
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" required pattern="^[ァ-ンヴー]+$ , [\u30A1-\u30FF]*">
+                                    <input type="text" name="user_last_furigana" size="24" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="user_first_furigana" size="24" required required pattern="^[ァ-ンヴー]+$ , [\u30A1-\u30FF]*">
+                                    <input type="text" name="user_first_furigana" size="24" required required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                             </tr>
                         </table>
@@ -66,7 +66,7 @@
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="user_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="7" maxlength="7">
+                                    <input type="text" name="user_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7">
                                 </td>
                             </tr>
                             <tr>
@@ -80,7 +80,7 @@
                                     住所
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address" class="p-locality p-street-address p-extended-address" />
+                                    <input type="text" name="user_address1" class="p-locality p-street-address p-extended-address" />
                                 </td>
                             </tr>
                             <tr>
@@ -104,7 +104,7 @@
                                     ユーザID
                                 </td>
                                 <td>
-                                    <input type="text" name="user_id" size="24" required>
+                                    <input type="text" name="user_id" size="24" required pattern="^[0-9A-Za-z]+$">
                                 </td>
                             </tr>
                             <tr>
@@ -112,7 +112,7 @@
                                     パスワード
                                 </td>
                                 <td>
-                                    <input type="password" name="login_password" size="24" required>
+                                    <input type="password" name="login_password" size="24" required pattern="^[0-9A-Za-z]+$">
                                 </td>
                             </tr>
                             <tr>
@@ -120,7 +120,7 @@
                                     確認用パスワード
                                 </td>
                                 <td>
-                                    <input type="password" name="login_repassword" size="24" required>
+                                    <input type="password" name="login_repassword" size="24" required pattern="^[0-9A-Za-z]+$">
                                 </td>
                             </tr>
                             <tr>
