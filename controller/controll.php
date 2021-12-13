@@ -25,7 +25,7 @@
         }
     } catch(PDOException $e){
         print('データベースエラー：'.$e->getMessage());
-	    die();
 
+	    die();
     }
 ?>
