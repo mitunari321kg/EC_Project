@@ -14,11 +14,8 @@
         if($_SESSION['logined_authority'] >= 1) {
         ?>
         <tr>
-            <br>
-            <td align="left" colspan="2" class="w-100">
-                <p class="h5">
-                    一般従業員向け
-                </p>
+            <td colspan="2">
+                <br>
             </td>
         </tr>
         <tr class="border-white">
@@ -27,7 +24,7 @@
                     <button class="btn btn-primary w-75" type="button"><p class="h6">注文状況一覧</p></button>
                 </a>
             </td>
-            <td class="w-50">
+            <td class="border-white w-50">
                 <a href="Admin_Categorys.php">
                     <button class="btn btn-primary w-75" type="button"><p class="h6">カテゴリ一覧</p></button>
                 </a>
@@ -37,14 +34,6 @@
         }
         if($_SESSION['logined_authority'] >= 2){
         ?>
-        <tr>
-            <td align="left" colspan="2" class="w-100">
-                <br>
-                <p class="h5">
-                    管理者向け
-                </p>
-            </td>
-        </tr>
         <tr class="border-white">
             <td>
                 <a href="Admin_Product_Registoration.php">

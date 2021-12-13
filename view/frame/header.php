@@ -18,16 +18,13 @@
                     </p>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto">
-                            <button type="submit" class="btn btn-warning" onclick="location.href='#'">
-                                <font color="black"><i class="bi bi-plus text-nowrap">商品登録</i></font>
-                            </button>
-                            <button type="submit" class="btn btn-success" onclick="location.href='#'">
+                            <button type="submit" class="btn btn-success" onclick="location.href='Mypage.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">マイページ</i></font>
                             </button>
                             <button type="submit" class="btn btn-primary" onclick="location.href='Login.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">ログイン</i></font>
                             </button>
-                            <button type="submit" class="nav-item btn btn-dark text-nowrap">
+                            <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Cart.php'">
                                 <font color="white"><i class="bi bi-cart-fill">買い物かごを見る</i></font>
                             </button>
                         </ul>
@@ -56,7 +53,7 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a class="nav-item nav-link" href="inquiry.php">
+                                <a class="nav-item nav-link" href="contact.php">
                                     お問い合わせ
                                 </a>
                             </div>
