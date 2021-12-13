@@ -89,7 +89,7 @@ $user_info = $user_data->get_user_info();
                                         郵便番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" placeholder="ハイフンなし半角で入力してください 例：0001122" required size="7" value="<?php print $value['user_postal_code']; ?>">
+                                        <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7" value="<?php print $value['user_postal_code']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -179,7 +179,7 @@ $user_info = $user_data->get_user_info();
                                         電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="ハイフンなし半角で入力してください 例：000111222" required size="24" value="<?php print $value['user_tel']; ?>">
+                                        <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24" value="<?php print $value['user_tel']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,7 +187,7 @@ $user_info = $user_data->get_user_info();
                                         Eメール<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="email" name="user_mail" placeholder="" required size="56" value="<?php print $value['user_email']; ?>">
+                                        <input type="email" name="user_mail" placeholder="半角で入力してください" required size="56" value="<?php print $value['user_email']; ?>">
                                     </td>
                                 </tr>
                             <?php } ?>

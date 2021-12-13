@@ -1,7 +1,5 @@
 <?php
 session_start();
-ini_set('display_errors', 0);
-$result_msg = $_SESSION['result_msg'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +27,7 @@ $result_msg = $_SESSION['result_msg'];
         <tr>
             <td>
                 <?php
+                $result_msg = $_SESSION['result_msg'];
                 if(!empty($result_msg)){
                     echo $result_msg;
                     unset($_SESSION['result_msg']);
