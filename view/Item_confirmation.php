@@ -8,8 +8,7 @@ $result = $controll->get_Item_confirmation();
 
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
+<meta charset="utf8-unicode-ci">
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Item confirmation.css" rel="stylesheet" />
