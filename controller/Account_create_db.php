@@ -1,8 +1,8 @@
 <?php
 /* 
  *  @file       Employees_Registoration.php
- *  @brief      従業員登録：操作
- *  @author     大森　光成
+ *  @brief      ユーザー登録 
+ *  @author     谷原　直樹
  *  @date       2021/12/07
  */
 include '../controller/controll.php';
@@ -32,7 +32,7 @@ class Account_create_db extends Controll
             //登録処理に入る
             $params = array(
                 'user_id'                            => $_POST['user_id'],
-                 'user_birthday'                     => $_POST['user_birthday'],
+                'user_birthday'                      => $_POST['user_birthday'],
                 'user_last_name'                     => $_POST['user_last_name'],
                 'user_first_name'                    => $_POST['user_first_name'],
                 'user_last_furigana'                 => $_POST['user_last_furigana'],

@@ -33,11 +33,11 @@
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" required>
+                                    <input type="text" name="user_last_furigana" size="24" required pattern="^[ァ-ンヴー]+$ , [\u30A1-\u30FF]*">
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="user_first_furigana" size="24" required>
+                                    <input type="text" name="user_first_furigana" size="24" required required pattern="^[ァ-ンヴー]+$ , [\u30A1-\u30FF]*">
                                 </td>
                             </tr>
                         </table>
@@ -88,7 +88,7 @@
                                     電話番号
                                 </td>
                                 <td>
-                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11">
+                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
                                 </td>
                             </tr>
                             <tr>
@@ -96,7 +96,7 @@
                                     メールアドレス
                                 </td>
                                 <td>
-                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56">
+                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                 </td>
                             </tr>
                             <tr>
