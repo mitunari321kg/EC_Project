@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
-=======
 
->>>>>>> e2873582a1f0ee1c028c0030c9be90c5d4404f6d
 /* 
  *  @file       controll.php
  *  @brief      コントロール系親クラス
@@ -12,10 +9,6 @@
     //モデルのデータベース接続ファイルを呼び出す
     include '../model/connect.php';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e2873582a1f0ee1c028c0030c9be90c5d4404f6d
     /**
      * データベース接続
      */
@@ -32,10 +25,7 @@
         }
     } catch(PDOException $e){
         print('データベースエラー：'.$e->getMessage());
-<<<<<<< HEAD
 	    die();
-=======
-        die();
->>>>>>> e2873582a1f0ee1c028c0030c9be90c5d4404f6d
+
     }
 ?>
