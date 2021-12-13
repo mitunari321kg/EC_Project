@@ -120,7 +120,7 @@
                                     確認用パスワード
                                 </td>
                                 <td>
-                                    <input type="password" name="login_repassword" size="24" required pattern="^[0-9A-Za-z]+$">
+                                    <input type="password" name="login_repassword" size="24" maxlength="40" minlength="4" required pattern="^[0-9A-Za-z]+$">
                                 </td>
                             </tr>
                             <tr>
