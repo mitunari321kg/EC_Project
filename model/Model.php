@@ -10,9 +10,9 @@ class Model
 {
 
     private $pdo;
-    private $db_name = 'mysql:dbname=ec_project;host=localhost;';
-    private $db_user_name = 'test';
-    private $db_user_pass = '1234';
+    private $DSN ='mysql:dbname=ec_project;host=localhost;charset=utf8;';
+    private $DB_USERNAME ='tanihara';
+    private $DB_PASSWORD = '1234';
 
     /**
      * データベース接続
@@ -20,7 +20,7 @@ class Model
     public function __construct()
     {
         try {
-            $this->pdo = new PDO($this->db_name, $this->db_user_name, $this->db_user_pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+            $this->pdo = new PDO($this->DSN, $this->DB_USERNAME, $this->DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
         } catch (PDOException $e) {
             die($e->getMessage());
         }
