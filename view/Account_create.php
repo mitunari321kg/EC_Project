@@ -104,7 +104,7 @@
                                     ユーザID
                                 </td>
                                 <td>
-                                    <input type="text" name="user_id" size="24" required pattern="^[0-9A-Za-z]+$">
+                                    <input type="text" name="user_id" maxlength="24" minlength="4" required pattern="^[0-9A-Za-z]+$"placeholder="4~24文字で入力してください">
                                 </td>
                             </tr>
                             <tr>
@@ -112,7 +112,7 @@
                                     パスワード
                                 </td>
                                 <td>
-                                    <input type="password" name="login_password" size="24" required pattern="^[0-9A-Za-z]+$">
+                                    <input type="password" name="login_password" size="24" maxlength="40" minlength="4" required pattern="^[0-9A-Za-z]+$">
                                 </td>
                             </tr>
                             <tr>
