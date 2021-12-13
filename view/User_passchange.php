@@ -45,7 +45,7 @@ $user_new_pass;
                                     パスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="password" size="24" required minlength="4" maxlength="40">
+                                    <input type="password" name="password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" maxlength="40">
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +53,7 @@ $user_new_pass;
                                     確認用パスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="re_password" size="24" required minlength="4" maxlength="40">
+                                    <input type="password" name="re_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" maxlength="40">
                                 </td>
                             </tr>
                             <tr>

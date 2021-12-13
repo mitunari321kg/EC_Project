@@ -92,7 +92,7 @@ $user_info = $user_data->get_user_info();
                                         郵便番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" placeholder="例：0001111" required size="7" value="<?php print $value['user_postal_code']; ?>" maxlength="7">
+                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" placeholder="例:0001111" required size="7" value="<?php print $value['user_postal_code']; ?>" maxlength="7">
                                     </td>
                                 </tr>
                                 <tr>
@@ -154,7 +154,9 @@ $user_info = $user_data->get_user_info();
                                         <!-- 市区町村　 -->住所<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="例：〇〇市〇〇町１－２－３" required size="56" value="<?php print $value['user_address']; ?>" class="p-locality p-street-address p-extended-address">
+                                        <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required
+                                        pattern="(.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)"
+                                        value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
                                 <!--
@@ -181,22 +183,22 @@ $user_info = $user_data->get_user_info();
                                         電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="例：0000112222" required size="24" value="<?php print $value['user_tel']; ?>" maxlength="11">
+                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php print $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Eメール<span class="mandatory">*</span>　
+                                        メールアドレス<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="email" id="email" name="user_mail" placeholder="例：sample_a.1@email.co.jp" required size="56" value="<?php print $value['user_email']; ?>">
+                                        <input type="email" id="email" name="user_mail" placeholder="例:sample_a.1@email.co.jp" required size="56" value="<?php print $value['user_email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                     </td>
                                 </tr>
                             <?php } ?>
                             <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">
-                                        <button class="button1" type="submit" onclick="isRegHan(this.form.address)">確定</button>
+                                        <button class="button1" type="submit">確定</button>
                                     </div>
                                 </td>
                             </tr>
