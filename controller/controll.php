@@ -1,4 +1,5 @@
 <?php
+
 /* 
  *  @file       controll.php
  *  @brief      コントロール系親クラス
