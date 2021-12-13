@@ -37,7 +37,7 @@ $user_new_pass;
                                     現在のパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="now_pass" size="24" required>
+                                    <input type="password" name="now_pass" size="24" required minlength="4" maxlength="40">
                                 </td>
                             </tr>
                             <tr>
@@ -45,7 +45,7 @@ $user_new_pass;
                                     パスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="password" size="24" required>
+                                    <input type="password" name="password" size="24" required minlength="4" maxlength="40">
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +53,7 @@ $user_new_pass;
                                     確認用パスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="re_password" size="24" required>
+                                    <input type="password" name="re_password" size="24" required minlength="4" maxlength="40">
                                 </td>
                             </tr>
                             <tr>
