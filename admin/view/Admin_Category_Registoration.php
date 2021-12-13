@@ -53,7 +53,7 @@ $cnt = 1;
                                             </a>
                                         </div>
                                         <?php
-                                        if ($cnt % 5 == 0) {
+                                        if ($cnt++ % 5 == 0) {
                                             echo '</td><td class="min-vw-25">';
                                         }
                                         ?>
@@ -65,6 +65,17 @@ $cnt = 1;
                         </table>
                     </div>
                 </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <?php
+                    $result_msg = $_SESSION['result_msg'];
+                    if(!empty($result_msg)){
+                        echo $result_msg;
+                        unset($_SESSION['result_msg']);
+                    }
+                ?>
             </td>
         </tr>
         <form onsubmit="return open_modal()" action="#" method="post">
@@ -89,7 +100,7 @@ $cnt = 1;
     <!-- Modal -->
 
     <div class="modal fade" id="Registoration_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form action="../controller/Categorys.php" method="post">
+        <form action="../controller/Category_Registoration.php" method="post">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -105,7 +116,7 @@ $cnt = 1;
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">入力画面に戻る</button>
                                 </td>
                                 <td align="right">
-                                    <button type="button" class="btn btn-primary">登録</button>
+                                    <button type="submit" class="btn btn-primary">登録</button>
                                 </td>
                             </tr>
                         </table>

@@ -18,7 +18,7 @@
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="list.html" method="get">
+                        <form action="list.html" method="POST">
                             <tr>
                                 <th>
                                     ユーザID
@@ -32,7 +32,7 @@
                                     パスワード
                                 </th>
                                 <td>
-                                    <input type="password" name="password" value="" size="24">
+                                    <input type="password" name="password" value="" size="40">
                                 </td>
                             </tr>
                             <tr>

@@ -3,7 +3,6 @@
  *  @file       controll.php
  *  @brief      コントロール系親クラス
  *  @author     umehara
->>>>>>> umehara
  *  @date       2021/12/03
  */
     //モデルのデータベース接続ファイルを呼び出す
@@ -26,6 +25,7 @@
         }
     } catch(PDOException $e){
         print('データベースエラー：'.$e->getMessage());
+
 	    die();
     }
 ?>

@@ -9,8 +9,8 @@
  * データベース接続用クラス
 */
 class Model{
-    private $DSN ='mysql:dbname=ec_project;host=localhost';
-    private $DB_USERNAME ='umehara';
+    private $DSN ='mysql:dbname=ec_project;host=localhost;charset=utf8;';
+    private $DB_USERNAME ='tanihara';
     private $DB_PASSWORD = '1234';
 
     private $db;

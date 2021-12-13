@@ -1,9 +1,9 @@
 <?php
 /* 
- *  @file       Employees_Registoration.php
- *  @brief      従業員登録：操作
- *  @author     大森　光成
- *  @date       2021/12/07
+ *  @file       Account_create_db.php
+ *  @brief      ユーザー登録 
+ *  @author     谷原　直樹
+ *  @date       2021/12/13
  */
 include '../controller/controll.php';
 //$emp_registoration->insert_employee();
@@ -32,7 +32,7 @@ class Account_create_db extends Controll
             //登録処理に入る
             $params = array(
                 'user_id'                            => $_POST['user_id'],
-                 'user_birthday'                     => $_POST['user_birthday'],
+                'user_birthday'                      => $_POST['user_birthday'],
                 'user_last_name'                     => $_POST['user_last_name'],
                 'user_first_name'                    => $_POST['user_first_name'],
                 'user_last_furigana'                 => $_POST['user_last_furigana'],
@@ -41,7 +41,7 @@ class Account_create_db extends Controll
                 'user_gender'                        => $_POST['user_gender'],
                 'user_postal_code'                   => $_POST['user_postal_code'],
                 'user_prefectures'                   => $_POST['user_prefectures'],
-                'user_address'                       => $_POST['user_address'],
+                'user_address1'                      => $_POST['user_address1'],
                 'user_tel'                           => $_POST['user_tel'],
                 'user_email'                         => $_POST['user_email'],
                
@@ -79,3 +79,4 @@ class Account_create_db extends Controll
 }
 $account_create_db = new Account_create_db();
 $account_create_db->insert_employee();
+header('Location: ../view/contact_result.php');
