@@ -16,7 +16,7 @@ class Control_User_info
     /* ユーザーID */
     private $user_id;
 
-    public function __construct()
+    function __construct()
     {
         try {
             //モデルオブジェクト生成
@@ -24,7 +24,8 @@ class Control_User_info
             //ユーザーID取得(本来はセッションで取得する)
             $this->user_id = "'abc012'";
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('データベースに接続できませんでした：'.$e->getMessage());
+            die();
         }
     }
 
@@ -41,7 +42,8 @@ class Control_User_info
                     WHERE user_id = " . $this->user_id;
             return $this->model->exec_sql($sql);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('登録情報を取得できません：'.$e->getMessage());
+            die();
         }
     }
 
@@ -75,7 +77,8 @@ class Control_User_info
                 . " WHERE `user_id`=" . $this->user_id;
             $this->model->exec_sql($sql);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('情報の更新ができません：'.$e->getMessage());
+            die();
         }
     }
 }

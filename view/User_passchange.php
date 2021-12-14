@@ -37,7 +37,7 @@ $user_new_pass;
                                     現在のパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="now_pass" size="24" required minlength="4" maxlength="40" pattern="/^[0-9a-zA-Z]*$/">
+                                    <input type="password" name="now_pass" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
                             <tr>
@@ -45,7 +45,7 @@ $user_new_pass;
                                     新しいパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" maxlength="40" pattern="/^[0-9a-zA-Z]*$/">
+                                    <input type="password" name="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +53,7 @@ $user_new_pass;
                                     確認用　
                                 </td>
                                 <td>
-                                    <input type="password" name="re_new_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" maxlength="40" pattern="/^[0-9a-zA-Z]*$/">
+                                    <input type="password" name="re_new_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
                             <tr>

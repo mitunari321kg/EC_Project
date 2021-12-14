@@ -12,13 +12,14 @@ class Control_Products
 {
     private $model;
 
-    public function __construct()
+    function __construct()
     {
         try {
             //モデルオブジェクト生成
             $this->model = new Model();
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('データベースに接続できませんでした：'.$e->getMessage());
+            die();
         }
     }
 
@@ -34,7 +35,8 @@ class Control_Products
                     ON product_table.product_id = product_img_table.product_id";
             return $this->model->exec_sql($sql);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('商品一覧を取得できません：'.$e->getMessage());
+            die();
         }
     }
 }

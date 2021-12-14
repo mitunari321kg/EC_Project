@@ -1,3 +1,12 @@
+<?php
+/*
+ *@file   Mypage.php
+ *@brief  マイページ
+ *@author 佐藤大介
+ *@date   2021/11/12
+ */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

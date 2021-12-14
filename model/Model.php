@@ -22,12 +22,14 @@ class Model
         try {
             $this->pdo = new PDO($this->DSN, $this->DB_USERNAME, $this->DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('データベースに接続できませんでした：'.$e->getMessage());
+            die();
         }
     }
 
     /**
-     * sql実行
+     * SQL実行
+     * @param $sql 実行するSQL
      */
     public function exec_sql($sql)
     {
@@ -36,7 +38,8 @@ class Model
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('SQL実行エラー：'.$e->getMessage());
+            die();
         }
     }
 }

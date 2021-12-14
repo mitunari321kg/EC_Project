@@ -1,7 +1,10 @@
 <?php
-include '../controller/Control_User_info.php';
-$user_data = new Control_User_info();
-$user_info = $user_data->get_user_info();
+/*
+ * @file   User_info.php
+ * @brief  登録者情報確認変更画面
+ * @author 佐藤大介
+ * @date   2021/11/13
+ */
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +14,12 @@ $user_info = $user_data->get_user_info();
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <?php
+    include '../controller/Control_User_info.php';
+    $user_data = new Control_User_info();
+    $user_info = $user_data->get_user_info();
+    ?>
     <link href="css/user_info.css" rel="stylesheet" />
-    <script type="text/javascript" src="script/Judge_info.js" charset="UTF-8"></script>
     <meta charset="utf8-unicode-ci">
     <title>登録者情報</title>
 </head>
@@ -154,9 +161,7 @@ $user_info = $user_data->get_user_info();
                                         <!-- 市区町村　 -->住所<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required
-                                        pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)"
-                                        value="<?php print $value['user_address']; ?>">
+                                        <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
                                 <!--
