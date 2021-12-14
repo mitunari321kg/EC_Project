@@ -155,7 +155,7 @@ $user_info = $user_data->get_user_info();
                                     </td>
                                     <td>
                                         <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required
-                                        pattern="(.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)"
+                                        pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)"
                                         value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
@@ -183,7 +183,7 @@ $user_info = $user_data->get_user_info();
                                         電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php print $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
+                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php print $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" minlength="10" maxlength="11">
                                     </td>
                                 </tr>
                                 <tr>
