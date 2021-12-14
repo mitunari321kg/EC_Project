@@ -18,6 +18,9 @@
                     </p>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto">
+                            <button type="submit" class="btn btn-danger" onclick="location.href='#'">
+                                <font color="white"><i class="bi bi-person-fill text-nowrap">ログアウト</i></font>
+                            </button>
                             <button type="submit" class="btn btn-success" onclick="location.href='Mypage.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">マイページ</i></font>
                             </button>
