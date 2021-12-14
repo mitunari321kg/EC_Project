@@ -33,27 +33,27 @@ $user_new_pass;
                     <table border="0">
                         <form action="Pass_result.html" method="POST">
                             <tr>
-                                <td>
+                                <td align="right">
                                     現在のパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="now_pass" size="24" required minlength="4" maxlength="40">
+                                    <input type="password" name="now_pass" size="24" required minlength="4" maxlength="40" pattern="/^[0-9a-zA-Z]*$/">
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    パスワード　
+                                <td align="right">
+                                    新しいパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" maxlength="40">
+                                    <input type="password" name="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" maxlength="40" pattern="/^[0-9a-zA-Z]*$/">
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    確認用パスワード　
+                                <td align="right">
+                                    確認用　
                                 </td>
                                 <td>
-                                    <input type="password" name="re_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" maxlength="40">
+                                    <input type="password" name="re_new_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" maxlength="40" pattern="/^[0-9a-zA-Z]*$/">
                                 </td>
                             </tr>
                             <tr>
