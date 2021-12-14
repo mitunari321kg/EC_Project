@@ -20,38 +20,6 @@ if (isset($_SESSION['user_id'])) {
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
-<<<<<<< HEAD
-    <table width="100%">
-        <tr>
-            <td>
-                <div align="center">
-                    <table border="0">
-                        <form action="list.html" method="POST">
-                            <tr>
-                                <th>
-                                    ユーザID
-                                </th>
-                                <td>
-                                    <input type="text" name="user_id" value="" size="24">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    パスワード
-                                </th>
-                                <td>
-                                    <input type="password" name="password" value="" size="40">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="center">
-                                    <input type="submit" value="ログイン">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p><a href="Account_create.php">アカウント作成</a></p>
-=======
     <tr>
         <td>
             <?php
@@ -93,9 +61,7 @@ if (isset($_SESSION['user_id'])) {
                                         <p><a href="Account_create.php">アカウント作成</a></p>
                                     </td>
                                     <td align="right">
-                                        <p><a href="nanika"> ユーザーIDもしくは
-                                                パスワードを忘れた場合 </a></p>
->>>>>>> tanihara
+                                         <br> ユーザーIDもしくは<br>パスワードを忘れた場合</br>
                                     </td>
                                 </tr>
                             </form>
