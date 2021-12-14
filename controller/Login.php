@@ -16,32 +16,31 @@ class Login extends Controll{
     /**
      * ログイン
      */
-    public function get_emp_password(){
-        $emp_id = $_POST['emp_id'];
-        $sql = "SELECT `emp_password`, `emp_authority` FROM `employee_table` WHERE emp_id = ?;";
-        $params = array($emp_id);
+    public function get_user_password(){
+        $user_id = $_POST['user_id'];
+        $sql = "SELECT `login_password` FROM `user_table` WHERE user_id = ?;";
+        $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
         session_start();
         if(!empty($result[0])){
             // ユーザが見つかった場合
-            $emp_password = $_POST['emp_password'];
-            if(password_verify($emp_password, $result[0]['emp_password'])){
+            $user_password = $_POST['login_password'];
+            if(password_verify($user_password, $result[0]['login_password'])){
                 //パスワードが一致
-                $_SESSION['logined_id'] = $emp_id;
-                $_SESSION['logined_authority'] = $result[0]['emp_authority'];
-                header('Location: ../view/Admin_Home.php');
+                $_SESSION['user_id'] = $user_id;
+                header('Location: ../view/Mypage.php');
             } else {
                 //パスワードが間違っている
                 $_SESSION['result_msg'] = '<br><font color=RED>※パスワードが間違っています。</font></br>';
-                header('Location: ../view/Admin_Login.php');
+                header('Location: ../view/Login.php');
             }
         } else {
             $_SESSION['result_msg'] = '<br><font color=RED>※入力された従業員IDが間違っています。</font></br>';
-            header('Location: ../view/Admin_Login.php');
+            header('Location: ../view/Login.php');
         }
     }
 }
 $login = new Login();
-$login->get_emp_password();
+$login->get_user_password();
 
 ?>
