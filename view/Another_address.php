@@ -87,6 +87,14 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>
+                                    ユーザID
+                                </td>
+                                <td>
+                                    <input type="text" name="user_id" maxlength="24" minlength="4" required pattern="^[0-9A-Za-z]+$" placeholder="4~24文字で入力してください">
+                                </td>
+                            </tr>
+                            <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">
                                         <button class="button1" type="submit">作成</button>

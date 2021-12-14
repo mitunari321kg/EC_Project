@@ -29,7 +29,7 @@
                                         <!------------------------------------------- Sample Data ------------------------------------------->
                                         <tr>
                                             <td rowspan="5" align="left" valign="middle">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                             </td>
                                         </tr>
                                         <tr>
@@ -58,7 +58,7 @@
                                         </tr>
                                         <tr>
                                             <td align="right">
-                                                購入数： 
+                                                購入数：
                                             </td>
                                             <td align="center">
                                                 <input type="number" name="example" value="0" min="0" style="width:50px">
@@ -66,7 +66,7 @@
                                         </tr>
                                         <tr>
                                             <td rowspan="5" align="left" valign="middle">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                             </td>
                                         </tr>
                                         <tr>
@@ -95,7 +95,7 @@
                                         </tr>
                                         <tr>
                                             <td align="right">
-                                                購入数： 
+                                                購入数：
                                             </td>
                                             <td align="center">
                                                 <input type="number" name="example" value="0" min="0" style="width:50px">
@@ -115,22 +115,30 @@
         <td>
             <table class="table">
                 <tr>
-                    <td align="left">
-                        <p class="h6" align="left">
+                    <td>
+                        <p class="h6" align="center">
                             小計:
                         </p>
                     </td>
-                    <td align="right">
+                    <td align="center">
                         <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
-                            <font color="white">選択商品を削除</font>
+                            <font color="white">選択商品削除</font>
                         </button>
                     </td>
-                    <td align="right">
+                </tr>
+                <tr>
+                    <td align="center">
                         <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
                             <font color="white">注文内容確認</font>
                         </button>
                     </td>
+                    <td align="center">
+                        <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
+                            <font color="white">登録情報確認</font>
+                        </button>
+                    </td>
                 </tr>
+
             </table>
         </td>
     </tr>
