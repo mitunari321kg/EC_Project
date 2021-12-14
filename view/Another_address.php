@@ -67,7 +67,7 @@
                                     住所
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address1" class="p-locality p-street-address p-extended-address" />
+                                    <input type="text" name="user_address" class="p-locality p-street-address p-extended-address" />
                                 </td>
                             </tr>
                             <tr>

@@ -37,7 +37,7 @@ class Another_address extends Controll
                 'user_first_furigana'                => $_POST['user_first_furigana'],
                 'user_postal_code'                   => $_POST['user_postal_code'],
                 'user_prefectures'                   => $_POST['user_prefectures'],
-                'user_address1'                      => $_POST['user_address1'],
+                'user_address'                      => $_POST['user_address'],
                 'user_tel'                           => $_POST['user_tel'],
                 'user_email'                         => $_POST['user_email'],
             );
@@ -73,4 +73,3 @@ class Another_address extends Controll
 }
 $another_address = new Another_address();
 $another_address->insert_employee();
-header('Location: ../view/contact_result.php');
