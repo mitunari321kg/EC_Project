@@ -120,25 +120,17 @@
                             小計:
                         </p>
                     </td>
-                    <td align="center">
+                    <td align="right">
                         <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
                             <font color="white">選択商品削除</font>
                         </button>
                     </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
-                            <font color="white">注文内容確認</font>
-                        </button>
-                    </td>
-                    <td align="center">
-                        <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
-                            <font color="white">登録情報確認</font>
+                    <td align="right">
+                        <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px" onclick="location.href='Item_confirmation.php'">
+                            <font color="white">配送先確認</font>
                         </button>
                     </td>
                 </tr>
-
             </table>
         </td>
     </tr>
