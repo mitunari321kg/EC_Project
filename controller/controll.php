@@ -9,6 +9,7 @@
     //モデルのデータベース接続ファイルを呼び出す
     include '../model/connect.php';
 
+
     /**
      * データベース接続
      */
@@ -25,6 +26,7 @@
         }
     } catch(PDOException $e){
         print('データベースエラー：'.$e->getMessage());
-        die();
+
+	    die();
     }
 ?>

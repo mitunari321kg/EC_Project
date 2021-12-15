@@ -12,6 +12,7 @@ $result = $controll->get_Product_Details();
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Product_Details.css" rel="stylesheet" />
+    <meta charset="utf8_unicode_ci">
     <title>谷原らぁめん</title>
 </head>
 
