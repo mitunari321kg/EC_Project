@@ -1,16 +1,19 @@
-<?php
-include '../controller/Control_user_pass.php';
-$user_pass_change = new Control_User_pass();
-$user_old_pass = $user_pass_change->get_now_pass();
-$user_new_pass;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <?php
+    include '../controller/Control_user_pass.php';
+    $user_pass_change = new Control_User_pass();
+    $old_pass = $user_pass_change->get_now_pass();
+    $error_message = "";
+    if (isset($_POST["confirm"])) {
+        
+    }
+    ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
+    <script src="script/Pass_judge.js" type="text/javascript"></script>
     <meta charset="utf8-unicode-ci">
     <title>パスワード</title>
 </head>
@@ -31,13 +34,18 @@ $user_new_pass;
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="Pass_result.html" method="POST">
+                        <form action="Pass_result.php" method="POST" onsubmit="return confirmMessage('<?php echo $old_pass ?>');">
                             <tr>
                                 <td align="right">
                                     現在のパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="now_pass" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <?php
+                                    if ($error_message) {
+                                        echo $error_message;
+                                    }
+                                    ?>
+                                    <input type="password" name="old_password" id="old_password" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
                             <tr>
@@ -45,7 +53,7 @@ $user_new_pass;
                                     新しいパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <input type="password" name="new_password" id="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
                             <tr>
@@ -53,13 +61,13 @@ $user_new_pass;
                                     確認用　
                                 </td>
                                 <td>
-                                    <input type="password" name="re_new_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <input type="password" name="confirm_password" id="confirm_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">
-                                        <button class="button1" type="submit">確定</button>
+                                        <button name="confirm" class="button1" type="submit">確定</button>
                                     </div>
                                 </td>
                             </tr>

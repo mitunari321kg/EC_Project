@@ -28,26 +28,16 @@ class Control_User_pass
      */
     public function get_now_pass()
     {
-        try {
-            $sql = "SELECT login_password FROM user_table WHERE " . $this->user_id;
-            return $this->model->exec_sql($sql);
-        } catch (PDOException $e) {
-            print('パスワードを取得できませんでした：' . $e->getMessage());
-            die();
-        }
+        $sql = "SELECT `login_password` FROM `user_table` WHERE `user_id`=" . $this->user_id;
+        return $this->model->exec_sql($sql);
     }
 
     /**
      * パスワードを変更
      */
-    public function update_pass()
+    public function update_pass($new_password)
     {
-        try {
-            $sql = "SELECT login_password FROM user_table WHERE " . $this->user_id;
-            return $this->model->exec_sql($sql);
-        } catch (PDOException $e) {
-            print('パスワードを取得できませんでした：' . $e->getMessage());
-            die();
-        }
+        $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $this->user_id;
+        return $this->model->exec_sql($sql);
     }
 }

@@ -4,16 +4,6 @@
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <?php include '../controller/Control_User_info.php'; ?>
-    <link href="css/user_info.css" rel="stylesheet" />
-    <meta charset="utf8-unicode-ci">
-    <title>変更完了</title>
-</head>
-
-<body>
-
-    <!------------------------------------------- header ------------------------------------------->
-    <?php include 'frame/header.php'; ?>
-    <!------------------------------------------- header ------------------------------------------->
     <?php
     $surname = $_POST["surname"];
     $name = $_POST["name"];
@@ -39,6 +29,16 @@
         $user_mail
     );
     ?>
+    <link href="css/user_info.css" rel="stylesheet" />
+    <meta charset="utf8-unicode-ci">
+    <title>変更完了</title>
+</head>
+
+<body>
+
+    <!------------------------------------------- header ------------------------------------------->
+    <?php include 'frame/header.php'; ?>
+    <!------------------------------------------- header ------------------------------------------->
     <table width="100%">
         <tr>
             <th>

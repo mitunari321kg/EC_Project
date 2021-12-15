@@ -11,6 +11,12 @@
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <?php
+    include '../controller/Control_user_pass.php';
+    $new_pass = $_POST["new_password"];
+    $user_pass_change = new Control_User_pass();
+    $user_pass_change->update_pass($new_pass);
+    ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
     <title>パスワード変更完了</title>
