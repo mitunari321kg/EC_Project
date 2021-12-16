@@ -16,7 +16,7 @@ class Control_User_info
     /* ユーザーID */
     private $user_id;
 
-    public function __construct()
+    function __construct()
     {
         try {
             //モデルオブジェクト生成
@@ -24,7 +24,8 @@ class Control_User_info
             //ユーザーID取得(本来はセッションで取得する)
             $this->user_id = "'abc012'";
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('データベースに接続できませんでした：' . $e->getMessage());
+            die();
         }
     }
 
@@ -41,7 +42,8 @@ class Control_User_info
                     WHERE user_id = " . $this->user_id;
             return $this->model->exec_sql($sql);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('登録情報を取得できません：' . $e->getMessage());
+            die();
         }
     }
 
@@ -75,7 +77,46 @@ class Control_User_info
                 . " WHERE `user_id`=" . $this->user_id;
             $this->model->exec_sql($sql);
         } catch (PDOException $e) {
-            die($e->getMessage());
+            print('情報の更新ができません：' . $e->getMessage());
+            die();
         }
+    }
+
+    /**
+     * シン・登録者情報一覧を取得
+     */
+    public function n_get_user_info()
+    {
+        return $this->model->search_user_info($this->user_id);
+    }
+
+    /**
+     * シン・登録者情報を更新
+     */
+    public function n_update_user_info(
+        $surname,
+        $name,
+        $surname_furigana,
+        $name_furigana,
+        $user_gender,
+        $postal_code,
+        $user_prefectures,
+        $address,
+        $tel,
+        $user_mail
+    ) {
+        return $this->model->update_user_info(
+            $surname,
+            $name,
+            $surname_furigana,
+            $name_furigana,
+            $user_gender,
+            $postal_code,
+            $user_prefectures,
+            $address,
+            $tel,
+            $user_mail,
+            $this->user_id
+        );
     }
 }
