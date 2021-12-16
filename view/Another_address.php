@@ -7,7 +7,7 @@
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Another_address.css" rel="stylesheet" />
-    <title>アカウント作成</title>
+    <title>新規情報登録</title>
 </head>
 
 <body>
