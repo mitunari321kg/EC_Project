@@ -1,4 +1,10 @@
 <?php
+/* 
+ *  @file       Account_create_certification_DB.php
+ *  @brief      メール認証コントローラー（試作）
+ *  @author     谷原　直樹
+ *  @date       2021/12/16
+ */
 session_start();
  
 header("Content-type: text/html; charset=utf-8");
@@ -14,7 +20,7 @@ header('X-FRAME-OPTIONS: SAMEORIGIN');
  
 //データベース接続
 require_once("../model/db.php");
-$dbh = db_connect();
+
  
 //エラーメッセージの初期化
 $errors = array();

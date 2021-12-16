@@ -1,6 +1,8 @@
 <!----カート画面
 作成者　梅原---->
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
