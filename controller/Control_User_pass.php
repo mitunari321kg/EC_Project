@@ -7,7 +7,7 @@
  * @date   2021/12/10
  */
 
-include '../model/connect.php';
+include '../model/Model.php';
 class Control_User_pass
 {
     private $model;
@@ -20,7 +20,7 @@ class Control_User_pass
         // モデルオブジェクト生成
         $this->model = new Model();
         //ユーザーID取得(本来はセッションで取得する)
-        $this->user_id = "'abc012'";
+        $this->user_id = "'" . "abc012" . "'";
     }
 
     /**

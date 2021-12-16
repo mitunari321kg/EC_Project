@@ -158,16 +158,15 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <!-- 市区町村　 -->住所<span class="mandatory">*</span>　
+                                        市区町村　<span class="mandatory">*</span>　
                                     </td>
                                     <td>
                                         <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
-                                <!--
                                 <tr>
                                     <td>
-                                        番地以下<span class="mandatory">*　</span>
+                                        番地以下　
                                     </td>
                                     <td>
                                         <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
@@ -175,14 +174,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        建物名・<span class="mandatory">*</span>　<br>
+                                        建物名・　<br>
                                         部屋番号　
                                     </td>
                                     <td>
                                         <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
                                     </td>
                                 </tr>
-                                -->
                                 <tr>
                                     <td>
                                         電話番号<span class="mandatory">*</span>　

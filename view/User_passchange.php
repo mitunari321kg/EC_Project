@@ -6,16 +6,28 @@
     <?php
     include '../controller/Control_user_pass.php';
     $user_pass_change = new Control_User_pass();
-    $old_pass = $user_pass_change->get_now_pass();
+    $user_old_pass = $user_pass_change->get_now_pass();
+    $old_pass = "";
+    foreach ($user_old_pass as $value) {
+        $old_pass = $value['login_password'];
+    }
     $error_message = "";
     if (isset($_POST["confirm"])) {
-        
+        if ($_POST["old_password"] == $old_pass && $_POST["new_password"] == $_POST["confirm_password"]) {
+            $user_pass_change->update_pass($_POST["new_password"]);
+            header('Location:Pass_result.php');
+            exit;
+        } else if ($_POST["old_password"] != $old_pass) {
+            $error_message = '<p style="color : red">※現在のパスワード:入力されたパスワードが一致しません</p>';
+        } else if ($_POST["new_password"] != $_POST["confirm_password"]) {
+            $error_message = '<p style="color : red">※新しいパスワード、確認用:入力されたパスワードが一致しません</p>';
+        }
     }
     ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
     <script src="script/Pass_judge.js" type="text/javascript"></script>
     <meta charset="utf8-unicode-ci">
-    <title>パスワード</title>
+    <title>パスワードの変更</title>
 </head>
 
 <body>
@@ -34,17 +46,13 @@
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="Pass_result.php" method="POST" onsubmit="return confirmMessage('<?php echo $old_pass ?>');">
+                        <form action="User_passchange.php" method="POST">
+                            <?php echo $error_message; ?>
                             <tr>
                                 <td align="right">
                                     現在のパスワード　
                                 </td>
                                 <td>
-                                    <?php
-                                    if ($error_message) {
-                                        echo $error_message;
-                                    }
-                                    ?>
                                     <input type="password" name="old_password" id="old_password" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                 </td>
                             </tr>
