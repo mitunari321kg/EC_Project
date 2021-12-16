@@ -1,9 +1,13 @@
-<!-----商品詳細画面
-作成者　梅原------->
+<!--
+    商品詳細画面
+    作成者  ：　梅原
+    更新者  ：  大森
+    更新日付：  2021-12/16
+-->
 <?php
 include '../controller/Product_Details.php';
 $controll = new Product_Details();
-$result = $controll->get_Product_Details();
+$result = $controll->get_Product_Details($_POST['product_id']);
 ?>
 <!DOCTYPE html>
 
@@ -25,18 +29,21 @@ $result = $controll->get_Product_Details();
             <tr>
                 <td colspan="2">
                     <a>
-                        <?php echo $result[0]['product_name']; ?>
+                        
+                        <?php 
+                            echo $result[0]['product_name'];
+                        ?>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td width="50%">
                     <a href="#">
-                        <img src="../img/food_ramen.png" class="img-fluid w-75" alt="img" />
+                        <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid w-75" alt="img" />
                     </a>
                 </td>
                 <td>
-                <a>
+                    <a>
                         <?php echo $result[0]['product_detail']; ?>
                     </a>
                 </td>
@@ -47,7 +54,7 @@ $result = $controll->get_Product_Details();
                         <tr>
                             <?php for ($i = 0; $i < 4; $i++) { ?>
                                 <td>
-                                    <img src="../img/food_ramen.png" class="img-fluid min-vh-25 min-vw-25" alt="img" />
+                                    <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid min-vh-25 min-vw-25" alt="img" />
                                 </td>
                             <?php } ?>
                         </tr>

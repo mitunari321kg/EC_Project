@@ -4,6 +4,7 @@
  *  @brief      商品詳細：操作
  *  @author     umehara
  *  @date       2021/12/03
+ *  @update     大森 2021/12/16
  */
 ini_set('mbstring.internal_encoding', 'UTF-8');
 include '../controller/controll.php';
@@ -17,9 +18,19 @@ class Product_Details extends Controll{
     /**
      * 商品情報取得
      */
-    public function get_Product_Details(){
-        $sql = "SELECT `product_name`,`product_detail`,`product_unit_price` FROM `product_table`;";
-        return $this->db->exec_sql($sql);
+    public function get_Product_Details($product_id){
+        $sql = "SELECT 
+                    i.product_img, p.product_id, p.product_name, p.product_detail, p.product_unit_price
+                FROM 
+                    product_table AS p 
+                RIGHT OUTER JOIN 
+                    product_img_table AS i
+                ON 
+                    p.product_id = i.product_id
+                WHERE 
+                    p.product_id = ?;";
+        $params = array($product_id);
+        return $this->db->exec_sql_search($sql, $params);
     }
 }
 ?>
