@@ -6,7 +6,7 @@
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Verification.css" rel="stylesheet" />
-    <title>谷原らぁめん</title>
+    <title>注文確定画面</title>
 </head>
 
 <body>

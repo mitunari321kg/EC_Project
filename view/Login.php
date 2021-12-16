@@ -61,7 +61,7 @@ if (isset($_SESSION['user_id'])) {
                                         <p><a href="Account_create.php">アカウント作成</a></p>
                                     </td>
                                     <td align="right">
-                                        <br> ユーザーIDもしくは<br>パスワードを忘れた場合</br>
+                                         <br> ユーザーIDもしくは<br>パスワードを忘れた場合</br>
                                     </td>
                                 </tr>
                             </form>

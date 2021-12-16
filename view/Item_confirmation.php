@@ -8,12 +8,11 @@ $result = $controll->get_Item_confirmation();
 
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
+<meta charset="utf8-unicode-ci">
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Item confirmation.css" rel="stylesheet" />
-    <title>入力項目確認</title>
+    <title>配送先確認</title>
 </head>
 
 <body>
@@ -24,7 +23,7 @@ $result = $controll->get_Item_confirmation();
         <tr>
             <td>
                 <div align="center">
-                    <form action="list.html" method="get">
+                    <form method="POST">
                         <table>
                             <tr>
                                 <td>
@@ -72,20 +71,20 @@ $result = $controll->get_Item_confirmation();
                                 </td>
                             </tr>
                         </table>
-                        <table>
+                    </form>
+                    <table>
                             <tr>
                                 <td>
-                                    <button type="submit" class="nav-item btn btn-dark text-nowrap">
+                                    <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Verification.php'">
                                         <font color="white">確認画面へ</font>
                                     </button>
 
-                                    <button type="submit" class="nav-item btn btn-dark text-nowrap">
-                                        <font color="white">別住所にお届けの方</font>
+                                    <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Another_address.php'">
+                                        <font color="white">新規情報登録</font>
                                     </button>
                                 </td>
                             </tr>
                         </table>
-                    </form>
                 </div>
             </td>
         </tr>

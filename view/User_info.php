@@ -7,9 +7,12 @@ $user_info = $user_data->get_user_info();
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/user_info.css" rel="stylesheet" />
+    <script type="text/javascript" src="script/Judge_info.js" charset="UTF-8"></script>
     <meta charset="utf8-unicode-ci">
     <title>登録者情報</title>
 </head>
@@ -33,7 +36,7 @@ $user_info = $user_data->get_user_info();
             <td>
                 <div align="center">
                     <table border="0">
-                        <form action="Change_result.php" method="post">
+                        <form class="h-adr" method="POST" action="Change_result.php" action="../controller/Control_User_info.php">
                             <table>
                                 <?php foreach ($user_info as $value) { ?>
                                     <tr>
@@ -89,14 +92,13 @@ $user_info = $user_data->get_user_info();
                                         郵便番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" placeholder="ハイフンなしの、半角で入力してください" required size="7" value="<?php print $value['user_postal_code']; ?>">
+                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" placeholder="例:0001111" required size="7" value="<?php print $value['user_postal_code']; ?>" maxlength="7">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>都道府県<span class="mandatory">*</span>　</td>
                                     <td>
                                         <select name="user_prefectures">
-                                            <option value="選択">選択してください</option>
                                             <option value="北海道" <?php if ($value['user_prefectures'] == '北海道') { ?> selected <?php } ?>>北海道</option>
                                             <option value="青森県" <?php if ($value['user_prefectures'] == '青森県') { ?> selected <?php } ?>>青森県</option>
                                             <option value="岩手県" <?php if ($value['user_prefectures'] == '岩手県') { ?> selected <?php } ?>>岩手県</option>
@@ -152,7 +154,9 @@ $user_info = $user_data->get_user_info();
                                         <!-- 市区町村　 -->住所<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="数字は半角で入力してください" required size="56" value="<?php print $value['user_address']; ?>">
+                                        <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required
+                                        pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)"
+                                        value="<?php print $value['user_address']; ?>">
                                     </td>
                                 </tr>
                                 <!--
@@ -179,15 +183,15 @@ $user_info = $user_data->get_user_info();
                                         電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="ハイフンなしの、半角で入力してください" required size="24" value="<?php print $value['user_tel']; ?>">
+                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php print $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" minlength="10" maxlength="11">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Eメール<span class="mandatory">*</span>　
+                                        メールアドレス<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="email" name="user_mail" placeholder="半角で入力してください" required size="56" value="<?php print $value['user_email']; ?>">
+                                        <input type="email" id="email" name="user_mail" placeholder="例:sample_a.1@email.co.jp" required size="56" value="<?php print $value['user_email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                     </td>
                                 </tr>
                             <?php } ?>

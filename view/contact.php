@@ -7,7 +7,7 @@
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <title>お問い合わせ</title>
-    <link href="css/inquiry.css" rel="stylesheet" />
+    <link href="css/contact.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <td>
-                <label class="bg-light text-muted h6" align="left" id="inquiry-form">
+                <label class="bg-light text-muted h6" align="left" id="contact-form">
                     商品に関する事や、当店に対するご意見ご感想、お問い合わせなど、
                     こちらのフォームよりお気軽にお尋ねください。
                 </label>
@@ -34,33 +34,37 @@
             <form method="post" action="../controller/contact_form.php">
                 <tr>
                     <td align="center">
-                        <div class=" mb-3" align="left" id="inquiry-form">
-                            <label for="inquiry-name" class="form-label text-muted">お名前（必須）</label>
-                            <input type="text" class="form-control" id="inquiry-form" name="contact_name" required>
+
+                        <div class=" mb-3" align="left" id="contact-form">
+                            <label for="contact-name" class="form-label text-muted">お名前（必須）</label>
+                            <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td align="center">
-                        <div class=" mb-3" align="left" id="inquiry-form">
-                            <label for="inquiry-name" class="form-label text-muted">メールアドレス（必須）</label>
-                            <input type="mail" class="form-control" id="inquiry-form" name="contact_mail" required>
+
+                        <div class=" mb-3" align="left" id="contact-form">
+                            <label for="contact-name" class="form-label text-muted">メールアドレス（必須）</label>
+                            <input type="mail" class="form-control" id="contact_mail" name="contact_mail" required>
+
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td align="center">
-                        <div class="mb-3" align="left" id="inquiry-form">
-                            <label for="inquiry-name" class="form-label text-muted">件名（必須）</label>
-                            <input type="text" class="form-control" id="inquiry-form" name="contact_subject" required>
+                        <div class="mb-3" align="left" id="contact-form">
+                            <label for="contact-name" class="form-label text-muted">件名（必須）</label>
+                            <input type="text" class="form-control" id="contact_subject" name="contact_subject" required>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td align="center">
-                        <div class="mb-3" align="left" id="inquiry-form">
-                            <label for="inquiry-name" class="form-label text-muted">お問い合わせ内容（必須）</label>
-                            <input type="textarea" class="form-control" id="inquiry-name" rows="6" name="contact_contents" required><textarea>
+                        <div class="mb-3 form-group" align="left" id="contact-form">
+                            <label for="contact-name" class="form-label text-muted">お問い合わせ内容（必須）</label>
+                            <textarea class="form-control" id="contact_contents" rows="6" name="contact_contents" required></textarea>
                         </div>
                     </td>
                 </tr>
