@@ -71,21 +71,22 @@
                 foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
-                            <table class="table-light">
-                                <tr>
-                                    <td>
-                                        <a href="Product_Details.php">
-                                            <img src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
-                                        </a>
-                                        <div class="card-body">
-                                            <a class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
+                            <form action="Product_Details.php" name="product_form" method="post">
+                            <input type="hidden" name="product_id" value=<?php print $value['product_id']?>>
+                                <table class="table-light">
+                                    <tr>
+                                        <td>
+                                            <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                            <div class="card-body">
+                                                <a class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
                     </div>
                 <?php } ?>
