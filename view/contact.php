@@ -36,7 +36,7 @@
                     <td align="center">
                         <div class=" mb-3" align="left" id="inquiry-form">
                             <label for="inquiry-name" class="form-label text-muted">お名前（必須）</label>
-                            <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+                            <input type="text" class="form-control" id="inquiry-form" name="contact_name" required>
                         </div>
                     </td>
                 </tr>
@@ -44,7 +44,7 @@
                     <td align="center">
                         <div class=" mb-3" align="left" id="inquiry-form">
                             <label for="inquiry-name" class="form-label text-muted">メールアドレス（必須）</label>
-                            <input type="mail" class="form-control" id="contact_mail" name="contact_mail" required>
+                            <input type="mail" class="form-control" id="inquiry-form" name="contact_mail" required>
                         </div>
                     </td>
                 </tr>
@@ -52,7 +52,7 @@
                     <td align="center">
                         <div class="mb-3" align="left" id="inquiry-form">
                             <label for="inquiry-name" class="form-label text-muted">件名（必須）</label>
-                            <input type="text" class="form-control" id="contact_subject" name="contact_subject" required>
+                            <input type="text" class="form-control" id="inquiry-form" name="contact_subject" required>
                         </div>
                     </td>
                 </tr>
@@ -60,7 +60,7 @@
                     <td align="center">
                         <div class="mb-3" align="left" id="inquiry-form">
                             <label for="inquiry-name" class="form-label text-muted">お問い合わせ内容（必須）</label>
-                            <input type="textarea" class="form-control" id="contact_contents" rows="6" name="contact_contents" required></textarea>
+                            <input type="textarea" class="form-control" id="inquiry-name" rows="6" name="contact_contents" required><textarea>
                         </div>
                     </td>
                 </tr>
