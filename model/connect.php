@@ -8,7 +8,6 @@
 
 /**
  * データベース接続用クラス
-
 */
 class Model{
     private $DSN ='mysql:dbname=82;host=localhost;charset=utf8;';
