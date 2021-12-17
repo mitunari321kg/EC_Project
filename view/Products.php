@@ -1,9 +1,11 @@
-<!-- 
-*@file Products.php
-*@brief 商品一覧画面
-*@author 佐藤大介
-*@date 2021/11/12
--->
+<?php
+/*
+ *@file   Products.php
+ *@brief  商品一覧画面
+ *@author 佐藤大介
+ *@date   2021/11/12
+ */
+?>
 
 <!DOCTYPE html>
 
@@ -11,7 +13,10 @@
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <?php include '../controller/Control_Products.php' ?>
+    <?php include '../controller/Control_Products.php';
+    $products = new Control_Products();
+    $products_data = $products->get_products();
+    ?>
     <link href="css/products.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>商品一覧</title>
@@ -66,9 +71,7 @@
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                <?php $products = new Control_Products();
-                $products_data = $products->get_products();
-                foreach ($products_data as $value) { ?>
+                <?php foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
                             <form action="Product_Details.php" name="product_form" method="post">
