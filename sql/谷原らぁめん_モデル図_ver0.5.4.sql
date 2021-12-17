@@ -1,27 +1,24 @@
 CREATE TABLE certification_mail (
- id INT NOT NULL,
+ id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  mail VARCHAR(255),
  urltoken VARCHAR(255),
  request_time DATE,
  certification_flag TINYINT(1)
 );
 
-ALTER TABLE certification_mail ADD CONSTRAINT PK_certification_mail PRIMARY KEY (id);
 
 
 CREATE TABLE contact_table (
- contact_id INT NOT NULL,
+ contact_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  contact_name VARCHAR(255),
  contact_mail VARCHAR(255),
  contact_subject VARCHAR(255),
  contact_contents VARCHAR(1020)
 );
 
-ALTER TABLE contact_table ADD CONSTRAINT PK_contact_table PRIMARY KEY (contact_id);
-
 
 CREATE TABLE employee_table (
- emp_id VARCHAR(255) NOT NULL,
+ emp_id VARCHAR(255) NOT NULL PRIMARY KEY,
  emp_password VARCHAR(510),
  emp_last_name VARCHAR(255),
  emp_last_furigana VARCHAR(255),
@@ -31,11 +28,9 @@ CREATE TABLE employee_table (
  emp_delete_flag TINYINT(1) DEFAULT 0 NOT NULL
 );
 
-ALTER TABLE employee_table ADD CONSTRAINT PK_employee_table PRIMARY KEY (emp_id);
-
 
 CREATE TABLE product_table (
- product_id CHAR(3) NOT NULL,
+ product_id INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
  product_name VARCHAR(255),
  product_detail VARCHAR(1020),
  product_registration_date DATE DEFAULT current_timestamp()  ,
@@ -45,11 +40,9 @@ CREATE TABLE product_table (
  expiry_date DATE,
  remaining_amount INT,
  prodcut_delete_flag TINYINT(1) DEFAULT 0 NOT NULL,
- business_name CHAR(9) DEFAULT '456789123',
- check_digit CHAR(1)
+ business_name INT(9) DEFAULT '456789123',
+ check_digit INT(1)
 );
-
-ALTER TABLE product_table ADD CONSTRAINT PK_product_table PRIMARY KEY (product_id);
 
 
 CREATE TABLE user_table (
@@ -76,25 +69,23 @@ CREATE TABLE user_table (
 ALTER TABLE user_table ADD CONSTRAINT PK_user_table PRIMARY KEY (user_id);
 
 
-CREATE TABLE ブラックリスト (
+CREATE TABLE black_list (
  user_id VARCHAR(255),
  sin_name VARCHAR(255)
 );
 
 
 CREATE TABLE category_table (
- category_id INT NOT NULL,
+ category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  category_name VARCHAR(255),
  category_registered_date DATE DEFAULT current_timestamp()   NOT NULL,
  emp_id VARCHAR(255),
  category_delete_flag TINYINT(1) DEFAULT 0 NOT NULL
 );
 
-ALTER TABLE category_table ADD CONSTRAINT PK_category_table PRIMARY KEY (category_id);
-
 
 CREATE TABLE delivery_address (
- delivery_id INT NOT NULL,
+ delivery_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  user_id VARCHAR(255),
  delivery_name VARCHAR(255),
  delivery_furigana VARCHAR(255),
@@ -102,11 +93,8 @@ CREATE TABLE delivery_address (
  delivery_tel CHAR(11)
 );
 
-ALTER TABLE delivery_address ADD CONSTRAINT PK_delivery_address PRIMARY KEY (delivery_id);
-
-
 CREATE TABLE order_table (
- user_order_id INT NOT NULL,
+ user_order_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  user_id VARCHAR(255),
  order_date DATE DEFAULT current_timestamp()  ,
  desired_delivery_date DATE,
@@ -114,30 +102,24 @@ CREATE TABLE order_table (
  delivery_id INT NOT NULL
 );
 
-ALTER TABLE order_table ADD CONSTRAINT PK_order_table PRIMARY KEY (user_order_id);
 
 
 CREATE TABLE product_category_table (
- product_id CHAR(3) NOT NULL,
- category_id INT NOT NULL
+ product_id INT NOT NULL,
+ category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
 );
 
-ALTER TABLE product_category_table ADD CONSTRAINT PK_product_category_table PRIMARY KEY (product_id,category_id);
-
-
 CREATE TABLE product_img_table (
- 行番号 CHAR(4) NOT NULL,
- product_id CHAR(3) NOT NULL,
+ img_line_id INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ product_id INT(3) NOT NULL,
  product_img VARBINARY(510)
 );
 
-ALTER TABLE product_img_table ADD CONSTRAINT PK_product_img_table PRIMARY KEY (行番号,product_id);
-
 
 CREATE TABLE order_detail_table (
- order_line_id SMALLINT NOT NULL,
+ order_line_id SMALLINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  user_order_id INT NOT NULL,
- product_id CHAR(3) NOT NULL,
+ product_id INT(3) NOT NULL,
  product_name VARCHAR(255),
  order_quantity VARCHAR(255),
  product_unit_price VARCHAR(255),
@@ -145,13 +127,11 @@ CREATE TABLE order_detail_table (
  delivery_date DATE NOT NULL
 );
 
-ALTER TABLE order_detail_table ADD CONSTRAINT PK_order_detail_table PRIMARY KEY (order_line_id,user_order_id);
-
 
 ALTER TABLE product_table ADD CONSTRAINT FK_product_table_0 FOREIGN KEY (emp_id) REFERENCES employee_table (emp_id);
 
 
-ALTER TABLE ブラックリスト ADD CONSTRAINT FK_ブラックリスト_0 FOREIGN KEY (user_id) REFERENCES user_table (user_id);
+ALTER TABLE black_list ADD CONSTRAINT FK_black_list_0 FOREIGN KEY (user_id) REFERENCES user_table (user_id);
 
 
 ALTER TABLE category_table ADD CONSTRAINT FK_category_table_0 FOREIGN KEY (emp_id) REFERENCES employee_table (emp_id);
