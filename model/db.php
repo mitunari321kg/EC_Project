@@ -6,9 +6,9 @@
  *  @date       2021/12/06
  */
 function db_connect(){
-	$dsn = 'mysql:dbname=ec_project;host=localhost;charset=utf8;';
-	$user = 'tanihara';
-	$password = '1234';
+	$dsn = 'mysql:dbname=82;host=localhost;charset=utf8;';
+	$user = 'office3';
+	$password = 'kamogawa';
 	
 	try{
 		$dbh = new PDO($dsn, $user, $password);
