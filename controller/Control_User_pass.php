@@ -27,9 +27,8 @@ class Control_User_pass extends Control
     /**
      * パスワードを変更
      */
-    public function update_pass($new_password)
+    public function change_pass($new_password)
     {
-        $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $this->user_id;
-        return $this->model->exec_sql($sql);
+        $this->model->update_pass($new_password, $this->user_id);
     }
 }

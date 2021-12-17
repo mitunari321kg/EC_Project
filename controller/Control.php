@@ -11,7 +11,7 @@ abstract class Control
 {
 
     /* モデルオブジェクト */
-    private $model;
+    protected $model;
 
     /* ユーザーID */
     protected $user_id;

@@ -11,8 +11,8 @@ class Model
 
     private $pdo;
 
-    private $DSN ='mysql:dbname=82;host=localhost;charset=utf8;';
-    private $DB_USERNAME ='office3';
+    private $DSN = 'mysql:dbname=82;host=localhost;charset=utf8;';
+    private $DB_USERNAME = 'office3';
     private $DB_PASSWORD = 'kamogawa';
 
 
@@ -88,6 +88,16 @@ class Model
             print('SQL実行エラー：' . $e->getMessage());
             die();
         }
+    }
+
+    /**
+     * パスワード更新
+     */
+    public function update_pass($new_password, $user_id)
+    {
+        $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $user_id;
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
     }
 
     /**

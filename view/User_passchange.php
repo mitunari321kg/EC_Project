@@ -5,7 +5,8 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_user_pass.php';
-    $user_pass_change = new Control_User_pass("abc012");
+    $user_id = "abc012";
+    $user_pass_change = new Control_User_pass($user_id);
     $user_old_pass = $user_pass_change->get_now_pass();
     $old_pass = "";
     foreach ($user_old_pass as $value) {
@@ -14,7 +15,7 @@
     $error_message = "";
     if (isset($_POST["confirm"])) {
         if ($_POST["old_password"] == $old_pass && $_POST["new_password"] == $_POST["confirm_password"]) {
-            $user_pass_change->update_pass($_POST["new_password"]);
+            $user_pass_change->change_pass($_POST["new_password"], $user_id);
             header('Location:Pass_result.php');
             exit;
         } else if ($_POST["old_password"] != $old_pass) {
