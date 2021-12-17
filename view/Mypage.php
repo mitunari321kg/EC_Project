@@ -13,7 +13,7 @@
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/mypage.css" rel="stylesheet" />
-    <title>マイページ</title>
+    <title>マイページ｜谷原らぁめん</title>
 </head>
 
 <body>

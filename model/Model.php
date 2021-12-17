@@ -28,30 +28,14 @@ class Model
     }
 
     /**
-     * SQL実行
-     * @param $sql 実行するSQL
-     */
-    public function exec_sql($sql)
-    {
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            print('SQL実行エラー：' . $e->getMessage());
-            die();
-        }
-    }
-
-    /**
      * ユーザー情報検索
      */
-    public function search_user_info($user_id)
+    public function search_user($user_id)
     {
         try {
-            $sql = "SELECT user_id, user_last_name, user_first_name, user_last_furigana, user_first_furigana,
+            $sql = "SELECT user_id, login_password, user_last_name, user_first_name, user_last_furigana, user_first_furigana,
                     DATE_FORMAT(user_birthday, '%Y年　%m月　%d日') AS user_birthday,
-                    user_gender, user_postal_code, user_prefectures, user_address, user_tel, user_email
+                    user_gender, user_postal_code, user_prefectures, user_address1, user_address2, user_address3, user_tel, user_email
                     FROM user_table
                     WHERE user_id = " . $user_id;
             $stmt = $this->pdo->prepare($sql);
@@ -66,7 +50,7 @@ class Model
     /**
      * ユーザー情報更新
      */
-    public function update_user_info(
+    public function update_info(
         $surname,
         $name,
         $surname_furigana,
@@ -74,24 +58,49 @@ class Model
         $user_gender,
         $postal_code,
         $user_prefectures,
-        $address,
+        $address1,
+        $address2,
+        $address3,
         $tel,
         $user_mail,
         $user_id
     ) {
-        $sql = "UPDATE `user_table` SET "
-            . "`user_last_name`=" . "'" . $surname . "'"
-            . ",`user_first_name`=" . "'" . $name . "'"
-            . ",`user_last_furigana`=" . "'" . $surname_furigana . "'"
-            . ",`user_first_furigana`=" . "'" . $name_furigana . "'"
-            . ",`user_gender`=" . $user_gender
-            . ",`user_postal_code`=" . "'" . $postal_code . "'"
-            . ",`user_prefectures`=" . "'" . $user_prefectures . "'"
-            . ",`user_address`=" . "'" . $address . "'"
-            . ",`user_tel`=" . "'" . $tel . "'"
-            . ",`user_email`=" . "'" . $user_mail . "'"
-            . " WHERE `user_id`=" . $user_id;
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        try {
+            $sql = "UPDATE `user_table` SET "
+                . "`user_last_name`=" . "'" . $surname . "'"
+                . ",`user_first_name`=" . "'" . $name . "'"
+                . ",`user_last_furigana`=" . "'" . $surname_furigana . "'"
+                . ",`user_first_furigana`=" . "'" . $name_furigana . "'"
+                . ",`user_gender`=" . $user_gender
+                . ",`user_postal_code`=" . "'" . $postal_code . "'"
+                . ",`user_prefectures`=" . "'" . $user_prefectures . "'"
+                . ",`user_address1`=" . "'" . $address1 . "'"
+                . ",`user_address2`=" . "'" . $address2 . "'"
+                . ",`user_address3`=" . "'" . $address3 . "'"
+                . ",`user_tel`=" . "'" . $tel . "'"
+                . ",`user_email`=" . "'" . $user_mail . "'"
+                . " WHERE `user_id`=" . $user_id;
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            print('SQL実行エラー：' . $e->getMessage());
+            die();
+        }
+    }
+
+    /**
+     * SQL実行
+     * @param $sql 実行するSQL
+     */
+    public function exec_sql($sql)
+    {
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            print('SQL実行エラー：' . $e->getMessage());
+            die();
+        }
     }
 }

@@ -5,7 +5,7 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_user_pass.php';
-    $user_pass_change = new Control_User_pass();
+    $user_pass_change = new Control_User_pass("abc012");
     $user_old_pass = $user_pass_change->get_now_pass();
     $old_pass = "";
     foreach ($user_old_pass as $value) {
