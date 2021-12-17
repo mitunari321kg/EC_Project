@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
     ini_set('display_errors', 0);
     if (!isset($_SESSION['logined_id'])){
         $_SESSION['result_msg'] = '<br><font color=RED>はじめにログインしてください。</font></br>';

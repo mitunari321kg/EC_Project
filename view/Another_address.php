@@ -6,8 +6,8 @@
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Another address.css" rel="stylesheet" />
-    <title>別アカウント作成</title>
+    <link href="css/Another_address.css" rel="stylesheet" />
+    <title>新規情報登録</title>
 </head>
 
 <body>
@@ -33,11 +33,11 @@
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" required>
+                                    <input type="text" name="user_last_furigana" size="24" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="user_first_furigana" size="24" required>
+                                    <input type="text" name="user_first_furigana" size="24" required required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                             </tr>
                         </table>
@@ -53,7 +53,7 @@
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="user_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="7" maxlength="7">
+                                    <input type="text" name="user_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7">
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +75,7 @@
                                     電話番号
                                 </td>
                                 <td>
-                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11">
+                                    <input type="tel" name="user_tel" placeholder="ハイフンなしの、半角で入力してください" required size="11" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
                                 </td>
                             </tr>
                             <tr>
@@ -83,7 +83,15 @@
                                     メールアドレス
                                 </td>
                                 <td>
-                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56">
+                                    <input type="email" name="user_email" placeholder="半角で入力してください" required size="56" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ユーザID
+                                </td>
+                                <td>
+                                    <input type="text" name="user_id" maxlength="24" minlength="4" required pattern="^[0-9A-Za-z]+$" placeholder="4~24文字で入力してください">
                                 </td>
                             </tr>
                             <tr>
