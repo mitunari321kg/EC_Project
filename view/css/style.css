@@ -28,6 +28,8 @@ a {
 }
 
 body {
+    font-family: "游明朝";
+    font-size: 20px;
     margin: 0px auto;
     padding: 0px;
     max-width: 50%;
