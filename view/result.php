@@ -5,7 +5,12 @@
 <meta charset="UTF-8">
 <?php session_start();
 
-$_SESSION[""] = $_POST;
+$_SESSION["data"] = $_POST;
+$_SESSION['products'][$name]=[
+    'count' => $count,
+    'price' => $price
+];
+
 
 
 ?>
