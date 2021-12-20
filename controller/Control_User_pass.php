@@ -6,21 +6,14 @@
  * @author 佐藤大介
  * @date   2021/12/10
  */
+include '../controller/Control.php';
 
-include '../model/Model.php';
-class Control_User_pass
+class Control_User_pass extends Control
 {
-    private $model;
 
-    /* ユーザーID */
-    private $user_id;
-
-    function __construct()
+    public function __construct($const_id)
     {
-        // モデルオブジェクト生成
-        $this->model = new Model();
-        //ユーザーID取得(本来はセッションで取得する)
-        $this->user_id = "'" . "abc012" . "'";
+        parent::__construct($const_id);
     }
 
     /**
@@ -28,16 +21,14 @@ class Control_User_pass
      */
     public function get_now_pass()
     {
-        $sql = "SELECT `login_password` FROM `user_table` WHERE `user_id`=" . $this->user_id;
-        return $this->model->exec_sql($sql);
+        return $this->model->search_user($this->user_id);
     }
 
     /**
      * パスワードを変更
      */
-    public function update_pass($new_password)
+    public function change_pass($new_password)
     {
-        $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $this->user_id;
-        return $this->model->exec_sql($sql);
+        $this->model->update_pass($new_password, $this->user_id);
     }
 }

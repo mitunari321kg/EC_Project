@@ -61,7 +61,10 @@ class Account_create_db extends Controll
             );
             if ($this->db->exec_sql_insert('user_table', $params, $styles)) {
                 //登録完了
-                header('Location: ../view/Account_create_result.php');
+
+                $_SESSION['result_msg'] = "<br><font color=GREEN>登録が完了しました。</font></br>";
+                header('Location: ../view/Login.php');
+
             } else {
                 $_SESSION['result_msg'] = "<br><font color=RED>※エラーが発生しました。</font></br>";
                 header('Location: ../view/Account_create.php');

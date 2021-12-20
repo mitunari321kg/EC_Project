@@ -5,7 +5,8 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_user_pass.php';
-    $user_pass_change = new Control_User_pass();
+    $user_id = "abc012";
+    $user_pass_change = new Control_User_pass($user_id);
     $user_old_pass = $user_pass_change->get_now_pass();
     $old_pass = "";
     foreach ($user_old_pass as $value) {
@@ -14,7 +15,7 @@
     $error_message = "";
     if (isset($_POST["confirm"])) {
         if ($_POST["old_password"] == $old_pass && $_POST["new_password"] == $_POST["confirm_password"]) {
-            $user_pass_change->update_pass($_POST["new_password"]);
+            $user_pass_change->change_pass($_POST["new_password"], $user_id);
             header('Location:Pass_result.php');
             exit;
         } else if ($_POST["old_password"] != $old_pass) {
@@ -25,7 +26,9 @@
     }
     ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script/Pass_judge.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta charset="utf8-unicode-ci">
     <title>パスワードの変更</title>
 </head>
@@ -54,6 +57,9 @@
                                 </td>
                                 <td>
                                     <input type="password" name="old_password" id="old_password" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <span class="field-icon">
+                                        <i toggle="password-field" class="mdi mdi-eye toggle-password"></i>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>

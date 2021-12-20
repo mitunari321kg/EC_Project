@@ -18,7 +18,7 @@ class Login extends Controll{
      */
     public function get_user_password(){
         $user_id = $_POST['user_id'];
-        $sql = "SELECT `login_password` FROM `user_table` WHERE user_id = ?;";
+        $sql = "SELECT `user_last_name`,`login_password` FROM `user_table` WHERE user_id = ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
         session_start();
@@ -27,7 +27,8 @@ class Login extends Controll{
             $user_password = $_POST['login_password'];
             if(password_verify($user_password, $result[0]['login_password'])){
                 //パスワードが一致
-                $_SESSION['user_id'] = $user_id;
+                $_SESSION['logined_id'] = $user_id;
+                $_SESSION['logined_last_name'] = $result[0]['user_last_name'];
                 header('Location: ../view/Mypage.php');
             } else {
                 //パスワードが間違っている
@@ -35,7 +36,7 @@ class Login extends Controll{
                 header('Location: ../view/Login.php');
             }
         } else {
-            $_SESSION['result_msg'] = '<br><font color=RED>※入力された従業員IDが間違っています。</font></br>';
+            $_SESSION['result_msg'] = '<br><font color=RED>※入力されたユーザIDが間違っています。</font></br>';
             header('Location: ../view/Login.php');
         }
     }

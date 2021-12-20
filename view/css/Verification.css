@@ -1,7 +1,8 @@
 #verification-img {
-  max-width:85px;
-  max-height:85px;
+    max-width: 85px;
+    max-height: 85px;
 }
-#verification-overflow{
-  max-height:644px;
+
+#verification-overflow {
+    max-height: 644px;
 }
