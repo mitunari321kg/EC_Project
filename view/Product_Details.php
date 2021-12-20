@@ -7,7 +7,7 @@
     更新日付2：　2021-12/17~
 -->
 
-?>
+
 <?php
 include '../controller/Product_Details.php';
 $controll = new Product_Details();
@@ -75,11 +75,12 @@ $result = $controll->get_Product_Details($_POST['product_id']);
                         <p>賞味期限</p>
                     </td>
                     <td>
-                        購入数: <input type="number" name="example" value="0" min="0">
+                        購入数: <input type="number" name="quantity" value="1" min="1" max="20">
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <input type="hidden" name="product_id" value='<?php echo $_POST['product_id']; ?>'>
                         <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit">
                             <font color="white"><i class="bi bi-cart-fill">カートに入れる</i></font>
                         </button>
