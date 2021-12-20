@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file   User_info.php
  * @brief  登録者情報確認変更画面
@@ -17,7 +18,7 @@
     <?php
     include '../controller/Control_User_info.php';
     session_start();
-$user_data = new Control_User_info("abc012"/* $_SESSION['logined_id'] */);
+    $user_data = new Control_User_info("abc012"/* $_SESSION['logined_id'] */);
     $user_info = $user_data->get_user_info();
     ?>
     <link href="css/user_info.css" rel="stylesheet" />
