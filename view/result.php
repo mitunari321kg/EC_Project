@@ -2,30 +2,16 @@
 <html lang="en">
 <meta charset="UTF-8">
 <?php
-
+session_start();
 $array = array(
-    $_POST["product_id"],
-    $_POST["quantity"]
+    'product_id' => $_POST["product_id"],
+    'product_name' => $_POST["product_name"],
+    'product_img' => $_POST["product_img"],
+    'product_unit_price' => $_POST["product_unit_price"],
+    'quantity' => $_POST["quantity"]
 );
-// print_r($array) ;
-if(!isset($_SESSION['cart']) ){
-    $_SESSION['cart'] = array();
-}
-array_push($_SESSION['cart'],$array);
 $_SESSION['cart'][] = $array;
 print_r($_SESSION['cart']);
-
-
-/*
-$_SESSION["data"] = $_POST;
-$_SESSION['cart'][$name]=[
-    'count' => $count,
-    'price' => $price
-];
-*/
-
-
-
 ?>
 
 <head>
@@ -48,24 +34,17 @@ $_SESSION['cart'][$name]=[
         </tr>
         <tr>
             <td>
-                <label class="bg-light text-muted h6" align="left" id="inquiry-form">
-
-                </label>
+                <div class="col">
+                    <a class="nav-item nav-link" href="Products.php">
+                        買い物を続ける
+                    </a>
+                </div>
             </td>
-        </tr>
         <td>
             <div class="col">
                 <a class="nav-item nav-link" href="Products.php">
-                    買い物を続ける
+                        買い物を終える
                 </a>
-            </div>
-        </td>
-        <td>
-            <div class="col">
-            <a class="nav-item nav-link" href="Products.php">
-                    買い物を続ける
-                    買い物を終える
-            </a>
             </div>
         </td>
         </tr>

@@ -28,16 +28,20 @@ session_start();
                             <tr>
                                 <td>
                                     <table class="table">
+                                        <?php 
+                                        $item_count = 0;
+                                        foreach($_SESSION['cart'] as $item){
+                                        ?>
                                         <!------------------------------------------- Sample Data ------------------------------------------->
                                         <tr>
                                             <td rowspan="5" align="left" valign="middle">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" value="<?php print_r($item_count++);?>" id="flexCheckDefault">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td rowspan="4" align="center" class="w-25">
                                                 <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="Cart-img">
+                                                    <img src="<?php print_r($item['product_img']);?>" class="figure-img img-fluid rounded" id="Cart-img">
                                                 </figure>
                                             </td>
                                         </tr>
@@ -47,7 +51,7 @@ session_start();
                                                 商品名：
                                             </td>
                                             <td align="center" class="w-50">
-                                                豚骨ラーメン
+                                                <?php echo $item['product_name'];?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -55,7 +59,7 @@ session_start();
                                                 値段：
                                             </td>
                                             <td align="center">
-                                                ￥1000
+                                                <?php echo $item['product_unit_price'];?>￥
                                             </td>
                                         </tr>
                                         <tr>
@@ -63,47 +67,13 @@ session_start();
                                                 購入数：
                                             </td>
                                             <td align="center">
-                                                <input type="number" name="example" value="0" min="0" style="width:50px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="5" align="left" valign="middle">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="Cart-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                商品名：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                値段：
-                                            </td>
-                                            <td align="center">
-                                                ￥1000
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                <input type="number" name="example" value="0" min="0" style="width:50px">
+                                                <input type="number" name="example" value="<?php print_r($item['quantity']);?>" min="1" max="20" style="width:50px">
                                             </td>
                                         </tr>
                                         <!------------------------------------------- Sample Data ------------------------------------------->
+                                        <?php
+                                        }
+                                        ?>
                                     </table>
                                 </td>
                             </tr>
