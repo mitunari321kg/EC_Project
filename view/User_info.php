@@ -73,7 +73,8 @@
                                         ユーザーID　
                                     </td>
                                     <td>
-                                        <?php echo $value['user_id'];
+                                        <?php
+                                        echo $value['user_id'];
                                         $user_id = $value['user_id'];
                                         ?>
                                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
@@ -94,7 +95,8 @@
                                 <tr>
                                     <td>生年月日　</td>
                                     <td>
-                                        <?php echo $value['user_birthday'];
+                                        <?php
+                                        echo $value['user_birthday'];
                                         $user_birthday = $value['user_birthday']
                                         ?>
                                         <input type="hidden" name="user_birthday" value="<?php echo $user_birthday; ?>">

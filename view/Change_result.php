@@ -115,7 +115,8 @@
                                         性別　
                                     </td>
                                     <td>
-                                        <?php if ($user_gender == 0) {
+                                        <?php
+                                        if ($user_gender == 0) {
                                             echo "男性";
                                         } elseif ($user_gender == 1) {
                                             echo "女性";
