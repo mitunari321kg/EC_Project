@@ -35,11 +35,7 @@ class Model
     public function search_user($user_id)
     {
         try {
-            $sql = "SELECT user_id, login_password, user_last_name, user_first_name, user_last_furigana, user_first_furigana,
-                    DATE_FORMAT(user_birthday, '%Y年　%m月　%d日') AS user_birthday,
-                    user_gender, user_postal_code, user_prefectures, user_address1, user_address2, user_address3, user_tel, user_email
-                    FROM user_table
-                    WHERE user_id = " . $user_id;
+            $sql = "SELECT * FROM `user_table` WHERE `user_id` = " . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -95,9 +91,14 @@ class Model
      */
     public function update_pass($new_password, $user_id)
     {
-        $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $user_id;
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        try {
+            $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $user_id;
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            print('SQL実行エラー：' . $e->getMessage());
+            die();
+        }
     }
 
     /**
