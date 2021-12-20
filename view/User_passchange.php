@@ -26,9 +26,9 @@
     }
     ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
     <script src="script/Pass_judge.js" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta charset="utf8-unicode-ci">
     <title>パスワードの変更</title>
 </head>
@@ -57,9 +57,9 @@
                                 </td>
                                 <td>
                                     <input type="password" name="old_password" id="old_password" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
-                                    <span class="field-icon">
-                                        <i toggle="password-field" class="mdi mdi-eye toggle-password"></i>
-                                    </span>
+                                    <div class="field-icon">
+                                        <i toggle="password-field" class="zmdi zmdi-eye toggle-password"></i>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -68,6 +68,9 @@
                                 </td>
                                 <td>
                                     <input type="password" name="new_password" id="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <div class="field-icon">
+                                        <i toggle="password-field" class="zmdi zmdi-eye toggle-password"></i>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -76,6 +79,9 @@
                                 </td>
                                 <td>
                                     <input type="password" name="confirm_password" id="confirm_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <div class="field-icon">
+                                        <i toggle="password-field" class="zmdi zmdi-eye toggle-password"></i>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>

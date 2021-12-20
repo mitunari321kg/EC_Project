@@ -6,3 +6,12 @@ input {
 .button_wrapper {
     text-align: center;
 }
+
+.field-icon {
+    color       : #555;
+    float       : right;
+    margin-right: 15px;
+    margin-top  : -27px;
+    position    : relative;
+    z-index     : 2;
+}

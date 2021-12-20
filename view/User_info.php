@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * @file   User_info.php
  * @brief  登録者情報確認変更画面
  * @author 佐藤大介
@@ -16,7 +16,8 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_User_info.php';
-    $user_data = new Control_User_info("abc012");
+    session_start();
+$user_data = new Control_User_info("abc012"/* $_SESSION['logined_id'] */);
     $user_info = $user_data->get_user_info();
     ?>
     <link href="css/user_info.css" rel="stylesheet" />
