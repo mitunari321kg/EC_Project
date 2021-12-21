@@ -1,3 +1,8 @@
+<?php
+session_start();
+$user_id = $_SESSION['user_id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +10,6 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_user_pass.php';
-    session_start();
-    $user_id = "abc012"/* $_SESSION['logined_id'] */;
     $user_pass_change = new Control_User_pass($user_id);
     $user_old_pass = $user_pass_change->get_old_pass();
     $old_pass = "";
@@ -14,23 +17,6 @@
     foreach ($user_old_pass as $value) {
         $old_pass = $value['login_password'];
     }
-    if (isset($_POST["confirm"])) {
-        $old_password = $_POST["old_password"];
-        $new_password = $_POST["new_password"];
-        $confirm_password = $_POST["confirm_password"];
-        if ($old_password == $old_pass && $new_password == $confirm_password) {
-            $user_pass_change->change_pass($new_password, $user_id);
-            header('Location:Pass_result.php');
-            exit;
-        } elseif ($old_password != $old_pass && $new_password != $confirm_password) {
-            $error_message = '<p class="alert">※現在のパスワード、新しいパスワード、確認用:入力されたパスワードが一致しません</p>';
-        } elseif ($old_password != $old_pass) {
-            $error_message = '<p class="alert">※現在のパスワード:入力されたパスワードが一致しません</p>';
-        } elseif ($new_password != $confirm_password) {
-            $error_message = '<p class="alert">※新しいパスワード、確認用:入力されたパスワードが一致しません</p>';
-        }
-    }
-    /*
     if (isset($_POST["confirm"])) {
         $old_password = $_POST["old_password"];
         $new_password = $_POST["new_password"];
@@ -48,7 +34,6 @@
             $error_message = '<p class="alert">※新しいパスワード、確認用:入力されたパスワードが一致しません</p>';
         }
     }
-    */
     ?>
     <link href="css/user_passchange.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" rel="stylesheet" />
