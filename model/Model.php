@@ -31,15 +31,12 @@ class Model
 
     /**
      * ユーザー情報検索
+     * @param String $user_id ユーザーID
      */
     public function search_user($user_id)
     {
         try {
-            $sql = "SELECT user_id, login_password, user_last_name, user_first_name, user_last_furigana, user_first_furigana,
-                    DATE_FORMAT(user_birthday, '%Y年　%m月　%d日') AS user_birthday,
-                    user_gender, user_postal_code, user_prefectures, user_address1, user_address2, user_address3, user_tel, user_email
-                    FROM user_table
-                    WHERE user_id = " . $user_id;
+            $sql = "SELECT * FROM `user_table` WHERE `user_id` = " . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -51,6 +48,19 @@ class Model
 
     /**
      * ユーザー情報更新
+     * @param String $surname           姓
+     * @param String $name              名
+     * @param String $surname_furigana  姓フリガナ
+     * @param String $name_furigana     名フリガナ
+     * @param String $user_gender       性別
+     * @param String $postal_code       郵便番号
+     * @param String $user_prefectures  都道府県
+     * @param String $address1          市区町村
+     * @param String $address2          番地以下
+     * @param String $address3          建物名・部屋番号
+     * @param String $tel               電話番号
+     * @param String $user_mail         メールアドレス
+     * @param String $user_id           ユーザーID
      */
     public function update_info(
         $surname,
@@ -92,12 +102,19 @@ class Model
 
     /**
      * パスワード更新
+     * @param String $new_password  新しいパスワード
+     * @param String $user_id       ユーザーID
      */
     public function update_pass($new_password, $user_id)
     {
-        $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $user_id;
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        try {
+            $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $user_id;
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            print('SQL実行エラー：' . $e->getMessage());
+            die();
+        }
     }
 
     /**

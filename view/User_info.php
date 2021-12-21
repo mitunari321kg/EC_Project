@@ -1,10 +1,13 @@
 <?php
-/*
+
+/**
  * @file   User_info.php
  * @brief  登録者情報確認変更画面
  * @author 佐藤大介
  * @date   2021/11/13
  */
+session_start();
+$user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +19,7 @@
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_User_info.php';
-    $user_data = new Control_User_info("abc012");
+    $user_data = new Control_User_info($user_id);
     $user_info = $user_data->get_user_info();
     ?>
     <link href="css/user_info.css" rel="stylesheet" />
@@ -43,27 +46,27 @@
             <td>
                 <div align="center">
                     <table border="0">
-                        <form class="h-adr" method="POST" action="Change_result.php" action="../controller/Control_User_info.php">
+                        <form class="h-adr" method="POST" action="Change_result.php">
                             <table>
                                 <?php foreach ($user_info as $value) { ?>
                                     <tr>
                                         <td>
                                             姓<span class="mandatory">*</span>
-                                            <input type="text" name="surname" size="24" required value="<?php print $value['user_last_name']; ?>">
+                                            <input type="text" name="surname" size="24" required value="<?php echo $value['user_last_name']; ?>">
                                         </td>
                                         <td>
                                             名<span class="mandatory">*</span>
-                                            <input type="text" name="name" size="24" required value="<?php print $value['user_first_name']; ?>">
+                                            <input type="text" name="name" size="24" required value="<?php echo $value['user_first_name']; ?>">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             姓フリガナ<span class="mandatory">*</span>
-                                            <input type="text" name="surname_furigana" size="24" required value="<?php print $value['user_last_furigana']; ?>">
+                                            <input type="text" name="surname_furigana" size="24" required value="<?php echo $value['user_last_furigana']; ?>">
                                         </td>
                                         <td>
                                             名フリガナ<span class="mandatory">*</span>
-                                            <input type="text" name="name_furigana" size="24" required value="<?php print $value['user_first_furigana']; ?>">
+                                            <input type="text" name="name_furigana" size="24" required value="<?php echo $value['user_first_furigana']; ?>">
                                         </td>
                                     </tr>
                             </table>
@@ -96,8 +99,8 @@
                                     <td>生年月日　</td>
                                     <td>
                                         <?php
-                                        echo $value['user_birthday'];
-                                        $user_birthday = $value['user_birthday']
+                                        $user_birthday = date('Y年 n月 d日', strtotime($value['user_birthday']));
+                                        echo $user_birthday;
                                         ?>
                                         <input type="hidden" name="user_birthday" value="<?php echo $user_birthday; ?>">
                                     </td>
@@ -107,7 +110,7 @@
                                         郵便番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="例:0001111" onKeyUp="AjaxZip3.zip2addr(this,'','user_prefectures','address1');" size="7" value="<?php print $value['user_postal_code']; ?>" maxlength="7" required>
+                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="例:0001111" onKeyUp="AjaxZip3.zip2addr(this,'','user_prefectures','address1');" size="7" value="<?php echo $value['user_postal_code']; ?>" maxlength="7" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -171,7 +174,7 @@
                                         市区町村<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php print $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
+                                        <input type="text" name="address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -179,7 +182,7 @@
                                         番地以下<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address2" placeholder="例:１－２－３" size="56" value="<?php print $value['user_address2']; ?>" required>
+                                        <input type="text" name="address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['user_address2']; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -188,7 +191,7 @@
                                         部屋番号　
                                     </td>
                                     <td>
-                                        <input type="text" name="address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php print $value['user_address3']; ?>">
+                                        <input type="text" name="address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['user_address3']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -196,7 +199,7 @@
                                         電話番号<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php print $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" maxlength="11">
+                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php echo $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" maxlength="11">
                                     </td>
                                 </tr>
                                 <tr>
@@ -204,7 +207,7 @@
                                         メールアドレス<span class="mandatory">*</span>　
                                     </td>
                                     <td>
-                                        <input type="email" id="email" name="user_mail" placeholder="例:sample_a.1@email.co.jp" required size="56" value="<?php print $value['user_email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                        <input type="email" id="email" name="user_mail" placeholder="例:sample_a.1@email.co.jp" required size="56" value="<?php echo $value['user_email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                     </td>
                                 </tr>
                             <?php } ?>
