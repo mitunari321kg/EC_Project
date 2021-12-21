@@ -169,8 +169,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        建物名・　<br>
-                                        部屋番号　
+                                        建物名・部屋番号　
                                     </td>
                                     <td>
                                         <?php echo $address3; ?>
@@ -188,7 +187,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Eメール　
+                                        メールアドレス　
                                     </td>
                                     <td>
                                         <?php echo $user_mail; ?>
