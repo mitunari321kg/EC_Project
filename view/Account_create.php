@@ -94,6 +94,20 @@ if (isset($_SESSION['user_id'])) {
                                 </tr>
                                 <tr>
                                     <td>
+                                        
+                                    </td>
+                                    <td>
+                                        <input type="text" name="user_address1" class="p-locality p-street-address p-extended-address" />
+                                    </td>
+                                <tr>
+                                    <td>
+                                        地区町村
+                                    </td>
+                                    <td>
+                                        <input type="text" name="user_address1" class="p-locality p-street-address p-extended-address" />
+                                    </td>
+                                <tr>
+                                    <td>
                                         住所
                                     </td>
                                     <td>

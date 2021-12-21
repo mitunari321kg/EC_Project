@@ -2,8 +2,12 @@
     商品詳細画面
     作成者  ：　梅原
     更新者  ：  大森
+    更新者2  ：　谷原
     更新日付：  2021-12/16
+    更新日付2：　2021-12/17~
 -->
+
+
 <?php
 include '../controller/Product_Details.php';
 $controll = new Product_Details();
@@ -24,98 +28,104 @@ $result = $controll->get_Product_Details($_POST['product_id']);
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
-    <table class="table" width="100%">
-        <tbody>
-            <tr>
-                <td colspan="2">
-                    <a>
-                        
-                        <?php 
+    <form action="result.php" method="POST">
+        <table class="table" width="100%">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <a>
+                            <?php
                             echo $result[0]['product_name'];
-                        ?>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td width="50%">
-                    <a href="#">
-                        <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid w-75" alt="img" />
-                    </a>
-                </td>
-                <td>
-                    <a>
-                        <?php echo $result[0]['product_detail']; ?>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table class="table table-bordered">
-                        <tr>
-                            <?php for ($i = 0; $i < 4; $i++) { ?>
-                                <td>
-                                    <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid min-vh-25 min-vw-25" alt="img" />
-                                </td>
-                            <?php } ?>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                <a>
-                        <?php echo $result[0]['product_unit_price']; ?>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" rowspan="2">
-                    <p>賞味期限</p>
-                </td>
-                <td>
-                    購入数: <input type="number" name="example" value="0" min="0">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit" class="nav-item btn btn-dark text-nowrap">
-                        <font color="white"><i class="bi bi-cart-fill">カートに入れる</i></font>
-                    </button>
-                </td>
-            </tr>
-            <table width="100%">
+                            ?>
+                        </a>
+                    </td>
+                </tr>
                 <tr>
+                    <td width="50%">
+                        <a href="#">
+                            <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid w-75" alt="img" />
+                        </a>
+                    </td>
                     <td>
-                        <p>その他人気商品</p>
+                        <a>
+                            <?php echo $result[0]['product_detail']; ?>
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                            <?php for ($i = 0; $i < 3; $i++) { ?>
-                                <div class="col-sm-3">
-                                    <div class="card text-dark bg-light h-100">
-                                        <table class="table-light">
-                                            <tr>
-                                                <td>
-                                                    <a href="Product_Details.php">
-                                                        <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
-                                                    </a>
-                                                    <div class="card-body">
-                                                        <a class="card-text" href="#">豚骨ラーメン</a>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p class="card-text">500円</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
+                        <table class="table table-bordered">
+                            <tr>
+                                <?php for ($i = 0; $i < 4; $i++) { ?>
+                                    <td>
+                                        <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid min-vh-25 min-vw-25" alt="img" />
+                                    </td>
+                                <?php } ?>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <a>
+                            <?php echo $result[0]['product_unit_price']; ?>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" rowspan="2">
+                        <p>賞味期限</p>
+                    </td>
+                    <td>
+                        購入数: <input type="number" name="quantity" value="1" min="1" max="20">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" name="product_id" value='<?php echo $_POST['product_id']; ?>'>
+                        <input type="hidden" name="product_img" value='<?php echo $result[0]['product_img'] ?>'>
+                        <input type="hidden" name="product_name" value='<?php echo $result[0]['product_name']; ?>'>
+                        <input type="hidden" name="product_unit_price" value='<?php echo $result[0]['product_unit_price']; ?>'>
+                        <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit">
+                            <font color="white"><i class="bi bi-cart-fill">カートに入れる</i></font>
+                        </button>
+                    </td>
+                </tr>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <p>その他人気商品</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
+                                <?php for ($i = 0; $i < 3; $i++) { ?>
+                                    <div class="col-sm-3">
+                                        <div class="card text-dark bg-light h-100">
+                                            <table class="table-light">
+                                                <tr>
+                                                    <td>
+                                                        <a href="Product_Details.php">
+                                                            <img src="../img/food_ramen.png" class="card-img-top" alt="img" />
+                                                        </a>
+                                                        <div class="card-body">
+                                                            <a class="card-text" href="#">豚骨ラーメン</a>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p class="card-text">500円</p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </tbody>
+                                <?php } ?>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </tbody>
+    </form>
+    </tbody>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>

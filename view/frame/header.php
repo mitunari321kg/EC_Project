@@ -1,3 +1,9 @@
+<?php
+    ini_set('display_errors', 0);
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
+?>
 <!------------------------------------------- header ------------------------------------------->
 <header>
     <table width="100%">
@@ -18,15 +24,24 @@
                     </p>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto">
-                            <button type="submit" class="btn btn-danger" onclick="location.href='#'">
+                            <?php 
+                            if (isset($_SESSION['logined_id'])){
+                            ?>
+                            <button type="submit" class="btn btn-danger" onclick="location.href='Login.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">ログアウト</i></font>
                             </button>
                             <button type="submit" class="btn btn-success" onclick="location.href='Mypage.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">マイページ</i></font>
                             </button>
+                            <?php
+                            } else {
+                            ?>
                             <button type="submit" class="btn btn-primary" onclick="location.href='Login.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">ログイン</i></font>
                             </button>
+                            <?php
+                            }
+                            ?>
                             <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Cart.php'">
                                 <font color="white"><i class="bi bi-cart-fill">買い物かごを見る</i></font>
                             </button>

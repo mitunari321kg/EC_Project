@@ -34,17 +34,21 @@
             <form method="post" action="../controller/contact_form.php">
                 <tr>
                     <td align="center">
+
                         <div class=" mb-3" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">お名前（必須）</label>
                             <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td align="center">
+
                         <div class=" mb-3" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">メールアドレス（必須）</label>
                             <input type="mail" class="form-control" id="contact_mail" name="contact_mail" required>
+
                         </div>
                     </td>
                 </tr>
