@@ -19,7 +19,7 @@ class Control_User_pass extends Control
     /**
      * データベースに保存されているパスワードを取得
      */
-    public function get_now_pass()
+    public function get_old_pass()
     {
         return $this->model->search_user($this->user_id);
     }
