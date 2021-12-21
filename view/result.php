@@ -62,8 +62,7 @@ $_SESSION['cart'][$name]=[
         </td>
         <td>
             <div class="col">
-            <a class="nav-item nav-link" href="Products.php">
-                    買い物を続ける
+            <a class="nav-item nav-link" href="Cart.php">
                     買い物を終える
             </a>
             </div>

@@ -75,7 +75,7 @@
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
                             <form action="Product_Details.php" name="product_form" method="post">
-                            <input type="hidden" name="product_id" value=<?php print $value['product_id']?>>
+                                <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
                                 <table class="table-light">
                                     <tr>
                                         <td>
