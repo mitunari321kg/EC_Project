@@ -49,49 +49,25 @@ class Model
 
     /**
      * ユーザー情報更新
-     * @param string $surname           姓
-     * @param string $name              名
-     * @param string $surname_furigana  姓フリガナ
-     * @param string $name_furigana     名フリガナ
-     * @param string $user_gender       性別
-     * @param string $postal_code       郵便番号
-     * @param string $user_prefectures  都道府県
-     * @param string $address1          市区町村
-     * @param string $address2          番地以下
-     * @param string $address3          建物名・部屋番号
-     * @param string $tel               電話番号
-     * @param string $user_mail         メールアドレス
-     * @param string $user_id           ユーザーID
+     * @param array $new_info 更新された登録者情報
+     * @param string $user_id ユーザーID
      */
-    public function update_info(
-        $surname,
-        $name,
-        $surname_furigana,
-        $name_furigana,
-        $user_gender,
-        $postal_code,
-        $user_prefectures,
-        $address1,
-        $address2,
-        $address3,
-        $tel,
-        $user_mail,
-        $user_id
-    ) {
+    public function update_info($new_info, $user_id)
+    {
         try {
             $sql = "UPDATE `user_table` SET "
-                . "`user_last_name`=" . "'" . $surname . "'"
-                . ",`user_first_name`=" . "'" . $name . "'"
-                . ",`user_last_furigana`=" . "'" . $surname_furigana . "'"
-                . ",`user_first_furigana`=" . "'" . $name_furigana . "'"
-                . ",`user_gender`=" . $user_gender
-                . ",`user_postal_code`=" . "'" . $postal_code . "'"
-                . ",`user_prefectures`=" . "'" . $user_prefectures . "'"
-                . ",`user_address1`=" . "'" . $address1 . "'"
-                . ",`user_address2`=" . "'" . $address2 . "'"
-                . ",`user_address3`=" . "'" . $address3 . "'"
-                . ",`user_tel`=" . "'" . $tel . "'"
-                . ",`user_email`=" . "'" . $user_mail . "'"
+                . "`user_last_name`=" . "'" . $new_info['surname'] . "'"
+                . ",`user_first_name`=" . "'" . $new_info['name'] . "'"
+                . ",`user_last_furigana`=" . "'" . $new_info['surname_furigana'] . "'"
+                . ",`user_first_furigana`=" . "'" . $new_info['name_furigana'] . "'"
+                . ",`user_gender`=" . $new_info['user_gender']
+                . ",`user_postal_code`=" . "'" . $new_info['postal_code'] . "'"
+                . ",`user_prefectures`=" . "'" . $new_info['prefectures'] . "'"
+                . ",`user_address1`=" . "'" . $new_info['address1'] . "'"
+                . ",`user_address2`=" . "'" . $new_info['address2'] . "'"
+                . ",`user_address3`=" . "'" . $new_info['address3'] . "'"
+                . ",`user_tel`=" . "'" . $new_info['tel'] . "'"
+                . ",`user_email`=" . "'" . $new_info['email'] . "'"
                 . " WHERE `user_id`=" . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();

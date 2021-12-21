@@ -20,7 +20,7 @@ abstract class Control
     {
         //モデルオブジェクト生成
         $this->model = new Model();
-        //ユーザーID取得(本来はセッションで取得する)
+        //ユーザーID取得
         $this->user_id = "'" . $const_id . "'";
     }
 }

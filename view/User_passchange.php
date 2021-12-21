@@ -51,7 +51,7 @@ $user_id = $_SESSION['logined_id'];
         <table width="100%">
             <tr>
                 <th>
-                    <h3 align="center">パスワードの変更</h3>
+                    <h1 align="center">パスワードの変更</h1>
                 </th>
             </tr>
         </table>
