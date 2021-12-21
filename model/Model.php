@@ -31,7 +31,8 @@ class Model
 
     /**
      * ユーザー情報検索
-     * @param String $user_id ユーザーID
+     * @param string $user_id ユーザーID
+     * @return array ユーザー情報
      */
     public function search_user($user_id)
     {
@@ -48,19 +49,19 @@ class Model
 
     /**
      * ユーザー情報更新
-     * @param String $surname           姓
-     * @param String $name              名
-     * @param String $surname_furigana  姓フリガナ
-     * @param String $name_furigana     名フリガナ
-     * @param String $user_gender       性別
-     * @param String $postal_code       郵便番号
-     * @param String $user_prefectures  都道府県
-     * @param String $address1          市区町村
-     * @param String $address2          番地以下
-     * @param String $address3          建物名・部屋番号
-     * @param String $tel               電話番号
-     * @param String $user_mail         メールアドレス
-     * @param String $user_id           ユーザーID
+     * @param string $surname           姓
+     * @param string $name              名
+     * @param string $surname_furigana  姓フリガナ
+     * @param string $name_furigana     名フリガナ
+     * @param string $user_gender       性別
+     * @param string $postal_code       郵便番号
+     * @param string $user_prefectures  都道府県
+     * @param string $address1          市区町村
+     * @param string $address2          番地以下
+     * @param string $address3          建物名・部屋番号
+     * @param string $tel               電話番号
+     * @param string $user_mail         メールアドレス
+     * @param string $user_id           ユーザーID
      */
     public function update_info(
         $surname,
@@ -102,8 +103,8 @@ class Model
 
     /**
      * パスワード更新
-     * @param String $new_password  新しいパスワード
-     * @param String $user_id       ユーザーID
+     * @param string $new_password  新しいパスワード
+     * @param string $user_id       ユーザーID
      */
     public function update_pass($new_password, $user_id)
     {
