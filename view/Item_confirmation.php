@@ -2,8 +2,11 @@
 作成者　梅原-------->
 <?php
 include '../controller/Item_confirmation.php';
-$controll = new Item_confirmation();
-$result = $controll->get_Item_confirmation();
+session_start();
+if(isset($_SESSION['logined_id'])){
+    $controll = new Item_confirmation();
+    $result = $controll->get_Item_confirmation($_SESSION['logined_id']);
+}
 ?>
 
 <!DOCTYPE html>
