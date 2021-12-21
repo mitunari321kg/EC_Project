@@ -27,7 +27,7 @@
                             <?php 
                             if (isset($_SESSION['logined_id'])){
                             ?>
-                            <button type="submit" class="btn btn-danger" onclick="location.href='Login.php'">
+                            <button type="submit" class="btn btn-danger" onclick="location.href='../controller/Logout.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">ログアウト</i></font>
                             </button>
                             <button type="submit" class="btn btn-success" onclick="location.href='Mypage.php'">

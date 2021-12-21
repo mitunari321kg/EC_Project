@@ -3,10 +3,14 @@
 <?php
 include '../controller/Shipping_Address.php';
 session_start();
-if(isset($_SESSION['logined_id'])){
+if(isset($_SESSION['logined_id']) && !isset($_SESSION['shipping_info'])){
     $controll = new Shipping_Address();
     $result = $controll->get_shipping_address($_SESSION['logined_id']);
+    $_SESSION['shipping_info'] = $result[0];
+} else if (!isset($_SESSION['shipping_info'])){
+    $empty_msg = "お届け先の情報がございません<br>『お届け先情報入力・変更』ボタンからお届け先情報の入力をお願いします。";
 }
+//unset($_SESSION['shipping_info']);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +19,7 @@ if(isset($_SESSION['logined_id'])){
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <link href="css/Shipping_Address.css" rel="stylesheet" />
-    <title>配送先確認</title>
+    <title>お届け先情報確認</title>
 </head>
 
 <body>
@@ -26,76 +30,73 @@ if(isset($_SESSION['logined_id'])){
         <tr>
             <td height="80px">
                 <p class="h2">
-                    配送先確認
+                    お届け先情報確認
                 </p>
             </td>
         </tr>
         <tr>
             <td>
                 <div align="center">
-                    <form method="POST">
-                        <table>
+                <form action="../controller/Shipping_Controll.php" method="post">
+                    <table class="table w-50">
+                        <?php
+                        if(!isset($empty_msg)){
+                        ?>
                             <tr>
-                                <td>
-                                    姓
-                                    <input type="text" value=<?php echo $result[0]['user_first_name'];?>>
-                                </td>
-                                <td>
-                                    名
-                                    <input type="text" value=<?php echo $result[0]['user_last_name']; ?>>
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr>
-                                <td>
-                                    郵便番号
-                                </td>
-                                <td>
-                                <input type="text" value=<?php echo $result[0]['user_postal_code']; ?>>
+                                <td class="text-muted" colspan="2" align="center">
+                                    以下のお届け先情報でお間違えがないか確認してください。
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    お届け先住所
-                                </td>
-                                <td>
-                                <input type="text" value=<?php echo $result[0]['user_address1'].$result[0]['user_address2'].$result[0]['user_address3']; ?>>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    電話番号
-                                </td>
-                                <td>
-                                <input type="text" value=<?php echo $result[0]['user_tel']; ?>>
+                                <td class="w-25" colspan="2" align="center">
+                                    <div align="left" valign="top">
+                                        <font size="2" class="text-muted">お名前</font>
+                                    </div>
+                                    <?php echo  $_SESSION['shipping_info']['user_last_name'].' '.  $_SESSION['shipping_info']['user_first_name']; ?>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    メールアドレス
+                                <td class="w-25" colspan="2" align="center">
+                                    <div align="left" valign="top">
+                                        <font size="2" class="text-muted">お届け先住所</font>
+                                    </div>
+                                    <?php echo  $_SESSION['shipping_info']['user_prefectures'].$_SESSION['shipping_info']['user_address1']. $_SESSION['shipping_info']['user_address2']. $_SESSION['shipping_info']['user_address3']; ?>
                                 </td>
-                                <td>
-                                <input type="text" value=<?php echo $result[0]['user_email']; ?>>
+                            </tr>
+                            <tr>
+                                <td class="w-25" colspan="2" align="center">
+                                    <div align="left" valign="top">
+                                        <font size="2" class="text-muted">電話番号</font>
+                                    </div>
+                                    <?php echo  $_SESSION['shipping_info']['user_tel']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-25" colspan="2" align="center">
+                                    <div align="left" valign="top">
+                                        <font size="2" class="text-muted">メールアドレス</font>
+                                    </div>
+                                    <?php echo  $_SESSION['shipping_info']['user_email']; ?>
+                                </td>
+                            </tr>
+                            <tr height="50px">
+                                <td align="left">
+                                    <button type="submit" class="btn btn-dark text-nowrap" name="button_action" value="order_check">
+                                        <font color="white">確認画面へ</font>
+                                    </button>
+                                </td>
+                            <?php
+                            }
+                            echo $empty_msg;
+                            ?>
+                                <td align="right">
+                                    <button type="submit" class="btn btn-dark text-nowrap" name="button_action" value="shipping_address_change">
+                                        <font color="white">お届け先情報入力・変更</font>
+                                    </button>
                                 </td>
                             </tr>
                         </table>
                     </form>
-                    <table width="40%">
-                        <tr height="50px">
-                            <td align="left">
-                                <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Verification.php'">
-                                    <font color="white">確認画面へ</font>
-                                </button>
-                            </td>
-                            <td align="right">
-                                <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Change_Shipping_Address.php'">
-                                    <font color="white">配送先変更</font>
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
             </td>
         </tr>

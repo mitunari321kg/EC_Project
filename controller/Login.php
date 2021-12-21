@@ -29,6 +29,10 @@ class Login extends Controll{
                 //パスワードが一致
                 $_SESSION['logined_id'] = $user_id;
                 $_SESSION['logined_last_name'] = $result[0]['user_last_name'];
+                //お届け先情報の削除
+                if(isset($_SESSION['shipping_info'])){
+                    unset($_SESSION['shipping_info']);
+                }
                 header('Location: ../view/Mypage.php');
             } else {
                 //パスワードが間違っている

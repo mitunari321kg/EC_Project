@@ -26,7 +26,7 @@ $_SESSION['cart'][] = $array;
     <!------------------------------------------- header ------------------------------------------->
     <table width="50%" align="center" class=" min-vw-50">
         <tr>
-            <td height="80px" colspan="2">
+            <td height="80px" colspan="3">
                 <p class="h2">
                     カートに入りました
                 </p>
@@ -41,11 +41,6 @@ $_SESSION['cart'][] = $array;
                 </div>
             </td>
         <td>
-            <div class="col">
-                <a class="nav-item nav-link" href="Cart.php">
-                        カートを見る
-                </a>
-            </div>
         </td>
         <td>
             <div class="col">

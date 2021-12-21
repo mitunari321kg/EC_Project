@@ -26,6 +26,9 @@ session_start();
                 </p>
             </td>
         </tr>
+        <?php 
+        if(isset($_SESSION['cart'])){
+        ?>
         <form action="../controller/Cart_Controll.php" method="post">
         <tr>
             <td align="center">
@@ -114,6 +117,17 @@ session_start();
         </td>
     </tr>
     </form>
+    <?php 
+    } else {
+    ?>
+    <tr>
+        <td>
+            カートに何も入っていません、買い物を続ける場合は<a href="Products.php">こちらから</a>
+        </td>
+    </tr>
+    <?php 
+    }
+    ?>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>
