@@ -16,9 +16,16 @@
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%">
         <tr>
+            <td height="80px">
+                <p class="h2">
+                    配送先変更
+                </p>
+            </td>
+        </tr>
+        <tr>
             <td>
                 <div align="center">
-                    <form class="h-adr" method="POST" action="../controller/Another_address.php">
+                    <form class="h-adr" method="POST" action="../controller/Chenge_Shipping_Address.php">
                         <table>
                             <tr>
                                 <td>
@@ -96,9 +103,9 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <div class="button_wrapper">
-                                        <button class="button1" type="submit">作成</button>
-                                    </div>
+                                    <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Change_Shipping_Address.php'">
+                                        <font color="white">変更</font>
+                                    </button>
                                 </td>
                             </tr>
                         </table>
@@ -106,10 +113,11 @@
                 </div>
             </td>
         </tr>
-        </form>
-        <!------------------------------------------- footer ------------------------------------------->
-        <?php include 'frame/footer.php'; ?>
-        <!------------------------------------------- footer ------------------------------------------->
+    </form>
+</table>
+<!------------------------------------------- footer ------------------------------------------->
+<?php include 'frame/footer.php'; ?>
+<!------------------------------------------- footer ------------------------------------------->
 </body>
 
 </html>

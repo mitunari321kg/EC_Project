@@ -1,13 +1,30 @@
-/*
- * @file   User_passchange.php
- * @brief  パスワード変更画面スクリプト
+/**
+ * @file   Pass_judge.js
+ * @brief  パスワード表示切り替えスクリプト
  * @author 佐藤大介
  * @date   2021/12/14
  */
 
+$(function () {
+    // パスワードの表示・非表示切替
+    $(".toggle-password").click(function () {
+        // iconの切り替え
+        $(this).toggleClass("zmdi-eye zmdi-eye-off");
+        // 入力フォームの取得
+        let input = $(this).parent().prev("input");
+        // type切替
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
+    });
+});
+
 /**
  * 登録前チェック
  */
+/*
 function confirmMessage(input) {
     var input_pass = input;
     var old_pass = document.getElementById("old_password").value;
@@ -24,6 +41,7 @@ function confirmMessage(input) {
         return true;
     }
 }
+*/
 
 /*
 function getInputLength(frm, pass, old_pass) {

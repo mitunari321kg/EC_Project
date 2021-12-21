@@ -1,6 +1,8 @@
 <!----カート画面
 作成者　梅原---->
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +19,14 @@
     <!------------------------------------------- header ------------------------------------------->
 
     <table width="100%" align="center" class="min-vw-50">
-        <br>
+        <tr>
+            <td height="80px">
+                <p class="h2">
+                    カート
+                </p>
+            </td>
+        </tr>
+        <form action="../controller/Cart_Controll.php" method="post">
         <tr>
             <td align="center">
                 <div class="card border-dark w-100">
@@ -26,16 +35,20 @@
                             <tr>
                                 <td>
                                     <table class="table">
+                                        <?php 
+                                        $item_count = 0;
+                                        foreach($_SESSION['cart'] as $item){
+                                        ?>
                                         <!------------------------------------------- Sample Data ------------------------------------------->
                                         <tr>
                                             <td rowspan="5" align="left" valign="middle">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" name="delete_flag[]" value="<?php print_r($item_count++);?>" id="flexCheckDefault">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td rowspan="4" align="center" class="w-25">
                                                 <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="Cart-img">
+                                                    <img src="<?php print_r($item['product_img']);?>" class="figure-img img-fluid rounded" id="Cart-img">
                                                 </figure>
                                             </td>
                                         </tr>
@@ -45,7 +58,7 @@
                                                 商品名：
                                             </td>
                                             <td align="center" class="w-50">
-                                                豚骨ラーメン
+                                                <?php echo $item['product_name'];?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -53,7 +66,7 @@
                                                 値段：
                                             </td>
                                             <td align="center">
-                                                ￥1000
+                                            ￥<?php echo $item['product_unit_price'];?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -61,47 +74,13 @@
                                                 購入数：
                                             </td>
                                             <td align="center">
-                                                <input type="number" name="example" value="0" min="0" style="width:50px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="5" align="left" valign="middle">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="Cart-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                商品名：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                値段：
-                                            </td>
-                                            <td align="center">
-                                                ￥1000
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                <input type="number" name="example" value="0" min="0" style="width:50px">
+                                                <input type="number" name="quantity[]" value="<?php print_r($item['quantity']);?>" min="1" max="20" style="width:50px">
                                             </td>
                                         </tr>
                                         <!------------------------------------------- Sample Data ------------------------------------------->
+                                        <?php
+                                        }
+                                        ?>
                                     </table>
                                 </td>
                             </tr>
@@ -121,12 +100,12 @@
                         </p>
                     </td>
                     <td align="right">
-                        <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px">
+                        <button type="submit" name="button_action" value="cart_item_delete" class="nav-item btn btn-dark text-nowrap" style="height:35px">
                             <font color="white">選択商品削除</font>
                         </button>
                     </td>
                     <td align="right">
-                        <button type="submit" class="nav-item btn btn-dark text-nowrap" style="height:35px" onclick="location.href='Item_confirmation.php'">
+                        <button type="submit" name="button_action" value="address_check" class="nav-item btn btn-dark text-nowrap" style="height:35px">
                             <font color="white">配送先確認</font>
                         </button>
                     </td>
@@ -134,6 +113,7 @@
             </table>
         </td>
     </tr>
+    </form>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>

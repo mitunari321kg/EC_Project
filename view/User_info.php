@@ -1,27 +1,30 @@
 <?php
-/*
+
+/**
  * @file   User_info.php
  * @brief  登録者情報確認変更画面
  * @author 佐藤大介
  * @date   2021/11/13
  */
+session_start();
+$user_id = $_SESSION['logined_id'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <?php
     include '../controller/Control_User_info.php';
-    $user_data = new Control_User_info();
+    $user_data = new Control_User_info($user_id);
     $user_info = $user_data->get_user_info();
     ?>
     <link href="css/user_info.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
-    <title>登録者情報</title>
+    <title>登録者情報｜谷原らぁめん</title>
 </head>
 
 <body>
@@ -37,33 +40,30 @@
             </tr>
         </table>
         <tr>
-            <table>
-                <tr><span class="mandatory">*</span>は<span class="emphasis">必須項目</span>ですので必ずご入力ください。</tr>
-            </table>
             <td>
                 <div align="center">
                     <table border="0">
-                        <form class="h-adr" method="POST" action="Change_result.php" action="../controller/Control_User_info.php">
+                        <form class="h-adr" method="POST" action="Change_result.php">
                             <table>
                                 <?php foreach ($user_info as $value) { ?>
                                     <tr>
                                         <td>
-                                            姓<span class="mandatory">*</span>
-                                            <input type="text" name="surname" size="24" required value="<?php print $value['user_last_name']; ?>">
+                                            姓
+                                            <input type="text" name="surname" size="24" required value="<?php echo $value['user_last_name']; ?>">
                                         </td>
                                         <td>
-                                            名<span class="mandatory">*</span>
-                                            <input type="text" name="name" size="24" required value="<?php print $value['user_first_name']; ?>">
+                                            名
+                                            <input type="text" name="name" size="24" required value="<?php echo $value['user_first_name']; ?>">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            姓フリガナ<span class="mandatory">*</span>
-                                            <input type="text" name="surname_furigana" size="24" required value="<?php print $value['user_last_furigana']; ?>">
+                                            姓フリガナ
+                                            <input type="text" name="surname_furigana" size="24" required value="<?php echo $value['user_last_furigana']; ?>">
                                         </td>
                                         <td>
-                                            名フリガナ<span class="mandatory">*</span>
-                                            <input type="text" name="name_furigana" size="24" required value="<?php print $value['user_first_furigana']; ?>">
+                                            名フリガナ
+                                            <input type="text" name="name_furigana" size="24" required value="<?php echo $value['user_first_furigana']; ?>">
                                         </td>
                                     </tr>
                             </table>
@@ -73,12 +73,16 @@
                                         ユーザーID　
                                     </td>
                                     <td>
-                                        <?php echo $value['user_id']; ?>
+                                        <?php
+                                        echo $value['user_id'];
+                                        $user_id = $value['user_id'];
+                                        ?>
+                                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        性別<span class="mandatory">*</span>　
+                                        性別　
                                     </td>
                                     <td>
                                         <select name="user_gender">
@@ -91,19 +95,25 @@
                                 <tr>
                                     <td>生年月日　</td>
                                     <td>
-                                        <?php echo $value['user_birthday']; ?>
+                                        <?php
+                                        $user_birthday = date('Y年 n月 d日', strtotime($value['user_birthday']));
+                                        echo $user_birthday;
+                                        ?>
+                                        <input type="hidden" name="user_birthday" value="<?php echo $user_birthday; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        郵便番号<span class="mandatory">*</span>　
+                                        郵便番号　
                                     </td>
                                     <td>
-                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" placeholder="例:0001111" required size="7" value="<?php print $value['user_postal_code']; ?>" maxlength="7">
+                                        <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="例:0001111" onKeyUp="AjaxZip3.zip2addr(this,'','user_prefectures','address1');" size="7" value="<?php echo $value['user_postal_code']; ?>" maxlength="7" required>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>都道府県<span class="mandatory">*</span>　</td>
+                                    <td>
+                                        都道府県　
+                                    </td>
                                     <td>
                                         <select name="user_prefectures">
                                             <option value="北海道" <?php if ($value['user_prefectures'] == '北海道') { ?> selected <?php } ?>>北海道</option>
@@ -158,10 +168,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        市区町村　<span class="mandatory">*</span>　
+                                        市区町村　
                                     </td>
                                     <td>
-                                        <input type="text" name="address" placeholder="例:〇〇市〇〇町１－２－３" size="56" class="p-locality p-street-address p-extended-address" required pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" value="<?php print $value['user_address']; ?>">
+                                        <input type="text" name="address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,39 +179,38 @@
                                         番地以下　
                                     </td>
                                     <td>
-                                        <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
+                                        <input type="text" name="address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['user_address2']; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        建物名・　<br>
-                                        部屋番号　
+                                        建物名・部屋番号　
                                     </td>
                                     <td>
-                                        <input type="text" name="" placeholder="数字は半角で入力してください" size="56" value="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        電話番号<span class="mandatory">*</span>　
-                                    </td>
-                                    <td>
-                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php print $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" minlength="10" maxlength="11">
+                                        <input type="text" name="address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['user_address3']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        メールアドレス<span class="mandatory">*</span>　
+                                        電話番号　
                                     </td>
                                     <td>
-                                        <input type="email" id="email" name="user_mail" placeholder="例:sample_a.1@email.co.jp" required size="56" value="<?php print $value['user_email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                        <input type="tel" name="tel" placeholder="例:0000112222" required size="24" value="<?php echo $value['user_tel']; ?>" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" maxlength="11">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        メールアドレス　
+                                    </td>
+                                    <td>
+                                        <input type="email" id="email" name="user_mail" placeholder="例:sample_a.1@email.co.jp" required size="56" value="<?php echo $value['user_email']; ?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                     </td>
                                 </tr>
                             <?php } ?>
                             <tr>
                                 <td colspan="2" align="center">
                                     <div class="button_wrapper">
-                                        <button class="button1" type="submit">確定</button>
+                                        <button class="button1" type="submit">確認画面へ</button>
                                     </div>
                                 </td>
                             </tr>
