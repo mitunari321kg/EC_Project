@@ -10,7 +10,7 @@ if (isset($_SESSION['user_id'])) {
 
 <html lang="en">
 
-<<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8">
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8">
     </script>
 
 
