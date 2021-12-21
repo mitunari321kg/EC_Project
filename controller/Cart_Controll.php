@@ -14,7 +14,7 @@ if($_POST['button_action'] === 'cart_item_delete'){
     }
     header('location: ../view/Cart.php');
 } else if($_POST['button_action'] === 'address_check'){
-    header('location: ../view/Item_confirmation.php');
+    header('location: ../view/Shipping_Address.php');
 }
 
 ?>

@@ -19,7 +19,13 @@ session_start();
     <!------------------------------------------- header ------------------------------------------->
 
     <table width="100%" align="center" class="min-vw-50">
-        <br>
+        <tr>
+            <td height="80px">
+                <p class="h2">
+                    カート
+                </p>
+            </td>
+        </tr>
         <form action="../controller/Cart_Controll.php" method="post">
         <tr>
             <td align="center">

@@ -1,11 +1,11 @@
 <!-------入力項目確認画面
 作成者　梅原-------->
 <?php
-include '../controller/Item_confirmation.php';
+include '../controller/Shipping_Address.php';
 session_start();
 if(isset($_SESSION['logined_id'])){
-    $controll = new Item_confirmation();
-    $result = $controll->get_Item_confirmation($_SESSION['logined_id']);
+    $controll = new Shipping_Address();
+    $result = $controll->get_shipping_address($_SESSION['logined_id']);
 }
 ?>
 
@@ -14,7 +14,7 @@ if(isset($_SESSION['logined_id'])){
 <meta charset="utf8-unicode-ci">
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Item confirmation.css" rel="stylesheet" />
+    <link href="css/Shipping_Address.css" rel="stylesheet" />
     <title>配送先確認</title>
 </head>
 
@@ -23,6 +23,13 @@ if(isset($_SESSION['logined_id'])){
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%">
+        <tr>
+            <td height="80px">
+                <p class="h2">
+                    配送先確認
+                </p>
+            </td>
+        </tr>
         <tr>
             <td>
                 <div align="center">
@@ -53,7 +60,7 @@ if(isset($_SESSION['logined_id'])){
                                     お届け先住所
                                 </td>
                                 <td>
-                                <input type="text" value=<?php echo $result[0]['user_address']; ?>>
+                                <input type="text" value=<?php echo $result[0]['user_address1'].$result[0]['user_address2'].$result[0]['user_address3']; ?>>
                                 </td>
                             </tr>
 
@@ -75,19 +82,20 @@ if(isset($_SESSION['logined_id'])){
                             </tr>
                         </table>
                     </form>
-                    <table>
-                            <tr>
-                                <td>
-                                    <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Verification.php'">
-                                        <font color="white">確認画面へ</font>
-                                    </button>
-
-                                    <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Another_address.php'">
-                                        <font color="white">新規情報登録</font>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
+                    <table width="40%">
+                        <tr height="50px">
+                            <td align="left">
+                                <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Verification.php'">
+                                    <font color="white">確認画面へ</font>
+                                </button>
+                            </td>
+                            <td align="right">
+                                <button type="submit" class="nav-item btn btn-dark text-nowrap" onclick="location.href='Change_Shipping_Address.php'">
+                                    <font color="white">配送先変更</font>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </td>
         </tr>

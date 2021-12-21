@@ -9,14 +9,14 @@ include '../controller/controll.php';
 /**
  * 登録者情報取得
  */
-class Item_confirmation extends Controll{
+class Shipping_Address extends Controll{
     public function __construct(){
         parent::__construct();
     }
     /**
      * 登録者情報取得
      */
-    public function get_Item_confirmation($logined_id){
+    public function get_shipping_address($logined_id){
         $sql = "SELECT 
                     `user_first_name`,`user_last_name`,`user_postal_code`,`user_address1`,`user_tel`,`user_email` 
                 FROM 
