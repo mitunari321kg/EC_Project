@@ -1,6 +1,6 @@
 <?php
 session_start();
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['logined_id'];
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ $user_id = $_SESSION['user_id'];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
     <script src="script/Pass_judge.js" type="text/javascript"></script>
     <meta charset="utf8-unicode-ci">
-    <title>パスワードの変更</title>
+    <title>パスワードの変更｜谷原らぁめん</title>
 </head>
 
 <body>
