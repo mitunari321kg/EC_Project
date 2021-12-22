@@ -27,7 +27,8 @@ session_start();
             </td>
         </tr>
         <?php 
-        if(isset($_SESSION['cart'])){
+        if(isset($_SESSION['cart']) and !empty($_SESSION['cart'])){
+
         ?>
         <form action="../controller/Cart_Controll.php" method="post">
         <tr>

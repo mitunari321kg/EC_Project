@@ -19,9 +19,15 @@
         <tr>
             <td align="right">
                 <nav class="navbar navbar-expand navbar-light bg-white">
+                    <?php
+                    if(isset($_SESSION['logined_last_name'])){
+                    ?>
                     <p class="text-nowrap">
-                        〇〇さんようこそ
+                        <?php echo $_SESSION['logined_last_name'];?>さんようこそ
                     </p>
+                    <?php 
+                    }    
+                    ?>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto">
                             <?php 
