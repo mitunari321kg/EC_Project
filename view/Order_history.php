@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td align="right">
-                <a href="inquiry.php" class="h6">
+                <a href="contact.php" class="h6">
                     ▶注文に関するお問い合わせはこちら
                 </a>
             </td>

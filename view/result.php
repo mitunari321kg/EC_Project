@@ -11,7 +11,7 @@ $array = array(
     'quantity' => $_POST["quantity"]
 );
 $_SESSION['cart'][] = $array;
-print_r($_SESSION['cart']);
+//print_r($_SESSION['cart']);
 ?>
 
 <head>
@@ -26,7 +26,7 @@ print_r($_SESSION['cart']);
     <!------------------------------------------- header ------------------------------------------->
     <table width="50%" align="center" class=" min-vw-50">
         <tr>
-            <td height="80px" colspan="2">
+            <td height="80px" colspan="3">
                 <p class="h2">
                     カートに入りました
                 </p>
@@ -41,12 +41,15 @@ print_r($_SESSION['cart']);
                 </div>
             </td>
         <td>
+        </td>
+        <td>
             <div class="col">
-                <a class="nav-item nav-link" href="Products.php">
-                        買い物を終える
-                </a>
+            <a class="nav-item nav-link" href="Cart.php">
+                    買い物を終える
+            </a>
             </div>
         </td>
+
         </tr>
     </table>
     <!------------------------------------------- footer ------------------------------------------->

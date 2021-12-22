@@ -81,7 +81,7 @@ $result = $controll->get_Product_Details($_POST['product_id']);
                 <tr>
                     <td>
                         <input type="hidden" name="product_id" value='<?php echo $_POST['product_id']; ?>'>
-                        <input type="hidden" name="product_img" value='<?php echo $result[0]['product_img'] ?>'>
+                        <input type="hidden" name="product_img" value='<?php echo $result[0]['product_img']; ?>'>
                         <input type="hidden" name="product_name" value='<?php echo $result[0]['product_name']; ?>'>
                         <input type="hidden" name="product_unit_price" value='<?php echo $result[0]['product_unit_price']; ?>'>
                         <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit">
