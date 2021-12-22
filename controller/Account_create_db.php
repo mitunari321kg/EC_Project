@@ -39,12 +39,16 @@ class Account_create_db extends Controll
                 'user_postal_code'                   => $_POST['user_postal_code'],
                 'user_prefectures'                   => $_POST['user_prefectures'],
                 'user_address1'                      => $_POST['user_address1'],
+                'user_address2'                      => $_POST['user_address2'],
+                'user_address3'                      => $_POST['user_address3'],
                 'user_tel'                           => $_POST['user_tel'],
                 'user_email'                         => $_POST['user_email'],
                
 
             );
             $styles = array(
+                PDO::PARAM_STR,
+                PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
