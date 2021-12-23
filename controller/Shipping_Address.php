@@ -16,7 +16,7 @@ class Shipping_Address extends Control{
     /**
      * 登録者情報取得
      */
-    public function get_shipping_address($logined_id){
+    public function get_shipping_address($logged_in_id){
         $sql = "SELECT 
                     `user_first_name`,`user_last_name`,`user_first_furigana`,`user_last_furigana`,
                     `user_postal_code`,`user_prefectures`, `user_address1`,`user_address2`, `user_address3` ,
@@ -26,7 +26,7 @@ class Shipping_Address extends Control{
                 WHERE
                     `user_id` = ?";
         $param = array(
-            $logined_id
+            $logged_in_id
         );
         return $this->db->exec_sql_search($sql, $param);
     }

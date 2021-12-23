@@ -30,7 +30,7 @@ session_start();
         if(isset($_SESSION['cart']) and !empty($_SESSION['cart'])){
 
         ?>
-        <form action="../controller/Cart_Controll.php" method="post">
+        <form action="../controller/Cart_Control.php" method="post">
         <tr>
             <td align="center">
                 <div class="card border-dark w-100">
