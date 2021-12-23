@@ -3,7 +3,7 @@
         session_start();
     }
     ini_set('display_errors', 0);
-    if (!isset($_SESSION['logined_id'])){
+    if (!isset($_SESSION['logged_in_emp_id'])){
         $_SESSION['result_msg'] = '<br><font color=RED>はじめにログインしてください。</font></br>';
         header('Location: Admin_Login.php');
     }
@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td align="right">
-                <?php echo('<TEST>id[' . $_SESSION['logined_id'] . '] authority[' . $_SESSION['logined_authority'] .']');?>
+                <?php echo('<TEST>id[' . $_SESSION['logged_in_emp_id'] . '] authority[' . $_SESSION['logged_in_emp_authority'] .']');?>
                 <button type="submit" class="btn btn-dark" onclick="location.href='Admin_Login.php'">
                     <font color="white"><i class="bi bi-person-fill text-nowrap">ログアウト</i></font>
                 </button>
@@ -44,7 +44,7 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a class="nav-item nav-link" href="Admin_Categorys.php">
+                                <a class="nav-item nav-link" href="Admin_Categories.php">
                                     カテゴリ一覧
                                 </a>
                             </div>

@@ -19,6 +19,7 @@
                 </p>
             </td>
         </tr>
+        <form onsubmit="return open_modal()" action="#" method="post">
         <tr>
             <td align="left" valign="top" width="50%">
                 <table width="100%">
@@ -44,9 +45,9 @@
                             <div class="mb-3">
                                 <label for="files" class="form-label">商品画像選択</label>
                                 <label class="form-text">(1から4画像まで登録できます)</label>
-                                <input type="file" class="form-control" id="files" name="files[]" multiple required />
+                                <input type="file" class="form-control" id="files" name="files[]" multiple required accept="image/*" />
                                 <output id="list_01"></output>
-                                <label for="files" class="text-end text-danger"><u>※商品画像は上から順に登録されます</u></label>
+                                <br><label for="files" class="text-end text-danger"><u>※商品画像は上から順に登録されます</u></label>
                             </div>
                         </td>
                     </tr>
@@ -100,11 +101,12 @@
         </tr>
         <tr>
             <td colspan="2" class="w-50">
-                <button class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">
+                <button class="btn btn-primary w-50" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit">
                     <p class="h6">確認</p>
                 </button>
             </td>
         </tr>
+        </form>
     </table>
     <!--modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,18 +183,15 @@
     <!-------->
     <script>
         function handleFileSelect(evt) {
+            const maxFiles = 4;
             var files = evt.target.files; // FileList object
 
             var output_01 = [];
-            var output_02 = [];
             for (var i = 0, f; f = files[i]; i++) {
-                output_01.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                    f.size, ' bytes, 最終更新日: ',
-                    f.lastModifiedDate.toLocaleDateString(), '</li>');
-                output_02.push('<li>', escape(f.name), '</li>');
+                output_01.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ')'
+                  );
             }
             document.getElementById('list_01').innerHTML = '<ul>' + output_01.join('') + '</ul>';
-            document.getElementById('list_02').innerHTML = '<ul>' + output_02.join('') + '</ul>';
         }
 
         document.getElementById('files').addEventListener('change', handleFileSelect, false);

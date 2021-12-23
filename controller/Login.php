@@ -5,11 +5,11 @@
  *  @author     谷原 直樹
  *  @date       2021/12/13~
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  *ユーザーログイン
  */
-class Login extends Controll{
+class Login extends Control{
     public function __construct(){
         parent::__construct();
     }

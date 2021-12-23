@@ -5,10 +5,10 @@
  *  @author     谷原　直樹
  *  @date       2021/12/13
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 
 session_start();
-class Account_create_db extends Controll
+class Account_create_db extends Control
 {
     public function __construct()
     {

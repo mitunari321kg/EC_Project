@@ -1,26 +1,31 @@
 <?php
-/**
- * @file   Control.php
- * @brief  コントローラ親クラス
- * @author 佐藤大介
- * @date   2021/12/17
+
+/* 
+ *  @file       Control.php
+ *  @brief      コントロール系親クラス
+ *  @author     omori
+ *  @date       2021/12/03
  */
-include '../model/Model.php';
+    //モデルのデータベース接続ファイルを呼び出す
+    include '../model/connect.php';
 
-abstract class Control
-{
+    /**
+     * データベース接続
+     */
+    try{
+        /**
+         * 画面とデータベースの操作
+         */
+        class Control{
+            // ------------------------------------DB処理------------------------------------
+            protected $db;
+            function __construct(){
+                $this->db = new Model();
+            }
+        }
+    } catch(PDOException $e){
+        print('データベースエラー：'.$e->getMessage());
 
-    /* モデルオブジェクト */
-    protected $model;
-
-    /* ユーザーID */
-    protected $user_id;
-
-    function __construct($const_id)
-    {
-        //モデルオブジェクト生成
-        $this->model = new Model();
-        //ユーザーID取得(本来はセッションで取得する)
-        $this->user_id = "'" . $const_id . "'";
+	    die();
     }
-}
+?>

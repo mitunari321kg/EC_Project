@@ -7,11 +7,11 @@
  *  @update     大森 2021/12/16
  */
 ini_set('mbstring.internal_encoding', 'UTF-8');
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  * 商品詳細表示
  */
-class Product_Details extends Controll{
+class Product_Details extends Control{
     public function __construct(){
         parent::__construct();
     }

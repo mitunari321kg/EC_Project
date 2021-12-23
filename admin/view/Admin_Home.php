@@ -11,7 +11,7 @@
     <!------------------------------------------- header ------------------------------------------->
     <table width="100%" class="table">
         <?php
-        if($_SESSION['logined_authority'] >= 1) {
+        if($_SESSION['logged_in_emp_authority'] >= 1) {
         ?>
         <tr>
             <td colspan="2">
@@ -25,18 +25,18 @@
                 </a>
             </td>
             <td class="border-white w-50">
-                <a href="Admin_Categorys.php">
+                <a href="Admin_Categories.php">
                     <button class="btn btn-primary w-75" type="button"><p class="h6">カテゴリ一覧</p></button>
                 </a>
             </td>
         </tr>
         <?php
         }
-        if($_SESSION['logined_authority'] >= 2){
+        if($_SESSION['logged_in_emp_authority'] >= 2){
         ?>
         <tr class="border-white">
             <td>
-                <a href="Admin_Product_Registoration.php">
+                <a href="Admin_Product_Registration.php">
                     <button class="btn btn-primary w-75" type="button"><p class="h6">商品登録</p></button>
                 </a>
             </td>
@@ -48,7 +48,7 @@
         </tr>
         <tr class="border-white"> 
             <td>
-                <a href="Admin_Category_Registoration.php">
+                <a href="Admin_Category_Registration.php">
                     <button class="btn btn-primary w-75" type="button"><p class="h6">カテゴリ登録・更新・削除</p></button>
                 </a>
             </td>
@@ -60,7 +60,7 @@
         </tr>
         <tr class="border-white">
             <td>
-                <a href="Admin_Employee_Registoration.php">
+                <a href="Admin_Employee_Registration.php">
                     <button class="btn btn-primary w-75" type="button"><p class="h6">従業員登録</p></button>
                 </a>
             </td>
