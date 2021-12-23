@@ -1,5 +1,5 @@
 /* 
- *  @file       emp_registoration_modal.js
+ *  @file       emp_registration_modal.js
  *  @brief      従業員登録：モーダル操作
  *  @author     大森　光成
  *  @date       2021/12/07
@@ -126,7 +126,7 @@ function open_modal() {
             document.getElementById('modal_' + key).textContent = values[key];
         }
     }
-    var myModal = new bootstrap.Modal(document.getElementById('Registoration_Modal'), {
+    var myModal = new bootstrap.Modal(document.getElementById('Registration_Modal'), {
         keyboard: false
     });
     myModal.show();

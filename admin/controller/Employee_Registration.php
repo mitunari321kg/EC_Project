@@ -1,17 +1,17 @@
 <?php
 /* 
- *  @file       Employees_Registoration.php
+ *  @file       Employees_Registration.php
  *  @brief      従業員登録：操作
  *  @author     大森　光成
  *  @date       2021/12/07
  */
-include '../controller/controll.php';
-//$emp_registoration->insert_employee();
+include '../controller/Control.php';
+//$emp_registration->insert_employee();
 /**
  * 従業員一覧表示
  */
 session_start();
-class Employee_Registoration extends Controll{
+class Employee_Registration extends Control{
     public function __construct(){
         parent::__construct();
     }
@@ -48,18 +48,18 @@ class Employee_Registoration extends Controll{
             if($this->db->exec_sql_insert('employee_table', $params, $styles)){
                 //登録完了
                 $_SESSION['result_msg'] = "<br><font color=GREEN>登録が完了しました。</font></br>";
-                header('Location: ../view/Admin_Employee_Registoration.php');
+                header('Location: ../view/Admin_Employee_Registration.php');
             } else {
                 $_SESSION['result_msg'] = "<br><font color=RED>※エラーが発生しました。</font></br>";
-                header('Location: ../view/Admin_Employee_Registoration.php');
+                header('Location: ../view/Admin_Employee_Registration.php');
             }
         } else {
             //既に登録されている
             $_SESSION['result_msg'] = "<br><font color=RED>※既に同じユーザIDで登録されています。</font></br>";
-            header('Location: ../view/Admin_Employee_Registoration.php');
+            header('Location: ../view/Admin_Employee_Registration.php');
         }
     }
 }
-$emp_registoration = new Employee_Registoration();
-$emp_registoration->insert_employee();
+$emp_registration = new Employee_Registration();
+$emp_registration->insert_employee();
 ?>

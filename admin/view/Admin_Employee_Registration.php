@@ -115,8 +115,8 @@ session_start();
         </form>
     </table>
     <!--update_modal-->
-    <form action="../controller/Employee_Registoration.php" method="post">
-        <div class="modal fade" id="Registoration_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="../controller/Employee_Registration.php" method="post">
+        <div class="modal fade" id="Registration_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -197,7 +197,7 @@ session_start();
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancell">入力画面に戻る</button>
                                 </td>
                                 <td align="right">
-                                    <button type="submit" class="btn btn-primary" id="registoration">登録</button>
+                                    <button type="submit" class="btn btn-primary" id="registration">登録</button>
                                 </td>
                             </tr>
                         </table>
@@ -209,7 +209,7 @@ session_start();
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/Admin_Footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
-    <script src="script/emp_registoration_modal.js"></script>
+    <script src="script/emp_registration_modal.js"></script>
 </body>
 
 </html>

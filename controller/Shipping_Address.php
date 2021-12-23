@@ -5,11 +5,11 @@
  *  @author     umehara
  *  @date       2021/12/03
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  * 登録者情報取得
  */
-class Shipping_Address extends Controll{
+class Shipping_Address extends Control{
     public function __construct(){
         parent::__construct();
     }

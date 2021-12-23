@@ -1,16 +1,14 @@
 <?php
     include '../controller/Employees.php';
-    $controll = new Employees();
-    $result = $controll->get_employees();
+    $control = new Employees();
+    $result = $control->get_employees();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php include 'frame/Admin_Basic_Style_Info.php'; ?>
     <title>従業員一覧/更新・削除</title>
 </head>
-
 <body>
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/Admin_Header.php'; ?>
