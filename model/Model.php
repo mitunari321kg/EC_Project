@@ -38,6 +38,7 @@ class Model
     {
         try {
             $sql = "SELECT * FROM `user_table` WHERE `user_id` = " . $user_id;
+            
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();

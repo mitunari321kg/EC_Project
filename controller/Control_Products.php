@@ -25,7 +25,7 @@ class Control_Products
     }
 
     /**
-     * 商品一覧を投げる
+     * 商品一覧を取得
      */
     public function get_products()
     {
