@@ -8,7 +8,6 @@ session_start();
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Item confirmation.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
     <title>カート画面</title>
 </head>
@@ -30,7 +29,7 @@ session_start();
         if(isset($_SESSION['cart']) and !empty($_SESSION['cart'])){
 
         ?>
-        <form action="../controller/Cart_Controll.php" method="post">
+        <form action="../controller/Cart_Control.php" method="post">
         <tr>
             <td align="center">
                 <div class="card border-dark w-100">

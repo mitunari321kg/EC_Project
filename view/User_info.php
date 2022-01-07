@@ -7,7 +7,7 @@
  * @date   2021/11/13
  */
 session_start();
-$user_id = $_SESSION['logined_id'];
+$user_id = $_SESSION['logged_in_id'];
 ?>
 
 <!DOCTYPE html>

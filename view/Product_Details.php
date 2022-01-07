@@ -10,9 +10,9 @@
 
 <?php
 include '../controller/Product_Details.php';
-$controll = new Product_Details();
-$result = $controll->get_Product_Details($_POST['product_id']);
-$products_data = $controll->get_popular_products($_POST['product_id']);
+$control = new Product_Details();
+$result = $control->get_Product_Details($_POST['product_id']);
+$products_data = $control->get_popular_products($_POST['product_id']);
 ?>
 <!DOCTYPE html>
 

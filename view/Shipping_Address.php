@@ -3,9 +3,9 @@
 <?php
 include '../controller/Shipping_Address.php';
 session_start();
-if(isset($_SESSION['logined_id']) && !isset($_SESSION['shipping_info'])){
-    $controll = new Shipping_Address();
-    $result = $controll->get_shipping_address($_SESSION['logined_id']);
+if(isset($_SESSION['logged_in_id']) && !isset($_SESSION['shipping_info'])){
+    $control = new Shipping_Address();
+    $result = $control->get_shipping_address($_SESSION['logged_in_id']);
     $_SESSION['shipping_info'] = $result[0];
 } else if (!isset($_SESSION['shipping_info'])){
     $empty_msg = "お届け先の情報がございません<br>『お届け先情報入力・変更』ボタンからお届け先情報の入力をお願いします。";
