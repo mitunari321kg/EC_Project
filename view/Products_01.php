@@ -24,21 +24,15 @@
         $json_products_data = json_encode($products_data); //JavaScriptに渡すためにjson_encodeを行う
     ?>
         <script type="text/javascript">
-            var keyword = "<?php echo $_GET["keyword"]; ?>";
-            var products_data = JSON.parse('<?php echo $json_products_data; ?>');
+            var keyword = '<?php echo $_GET["keyword"]; ?>';
+            let products_data = JSON.parse('<?php echo $json_products_data; ?>');
         </script>
         <script src="script/Products_01.js" type="text/javascript"></script>
     <?php
-        $results = filter_input(INPUT_GET, 'データ');
-        $products_data = $results;
-        foreach ($products_data as $value) {
-            print($value['product_name']);
-        }
+        $data = filter_input(INPUT_POST, 'Ary');
+        $products_data = json_decode($data, true);
     } else {
         $products_data = $products->get_products();
-        foreach ($products_data as $value) {
-            print($value['product_name']);
-        }
     }
     ?>
     <link href="css/products_01.css" rel="stylesheet" />
@@ -50,7 +44,6 @@
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
-
     <table width="100%">
         <tr>
             <td>
@@ -135,6 +128,9 @@
             </li>
         </ul>
     </nav>
+    <?php if (isset($_GET["search"]) && $_GET["keyword"] != "") { ?>
+        <a class="page-link" href="Products_01.php">一覧へ戻る</a>
+    <?php } ?>
     <p><?php echo count($products_data) ?>商品中 １～９商品</p>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
