@@ -1,0 +1,47 @@
+h1 {
+    margin-top: 5px;
+}
+
+.surch {
+    margin-bottom: 5px;
+}
+
+#menu {
+    margin-top: 5px;
+    margin-left: 390px;
+    list-style: none;
+    overflow: hidden;
+}
+
+#menu li {
+    width: 140px;
+    text-align: center;
+    background-color: whitesmoke;
+    float: left;
+}
+
+#menu li a {
+    text-decoration: none;
+}
+
+#menu li+ li {
+    border-left: 1px solid;
+}
+
+#nav {
+    margin-top: 50px;
+    margin-left: 260px;
+    list-style: none;
+    overflow: hidden;
+}
+
+#nav li {
+    width: 140px;
+    text-align: center;
+    float: left;
+}
+
+#nav li a {
+    text-decoration: none;
+    background-color: whitesmoke;
+}

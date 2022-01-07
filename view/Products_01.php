@@ -17,17 +17,31 @@
     include '../controller/Control_Products.php';
     $products = new Control_Products();
     $products_data = $products->get_products();
-    if (isset($_GET["search"])) {
-        $input_word = $_GET["keyword"];
-        $js_products_data = json_encode($products_data); //JavaScriptに渡すためにjson_encodeを行う
+    ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <?php
+    if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+        $json_products_data = json_encode($products_data); //JavaScriptに渡すためにjson_encodeを行う
     ?>
         <script type="text/javascript">
-            var keyword = <?php $_GET["keyword"]; ?>
-            var products_data = JSON.parse('<?php $js_products_data; ?>');
+            var keyword = "<?php echo $_GET["keyword"]; ?>";
+            var products_data = JSON.parse('<?php echo $json_products_data; ?>');
         </script>
-    <?php } ?>
-    <script src="script/Products_01.js" type="text/javascript"></script>
-    <link href="css/products.css" rel="stylesheet" />
+        <script src="script/Products_01.js" type="text/javascript"></script>
+    <?php
+        $results = filter_input(INPUT_GET, 'データ');
+        $products_data = $results;
+        foreach ($products_data as $value) {
+            print($value['product_name']);
+        }
+    } else {
+        $products_data = $products->get_products();
+        foreach ($products_data as $value) {
+            print($value['product_name']);
+        }
+    }
+    ?>
+    <link href="css/products_01.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>商品一覧｜谷原らぁめん</title>
 </head>
@@ -40,7 +54,7 @@
     <table width="100%">
         <tr>
             <td>
-                <h3>商品一覧</h3>
+                <h1>商品一覧</h1>
             </td>
         </tr>
         <tr>
@@ -80,93 +94,48 @@
             </div>
         </td>
     </tr>
-    <?php if (isset($_GET["search"])) { ?>
-        <tr>
-            <td>
-                <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                    <?php foreach ($products_data as $value) { ?>
-                        <div class="col-sm-3">
-                            <div class="card text-dark bg-light h-100">
-                                <form action="Product_Details.php" name="product_form" method="post">
-                                    <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
-                                    <table class="table-light">
-                                        <tr>
-                                            <td>
-                                                <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
-                                                <div class="card-body">
-                                                    <a class="card-text" id="product_name"><?php echo $value['product_name']; ?></a>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
+    <tr>
+        <td>
+            <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
+                <?php foreach ($products_data as $value) { ?>
+                    <div class="col-sm-3">
+                        <div class="card text-dark bg-light h-100">
+                            <form action="Product_Details.php" name="product_form" method="post">
+                                <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
+                                <table class="table-light">
+                                    <tr>
+                                        <td>
+                                            <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                            <div class="card-body">
+                                                <a class="card-text" id="product_name"><?php echo $value['product_name']; ?></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
-                    <?php } ?>
-                </div>
-            </td>
-        </tr>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">次へ</a>
-                </li>
-            </ul>
-        </nav>
-        <p>９商品中 １～９商品</p>
-    <?php } else { ?>
-        <tr>
-            <td>
-                <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                    <?php foreach ($products_data as $value) { ?>
-                        <div class="col-sm-3">
-                            <div class="card text-dark bg-light h-100">
-                                <form action="Product_Details.php" name="product_form" method="post">
-                                    <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
-                                    <table class="table-light">
-                                        <tr>
-                                            <td>
-                                                <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
-                                                <div class="card-body">
-                                                    <a class="card-text" id="product_name"><?php echo $value['product_name']; ?></a>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
-            </td>
-        </tr>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">次へ</a>
-                </li>
-            </ul>
-        </nav>
-        <p>９商品中 １～９商品</p>
-    <?php } ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </td>
+    </tr>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">次へ</a>
+            </li>
+        </ul>
+    </nav>
+    <p><?php echo count($products_data) ?>商品中 １～９商品</p>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>
