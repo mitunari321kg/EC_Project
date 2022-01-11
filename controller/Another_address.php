@@ -5,13 +5,13 @@
  *  @author     谷原　直樹
  *  @date       2021/12/13
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 //$emp_registoration->insert_employee();
 /**
  * 従業員一覧表示
  */
 session_start();
-class Another_address extends Controll
+class Another_address extends Control
 {
     public function __construct()
     {

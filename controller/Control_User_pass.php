@@ -6,7 +6,7 @@
  * @author 佐藤大介
  * @date   2021/12/10
  */
-include '../controller/Control.php';
+include '../controller/Control_User.php';
 
 class Control_User_pass extends Control
 {

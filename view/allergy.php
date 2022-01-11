@@ -63,7 +63,7 @@
                     </br> 
                     <br>
                         下記27品目以外のアレルギー物質含有の有無については、お手数ではございますが【
-                        <a href="inquiry.php">
+                        <a href="contact.php">
                             お問い合わせフォーム
                         </a>
                         】よりお問い合わせください。 
@@ -73,7 +73,7 @@
         </tr>
         <tr>
             <td align="right">
-                <a href="inquiry.php" class="h6">
+                <a href="contact.php" class="h6">
                     ▶アレルギーに関するお問い合わせはこちら
                 </a>
             </td>

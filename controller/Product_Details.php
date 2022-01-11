@@ -7,11 +7,11 @@
  *  @update     大森 2021/12/16
  */
 ini_set('mbstring.internal_encoding', 'UTF-8');
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  * 商品詳細表示
  */
-class Product_Details extends Controll{
+class Product_Details extends Control{
     public function __construct(){
         parent::__construct();
     }
@@ -29,6 +29,23 @@ class Product_Details extends Controll{
                     p.product_id = i.product_id
                 WHERE 
                     p.product_id = ?;";
+        $params = array($product_id);
+        return $this->db->exec_sql_search($sql, $params);
+    }
+
+    public function get_popular_products($product_id){
+        $sql =  "SELECT 
+                    i.product_img, p.product_id, p.product_name, p.product_unit_price
+                FROM 
+                    product_table AS p 
+                RIGHT OUTER JOIN 
+                    product_img_table AS i
+                ON 
+                    p.product_id = i.product_id
+                WHERE 
+                    p.product_id <> ?
+                LIMIT
+                    3;";
         $params = array($product_id);
         return $this->db->exec_sql_search($sql, $params);
     }

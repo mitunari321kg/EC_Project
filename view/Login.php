@@ -2,8 +2,8 @@
 session_start();
 ini_set('display_errors', 0);
 $result_msg = $_SESSION['result_msg'];
-if (isset($_SESSION['logined_id'])) {
-    unset($_SESSION['logined_id']);
+if (isset($_SESSION['logged_in_id'])) {
+    unset($_SESSION['logged_in_id']);
 }
 ?>
 <!DOCTYPE html>

@@ -5,11 +5,11 @@
  *  @author     大森　光成
  *  @date       2021/12/03
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  * 従業員一覧表示
  */
-class Employees extends Controll{
+class Employees extends Control{
     public function __construct(){
         parent::__construct();
     }

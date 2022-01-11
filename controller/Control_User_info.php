@@ -6,7 +6,7 @@
  * @author 佐藤大介
  * @date 2021/12/06
  */
-include '../controller/Control.php';
+include '../controller/Control_User.php';
 
 class Control_User_info extends Control
 {
@@ -27,35 +27,9 @@ class Control_User_info extends Control
     /**
      * シン・登録者情報を更新
      */
-    public function update_user_info(
-        $surname,
-        $name,
-        $surname_furigana,
-        $name_furigana,
-        $user_gender,
-        $postal_code,
-        $user_prefectures,
-        $address1,
-        $address2,
-        $address3,
-        $tel,
-        $user_mail
-    ) {
-        $this->model->update_info(
-            $surname,
-            $name,
-            $surname_furigana,
-            $name_furigana,
-            $user_gender,
-            $postal_code,
-            $user_prefectures,
-            $address1,
-            $address2,
-            $address3,
-            $tel,
-            $user_mail,
-            $this->user_id
-        );
+    public function update_user_info($new_info)
+    {
+        $this->model->update_info($new_info, $this->user_id);
     }
 
     /**

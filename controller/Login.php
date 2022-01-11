@@ -5,11 +5,11 @@
  *  @author     谷原 直樹
  *  @date       2021/12/13~
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  *ユーザーログイン
  */
-class Login extends Controll{
+class Login extends Control{
     public function __construct(){
         parent::__construct();
     }
@@ -27,8 +27,12 @@ class Login extends Controll{
             $user_password = $_POST['login_password'];
             if(password_verify($user_password, $result[0]['login_password'])){
                 //パスワードが一致
-                $_SESSION['logined_id'] = $user_id;
-                $_SESSION['logined_last_name'] = $result[0]['user_last_name'];
+                $_SESSION['logged_in_id'] = $user_id;
+                $_SESSION['logged_in_last_name'] = $result[0]['user_last_name'];
+                //お届け先情報の削除
+                if(isset($_SESSION['shipping_info'])){
+                    unset($_SESSION['shipping_info']);
+                }
                 header('Location: ../view/Mypage.php');
             } else {
                 //パスワードが間違っている

@@ -5,11 +5,11 @@
  *  @author     大森　光成
  *  @date       2021/12/08
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  * 従業員ログイン
  */
-class Login extends Controll{
+class Login extends Control{
     public function __construct(){
         parent::__construct();
     }
@@ -27,8 +27,8 @@ class Login extends Controll{
             $emp_password = $_POST['emp_password'];
             if(password_verify($emp_password, $result[0]['emp_password'])){
                 //パスワードが一致
-                $_SESSION['logined_id'] = $emp_id;
-                $_SESSION['logined_authority'] = $result[0]['emp_authority'];
+                $_SESSION['logged_in_emp_id'] = $emp_id;
+                $_SESSION['logged_in_emp_authority'] = $result[0]['emp_authority'];
                 header('Location: ../view/Admin_Home.php');
             } else {
                 //パスワードが間違っている

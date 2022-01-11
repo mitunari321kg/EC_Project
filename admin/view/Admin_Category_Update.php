@@ -26,7 +26,7 @@
                     <table width="50%">
                         <tr>
                             <td height="70px" align="left" valign="top">
-                                <a href="Admin_Category_Registoration.php">
+                                <a href="Admin_Category_Registration.php">
                                     <button type="button" class="btn btn-secondary w-25">一覧へ戻る</button>
                                 </a>
                             </td>

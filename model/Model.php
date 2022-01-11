@@ -31,12 +31,14 @@ class Model
 
     /**
      * ユーザー情報検索
-     * @param String $user_id ユーザーID
+     * @param string $user_id ユーザーID
+     * @return array ユーザー情報
      */
     public function search_user($user_id)
     {
         try {
             $sql = "SELECT * FROM `user_table` WHERE `user_id` = " . $user_id;
+            
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -48,49 +50,25 @@ class Model
 
     /**
      * ユーザー情報更新
-     * @param String $surname           姓
-     * @param String $name              名
-     * @param String $surname_furigana  姓フリガナ
-     * @param String $name_furigana     名フリガナ
-     * @param String $user_gender       性別
-     * @param String $postal_code       郵便番号
-     * @param String $user_prefectures  都道府県
-     * @param String $address1          市区町村
-     * @param String $address2          番地以下
-     * @param String $address3          建物名・部屋番号
-     * @param String $tel               電話番号
-     * @param String $user_mail         メールアドレス
-     * @param String $user_id           ユーザーID
+     * @param array $new_info 更新された登録者情報
+     * @param string $user_id ユーザーID
      */
-    public function update_info(
-        $surname,
-        $name,
-        $surname_furigana,
-        $name_furigana,
-        $user_gender,
-        $postal_code,
-        $user_prefectures,
-        $address1,
-        $address2,
-        $address3,
-        $tel,
-        $user_mail,
-        $user_id
-    ) {
+    public function update_info($new_info, $user_id)
+    {
         try {
             $sql = "UPDATE `user_table` SET "
-                . "`user_last_name`=" . "'" . $surname . "'"
-                . ",`user_first_name`=" . "'" . $name . "'"
-                . ",`user_last_furigana`=" . "'" . $surname_furigana . "'"
-                . ",`user_first_furigana`=" . "'" . $name_furigana . "'"
-                . ",`user_gender`=" . $user_gender
-                . ",`user_postal_code`=" . "'" . $postal_code . "'"
-                . ",`user_prefectures`=" . "'" . $user_prefectures . "'"
-                . ",`user_address1`=" . "'" . $address1 . "'"
-                . ",`user_address2`=" . "'" . $address2 . "'"
-                . ",`user_address3`=" . "'" . $address3 . "'"
-                . ",`user_tel`=" . "'" . $tel . "'"
-                . ",`user_email`=" . "'" . $user_mail . "'"
+                . "`user_last_name`=" . "'" . $new_info['surname'] . "'"
+                . ",`user_first_name`=" . "'" . $new_info['name'] . "'"
+                . ",`user_last_furigana`=" . "'" . $new_info['surname_furigana'] . "'"
+                . ",`user_first_furigana`=" . "'" . $new_info['name_furigana'] . "'"
+                . ",`user_gender`=" . $new_info['user_gender']
+                . ",`user_postal_code`=" . "'" . $new_info['postal_code'] . "'"
+                . ",`user_prefectures`=" . "'" . $new_info['prefectures'] . "'"
+                . ",`user_address1`=" . "'" . $new_info['address1'] . "'"
+                . ",`user_address2`=" . "'" . $new_info['address2'] . "'"
+                . ",`user_address3`=" . "'" . $new_info['address3'] . "'"
+                . ",`user_tel`=" . "'" . $new_info['tel'] . "'"
+                . ",`user_email`=" . "'" . $new_info['email'] . "'"
                 . " WHERE `user_id`=" . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
@@ -102,8 +80,8 @@ class Model
 
     /**
      * パスワード更新
-     * @param String $new_password  新しいパスワード
-     * @param String $user_id       ユーザーID
+     * @param string $new_password  新しいパスワード
+     * @param string $user_id       ユーザーID
      */
     public function update_pass($new_password, $user_id)
     {

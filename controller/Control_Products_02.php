@@ -25,12 +25,12 @@ class Control_Products
     }
 
     /**
-     * 商品一覧を取得
+     * 商品一覧を投げる
      */
     public function get_products()
     {
         try {
-            $sql = "SELECT product_table.product_id, product_table.product_name, product_table.product_unit_price, product_img_table.product_img
+            $sql = "SELECT product_table.product_id, product_table.product_name, product_table.product_unit_price, product_img_table.product_img, product_table.evaluation, product_table.product_registration_date	
                     FROM product_table
                     RIGHT OUTER JOIN product_img_table
                     ON product_table.product_id = product_img_table.product_id";

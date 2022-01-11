@@ -29,34 +29,38 @@ session_start();
                 </p>
             </td>
         </tr>
-        <form action="../controller/Cart_Controll.php" method="post">
-            <tr>
-                <td align="center">
-                    <div class="card border-dark w-100">
-                        <div class="card-body overflow-auto text-muted" id="Cart-overflow">
-                            <table class="table h-50" style="max-height:300px">
-                                <tr>
-                                    <td>
-                                        <table class="table">
-                                            <?php
-                                            $item_count = 0;
-                                            $goukei = 0;
-                                            foreach ($_SESSION['cart'] as $item) {
-                                                $goukei += $item['product_unit_price'] * $item['quantity'];
-                                            ?>
-                                                <!------------------------------------------- Sample Data ------------------------------------------->
-                                                <tr>
-                                                    <td rowspan="5" align="left" valign="middle">
-                                                        <input class="form-check-input" type="checkbox" name="delete_flag[]" value="<?php print_r($item_count++); ?>" id="flexCheckDefault">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="4" align="center" class="w-25">
-                                                        <figure class="figure">
-                                                            <img src="<?php print_r($item['product_img']); ?>" class="figure-img img-fluid rounded" id="Cart-img">
-                                                        </figure>
-                                                    </td>
-                                                </tr>
+        <?php 
+        if(isset($_SESSION['cart']) and !empty($_SESSION['cart'])){
+
+        ?>
+        <form action="../controller/Cart_Control.php" method="post">
+        <tr>
+            <td align="center">
+                <div class="card border-dark w-100">
+                    <div class="card-body overflow-auto text-muted" id="Cart-overflow">
+                        <table class="table h-50" style="max-height:300px">
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <?php 
+                                        $item_count = 0;
+                                        foreach($_SESSION['cart'] as $item){
+                                            $goukei += $item['product_unit_price'] * $item['quantity'];
+                                        ?>
+                                        <!------------------------------------------- Sample Data ------------------------------------------->
+                                        <tr>
+                                            <td rowspan="5" align="left" valign="middle">
+                                                <input class="form-check-input" type="checkbox" name="delete_flag[]" value="<?php print_r($item_count++);?>" id="flexCheckDefault">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="4" align="center" class="w-25">
+                                                <figure class="figure">
+                                                    <img src="<?php print_r($item['product_img']);?>" class="figure-img img-fluid rounded" id="Cart-img">
+                                                </figure>
+                                            </td>
+                                        </tr>
+
 
                                                 <tr>
                                                     <td align="right" class="w-25">
@@ -120,6 +124,17 @@ session_start();
         </td>
     </tr>
     </form>
+    <?php 
+    } else {
+    ?>
+    <tr>
+        <td>
+            カートに何も入っていません、買い物を続ける場合は<a href="Products.php">こちらから</a>
+        </td>
+    </tr>
+    <?php 
+    }
+    ?>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>
