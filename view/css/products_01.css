@@ -6,6 +6,11 @@ h1 {
     margin-bottom: 5px;
 }
 
+.none {
+    padding-top: 65px;
+    padding-bottom: 60px;
+}
+
 #menu {
     margin-top: 5px;
     margin-left: 390px;

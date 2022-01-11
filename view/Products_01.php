@@ -17,24 +17,22 @@
     include '../controller/Control_Products.php';
     $products = new Control_Products();
     $products_data = $products->get_products();
-    ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <?php
+    $keyword = "";
+    $json_products_data = json_encode($products_data); //JavaScriptに渡すためにjson_encodeを行う
     if (isset($_GET["search"]) && $_GET["keyword"] != "") {
-        $json_products_data = json_encode($products_data); //JavaScriptに渡すためにjson_encodeを行う
+        $keyword = $_GET["keyword"];
     ?>
         <script type="text/javascript">
-            var keyword = '<?php echo $_GET["keyword"]; ?>';
-            let products_data = JSON.parse('<?php echo $json_products_data; ?>');
+            let products_data = '<?php echo $json_products_data; ?>';
+            var keyword = '<?php echo $keyword; ?>';
         </script>
-        <script src="script/Products_01.js" type="text/javascript"></script>
     <?php
-        $data = filter_input(INPUT_POST, 'Ary');
-        $products_data = json_decode($data, true);
     } else {
         $products_data = $products->get_products();
     }
     ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script/Products_01.js" type="text/javascript"></script>
     <link href="css/products_01.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>商品一覧｜谷原らぁめん</title>
@@ -57,8 +55,15 @@
                         <td align="left">
                             <form action="Products_01.php" method="GET">
                                 <input type="search" name="keyword" placeholder="検索">
-                                <button type="submit" name="search">検索</button>
+                                <button type="submit" name="search" onclick="search()">検索</button>
                             </form>
+                            <?php if ($_GET["keyword"] != "") { ?>
+                                <p>"<?php echo $_GET["keyword"] ?>" の検索結果
+                                    <?php if ($products_data == null) {
+                                        echo 0 ?>商品
+                                <?php } ?>
+                                </p>
+                            <?php } ?>
                         </td>
                         <td align="right">
                             <select name="sort">
@@ -89,7 +94,10 @@
     </tr>
     <tr>
         <td>
-            <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
+            <div class="row row-cols row-cols-md-3 g-4 justify-content-center" id="products" value='<?php print $products_data; ?>'>
+                <?php if ($products_data == NULL) { ?>
+                    <p class="none">お探しの商品が見つかりませんでした。</p>
+                <?php } ?>
                 <?php foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div class="card text-dark bg-light h-100">
@@ -115,20 +123,22 @@
             </div>
         </td>
     </tr>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">次へ</a>
-            </li>
-        </ul>
-    </nav>
-    <?php if (isset($_GET["search"]) && $_GET["keyword"] != "") { ?>
+    <?php if ($products_data != NULL) { ?>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">次へ</a>
+                </li>
+            </ul>
+        </nav>
+    <?php } ?>
+    <?php if ($_GET["keyword"] != "") { ?>
         <a class="page-link" href="Products_01.php">一覧へ戻る</a>
     <?php } ?>
     <p><?php echo count($products_data) ?>商品中 １～９商品</p>
