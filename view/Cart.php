@@ -6,9 +6,11 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <?php
+if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
 $price = json_encode(array_column($_SESSION['cart'], 'product_unit_price'));
 $qua =  json_encode(array_column($_SESSION['cart'], 'quantity'));
 $cartdata = json_encode($_SESSION['cart']);
+}
 
 
 ?>
@@ -32,9 +34,6 @@ $cartdata = json_encode($_SESSION['cart']);
                 </p>
             </td>
         </tr>
-        <?php
-        if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
-        ?>
             <form action="../controller/Cart_Control.php" method="post" name="cart_item">
                 <tr>
                     <td align="center">
