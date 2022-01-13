@@ -19,15 +19,21 @@
         <tr>
             <td align="right">
                 <nav class="navbar navbar-expand navbar-light bg-white">
+                    <?php
+                    if(isset($_SESSION['logged_in_last_name'])){
+                    ?>
                     <p class="text-nowrap">
-                        〇〇さんようこそ
+                        <?php echo $_SESSION['logged_in_last_name'];?>さんようこそ
                     </p>
+                    <?php 
+                    }    
+                    ?>
                     <div class="navbar-collapse d-flex justify-content-end" id="navbar1">
                         <ul class="navbar-nav ml-auto">
                             <?php 
-                            if (isset($_SESSION['logined_id'])){
+                            if (isset($_SESSION['logged_in_id'])){
                             ?>
-                            <button type="submit" class="btn btn-danger" onclick="location.href='Login.php'">
+                            <button type="submit" class="btn btn-danger" onclick="location.href='../controller/Logout.php'">
                                 <font color="white"><i class="bi bi-person-fill text-nowrap">ログアウト</i></font>
                             </button>
                             <button type="submit" class="btn btn-success" onclick="location.href='Mypage.php'">

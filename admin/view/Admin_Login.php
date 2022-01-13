@@ -2,9 +2,8 @@
 session_start();
 ini_set('display_errors', 0);
 $result_msg = $_SESSION['result_msg'];
-if(isset($_SESSION['logined_id'])){
-    unset($_SESSION['logined_id']);
-    unset($_SESSION['logined_authority']);
+if(isset($_SESSION['logged_in_emp_id'])){
+   session_unset();
 }
 ?>
 

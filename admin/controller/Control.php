@@ -1,6 +1,6 @@
 <?php
 /* 
- *  @file       controll.php
+ *  @file       Control.php
  *  @brief      コントロール系親クラス
  *  @author     大森　光成
  *  @date       2021/12/03
@@ -15,7 +15,7 @@
         /**
          * 画面とデータベースの操作
          */
-        class Controll{
+        class Control{
             // ------------------------------------DB処理------------------------------------
             protected $db;
             function __construct(){

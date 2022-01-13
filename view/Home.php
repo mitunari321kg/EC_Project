@@ -33,10 +33,10 @@
                             <img src="../img/food_ramen.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/food_ramen.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/food_ra-men_gekikara.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/food_ramen.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/ramen_shio.png" class="d-block w-100" alt="Topics" />
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,6 @@
         </tr>
         <tr>
             <td>
-                <h1 class="display-1">会社概要</h1>
                 <h3>谷原らぁめんは<br>お客様に愛されるラーメン作りを目指しています</h3>
             </td>
         </tr>

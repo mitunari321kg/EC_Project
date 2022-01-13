@@ -1,7 +1,7 @@
 <?php
-include '../controller/Categorys.php';
-$controll = new Categorys();
-$result = $controll->get_categorys();
+include '../controller/Categories.php';
+$control = new Categories();
+$result = $control->get_categories();
 $cnt = 1;
 ?>
 
@@ -99,8 +99,8 @@ $cnt = 1;
     </table>
     <!-- Modal -->
 
-    <div class="modal fade" id="Registoration_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form action="../controller/Category_Registoration.php" method="post">
+    <div class="modal fade" id="Registration_Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="../controller/Category_Registration.php" method="post">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -130,7 +130,7 @@ $cnt = 1;
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/Admin_Footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
-    <script src="script/category_registoration.js"></script>
+    <script src="script/category_registration.js"></script>
 </body>
 
 </html>

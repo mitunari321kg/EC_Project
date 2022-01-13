@@ -15,8 +15,8 @@ input {
 .field-icon {
     color       : #555;
     float       : right;
-    margin-right: 15px;
-    margin-top  : -30px;
+    margin-right: 7px;
+    margin-top  : -37px;
     position    : relative;
     z-index     : 2;
 }

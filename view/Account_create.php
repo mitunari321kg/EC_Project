@@ -10,7 +10,7 @@ if (isset($_SESSION['user_id'])) {
 
 <html lang="en">
 
-<<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8">
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8">
     </script>
 
 
@@ -152,7 +152,7 @@ if (isset($_SESSION['user_id'])) {
                                         市区町村<span class="mandatory"></span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
+                                        <input type="text" name="user_address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -160,7 +160,7 @@ if (isset($_SESSION['user_id'])) {
                                         番地以下<span class="mandatory"></span>　
                                     </td>
                                     <td>
-                                        <input type="text" name="address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['user_address2']; ?>" required>
+                                        <input type="text" name="user_address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['user_address2']; ?>" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,7 +169,7 @@ if (isset($_SESSION['user_id'])) {
                                         部屋番号　
                                     </td>
                                     <td>
-                                        <input type="text" name="address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['user_address3']; ?>">
+                                        <input type="text" name="user_address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['user_address3']; ?>">
                                     </td>
                                 </tr>
                                                              <tr>

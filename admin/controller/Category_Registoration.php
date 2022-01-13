@@ -1,16 +1,16 @@
 <?php
 /* 
- *  @file       Category_Registoration.php
+ *  @file       Category_Registration.php
  *  @brief      カテゴリ登録：操作
  *  @author     大森　光成
  *  @date       2021/12/09
  */
-include '../controller/controll.php';
+include '../controller/Control.php';
 /**
  * カテゴリ登録
  */
 session_start();
-class Category_Registoration extends Controll{
+class Category_Registration extends Control{
     public function __construct(){
         parent::__construct();
     }
@@ -27,7 +27,7 @@ class Category_Registoration extends Controll{
             //登録可能
             $params = array(
                 'category_name' =>  $category_name,
-                'emp_id'        =>  $_SESSION['logined_id']
+                'emp_id'        =>  $_SESSION['logged_in_emp_id']
             );
             $styles = array(
                 PDO::PARAM_STR,
@@ -35,18 +35,18 @@ class Category_Registoration extends Controll{
             );
             if($this->db->exec_sql_insert('category_table', $params, $styles)){
                 $_SESSION['result_msg'] = "<br><font color=GREEN>登録が完了しました。</font></br>";
-                header('Location: ../view/Admin_Category_Registoration.php');
+                header('Location: ../view/Admin_Category_Registration.php');
             } else {
                 $_SESSION['result_msg'] = "<br><font color=RED>※エラーが発生しました。</font></br>";
-                header('Location: ../view/Admin_Category_Registoration.php');
+                header('Location: ../view/Admin_Category_Registration.php');
             }
         } else {
             //既に同名のカテゴリが登録されている
             $_SESSION['result_msg'] = "<br><font color=RED>※既に同名のカテゴリが登録されています。</font></br>";
-            header('Location: ../view/Admin_Category_Registoration.php');
+            header('Location: ../view/Admin_Category_Registration.php');
         }
     }
 }
-$emp_registoration = new Category_Registoration();
-$emp_registoration->insert_category();
+$emp_registration = new Category_Registration();
+$emp_registration->insert_category();
 ?>

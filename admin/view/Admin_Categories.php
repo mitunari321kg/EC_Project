@@ -1,7 +1,7 @@
 <?php
-    include '../controller/Categorys.php';
-    $controll = new Categorys();
-    $result = $controll->get_categorys();
+    include '../controller/Categories.php';
+    $control = new Categories();
+    $result = $control->get_Categories();
     $cnt = 1;
 ?>
 <!DOCTYPE html>

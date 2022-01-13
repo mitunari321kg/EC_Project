@@ -7,13 +7,11 @@
  * @date   2021/11/13
  */
 session_start();
-$user_id = $_SESSION['logined_id'];
+$user_id = $_SESSION['logged_in_id'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
@@ -22,6 +20,7 @@ $user_id = $_SESSION['logined_id'];
     $user_data = new Control_User_info($user_id);
     $user_info = $user_data->get_user_info();
     ?>
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
     <link href="css/user_info.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
     <title>登録者情報｜谷原らぁめん</title>
@@ -35,7 +34,7 @@ $user_id = $_SESSION['logined_id'];
         <table width="100%">
             <tr>
                 <th>
-                    <h3>登録者情報の確認と変更</h3>
+                    <h1>登録者情報の確認と変更</h1>
                 </th>
             </tr>
         </table>
@@ -93,7 +92,9 @@ $user_id = $_SESSION['logined_id'];
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>生年月日　</td>
+                                    <td>
+                                        生年月日　
+                                    </td>
                                     <td>
                                         <?php
                                         $user_birthday = date('Y年 n月 d日', strtotime($value['user_birthday']));
