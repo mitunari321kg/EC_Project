@@ -1,5 +1,6 @@
 <?php
-/*
+
+/**
  *@file   Products.php
  *@brief  商品一覧画面
  *@author 佐藤大介
@@ -14,26 +15,33 @@
 <head>
     <?php
     include 'frame/basic_style_info.php';
-    include '../controller/Control_Products.php';
+    include '../controller/Control_Products_01.php';
     $products = new Control_Products();
     $products_data = $products->get_products();
-    $keyword = "";
-    $json_products_data = json_encode($products_data); //JavaScriptに渡すためにjson_encodeを行う
     if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+        $products_data = $products->get_search_products($_GET["keyword"]);
+        /*
+        $json_products_data = json_encode($products_data);
         $keyword = $_GET["keyword"];
+        */
     ?>
+        <!--
         <script type="text/javascript">
-            let products_data = '<?php echo $json_products_data; ?>';
-            var keyword = '<?php echo $keyword; ?>';
+            var products_data = new Object();
+            products_data = <?php //echo $json_products_data; 
+                            ?>;
+            var keyword = "<?php //echo $keyword; 
+                            ?>";
         </script>
+        <script type="text/javascript" src="script/Products_01.js"></script>
+        -->
     <?php
-    } else {
-        $products_data = $products->get_products();
+        /*
+        $data = filter_input(INPUT_GET, 'Products');
+        $products_data = $data;*/
     }
     ?>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="script/Products_01.js" type="text/javascript"></script>
-    <link href="css/products_01.css" rel="stylesheet" />
+    <link href="css/products_01.css" rel="stylesheet">
     <meta charset="utf8_unicode_ci">
     <title>商品一覧｜谷原らぁめん</title>
 </head>
@@ -54,14 +62,19 @@
                     <tr>
                         <td align="left">
                             <form action="Products_01.php" method="GET">
-                                <input type="search" name="keyword" placeholder="検索">
-                                <button type="submit" name="search" onclick="search()">検索</button>
+                                <input type="search" name="keyword" placeholder="検索" required>
+                                <button type="submit" name="search">検索</button>
                             </form>
                             <?php if ($_GET["keyword"] != "") { ?>
-                                <p>"<?php echo $_GET["keyword"] ?>" の検索結果
-                                    <?php if ($products_data == null) {
-                                        echo 0 ?>商品
-                                <?php } ?>
+                                <p>
+                                    "<?php echo $_GET["keyword"]; ?>" の検索結果
+                                    <?php
+                                    if ($products_data == NULL) {
+                                        echo 0;
+                                    } else {
+                                        echo count($products_data);
+                                    }
+                                    ?>件
                                 </p>
                             <?php } ?>
                         </td>
@@ -95,35 +108,36 @@
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center" id="products" value='<?php print $products_data; ?>'>
-                <?php if ($products_data == NULL) { ?>
+                <?php if (count($products_data) == 0 || $products_data == NULL) { ?>
                     <p class="none">お探しの商品が見つかりませんでした。</p>
-                <?php } ?>
-                <?php foreach ($products_data as $value) { ?>
-                    <div class="col-sm-3">
-                        <div class="card text-dark bg-light h-100">
-                            <form action="Product_Details.php" name="product_form" method="post">
-                                <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
-                                <table class="table-light">
-                                    <tr>
-                                        <td>
-                                            <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
-                                            <div class="card-body">
-                                                <a class="card-text" id="product_name"><?php echo $value['product_name']; ?></a>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
+                <?php } else { ?>
+                    <?php foreach ($products_data as $value) { ?>
+                        <div class="col-sm-3">
+                            <div class="card text-dark bg-light h-100">
+                                <form action="Product_Details.php" name="product_form" method="post">
+                                    <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
+                                    <table class="table-light">
+                                        <tr>
+                                            <td>
+                                                <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                                <div class="card-body">
+                                                    <a class="card-text" id="product_name"><?php echo $value['product_name']; ?></a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                <?php } ?>
+                <?php }
+                } ?>
             </div>
         </td>
     </tr>
-    <?php if ($products_data != NULL) { ?>
+    <?php if (count($products_data) != 0) { ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
@@ -138,10 +152,12 @@
             </ul>
         </nav>
     <?php } ?>
-    <?php if ($_GET["keyword"] != "") { ?>
+    <?php if ($_GET["keyword"] != "" || $products_data == NULL) { ?>
         <a class="page-link" href="Products_01.php">一覧へ戻る</a>
     <?php } ?>
-    <p><?php echo count($products_data) ?>商品中 １～９商品</p>
+    <?php if (count($products_data) != 0) { ?>
+        <p><?php echo count($products_data) ?>商品中 １～９商品</p>
+    <?php } ?>
     </table>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>
