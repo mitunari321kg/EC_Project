@@ -30,15 +30,57 @@ class Model
     }
 
     /**
+     * 全商品取得
+     * @return array $stmt 商品一覧
+     */
+    public function get_all_product()
+    {
+        try {
+            $sql = "SELECT product_table.product_id, product_table.product_name, product_table.product_unit_price, product_img_table.product_img
+                    FROM product_table
+                    RIGHT OUTER JOIN product_img_table
+                    ON product_table.product_id = product_img_table.product_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            print('SQLエラー：' . $e->getMessage());
+            die();
+        }
+    }
+
+    /**
+     * 商品検索
+     * @param string $keyword 検索ワード
+     * @return array $stmt 検索ワードにヒットした全ての商品
+     */
+    public function search_products($keyword)
+    {
+        try {
+            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name,
+                    product_table.product_unit_price AS product_unit_price, product_img_table.product_img AS product_img
+                    FROM product_table
+                    RIGHT OUTER JOIN product_img_table
+                    ON product_table.product_id = product_img_table.product_id
+                    WHERE product_name LIKE '%" . $keyword . "%'";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            print('SQLエラー：' . $e->getMessage());
+            die();
+        }
+    }
+
+    /**
      * ユーザー情報検索
      * @param string $user_id ユーザーID
-     * @return array ユーザー情報
+     * @return array $stmt ユーザー情報
      */
     public function search_user($user_id)
     {
         try {
             $sql = "SELECT * FROM `user_table` WHERE `user_id` = " . $user_id;
-            
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
