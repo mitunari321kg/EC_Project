@@ -6,14 +6,12 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$price = json_encode(array_column($_SESSION['cart'], 'product_unit_price'));
-$qua =  json_encode(array_column($_SESSION['cart'], 'quantity'));
-$cartdata = json_encode($_SESSION['cart']);
-
-
+if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
+    $price = json_encode(array_column($_SESSION['cart'], 'product_unit_price'));
+    $qua =  json_encode(array_column($_SESSION['cart'], 'quantity'));
+    $cartdata = json_encode($_SESSION['cart']);
+}
 ?>
-
-
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <meta charset="utf8-unicode-ci">
@@ -35,73 +33,72 @@ $cartdata = json_encode($_SESSION['cart']);
         <?php
         if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
         ?>
-            <form action="../controller/Cart_Control.php" method="post" name="cart_item">
-                <tr>
-                    <td align="center">
-                        <div class="card border-dark w-100">
-                            <div class="card-body overflow-auto text-muted" id="Cart-overflow">
-                                <table class="table h-50" style="max-height:300px">
-                                    <tr>
-                                        <td>
-                                            <table class="table">
-                                                <?php
-                                                $item_count = 0;
-                                                foreach ($_SESSION['cart'] as $item) {
-                                                    $goukei += $item['product_unit_price'] * $item['quantity'];
-                                                ?>
-                                                    <!------------------------------------------- Sample Data ------------------------------------------->
-                                                    <tr>
-                                                        <td rowspan="5" align="left" valign="middle">
-                                                            <input class="form-check-input" type="checkbox" name="delete_flag[]" value="<?php print_r($item_count++); ?>" id="flexCheckDefault">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td rowspan="4" align="center" class="w-25">
-                                                            <figure class="figure">
-                                                                <img src="<?php print_r($item['product_img']); ?>" class="figure-img img-fluid rounded" id="Cart-img">
-                                                            </figure>
-                                                        </td>
-                                                    </tr>
+        <form action="../controller/Cart_Control.php" method="post" name="cart_item">
+            <tr>
+                <td align="center">
+                    <div class="card border-dark w-100">
+                        <div class="card-body overflow-auto text-muted" id="Cart-overflow">
+                            <table class="table h-50" style="max-height:300px">
+                                <tr>
+                                    <td>
+                                        <table class="table">
+                                            <?php
+                                            $item_count = 0;
+                                            foreach ($_SESSION['cart'] as $item) {
+                                                $goukei += $item['product_unit_price'] * $item['quantity'];
+                                            ?>
+                                                <!------------------------------------------- Sample Data ------------------------------------------->
+                                                <tr>
+                                                    <td rowspan="5" align="left" valign="middle">
+                                                        <input class="form-check-input" type="checkbox" name="delete_flag[]" value="<?php print_r($item_count++); ?>" id="flexCheckDefault">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td rowspan="4" align="center" class="w-25">
+                                                        <figure class="figure">
+                                                            <img src="<?php print_r($item['product_img']); ?>" class="figure-img img-fluid rounded" id="Cart-img">
+                                                        </figure>
+                                                    </td>
+                                                </tr>
 
 
-                                                    <tr>
-                                                        <td align="right" class="w-25">
-                                                            商品名：
-                                                        </td>
-                                                        <td align="center" class="w-50">
-                                                            <?php echo $item['product_name']; ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right">
-                                                            値段：
-                                                        </td>
-                                                        <td align="center">
-                                                            ￥<?php echo $item['product_unit_price']; ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right">
-                                                            購入数：
-                                                        </td>
-                                                        <td align="center">
-                                                            <input type="number" name="quantity[]" value="<?php print_r($item['quantity']); ?>" min="1" max="20" style="width:50px" id="quantity" onChange="Click()">
-                                                        </td>
-                                                    </tr>
-                                                    <!------------------------------------------- Sample Data ------------------------------------------->
-                                                <?php
-                                                }
-                                                ?>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                                                <tr>
+                                                    <td align="right" class="w-25">
+                                                        商品名：
+                                                    </td>
+                                                    <td align="center" class="w-50">
+                                                        <?php echo $item['product_name']; ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right">
+                                                        値段：
+                                                    </td>
+                                                    <td align="center">
+                                                        ￥<?php echo $item['product_unit_price']; ?>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right">
+                                                        購入数：
+                                                    </td>
+                                                    <td align="center">
+                                                        <input type="number" name="quantity[]" value="<?php print_r($item['quantity']); ?>" min="1" max="20" style="width:50px" id="quantity" onChange="Click()">
+                                                    </td>
+                                                </tr>
+                                                <!------------------------------------------- Sample Data ------------------------------------------->
+                                            <?php
+                                            }
+                                            ?>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
     </table>
-
     <tr>
         <td>
             <table class="table">
@@ -126,17 +123,17 @@ $cartdata = json_encode($_SESSION['cart']);
         </td>
     </tr>
     </form>
-<?php
+    <?php
         } else {
-?>
+    ?>
     <tr>
         <td>
             カートに何も入っていません、買い物を続ける場合は<a href="Products.php">こちらから</a>
         </td>
     </tr>
-<?php
+    <?php
         }
-?>
+    ?>
 </table>
 <!------------------------------------------- footer ------------------------------------------->
 <?php include 'frame/footer.php'; ?>
@@ -153,9 +150,8 @@ $cartdata = json_encode($_SESSION['cart']);
         quantityr.forEach((q) => {
             num += price[i++] * q['value'];
         });
-        goukei.innerHTML = "<p>合計:"+ num +"円</p>";
+        goukei.innerHTML = "<p>合計:" + num + "円</p>";
     }
 </script>
 </body>
-
 </html>
