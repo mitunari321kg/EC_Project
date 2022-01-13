@@ -16,14 +16,16 @@
     <?php include '../controller/Control_Products_02.php';
     $products = new Control_Products();
     $products_data = $products->get_products();
+    $products_category_data = $products->get_product_category();
     $test_data = json_encode($products_data);
+    $test_category = json_encode($products_category_data);
     ?>
     <link href="css/products.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>商品一覧</title>
 </head>
 
-<body>
+<body onLoad="startFunc()">
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
@@ -45,9 +47,9 @@
                         </td>
                         <td align="right">
                             <select name="change_sort" id="change_sort" onchange="change()">
-                                <option value="pop">人気順</option>
+                                <option value="pop" selected>人気順</option>
                                 <option value="pri">価格順</option>
-                                <option value="new" selected>新着順</option>
+                                <option value="new">新着順</option>
                             </select>
                         </td>
                     </tr>
@@ -62,21 +64,21 @@
                 sort ⇒ radio 
             -->
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="radio" id="btnradio1" autocomplete="off" checked>
-                <label class="btn btn-outline-secondary" for="btnradio1">全ての商品</label>
+                <input type="radio" class="btn-check" name="radio" id="radio1" autocomplete="off" value="10" onclick="radio_click()" checked>
+                <label class="btn btn-outline-secondary" for="radio1">全ての商品</label>
 
-                <input type="radio" class="btn-check" name="radio" id="btnradio2" autocomplete="off">
-                <label class="btn btn-outline-secondary" for="btnradio2">ラーメン</label>
+                <input type="radio" class="btn-check" name="radio" id="radio2" autocomplete="off" value="0" onclick="radio_click()">
+                <label class="btn btn-outline-secondary" for="radio2">ラーメン</label>
 
-                <input type="radio" class="btn-check" name="radio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-secondary" for="btnradio3">サイドメニュー</label>
+                <input type="radio" class="btn-check" name="radio" id="radio3" autocomplete="off" value="1" onclick="radio_click()">
+                <label class="btn btn-outline-secondary" for="radio3">サイドメニュー</label>
             </div>
         </td>
     </tr>
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center" name="products" value="<?php print $product_data?>" id="card_test">
-                <?php foreach ($products_data as $value) { ?>
+                <?php /*foreach ($products_data as $value) { ?>
                     <div class="col-sm-3">
                         <div name="evaluation" value="<?php echo $value['evaluation']?>">
                             <div class="card text-dark bg-light h-100">
@@ -99,12 +101,13 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }*/
+                ?>
             </div>
         </td>
     </tr>
     <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center" id="paging">
             <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
             </li>
@@ -116,54 +119,83 @@
             </li>
         </ul>
     </nav>
-    <p>９商品中 １～９商品</p>
+    <p id="product_index">９商品中 １～９商品</p>
     </table>
     <script type="text/javascript">
         var card = document.getElementById("card_test");
+        var products = <?php echo $test_data?>;
+        function startFunc(){
+            replace_card(products);
+        }
+
+        /**
+         * 並び替え変更
+         */
         function change(){
-            let test = <?php echo $test_data?>;
             let change_sort = document.getElementById('change_sort').value;
-            console.log(change_sort);
-            console.log(card);
             if(change_sort == 'pop'){
-                test.sort(function(a, b){
+                products.sort(function(a, b){
                     return (b.evaluation - a.evaluation);
                 });
             } else if(change_sort == 'new'){
-                test.sort(function(a, b){
+                products.sort(function(a, b){
                     return (a.product_registration_date < b.product_registration_date ? 1 : -1)
                 });
             } else if(change_sort == 'pri'){
-                test.sort(function(a, b){
+                products.sort(function(a, b){
                     return (a.product_unit_price - b.product_unit_price);
                 });
             }
-            console.table(test);
-            replace_card(test);
+            replace_card(products);
         }
-        function replace_card(test){
-            //テスト用
+        /**
+         * ラジオボタンクリックイベント
+         */
+        function radio_click(){
+            replace_card(products);
+        }
+        /**
+         * 商品一覧再配置
+         * スパゲッティコードしてるんでどっかのタイミングで修正する予定
+         */
+        function replace_card(products){
+            //一覧を削除
             while(card.firstChild){
                 card.removeChild(card.firstChild);
             }
-            let i = 0;
-            test.forEach((test_1) =>{
-               
+            let radio = document.getElementsByName('radio');
+            let checkValue;
+            radio.forEach((r) =>{
+                if(r.checked){
+                    checkValue = r.value;
+                }
+            });
+            category_data = <?php echo $test_category?>;
+            
+            p_count = 0;
+            //一覧を再配置
+            products.forEach((product) =>{
+                //全ての商品以外が選択されていた場合、同カテゴリでない商品を無視する
+                if(checkValue != 10){
+                    if(!category_data[checkValue].includes(product["product_id"])){
+                        return;
+                    }
+                }
                 card.innerHTML +=
                     '<div class="col-sm-3">' +
-                        '<div name="evaluation" value="'+ test_1["evaluation"] +'">' +
+                        '<div name="evaluation" value="'+ product["evaluation"] +'">' +
                             '<div class="card text-dark bg-light h-100">' +
                                 '<form action="Product_Details.php" name="product_form" method="post">' +
-                                    '<input type="hidden" name="product_id" value="'+ test_1["product_id"] +'">' +
+                                    '<input type="hidden" name="product_id" value="'+ product["product_id"] +'">' +
                                         '<table class="table-light">' +
                                         '<tr>'+
                                             '<td>'+
-                                                '<input type="image" src="'+ test_1["product_img"] +'" class="card-img-top" alt="img" />'+
+                                                '<input type="image" src="'+ product["product_img"] +'" class="card-img-top" alt="img" />'+
                                                 '<div class="card-body">'+
-                                                 '<a class="card-text">"'+ test_1["product_name"] +'"</a>' +
+                                                 '<a class="card-text">'+ product["product_name"] +'</a>' +
                                                 '</div>' +
                                                 '<div class="card-body">' +
-                                                    '<p class="card-text">"'+ test_1["product_unit_price"] +'"円</p>' +
+                                                    '<p class="card-text">'+ product["product_unit_price"] +'円</p>' +
                                                 '</div>' +
                                             '</td>' +
                                         '</tr>' +
@@ -172,9 +204,33 @@
                             '</div>' +
                         '</div>' +
                     '</div>';
-                    console.log(i++);
+                p_count++;
             });
-            return "none";
+            paging();
+        }
+        function paging(){
+            // 商品総数の表示を更新
+            let product_index = document.getElementById("product_index");
+            let paging = document.getElementById("paging");
+            product_index.innerText = products.length + "商品中 " + (p_count - (p_count - 1))+ "～" + p_count + "商品";
+            // ページング機能追加
+            a = Math.floor(p_count);
+            b = Math.floor((p_count / 9) + 1);
+            c = Math.floor(p_count % 9);
+            if (c == 0){
+                b -= 1;
+            }
+            while(paging.firstChild){
+                paging.removeChild(paging.firstChild);
+            }
+            paging.innerHTML += '<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a></li>';
+            for(i = 0; i < b; i++){
+                paging.innerHTML += '<li class="page-item"><a class="page-link" href="#">' + (i + 1) + '</a></li>';
+            }
+            paging.innerHTML += '<li class="page-item"><a class="page-link" href="#">次へ</a></li>';
+            console.log("表示商品数" + a);
+            console.log("総ページ数" + b);
+            console.log("端数" + c);
         }
     </script>
     <!------------------------------------------- footer ------------------------------------------->
