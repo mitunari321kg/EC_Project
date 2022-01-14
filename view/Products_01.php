@@ -13,25 +13,23 @@
 <html>
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        var products_data = JSON.parse('<?php echo $json_products_data; ?>');
+        var keyword = "<?php echo $keyword; ?>";
+    </script>
+    <script type="text/javascript" src="script/Products_01.js"></script>
     <?php
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
     $products_data = $products->get_products();
-    if (isset($_GET["search"]) && $_GET["keyword"] != "") {
-        //$products_data = $products->get_search_products($_GET["keyword"]);
-        $json_products_data = json_encode($products_data);
-        $keyword = $_GET["keyword"];
-    ?>
-        <script type="text/javascript">
-            var products_data = JSON.parse('<?php echo $json_products_data; ?>');
-            var keyword = "<?php echo $keyword; ?>";
-        </script>
-        <script type="text/javascript" src="script/Products_01.js"></script>
-    <?php
-        $data = filter_input(INPUT_GET, 'Products');
-        $products_data = $data;
-    }
+    //if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+    //$products_data = $products->get_search_products($_GET["keyword"]);
+    $data = $_POST['Products'];
+    header("Content-type: application/json; charset=UTF-8");
+    $products_data = $data;
+    //}
     ?>
     <link href="css/products_01.css" rel="stylesheet">
     <meta charset="utf8_unicode_ci">
@@ -54,19 +52,13 @@
                     <tr>
                         <td align="left">
                             <form action="Products_01.php" method="GET">
-                                <input type="search" name="keyword" placeholder="検索" required>
-                                <button type="submit" name="search">検索</button>
+                                <input type="search" name="keyword" id="keyword" placeholder="検索" required>
+                                <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
+                                <button type="submit" name="search" id="search">検索</button>
                             </form>
                             <?php if ($_GET["keyword"] != "") { ?>
                                 <p>
-                                    "<?php echo $_GET["keyword"]; ?>" の検索結果
-                                    <?php
-                                    if ($products_data == NULL) {
-                                        echo 0;
-                                    } else {
-                                        echo count($products_data);
-                                    }
-                                    ?>件
+                                    検索ワード "<?php echo $_GET["keyword"]; ?>"
                                 </p>
                             <?php } ?>
                         </td>
