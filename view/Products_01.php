@@ -19,26 +19,18 @@
     $products = new Control_Products();
     $products_data = $products->get_products();
     if (isset($_GET["search"]) && $_GET["keyword"] != "") {
-        $products_data = $products->get_search_products($_GET["keyword"]);
-        /*
+        //$products_data = $products->get_search_products($_GET["keyword"]);
         $json_products_data = json_encode($products_data);
         $keyword = $_GET["keyword"];
-        */
     ?>
-        <!--
         <script type="text/javascript">
-            var products_data = new Object();
-            products_data = <?php //echo $json_products_data; 
-                            ?>;
-            var keyword = "<?php //echo $keyword; 
-                            ?>";
+            var products_data = JSON.parse('<?php echo $json_products_data; ?>');
+            var keyword = "<?php echo $keyword; ?>";
         </script>
         <script type="text/javascript" src="script/Products_01.js"></script>
-        -->
     <?php
-        /*
         $data = filter_input(INPUT_GET, 'Products');
-        $products_data = $data;*/
+        $products_data = $data;
     }
     ?>
     <link href="css/products_01.css" rel="stylesheet">
@@ -90,7 +82,6 @@
             </td>
         </tr>
     </table>
-    </td>
     <tr>
         <td align="center">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -152,11 +143,11 @@
             </ul>
         </nav>
     <?php } ?>
-    <?php if ($_GET["keyword"] != "" || $products_data == NULL) { ?>
-        <a class="page-link" href="Products_01.php">一覧へ戻る</a>
-    <?php } ?>
     <?php if (count($products_data) != 0) { ?>
         <p><?php echo count($products_data) ?>商品中 １～９商品</p>
+    <?php } ?>
+    <?php if ($_GET["keyword"] != "" || $products_data == NULL) { ?>
+        <a class="page-link" href="Products_01.php">一覧へ戻る</a>
     <?php } ?>
     </table>
     <!------------------------------------------- footer ------------------------------------------->

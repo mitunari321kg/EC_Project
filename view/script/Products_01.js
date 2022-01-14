@@ -5,17 +5,12 @@
  * @date   2022/01/06
  */
 function search() {
-    for (var i = 0; i < products_data.length; i++) {
-        if (products_data[i].product_name.indexOf(keyword) == -1) {
-            products_data.splice(i, 1);
-            console.log(products_data);
-        }
-    }
+    var search_result = products_data.filter(element => element.product_name.indexOf(keyword) == -1 || element.product_category_name.indexOf(keyword) == -1);
     $.ajax({
         type: "GET",
         url: "http://localhost/EC_Project/view/Products_01.php",
         data: {
-            'Products': products_data
+            'Products': search_result
         },
         dataType: "json",
         scriptCharset: 'utf8_unicode_ci'

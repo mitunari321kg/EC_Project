@@ -38,7 +38,7 @@ class Model
         try {
             $sql = "SELECT product_table.product_id, product_table.product_name, product_table.product_unit_price, product_img_table.product_img
                     FROM product_table
-                    RIGHT OUTER JOIN product_img_table
+                    RIGHT JOIN product_img_table
                     ON product_table.product_id = product_img_table.product_id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
@@ -57,12 +57,17 @@ class Model
     public function search_products($keyword)
     {
         try {
-            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name,
-                    product_table.product_unit_price AS product_unit_price, product_img_table.product_img AS product_img
+            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
+                    product_img_table.product_img AS product_img,
+                    category_table.category_name AS category_name
                     FROM product_table
-                    RIGHT OUTER JOIN product_img_table
+                    LEFT JOIN product_img_table
                     ON product_table.product_id = product_img_table.product_id
-                    WHERE product_name LIKE '%" . $keyword . "%'";
+                    LEFT JOIN product_category_table
+                    ON product_table.product_id = product_category_table.product_id
+                    LEFT JOIN category_table
+                    ON category_table.category_id = product_category_table.category_id
+                    WHERE product_name LIKE '%" . $keyword . "%'" . " OR category_name LIKE '%" . $keyword . "%'";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
