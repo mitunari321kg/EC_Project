@@ -1,7 +1,7 @@
 <?php
 
 /**
- *@file   Products.php
+ *@file   Products_01.php
  *@brief  商品一覧画面
  *@author 佐藤大介
  *@date   2021/11/12
@@ -13,12 +13,6 @@
 <html>
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-    <script type="text/javascript">
-        var products_data = JSON.parse('<?php echo $json_products_data; ?>');
-        var keyword = "<?php echo $keyword; ?>";
-    </script>
-    <script type="text/javascript" src="script/Products_01.js"></script>
     <?php
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
@@ -26,11 +20,15 @@
     $products_data = $products->get_products();
     //if (isset($_GET["search"]) && $_GET["keyword"] != "") {
     //$products_data = $products->get_search_products($_GET["keyword"]);
-    $data = $_POST['Products'];
-    header("Content-type: application/json; charset=UTF-8");
-    $products_data = $data;
     //}
+    if (isset($_GET["search"])) {
+        $data = filter_input(INPUT_GET, 'Products');
+        $products_data = $data;
+    }
     ?>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script/Products_01.js"></script>
     <link href="css/products_01.css" rel="stylesheet">
     <meta charset="utf8_unicode_ci">
     <title>商品一覧｜谷原らぁめん</title>
@@ -51,11 +49,9 @@
                 <table width="100%">
                     <tr>
                         <td align="left">
-                            <form action="Products_01.php" method="GET">
-                                <input type="search" name="keyword" id="keyword" placeholder="検索" required>
-                                <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
-                                <button type="submit" name="search" id="search">検索</button>
-                            </form>
+                            <input type="text" name="keyword" id="keyword" placeholder="検索" required>
+                            <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
+                            <button name="search" id="search">検索</button>
                             <?php if ($_GET["keyword"] != "") { ?>
                                 <p>
                                     検索ワード "<?php echo $_GET["keyword"]; ?>"
@@ -90,14 +86,14 @@
     </tr>
     <tr>
         <td>
-            <div class="row row-cols row-cols-md-3 g-4 justify-content-center" id="products" value='<?php print $products_data; ?>'>
+            <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
                 <?php if (count($products_data) == 0 || $products_data == NULL) { ?>
                     <p class="none">お探しの商品が見つかりませんでした。</p>
                 <?php } else { ?>
                     <?php foreach ($products_data as $value) { ?>
                         <div class="col-sm-3">
                             <div class="card text-dark bg-light h-100">
-                                <form action="Product_Details.php" name="product_form" method="post">
+                                <form action="Product_Details.php" id="product_form" name="product_form" method="post">
                                     <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
                                     <table class="table-light">
                                         <tr>
