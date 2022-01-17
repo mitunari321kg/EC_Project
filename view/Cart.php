@@ -105,7 +105,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                 <tr>
                     <td>
                         <div class="h6" align="center" id="goukei">
-                            合計:<?php echo $goukei ?>円
+                            合計金額:<?php echo $goukei ?>円
                         </div>
                     </td>
                     <td align="right">
@@ -128,7 +128,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
     ?>
     <tr>
         <td>
-            カートに何も入っていません、買い物を続ける場合は<a href="Products.php">こちらから</a>
+        <a href="Products.php">カートに何も入っていません、買い物を続ける場合はこちらから</a>
         </td>
     </tr>
     <?php
@@ -140,7 +140,6 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
 <!------------------------------------------- footer ------------------------------------------->
 <script type="text/javascript">
     function Click() {
-        
         cart = <?php echo $cartdata ?>;
         price = <?php echo $price ?>;
         var num = 0;

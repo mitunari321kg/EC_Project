@@ -37,21 +37,21 @@ if(isset($_SESSION['shipping_info'])){
                             <tr>
                                 <td>
                                     姓
-                                    <input type="text" name="user_last_name" size="24" required value="<?php echo $value['user_last_name'];?>">
+                                    <input type="text" name="delivery_last_name" size="24" required value="<?php echo $value['user_last_name'];?>">
                                 </td>
                                 <td>
                                     名
-                                    <input type="text" name="user_first_name" size="24" required value="<?php echo $value['user_first_name'];?>">
+                                    <input type="text" name="delivery_first_name" size="24" required value="<?php echo $value['user_first_name'];?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" required value="<?php echo $value['user_last_furigana'];?>" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" >
+                                    <input type="text" name="delivery_last_furigana" size="24" required value="<?php echo $value['user_last_furigana'];?>" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" >
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="user_first_furigana" size="24" required value="<?php echo $value['user_first_furigana'];?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                                    <input type="text" name="delivery_first_furigana" size="24" required value="<?php echo $value['user_first_furigana'];?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                             </tr>
                         </table>
@@ -62,7 +62,7 @@ if(isset($_SESSION['shipping_info'])){
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="user_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7" value="<?php echo $value['user_postal_code'];?>">
+                                    <input type="text" name="delivery_postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7" value="<?php echo $value['user_postal_code'];?>">
                                 </td>
                             </tr>
                             <tr>
@@ -128,7 +128,7 @@ if(isset($_SESSION['shipping_info'])){
                                     市区町村<span class="mandatory"></span>　
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
+                                    <input type="text" name="delivery_address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['user_address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
                                 </td>
                             </tr>
                             <tr>
@@ -136,7 +136,7 @@ if(isset($_SESSION['shipping_info'])){
                                     番地以下<span class="mandatory"></span>　
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['user_address2']; ?>" required>
+                                    <input type="text" name="delivery_address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['user_address2']; ?>" required>
                                 </td>
                             </tr>
                             <tr>
@@ -145,7 +145,7 @@ if(isset($_SESSION['shipping_info'])){
                                     部屋番号　
                                 </td>
                                 <td>
-                                    <input type="text" name="user_address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['user_address3']; ?>">
+                                    <input type="text" name="delivery_address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['user_address3']; ?>">
                                 </td>
                             </tr>
                             <tr>
@@ -153,7 +153,7 @@ if(isset($_SESSION['shipping_info'])){
                                     電話番号
                                 </td>
                                 <td>
-                                    <input type="tel" name="user_tel" pattern="^0\d{9,10}$" placeholder="ハイフンなしの、半角で入力してください"  value="<?php echo $value['user_tel']; ?>" required size="11" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
+                                    <input type="tel" name="delivery_tel" pattern="^0\d{9,10}$" placeholder="ハイフンなしの、半角で入力してください"  value="<?php echo $value['user_tel']; ?>" required size="11" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
                                 </td>
                             </tr>
                             <tr>
@@ -161,7 +161,7 @@ if(isset($_SESSION['shipping_info'])){
                                     メールアドレス
                                 </td>
                                 <td>
-                                    <input type="email" name="user_email" placeholder="半角で入力してください" value="<?php echo $value['user_email']; ?>" required size="56" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                    <input type="email" name="delivery_email" placeholder="半角で入力してください" value="<?php echo $value['user_email']; ?>" required size="56" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                 </td>
                             </tr>
                             <tr>

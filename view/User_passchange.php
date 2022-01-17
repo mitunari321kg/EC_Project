@@ -122,5 +122,4 @@ $user_id = $_SESSION['logged_in_id'];
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
-
 </html>

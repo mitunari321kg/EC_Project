@@ -14,6 +14,7 @@ if($_POST['button_action'] === 'shipping_change'){
     $_SESSION['shipping_info']['user_address3'] = $_POST['user_address3'];
     $_SESSION['shipping_info']['user_tel'] = $_POST['user_tel'];
     $_SESSION['shipping_info']['user_email'] = $_POST['user_email'];
+    
     header('location: ../view/Shipping_Address.php');
 } else if($_POST['button_action'] === 'shipping_address_change'){
     header('location: ../view/Change_Shipping_Address.php');

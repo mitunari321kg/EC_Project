@@ -15,13 +15,13 @@ class Account_create_db extends Control
         parent::__construct();
     }
     /**
-     * 登録者情報取得
+     * 
      */
     public function insert_employee()
 {
         $user_id = $_POST['user_id'];
 
-        $sql = "SELECT COUNT(*) AS count FROM user_table WHERE user_id= ?;";
+        $sql = "SELECT COUNT(*) AS count FROM  WHERE user_id= ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
 
