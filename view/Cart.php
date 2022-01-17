@@ -128,7 +128,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
     ?>
     <tr>
         <td>
-            カートに何も入っていません、買い物を続ける場合は<a href="Products.php">こちらから</a>
+        <a href="Products.php">カートに何も入っていません、買い物を続ける場合はこちらから</a>
         </td>
     </tr>
     <?php
