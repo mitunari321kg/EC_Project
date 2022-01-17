@@ -45,3 +45,9 @@ h3 {
     text-decoration: none;
     background-color: whitesmoke;
 }
+
+.card-img-top{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
