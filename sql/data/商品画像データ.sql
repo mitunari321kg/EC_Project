@@ -1,7 +1,7 @@
 --
 -- 商品画像データ挿入用SQL
 --
-INSERT INTO `product_img_table` (`product_id`, `product_img`) VALUES
+INSERT INTO `product_image` (`product_id`, `img`) VALUES
 (1, 0x2e2e2f696d672f666f6f645f72616d656e2e706e67),
 (2, 0x2e2e2f696d672f72616d656e5f73796f7579752e706e67),
 (3, 0x2e2e2f696d672f72616d656e5f6d69736f2e706e67),

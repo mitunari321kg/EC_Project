@@ -28,21 +28,20 @@ class Verification_DB extends Control
         if ($result[0]['count'] == 0) {
             //登録処理に入る
             $params = array(
-                
-                $_SESSION['shipping_info']['user_last_name'] => $_POST['user_last_name'],
-                $_SESSION['shipping_info']['user_first_name'] => $_POST['user_first_name'],
-                $_SESSION['shipping_info']['user_last_furigana'] => $_POST['user_last_furigana'],
 
-                $_SESSION['shipping_info']['user_first_furigana'] => $_POST['user_first_furigana'],
-                $_SESSION['shipping_info']['user_postal_code'] => $_POST['user_postal_code'],
-                $_SESSION['shipping_info']['user_prefectures'] => $_POST['user_prefectures'],
+                $_SESSION['shipping_info']['user_last_name'] + $_SESSION['shipping_info']['user_first_name'] => $_POST['name'],
+                $_SESSION['shipping_info']['user_last_furigana'] => $_POST['delivery_last_furigana'],
 
-                $_SESSION['shipping_info']['user_address1'] => $_POST['user_address1'],
-                $_SESSION['shipping_info']['user_address2'] => $_POST['user_address2'],
-                $_SESSION['shipping_info']['user_address3'] =>$_POST['user_address3'],
+                $_SESSION['shipping_info']['user_first_furigana'] => $_POST['delivery_first_furigana'],
+                $_SESSION['shipping_info']['user_postal_code'] => $_POST['delivery_postal_code'],
+                $_SESSION['shipping_info']['user_prefectures'] => $_POST['delivery_prefectures'],
+
+                $_SESSION['shipping_info']['user_address1'] => $_POST['delivery_address1'],
+                $_SESSION['shipping_info']['user_address2'] => $_POST['delivery_address2'],
+                $_SESSION['shipping_info']['user_address3'] =>$_POST['delivery_address3'],
                 
-                $_SESSION['shipping_info']['user_tel'] => $_POST['user_tel'],
-                $_SESSION['shipping_info']['user_email'] => $_POST['user_email']
+                $_SESSION['shipping_info']['user_tel'] => $_POST['delivery_tel'],
+                $_SESSION['shipping_info']['user_email'] => $_POST['delivery_email']
 
             );
             
