@@ -29,19 +29,19 @@ class Verification_DB extends Control
             //登録処理に入る
             $params = array(
 
-                $_SESSION['shipping_info']['user_last_name'] + $_SESSION['shipping_info']['user_first_name'] => $_POST['name'],
-                $_SESSION['shipping_info']['user_last_furigana'] => $_POST['delivery_last_furigana'],
+                $_SESSION['shipping_info']['last_name'] + $_SESSION['shipping_info']['first_name'] => $_POST['name'],
+                $_SESSION['shipping_info']['last_furigana'] => $_POST['last_furigana'],
 
-                $_SESSION['shipping_info']['user_first_furigana'] => $_POST['delivery_first_furigana'],
-                $_SESSION['shipping_info']['user_postal_code'] => $_POST['delivery_postal_code'],
-                $_SESSION['shipping_info']['user_prefectures'] => $_POST['delivery_prefectures'],
+                $_SESSION['shipping_info']['first_furigana'] => $_POST['first_furigana'],
+                $_SESSION['shipping_info']['postal_code'] => $_POST['postal_code'],
+                $_SESSION['shipping_info']['prefectures'] => $_POST['prefectures'],
 
-                $_SESSION['shipping_info']['user_address1'] => $_POST['delivery_address1'],
-                $_SESSION['shipping_info']['user_address2'] => $_POST['delivery_address2'],
-                $_SESSION['shipping_info']['user_address3'] =>$_POST['delivery_address3'],
+                $_SESSION['shipping_info']['address1'] => $_POST['address1'],
+                $_SESSION['shipping_info']['address2'] => $_POST['address2'],
+                $_SESSION['shipping_info']['address3'] =>$_POST['address3'],
                 
-                $_SESSION['shipping_info']['user_tel'] => $_POST['delivery_tel'],
-                $_SESSION['shipping_info']['user_email'] => $_POST['delivery_email']
+                $_SESSION['shipping_info']['tel'] => $_POST['tel'],
+                $_SESSION['shipping_info']['email'] => $_POST['email']
 
             );
             
@@ -63,7 +63,7 @@ class Verification_DB extends Control
                 PDO::PARAM_STR,
                 
             );
-            if ($this->db->exec_sql_insert('user_table', $params, $styles)) {
+            if ($this->db->exec_sql_insert('user_', $params, $styles)) {
 
                 //登録完了
 
