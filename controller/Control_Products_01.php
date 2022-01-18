@@ -27,9 +27,9 @@ class Control_Products
     /**
      * 商品一覧を取得
      */
-    public function get_products()
+    public function get_products($id)
     {
-        return $this->model->get_all_product();
+        return $this->model->get_all_product($id);
     }
 
     /**

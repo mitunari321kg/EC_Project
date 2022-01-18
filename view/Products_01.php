@@ -17,18 +17,11 @@
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
-    $products_data = $products->get_products();
-    //if (isset($_GET["search"]) && $_GET["keyword"] != "") {
-    //$products_data = $products->get_search_products($_GET["keyword"]);
-    //}
-    if (isset($_GET["search"])) {
-        $data = filter_input(INPUT_GET, 'Products');
-        $products_data = $data;
+    $products_data = $products->get_products(0);
+    if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+        $products_data = $products->get_search_products($_GET["keyword"]);
     }
     ?>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="script/Products_01.js"></script>
     <link href="css/products_01.css" rel="stylesheet">
     <meta charset="utf8_unicode_ci">
     <title>商品一覧｜谷原らぁめん</title>
@@ -48,16 +41,18 @@
             <td>
                 <table width="100%">
                     <tr>
-                        <td align="left">
-                            <input type="text" name="keyword" id="keyword" placeholder="検索" required>
-                            <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
-                            <button name="search" id="search">検索</button>
-                            <?php if ($_GET["keyword"] != "") { ?>
-                                <p>
-                                    検索ワード "<?php echo $_GET["keyword"]; ?>"
-                                </p>
-                            <?php } ?>
-                        </td>
+                        <form action="Products_01.php" method="GET">
+                            <td align="left">
+                                <input type="search" name="keyword" id="keyword" placeholder="検索" required>
+                                <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
+                                <button type="submit" name="search" id="search">検索</button>
+                                <?php if ($_GET["keyword"] != "") { ?>
+                                    <p>
+                                        検索ワード "<?php echo $_GET["keyword"]; ?>"
+                                    </p>
+                                <?php } ?>
+                            </td>
+                        </form>
                         <td align="right">
                             <select name="sort">
                                 <option value="rec">おすすめ</option>

@@ -33,13 +33,16 @@ class Model
      * 全商品取得
      * @return array $stmt 商品一覧
      */
-    public function get_all_product()
+    public function get_all_product($id)
     {
         try {
-            $sql = "SELECT product_table.product_id, product_table.product_name, product_table.product_unit_price, product_img_table.product_img
+            $id_nine = $id + 9;
+            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
+                    product_img_table.product_img AS product_img
                     FROM product_table
-                    RIGHT JOIN product_img_table
-                    ON product_table.product_id = product_img_table.product_id";
+                    LEFT JOIN product_img_table
+                    ON product_table.product_id = product_img_table.product_id
+                    WHERE product_table.product_id BETWEEN " . "$id " . "AND " . "$id_nine";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
