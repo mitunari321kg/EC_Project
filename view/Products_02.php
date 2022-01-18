@@ -90,13 +90,17 @@
         var card = document.getElementById("card_test");
         var products = <?php echo $test_data?>;
         var search = document.getElementById('search').value;
+        var current_page = 1;
+        var current_page_min_index = 1;
+        var current_page_max_index = 1;
+
         
         // キーイベント
         addEventListener('keypress', product_search);
 
         // onloadイベント
         function startFunc(){
-            replace_card(products, 1);
+            replace_card(products, 'page-1');
         }
         /**
          * 並び替え変更
@@ -116,25 +120,24 @@
                     return (a.product_unit_price - b.product_unit_price);
                 });
             }
-            replace_card(products, 1);
+            replace_card(products, 'page-1');
         }
         /**
          * ラジオボタンクリックイベント
          */
         function radio_click(){
-            replace_card(products, 1);
+            replace_card(products, 'page-1');
         }
 
         function page_click(){
-            let click_page = document.getElementById("click_page");
-            console.log(click_page);
-            replace_card(products, click_page);
+            var elem = event.target.id;
+            replace_card(products, elem);
         }
         /**
          * 商品一覧再配置
          * スパゲッティコードしてるんでどっかのタイミングで修正する予定
          */
-        function replace_card(products, page){
+        function replace_card(products, next_page){
             //一覧を削除
             while(card.firstChild){
                 card.removeChild(card.firstChild);
@@ -148,22 +151,44 @@
                     checkValue = r.value;
                 }
             });
-            console.log("選択ページ" + page);
+            //ページング機能
+            if(next_page == 'prev'){
+                current_page = Number(current_page) - 1;
+            } else if(next_page == 'next'){
+                current_page = Number(current_page) + 1;
+            } else if(next_page.match(/page/)){
+                current_page = next_page.replace('page-', '');
+            }
+            //next_page.indexOf('page') != -1
             p_count = 0;
             //一覧を再配置
             products.forEach((product) =>{
+                p_count++;
                 //全ての商品以外が選択されていた場合、同カテゴリでない商品を無視する
                 if(checkValue != 10){
                     if(!category_data[checkValue].includes(product["product_id"])){
+                        p_count--;
                         return;
                     }
                 }
                 //検索でヒットした商品以外の商品を無視する
                 if(search){
                     if(product['product_name'].indexOf(search) == -1){
+                        p_count--;
                         return;
                     }
                 }
+                //初めのページを閲覧している場合、9商品以降の商品情報を無視する
+                if(p_count > current_page * 9 && current_page - 1 == 0){
+                    return;
+                }
+                //2ページ目以降を閲覧している場合、他の商品情報を無視する
+                if(current_page - 1 > 0){
+                    if(!(p_count > (current_page - 1) * 9 && p_count <= (current_page * 9))){
+                        return;
+                    }
+                }
+                //商品表示
                 card.innerHTML +=
                     '<div class="col-sm-3">' +
                         '<div name="evaluation" value="'+ product["evaluation"] +'">' +
@@ -187,9 +212,18 @@
                             '</div>' +
                         '</div>' +
                     '</div>';
-                p_count++;
             });
-            console.log(p_count);
+            //表示商品数を設定
+            if(current_page <= 1){
+                current_page_min_index = 1;
+            } else {
+                current_page_min_index = (current_page - 1) * 9;
+            }
+            if(p_count <= (current_page * 9) ){
+                current_page_max_index = p_count;
+            } else {
+                current_page_max_index = current_page * 9;
+            }
             paging();
             /**
              * カードの子要素存在チェック
@@ -203,7 +237,7 @@
          */
         function product_search(){
             search = document.getElementById('search').value;
-            replace_card(products, 1);
+            replace_card(products, 'page-1');
         }
         /**
          * ページング機能
@@ -223,20 +257,29 @@
             while(paging.firstChild){
                 paging.removeChild(paging.firstChild);
             }
+            let i = 0;
             if(p_count > 0){
-                product_index.innerText = products.length + "商品中 " + (p_count - (p_count - 1))+ "～" + p_count + "商品";
-                paging.innerHTML += '<li class="page-item disabled"><a class="page-link" id="click_page" value="back" onclick="page_click()" tabindex="-1">戻る</a></li>';
-                for(i = 0; i < max_page; i++){
-                    paging.innerHTML += '<li class="page-item"><a class="page-link" id="click_page" onclick="page_click()" value="'+ (i + 1) + '">' + (i + 1) + '</a></li>';
+                product_index.innerText = products.length + "商品中 " + current_page_min_index + "～" + current_page_max_index + "商品";
+                if(current_page == 1){
+                    paging.innerHTML += '<li class="page-item disabled"><a class="page-link" id="prev" tabindex="-1">戻る</a></li>';
+                } else {
+                    paging.innerHTML += '<li class="page-item"><a class="page-link" onclick="page_click()" id="prev" tabindex="-1">戻る</a></li>';
                 }
-                paging.innerHTML += '<li class="page-item"><a class="page-link" id="click_page" onclick="page_click()" value="next">次へ</a></li>';
+                for(i = 0; i < max_page; i++){
+                    paging.innerHTML += '<li class="page-item"><a class="page-link" onclick="page_click()" id="page-' + (i + 1) +'">' + (i + 1) + '</a></li>';
+                }
+                if(current_page != max_page){
+                    paging.innerHTML += '<li class="page-item"><a class="page-link" onclick="page_click()" id="next">次へ</a></li>';
+                } else {
+                    paging.innerHTML += '<li class="page-item disabled"><a class="page-link" id="next">次へ</a></li>';
+                }
             } else {
                 product_index.innerHTML = "";
             }
-
-            console.log("表示商品数" + max_products);
-            console.log("総ページ数" + max_page);
-            console.log("端数" + fraction);
+            // console.log("現在のページ" + current_page)
+            // console.log("表示商品数" + max_products);
+            // console.log("総ページ数" + max_page);
+            // console.log("端数" + fraction);
         }
     </script>
     <!------------------------------------------- footer ------------------------------------------->
