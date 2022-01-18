@@ -18,17 +18,17 @@ class Login extends Control{
      */
     public function get_user_password(){
         $user_id = $_POST['user_id'];
-        $sql = "SELECT `user_last_name`,`login_password` FROM `user_table` WHERE user_id = ?;";
+        $sql = "SELECT `name`,`password` FROM `user` WHERE user_id = ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
         session_start();
         if(!empty($result[0])){
             // ユーザが見つかった場合
-            $user_password = $_POST['login_password'];
-            if(password_verify($user_password, $result[0]['login_password'])){
+            $password = $_POST['password'];
+            if(password_verify($password, $result[0]['password'])){
                 //パスワードが一致
                 $_SESSION['logged_in_id'] = $user_id;
-                $_SESSION['logged_in_last_name'] = $result[0]['user_last_name'];
+                $_SESSION['logged_in_last_name'] = $result[0]['last_name'];
                 //お届け先情報の削除
                 if(isset($_SESSION['shipping_info'])){
                     unset($_SESSION['shipping_info']);

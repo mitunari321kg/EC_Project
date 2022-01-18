@@ -21,7 +21,7 @@ class Verification_DB extends Control
 {
         $user_id = $_POST['user_id'];
 
-        $sql = "SELECT COUNT(*) AS count FROM user_table WHERE user_id= ?;";
+        $sql = "SELECT COUNT(*) AS count FROM table WHERE user_id= ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
 
@@ -63,7 +63,7 @@ class Verification_DB extends Control
                 PDO::PARAM_STR,
                 
             );
-            if ($this->db->exec_sql_insert('user_', $params, $styles)) {
+            if ($this->db->exec_sql_insert('user', $params, $styles)) {
 
                 //登録完了
 

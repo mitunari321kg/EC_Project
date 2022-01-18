@@ -34,7 +34,7 @@ class Account_create_db extends Control
                 'first_name'                    => $_POST['first_name'],
                 'last_furigana'                 => $_POST['last_furigana'],
                 'first_furigana'                => $_POST['first_furigana'],
-                'password'                      => password_hash($_POST['login_password'], PASSWORD_DEFAULT),
+                'password'                      => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 'gender'                        => $_POST['gender'],
                 'postal_code'                   => $_POST['postal_code'],
                 'prefectures'                   => $_POST['prefectures'],
