@@ -106,11 +106,11 @@ session_start();
                     <div align="left" valign="top">
                         <font size="2" class="text-muted">お名前</font>
                     </div>
-                    <?php echo  $_SESSION['shipping_info']['user_last_name'] . ' ' .  $_SESSION['shipping_info']['user_first_name']; ?>
+                    <?php echo  $_SESSION['shipping_info']['last_name'] . ' ' .  $_SESSION['shipping_info']['first_name']; ?>
                     <div align="left" valign="top" class="border-top">
                         <font size="2" class="text-muted">お届け先住所</font>
                     </div>
-                    <?php echo  $_SESSION['shipping_info']['user_prefectures'] . $_SESSION['shipping_info']['user_address1'] . $_SESSION['shipping_info']['user_address2'] . $_SESSION['shipping_info']['user_address3']; ?>
+                    <?php echo  $_SESSION['shipping_info']['prefectures'] . $_SESSION['shipping_info']['address1'] . $_SESSION['shipping_info']['address2'] . $_SESSION['shipping_info']['address3']; ?>
                 </div>
             </td>
         </tr>
