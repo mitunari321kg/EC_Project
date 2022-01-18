@@ -33,10 +33,31 @@ class Model
      * 全商品取得
      * @return array $stmt 商品一覧
      */
-    public function get_all_product($id)
+    public function select_all_product()
     {
         try {
-            $id_nine = $id + 9;
+            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
+                    product_img_table.product_img AS product_img
+                    FROM product_table
+                    LEFT JOIN product_img_table
+                    ON product_table.product_id = product_img_table.product_id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            print('SQLエラー：' . $e->getMessage());
+            die();
+        }
+    }
+
+    /**
+     * 全商品取得
+     * @return array $stmt 商品一覧
+     */
+    public function get_product($id)
+    {
+        try {
+            $id_nine = $id + 8;
             $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
                     product_img_table.product_img AS product_img
                     FROM product_table

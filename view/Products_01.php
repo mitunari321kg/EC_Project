@@ -17,8 +17,8 @@
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
-    $products_data = $products->get_products(0);
-    if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+    $products_data = $products->get_all_products();
+    if (isset($_GET["search"])) {
         $products_data = $products->get_search_products($_GET["keyword"]);
     }
     ?>
@@ -46,7 +46,7 @@
                                 <input type="search" name="keyword" id="keyword" placeholder="検索" required>
                                 <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
                                 <button type="submit" name="search" id="search">検索</button>
-                                <?php if ($_GET["keyword"] != "") { ?>
+                                <?php if (isset($_GET["search"])) { ?>
                                     <p>
                                         検索ワード "<?php echo $_GET["keyword"]; ?>"
                                     </p>
@@ -85,20 +85,20 @@
                 <?php if (count($products_data) == 0 || $products_data == NULL) { ?>
                     <p class="none">お探しの商品が見つかりませんでした。</p>
                 <?php } else { ?>
-                    <?php foreach ($products_data as $value) { ?>
+                    <?php for ($i = 0; $i < 9; $i++) { ?>
                         <div class="col-sm-3">
                             <div class="card text-dark bg-light h-100">
                                 <form action="Product_Details.php" id="product_form" name="product_form" method="post">
-                                    <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
+                                    <input type="hidden" name="product_id" value=<?php print $products_data[$i]['product_id'] ?>>
                                     <table class="table-light">
                                         <tr>
                                             <td>
-                                                <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                                <input type="image" src="<?php print $products_data[$i]['product_img']; ?>" class="card-img-top" alt="img" />
                                                 <div class="card-body">
-                                                    <a class="card-text" id="product_name"><?php echo $value['product_name']; ?></a>
+                                                    <a class="card-text" id="product_name"><?php echo $products_data[$i]['product_name']; ?></a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                                    <p class="card-text"><?php echo $products_data[$i]['product_unit_price']; ?>円</p>
                                                 </div>
                                             </td>
                                         </tr>
