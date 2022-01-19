@@ -17,10 +17,10 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = $db->prepare('INSERT INTO contact (name,mail,subject,contents) VALUES(:name,:cmail,:subject,:contents)');
-    $sql->bindValue(':contact_name', $_POST['contact_name']);
-    $sql->bindValue(':contact_mail', $_POST['contact_mail']);
-    $sql->bindValue(':contact_subject', $_POST['contact_subject']);
-    $sql->bindValue(':contact_contents', $_POST['contact_contents']);
+    $sql->bindValue(':name', $_POST['name']);
+    $sql->bindValue(':mail', $_POST['mail']);
+    $sql->bindValue(':subject', $_POST['subject']);
+    $sql->bindValue(':contents', $_POST['contents']);
     $sql->execute();
     header('Location: ../view/contact_result.php');
 } catch (PDOException $e) {
