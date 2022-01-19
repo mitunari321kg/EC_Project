@@ -36,7 +36,7 @@
                             <img src="../img/taniharax.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/tanihara.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/taniharay.png" class="d-block w-100" alt="Topics" />
                         </div>
                     </div>
                 </div>
