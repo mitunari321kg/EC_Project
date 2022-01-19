@@ -1,5 +1,5 @@
 h3 {
-    margin-top: 5px;
+    font-size: 35px; 
 }
 
 .surch {
@@ -45,3 +45,13 @@ h3 {
     text-decoration: none;
     background-color: whitesmoke;
 }
+
+.card-img-top{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+a1{
+    font-size: 25px;
+}
+    

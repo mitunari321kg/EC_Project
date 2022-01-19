@@ -195,7 +195,7 @@
                             '<div class="card text-dark bg-light h-100">' +
                                 '<form action="Product_Details.php" name="product_form" method="post">' +
                                     '<input type="hidden" name="product_id" value="'+ product["product_id"] +'">' +
-                                        '<table class="table-light">' +
+                                        '<table class="table-light" align="center">' +
                                         '<tr>'+
                                             '<td>'+
                                                 '<input type="image" src="'+ product["product_img"] +'" class="card-img-top" alt="img" />'+
