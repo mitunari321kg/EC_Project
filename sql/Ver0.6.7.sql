@@ -154,7 +154,7 @@ CREATE TABLE `product` (
   `sale_flag` tinyint(1) DEFAULT NULL,
   `quality_period` date DEFAULT NULL,
   `business_code` int(11) DEFAULT 456128416,
-  `checkdegit` int(11) DEFAULT NULL,
+  `checkdigit` int(11) DEFAULT NULL,
   `registration_date` date DEFAULT NULL,
   `evaluation` char(1) DEFAULT '1',
   `delete_flag` tinyint(1) DEFAULT NULL
