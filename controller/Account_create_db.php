@@ -21,7 +21,7 @@ class Account_create_db extends Control
 {
         $user_id = $_POST['user_id'];
 
-        $sql = "SELECT COUNT(*) AS count FROM  WHERE user_id= ?;";
+        $sql = "SELECT COUNT(*) AS count FROM WHERE user_id= ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
 
@@ -31,15 +31,19 @@ class Account_create_db extends Control
                 'user_id'                       => $_POST['user_id'],
                 'birthday'                      => $_POST['birthday'],
                 'last_name'                     => $_POST['last_name'],
+
                 'first_name'                    => $_POST['first_name'],
                 'last_furigana'                 => $_POST['last_furigana'],
                 'first_furigana'                => $_POST['first_furigana'],
+
                 'password'                      => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 'gender'                        => $_POST['gender'],
                 'postal_code'                   => $_POST['postal_code'],
+
                 'prefectures'                   => $_POST['prefectures'],
                 'address1'                      => $_POST['address1'],
                 'address2'                      => $_POST['address2'],
+
                 'address3'                      => $_POST['address3'],
                 'tel'                           => $_POST['tel'],
                 'email'                         => $_POST['email'],
@@ -50,15 +54,19 @@ class Account_create_db extends Control
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR
