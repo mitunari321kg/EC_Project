@@ -19,14 +19,6 @@ class Verification_DB extends Control
      */
     public function insert_employee()
 {
-        $user_id = $_POST['user_id'];
-
-        $sql = "SELECT COUNT(*) AS count FROM table WHERE user_id= ?;";
-        $params = array($user_id);
-        $result = $this->db->exec_sql_search($sql, $params);
-
-        if ($result[0]['count'] == 0) {
-            //登録処理に入る
             $params = array(
 
                 $_SESSION['shipping_info']['last_name'] + $_SESSION['shipping_info']['first_name'] => $_POST['name'],
@@ -49,7 +41,6 @@ class Verification_DB extends Control
 
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
-                PDO::PARAM_STR,
 
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
@@ -63,6 +54,10 @@ class Verification_DB extends Control
                 PDO::PARAM_STR,
                 
             );
+
+            $params02 = array(
+            );
+
             if ($this->db->exec_sql_insert('user', $params, $styles)) {
 
                 //登録完了
@@ -77,6 +72,6 @@ class Verification_DB extends Control
         } 
         
     }
-}
+
 $account_create_db = new Verification_DB();
 $account_create_db->insert_employee();

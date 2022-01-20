@@ -26,10 +26,9 @@ session_start();
         </tr>
         <tr>
             <td align="center">
-                <form class="h-adr" method="POST" action="../controller/Account_create_db.php">
+                <form class="h-adr" method="POST" action="../controller/Verification_DB.php">
                     <div class="card border-dark w-100">
                         <div class="card-body overflow-auto text-muted" id="verification-overflow">
-
                             <table class="table h-50" style="max-height:300px">
                                 <!------------------------------------------- Sample Data ------------------------------------------->
                                 <?php
@@ -60,7 +59,7 @@ session_start();
                                                     値段：
                                                 </td>
                                                 <td align="center">
-                                                    ￥<?php echo $item['product_unit_price']; ?>
+                                                    ￥<?php echo $item['price']; ?>
                                                 </td>
                                                 <tr>
                                                     <td align="right">
@@ -100,7 +99,6 @@ session_start();
             </td>
         </tr>
         <tr>
-        <form class="h-adr" method="POST" action="../controller/Verification_DB.php">
             <td align="center">
                 <div class="card border-dark w-50">
                     <div align="left" valign="top">
@@ -141,6 +139,7 @@ session_start();
                 </td>
             </tr>
     </table>
+    </form>
     <!------------------------------------------- footer ------------------------------------------->
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
