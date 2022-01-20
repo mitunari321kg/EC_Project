@@ -54,7 +54,7 @@ class Verification_DB extends Control
             );
 
             $params02 = array(
-                $_SESSION['cart']['quantity'] => $_POST[['quantity'];
+                $_SESSION['cart']['quantity'] => $_POST[['quantity']
             );
 
             if ($this->db->exec_sql_insert('delivery', $params1, $styles1)) {
