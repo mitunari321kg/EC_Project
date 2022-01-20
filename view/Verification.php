@@ -34,7 +34,7 @@ session_start();
                                 <?php
                                 $item_count = 0;
                                 foreach ($_SESSION['cart'] as $item) {
-                                    $goukei += $item['product_unit_price'] * $item['quantity'];
+                                    $goukei += $item['price'] * $item['quantity'];
                                     $num += $item['quantity'];
                                 ?>
                                     <tr>
@@ -43,7 +43,7 @@ session_start();
                                                 <tr>
                                                     <td rowspan="4" align="center" class="w-25">
                                                         <figure class="figure">
-                                                            <img src="<?php print_r($item['product_img']); ?>" class="figure-img img-fluid rounded" id="verification-img">
+                                                            <img src="<?php print_r($item['img']); ?>" class="figure-img img-fluid rounded" id="verification-img">
                                                         </figure>
                                                     </td>
                                                 </tr>
@@ -91,7 +91,7 @@ session_start();
                         </td>
                         <td align="right">
                             <p class="h6" align="right">
-                                ご請求額:<?php echo $goukei ?>
+                                ご請求額:<?php echo $goukei ?>円
                             </p>
                         </td>
                     </tr>

@@ -6,8 +6,8 @@ session_start();
 $array = array(
     'product_id' => $_POST["product_id"],
     'product_name' => $_POST["product_name"],
-    'product_img' => $_POST["product_img"],
-    'product_unit_price' => $_POST["product_unit_price"],
+    'img' => $_POST["img"],
+    'price' => $_POST["price"],
     'quantity' => $_POST["quantity"]
 );
 $_SESSION['cart'][] = $array;
