@@ -22,11 +22,10 @@ class Verification_DB extends Control
             $params1 = array(
 
                 $_SESSION['shipping_info']['last_name'] + $_SESSION['shipping_info']['first_name'] => $_POST['name'],
-                $_SESSION['shipping_info']['last_furigana'] => $_POST['last_furigana'],
+                $_SESSION['shipping_info']['last_furigana'] + $_SESSION['shipping_info']['first_furigana'] => $_POST['name_furigana'],
 
-                $_SESSION['shipping_info']['first_furigana'] => $_POST['first_furigana'],
                 $_SESSION['shipping_info']['postal_code'] => $_POST['postal_code'],
-                $_SESSION['shipping_info']['prefectures'] => $_POST['prefectures'],
+                $_SESSION['shipping_info']['prefactures'] => $_POST['prefactures'],
 
                 $_SESSION['shipping_info']['address01'] => $_POST['address01'],
                 $_SESSION['shipping_info']['address02'] => $_POST['address02'],
@@ -37,12 +36,11 @@ class Verification_DB extends Control
 
             );
             
-            $styles = array(
+            $styles1= array(
 
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
 
-                PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
 
@@ -56,9 +54,10 @@ class Verification_DB extends Control
             );
 
             $params02 = array(
+                $_SESSION['cart']['quantity'] => $_POST[['quantity'];
             );
 
-            if ($this->db->exec_sql_insert('user', $params1, $styles)) {
+            if ($this->db->exec_sql_insert('delivery', $params1, $styles1)) {
 
                 //登録完了
 
