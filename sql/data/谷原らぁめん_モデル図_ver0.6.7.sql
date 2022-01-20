@@ -95,8 +95,8 @@ ALTER TABLE category ADD CONSTRAINT PK_category PRIMARY KEY (category_id);
 CREATE TABLE product (
  product_id INT NOT NULL,
  emp_id INT NOT NULL,
- product_name VARCHAR(255),
- product_detail VARCHAR(510),
+ name VARCHAR(255),
+ detail VARCHAR(510),
  price INT,
  sale_flag TINYINT(1),
  quality_period DATE,
@@ -141,7 +141,7 @@ CREATE TABLE an_order (
  user_id VARCHAR(255),
  delivery_id INT NOT NULL,
  date DATE,
- order_total_fee INT
+ total_fee INT
 );
 
 ALTER TABLE an_order ADD CONSTRAINT PK_an_order PRIMARY KEY (order_id);

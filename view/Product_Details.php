@@ -34,11 +34,11 @@ $products_data = $control->get_popular_products($_POST['product_id']);
             <form action="result.php" method="POST">
             <tr>
                 <td colspan="2">
-                    <a>
+                    <a1>
                         <?php
                         echo $result[0]['product_name'];
                         ?>
-                    </a>
+                    </a1>
                 </td>
             </tr>
             <tr>
@@ -48,9 +48,9 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                     </a>
                 </td>
                 <td>
-                    <a>
+                    <a2>
                         <?php echo $result[0]['product_detail']; ?>
-                    </a>
+                    </a2>
                 </td>
             </tr>
             <tr>
@@ -66,9 +66,9 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                     </table>
                 </td>
                 <td>
-                    <a>
+                    <a3>
                         <?php echo $result[0]['product_unit_price']; ?>
-                    </a>
+                    </a3>
                 </td>
             </tr>
             <tr>
@@ -94,7 +94,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
             <table width="100%">
                 <tr>
                     <td>
-                        <p>その他人気商品</p>
+                        <p1>その他人気商品</p1>
                     </td>
                 </tr>
                 <tr>

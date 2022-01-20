@@ -77,12 +77,12 @@
                         <div class="card text-dark bg-light h-100">
                             <form action="Product_Details.php" name="product_form" method="post">
                                 <input type="hidden" name="product_id" value=<?php print $value['product_id'] ?>>
-                                <table class="table-light">
+                                <table class="table-light" align="center">
                                     <tr>
                                         <td>
                                             <input type="image" src="<?php print $value['product_img']; ?>" class="card-img-top" alt="img" />
                                             <div class="card-body">
-                                                <a class="card-text"><?php echo $value['product_name']; ?></a>
+                                                <a1 class="card-text"><?php echo $value['product_name']; ?></a1>
                                             </div>
                                             <div class="card-body">
                                                 <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
