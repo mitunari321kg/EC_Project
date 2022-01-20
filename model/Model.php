@@ -36,7 +36,8 @@ class Model
     public function select_all_product()
     {
         try {
-            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
+            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name,
+                    product_table.product_unit_price AS product_unit_price, product_table.evaluation AS evaluation,
                     product_img_table.product_img AS product_img
                     FROM product_table
                     LEFT JOIN product_img_table

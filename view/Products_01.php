@@ -18,9 +18,19 @@
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
     $products_data = $products->get_all_products();
+    define('MAX', '9');
     if (isset($_GET["search"])) {
         $products_data = $products->get_search_products($_GET["keyword"]);
     }
+    $products_num = count($products_data); //トータルデータ件数
+    $max_page = ceil($products_num / MAX); //トータルページ数※ceilは小数点を切り捨てる関数
+    if (!isset($_GET['page_id'])) { //$_GET['page_id'] はURLに渡された現在のページ数
+        $now = 1; //設定されてない場合は1ページ目にする
+    } else {
+        $now = $_GET['page_id'];
+    }
+    $start_no = ($now - 1) * MAX;
+    $disp_data = array_slice($products_data, $start_no, MAX, true); //array_sliceは、配列の何番目($start_no)から何番目(MAX)まで切り取る関数
     ?>
     <link href="css/products_01.css" rel="stylesheet">
     <meta charset="utf8_unicode_ci">
@@ -82,23 +92,24 @@
     <tr>
         <td>
             <div class="row row-cols row-cols-md-3 g-4 justify-content-center">
-                <?php if (count($products_data) == 0 || $products_data == NULL) { ?>
+                <?php if (count($disp_data) == 0 || $disp_data == NULL) { ?>
                     <p class="none">お探しの商品が見つかりませんでした。</p>
                 <?php } else { ?>
-                    <?php for ($i = 0; $i < 9; $i++) { ?>
+                    <?php foreach ($disp_data as $val) { ?>
                         <div class="col-sm-3">
                             <div class="card text-dark bg-light h-100">
                                 <form action="Product_Details.php" id="product_form" name="product_form" method="post">
-                                    <input type="hidden" name="product_id" value=<?php print $products_data[$i]['product_id'] ?>>
+                                    <input type="hidden" name="product_id" value=<?php print $val['product_id'] ?>>
+                                    <input type="hidden" name="evaluation" value=<?php print $val['evaluation'] ?>>
                                     <table class="table-light">
                                         <tr>
                                             <td>
-                                                <input type="image" src="<?php print $products_data[$i]['product_img']; ?>" class="card-img-top" alt="img" />
+                                                <input type="image" src="<?php print $val['product_img']; ?>" class="card-img-top" alt="img" />
                                                 <div class="card-body">
-                                                    <a class="card-text" id="product_name"><?php echo $products_data[$i]['product_name']; ?></a>
+                                                    <a class="card-text" id="product_name"><?php echo $val['product_name']; ?></a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p class="card-text"><?php echo $products_data[$i]['product_unit_price']; ?>円</p>
+                                                    <p class="card-text"><?php echo $val['product_unit_price']; ?>円</p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -111,25 +122,47 @@
             </div>
         </td>
     </tr>
-    <?php if (count($products_data) != 0) { ?>
+    <?php if (count($disp_data) != 0) { ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">戻る</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">次へ</a>
-                </li>
+                <?php if ($now > 1) { //リンクをつけるかの判定
+                ?>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="<?php '/paging.php?page_id=' . ($now - 1); ?>" tabindex="-1" aria-disabled="true">戻る</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="page-item disabled">
+                        <p class="page-link" tabindex="-1" aria-disabled="true">戻る</p>
+                    </li>
+                <?php } ?>
+                <?php for ($i = 1; $i <= $max_page; $i++) { //最大ページ数分リンクを作成
+                    if ($i == $now) { //現在表示中のページ数の場合はリンクを貼らない ?>
+                        <li class="page-item">
+                            <p class="page-link"><?php echo $now; ?></p>
+                        </li>
+                    <?php } else { ?>
+                        <li class="page-item">
+                            <a class="page-link" href="<?php '/Products_01.php?page_id=' . $i; ?>"><?php echo $i; ?></a>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+                <?php if ($now < $max_page) { //リンクをつけるかの判定
+                ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php '/paging.php?page_id=' . ($now + 1); ?>">次へ</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="page-item">
+                        <p class="page-link">次へ</p>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
     <?php } ?>
-    <?php if (count($products_data) != 0) { ?>
-        <p><?php echo count($products_data) ?>商品中 １～９商品</p>
+    <?php if (count($disp_data) != 0) { ?>
+        <p><?php echo $products_num ?>商品中 １～９商品</p>
     <?php } ?>
-    <?php if ($_GET["keyword"] != "" || $products_data == NULL) { ?>
+    <?php if (isset($_GET["search"]) || $disp_data == NULL) { ?>
         <a class="page-link" href="Products_01.php">一覧へ戻る</a>
     <?php } ?>
     </table>
