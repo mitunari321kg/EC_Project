@@ -1,3 +1,8 @@
-p1{
+a1{
     font-size: 25px;
+}
+.d-block{
+    object-fit: cover;
+    width: auto;
+    height: 250px;
 }

@@ -111,7 +111,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                                                     <td>
                                                         <input type="image" src="<?php echo $value['product_img']; ?>" class="card-img-top" alt="img" />
                                                         <div class="card-body">
-                                                            <a class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a>
+                                                            <a4 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a4>
                                                         </div>
                                                         <div class="card-body">
                                                         <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
