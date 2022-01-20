@@ -21,7 +21,7 @@ class Account_create_db extends Control
 {
         $user_id = $_POST['user_id'];
 
-        $sql = "SELECT COUNT(*) AS count FROM WHERE user_id= ?;";
+        $sql = "SELECT COUNT(*) AS count FROM user WHERE user_id= ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
 
@@ -40,13 +40,13 @@ class Account_create_db extends Control
                 'gender'                        => $_POST['gender'],
                 'postal_code'                   => $_POST['postal_code'],
 
-                'prefectures'                   => $_POST['prefectures'],
-                'address1'                      => $_POST['address1'],
-                'address2'                      => $_POST['address2'],
+                'prefactures'                   => $_POST['prefactures'],
+                'address01'                      => $_POST['address01'],
+                'address02'                      => $_POST['address02'],
 
-                'address3'                      => $_POST['address3'],
+                'address03'                      => $_POST['address03'],
                 'tel'                           => $_POST['tel'],
-                'email'                         => $_POST['email'],
+                'mail'                         => $_POST['mail'],
                
 
             );

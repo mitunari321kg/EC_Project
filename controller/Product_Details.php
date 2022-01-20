@@ -20,11 +20,11 @@ class Product_Details extends Control{
      */
     public function get_Product_Details($product_id){
         $sql = "SELECT 
-                    i.product_img, p.product_id, p.product_name, p.product_detail, p.product_unit_price
+                    i.img, p.product_id, p.product_name, p.product_detail, p.price
                 FROM 
-                    product_table AS p 
+                    product AS p 
                 RIGHT OUTER JOIN 
-                    product_img_table AS i
+                    product_image AS i
                 ON 
                     p.product_id = i.product_id
                 WHERE 
@@ -35,11 +35,11 @@ class Product_Details extends Control{
 
     public function get_popular_products($product_id){
         $sql =  "SELECT 
-                    i.product_img, p.product_id, p.product_name, p.product_unit_price
+                    i.img, p.product_id, p.product_name, p.price
                 FROM 
-                    product_table AS p 
+                    product AS p 
                 RIGHT OUTER JOIN 
-                    product_img_table AS i
+                    product_image AS i
                 ON 
                     p.product_id = i.product_id
                 WHERE 

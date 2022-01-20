@@ -37,21 +37,21 @@ if(isset($_SESSION['shipping_info'])){
                             <tr>
                                 <td>
                                     姓
-                                    <input type="text" name="user_last_name" size="24" required value="<?php echo $value['last_name'];?>">
+                                    <input type="text" name="last_name" size="24" required value="<?php echo $value['last_name'];?>">
                                 </td>
                                 <td>
                                     名
-                                    <input type="text" name="user_first_name" size="24" required value="<?php echo $value['first_name'];?>">
+                                    <input type="text" name="first_name" size="24" required value="<?php echo $value['first_name'];?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="user_last_furigana" size="24" required value="<?php echo $value['last_furigana'];?>" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" >
+                                    <input type="text" name="last_furigana" size="24" required value="<?php echo $value['last_furigana'];?>" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" >
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="user_first_furigana" size="24" required value="<?php echo $value['first_furigana'];?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                                    <input type="text" name="_first_furigana" size="24" required value="<?php echo $value['first_furigana'];?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                             </tr>
                         </table>
@@ -71,7 +71,7 @@ if(isset($_SESSION['shipping_info'])){
                                     都道府県<span class="mandatory"></span>　
                                 </td>
                                 <td>
-                                    <select name="prefectures">
+                                    <select name="prefactures">
                                         <option value="">選んでください</option>
                                         <option value="北海道" <?php if ($value['prefectures'] == '北海道') { ?> selected <?php } ?>>北海道</option>
                                         <option value="青森県" <?php if ($value['prefectures'] == '青森県') { ?> selected <?php } ?>>青森県</option>
@@ -128,7 +128,7 @@ if(isset($_SESSION['shipping_info'])){
                                     市区町村<span class="mandatory"></span>　
                                 </td>
                                 <td>
-                                    <input type="text" name="address1" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['address1']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
+                                    <input type="text" name="address01" placeholder="例:〇〇市〇〇町" size="56" value="<?php echo $value['address01']; ?>" pattern="((旭川|伊達|石狩|盛岡|奥州|田村|南相馬|那須塩原|東村山|武蔵村山|羽村|十日町|上越|富山|野々市|大町|蒲郡|四日市|姫路|大和郡山|廿日市|下松|岩国|田川|大村)市|.+?群.+?[町村]|.+?市.+?区|.+?[市区町村])(.+)" required>
                                 </td>
                             </tr>
                             <tr>
@@ -136,7 +136,7 @@ if(isset($_SESSION['shipping_info'])){
                                     番地以下<span class="mandatory"></span>　
                                 </td>
                                 <td>
-                                    <input type="text" name="address2" placeholder="例:１－２－３" size="56" value="<?php echo $value['address2']; ?>" required>
+                                    <input type="text" name="address02" placeholder="例:１－２－３" size="56" value="<?php echo $value['address02']; ?>" required>
                                 </td>
                             </tr>
                             <tr>
@@ -145,7 +145,7 @@ if(isset($_SESSION['shipping_info'])){
                                     部屋番号　
                                 </td>
                                 <td>
-                                    <input type="text" name="address3" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['address3']; ?>">
+                                    <input type="text" name="address03" placeholder="例:〇〇マンション〇号室" size="56" value="<?php echo $value['address03']; ?>">
                                 </td>
                             </tr>
                             <tr>
@@ -161,7 +161,7 @@ if(isset($_SESSION['shipping_info'])){
                                     メールアドレス
                                 </td>
                                 <td>
-                                    <input type="email" name="email" placeholder="半角で入力してください" value="<?php echo $value['email']; ?>" required size="56" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                                    <input type="email" name="mail" placeholder="半角で入力してください" value="<?php echo $value['mail']; ?>" required size="56" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                 </td>
                             </tr>
                             <tr>

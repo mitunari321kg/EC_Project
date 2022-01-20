@@ -18,7 +18,7 @@ class Login extends Control{
      */
     public function get_user_password(){
         $user_id = $_POST['user_id'];
-        $sql = "SELECT `name`,`password` FROM `user` WHERE user_id = ?;";
+        $sql = "SELECT `last_name`,`password` FROM `user` WHERE user_id = ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
         session_start();

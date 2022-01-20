@@ -19,8 +19,8 @@ class Shipping_Address extends Control{
     public function get_shipping_address($logged_in_id){
         $sql = "SELECT 
                     `first_name`,`last_name`,`first_furigana`,`last_furigana`,
-                    `postal_code`,`prefectures`, `address1`,`address2`, `address3` ,
-                    `tel`,`email` 
+                    `postal_code`,`prefectures`, `address01`,`address02`, `address03` ,
+                    `tel`,`mail` 
                 FROM 
                     `user`
                 WHERE

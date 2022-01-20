@@ -39,7 +39,7 @@ class Another_address extends Control
                 'prefectures'                   => $_POST['prefectures'],
                 'address'                       => $_POST['address'],
                 'tel'                           => $_POST['tel'],
-                'email'                         => $_POST['email'],
+                'email'                         => $_POST['mail'],
             );
             $styles = array(
                 PDO::PARAM_STR,

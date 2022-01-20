@@ -19,7 +19,7 @@ class Verification_DB extends Control
      */
     public function insert_employee()
 {
-            $params = array(
+            $params1 = array(
 
                 $_SESSION['shipping_info']['last_name'] + $_SESSION['shipping_info']['first_name'] => $_POST['name'],
                 $_SESSION['shipping_info']['last_furigana'] => $_POST['last_furigana'],
@@ -28,12 +28,12 @@ class Verification_DB extends Control
                 $_SESSION['shipping_info']['postal_code'] => $_POST['postal_code'],
                 $_SESSION['shipping_info']['prefectures'] => $_POST['prefectures'],
 
-                $_SESSION['shipping_info']['address1'] => $_POST['address1'],
-                $_SESSION['shipping_info']['address2'] => $_POST['address2'],
-                $_SESSION['shipping_info']['address3'] =>$_POST['address3'],
+                $_SESSION['shipping_info']['address01'] => $_POST['address01'],
+                $_SESSION['shipping_info']['address02'] => $_POST['address02'],
+                $_SESSION['shipping_info']['address03'] =>$_POST['address03'],
                 
                 $_SESSION['shipping_info']['tel'] => $_POST['tel'],
-                $_SESSION['shipping_info']['email'] => $_POST['email']
+                $_SESSION['shipping_info']['mail'] => $_POST['mail']
 
             );
             
@@ -58,7 +58,7 @@ class Verification_DB extends Control
             $params02 = array(
             );
 
-            if ($this->db->exec_sql_insert('user', $params, $styles)) {
+            if ($this->db->exec_sql_insert('user', $params1, $styles)) {
 
                 //登録完了
 
