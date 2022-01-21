@@ -1,6 +1,9 @@
 a1{
     font-size: 25px;
 }
+p1{
+    font-size: 25px;
+}
 .d-block{
     object-fit: cover;
     width: auto;
