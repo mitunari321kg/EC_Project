@@ -15,34 +15,38 @@ class Account_create_db extends Control
         parent::__construct();
     }
     /**
-     * 登録者情報取得
+     * 
      */
     public function insert_employee()
 {
         $user_id = $_POST['user_id'];
 
-        $sql = "SELECT COUNT(*) AS count FROM user_table WHERE user_id= ?;";
+        $sql = "SELECT COUNT(*) AS count FROM user WHERE user_id= ?;";
         $params = array($user_id);
         $result = $this->db->exec_sql_search($sql, $params);
 
         if ($result[0]['count'] == 0) {
             //登録処理に入る
             $params = array(
-                'user_id'                            => $_POST['user_id'],
-                'user_birthday'                      => $_POST['user_birthday'],
-                'user_last_name'                     => $_POST['user_last_name'],
-                'user_first_name'                    => $_POST['user_first_name'],
-                'user_last_furigana'                 => $_POST['user_last_furigana'],
-                'user_first_furigana'                => $_POST['user_first_furigana'],
-                'login_password'                     => password_hash($_POST['login_password'], PASSWORD_DEFAULT),
-                'user_gender'                        => $_POST['user_gender'],
-                'user_postal_code'                   => $_POST['user_postal_code'],
-                'user_prefectures'                   => $_POST['user_prefectures'],
-                'user_address1'                      => $_POST['user_address1'],
-                'user_address2'                      => $_POST['user_address2'],
-                'user_address3'                      => $_POST['user_address3'],
-                'user_tel'                           => $_POST['user_tel'],
-                'user_email'                         => $_POST['user_email'],
+                'user_id'                       => $_POST['user_id'],
+                'birthday'                      => $_POST['birthday'],
+                'last_name'                     => $_POST['last_name'],
+
+                'first_name'                    => $_POST['first_name'],
+                'last_furigana'                 => $_POST['last_furigana'],
+                'first_furigana'                => $_POST['first_furigana'],
+
+                'password'                      => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                'gender'                        => $_POST['gender'],
+                'postal_code'                   => $_POST['postal_code'],
+
+                'prefactures'                   => $_POST['prefactures'],
+                'address01'                      => $_POST['address01'],
+                'address02'                      => $_POST['address02'],
+
+                'address03'                      => $_POST['address03'],
+                'tel'                           => $_POST['tel'],
+                'mail'                         => $_POST['mail'],
                
 
             );
@@ -50,20 +54,24 @@ class Account_create_db extends Control
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
+
                 PDO::PARAM_STR,
                 PDO::PARAM_STR,
                 PDO::PARAM_STR
             );
-            if ($this->db->exec_sql_insert('user_table', $params, $styles)) {
+            if ($this->db->exec_sql_insert('user', $params, $styles)) {
                 //登録完了
 
                 $_SESSION['result_msg'] = "<br><font color=GREEN>登録が完了しました。</font></br>";

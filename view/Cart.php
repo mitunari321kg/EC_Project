@@ -7,9 +7,10 @@ session_start();
 <html lang="en">
 <?php
 if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
-    $price = json_encode(array_column($_SESSION['cart'], 'product_unit_price'));
+    $price = json_encode(array_column($_SESSION['cart'], 'price'));
     $qua =  json_encode(array_column($_SESSION['cart'], 'quantity'));
     $cartdata = json_encode($_SESSION['cart']);
+
 }
 ?>
 <head>
@@ -18,7 +19,6 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
     <meta charset="utf8-unicode-ci">
     <title>カート画面</title>
 </head>
-
 <body>
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
@@ -46,7 +46,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                                             <?php
                                             $item_count = 0;
                                             foreach ($_SESSION['cart'] as $item) {
-                                                $goukei += $item['product_unit_price'] * $item['quantity'];
+                                                $goukei += $item['price'] * $item['quantity'];
                                             ?>
                                                 <!------------------------------------------- Sample Data ------------------------------------------->
                                                 <tr>
@@ -57,7 +57,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                                                 <tr>
                                                     <td rowspan="4" align="center" class="w-25">
                                                         <figure class="figure">
-                                                            <img src="<?php print_r($item['product_img']); ?>" class="figure-img img-fluid rounded" id="Cart-img">
+                                                            <img src="<?php print_r($item['img']); ?>" class="figure-img img-fluid rounded" id="Cart-img">
                                                         </figure>
                                                     </td>
                                                 </tr>
@@ -76,7 +76,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                                                         値段：
                                                     </td>
                                                     <td align="center">
-                                                        ￥<?php echo $item['product_unit_price']; ?>
+                                                        ￥<?php echo $item['price']; ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -106,7 +106,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                 <tr>
                     <td>
                         <div class="h6" align="center" id="goukei">
-                            合計:<?php echo $goukei ?>円
+                            合計金額:<?php echo $goukei ?>円
                         </div>
                     </td>
                     <td align="right">
@@ -141,7 +141,6 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
 <!------------------------------------------- footer ------------------------------------------->
 <script type="text/javascript">
     function Click() {
-
         cart = <?php echo $cartdata ?>;
         price = <?php echo $price ?>;
         var num = 0;

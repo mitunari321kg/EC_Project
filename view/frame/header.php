@@ -67,7 +67,7 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a class="nav-item nav-link" href="Products.php">
+                                <a class="nav-item nav-link" href="Products_02.php">
                                     商品一覧
                                 </a>
                             </div>

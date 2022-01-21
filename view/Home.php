@@ -65,12 +65,12 @@
                                         <table class="table-light" align="center">
                                             <tr>
                                                 <td>
-                                                    <input type="image" src="<?php echo $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                                    <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                     <div class="card-body">
                                                         <a1 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a1>
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                                        <p class="card-text"><?php echo $value['price']; ?>円</p>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -44,7 +44,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
             <tr>
                 <td width="50%">
                     <a href="#">
-                        <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid w-75" alt="img" />
+                        <img src="<?php print $result[0]['img']; ?>" class="img-fluid w-75" alt="img" />
                     </a>
                 </td>
                 <td>
@@ -59,15 +59,14 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                         <tr>
                             <?php for ($i = 0; $i < 4; $i++) { ?>
                                 <td>
-                                    <img src="<?php print $result[0]['product_img']; ?>" class="img-fluid min-vh-25 min-vw-25" alt="img" />
+                                    <img src="<?php print $result[0]['img']; ?>" class="img-fluid min-vh-25 min-vw-25" alt="img" />
                                 </td>
                             <?php } ?>
                         </tr>
                     </table>
                 </td>
                 <td>
-                    <a3>
-                        <?php echo $result[0]['product_unit_price']; ?>円
+                        <?php echo $result[0]['price']; ?>円
                     </a3>
                 </td>
             </tr>
@@ -82,9 +81,9 @@ $products_data = $control->get_popular_products($_POST['product_id']);
             <tr>
                 <td>
                     <input type="hidden" name="product_id" value='<?php echo $_POST['product_id']; ?>'>
-                    <input type="hidden" name="product_img" value='<?php echo $result[0]['product_img']; ?>'>
+                    <input type="hidden" name="img" value='<?php echo $result[0]['img']; ?>'>
                     <input type="hidden" name="product_name" value='<?php echo $result[0]['product_name']; ?>'>
-                    <input type="hidden" name="product_unit_price" value='<?php echo $result[0]['product_unit_price']; ?>'>
+                    <input type="hidden" name="price" value='<?php echo $result[0]['price']; ?>'>
                     <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit">
                         <font color="white"><i class="bi bi-cart-fill">カートに入れる</i></font>
                     </button>
@@ -109,12 +108,12 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                                             <table class="table-light">
                                                 <tr>
                                                     <td>
-                                                        <input type="image" src="<?php echo $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                                        <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                         <div class="card-body">
                                                             <a4 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a4>
                                                         </div>
                                                         <div class="card-body">
-                                                        <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                                            <p class="card-text"><?php echo $value['price']; ?>円</p>
                                                         </div>
                                                     </td>
                                                 </tr>

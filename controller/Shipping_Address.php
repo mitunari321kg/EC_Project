@@ -18,11 +18,11 @@ class Shipping_Address extends Control{
      */
     public function get_shipping_address($logged_in_id){
         $sql = "SELECT 
-                    `user_first_name`,`user_last_name`,`user_first_furigana`,`user_last_furigana`,
-                    `user_postal_code`,`user_prefectures`, `user_address1`,`user_address2`, `user_address3` ,
-                    `user_tel`,`user_email` 
+                    `first_name`,`last_name`,`first_furigana`,`last_furigana`,
+                    `postal_code`,`prefectures`, `address01`,`address02`, `address03` ,
+                    `tel`,`mail` 
                 FROM 
-                    `user_table`
+                    `user`
                 WHERE
                     `user_id` = ?";
         $param = array(

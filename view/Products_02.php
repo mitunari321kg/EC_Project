@@ -113,11 +113,11 @@
                 });
             } else if(change_sort == 'new'){
                 products.sort(function(a, b){
-                    return (a.product_registration_date < b.product_registration_date ? 1 : -1)
+                    return (a.registration_date < b.registration_date ? 1 : -1)
                 });
             } else if(change_sort == 'pri'){
                 products.sort(function(a, b){
-                    return (a.product_unit_price - b.product_unit_price);
+                    return (a.price - b.price);
                 });
             }
             replace_card(products, 'page-1');
@@ -198,12 +198,12 @@
                                         '<table class="table-light" align="center">' +
                                         '<tr>'+
                                             '<td>'+
-                                                '<input type="image" src="'+ product["product_img"] +'" class="card-img-top" alt="img" />'+
+                                                '<input type="image" src="'+ product["img"] +'" class="card-img-top" alt="img" />'+
                                                 '<div class="card-body">'+
                                                  '<a class="card-text">'+ product["product_name"] +'</a>' +
                                                 '</div>' +
                                                 '<div class="card-body">' +
-                                                    '<p class="card-text">'+ product["product_unit_price"] +'円</p>' +
+                                                    '<p class="card-text">'+ product["price"] +'円</p>' +
                                                 '</div>' +
                                             '</td>' +
                                         '</tr>' +
