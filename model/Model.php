@@ -11,7 +11,7 @@ class Model
 
     private $pdo;
 
-    private $DSN = 'mysql:dbname=82;host=localhost;charset=utf8;';
+    private $DSN = 'mysql:dbname=82_ver0.6.7;host=localhost;charset=utf8;';
     private $DB_USERNAME = 'office3';
     private $DB_PASSWORD = 'kamogawa';
 
@@ -36,35 +36,11 @@ class Model
     public function select_all_product()
     {
         try {
-            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name,
-                    product_table.product_unit_price AS product_unit_price, product_table.evaluation AS evaluation,
-                    product_img_table.product_img AS product_img
-                    FROM product_table
-                    LEFT JOIN product_img_table
-                    ON product_table.product_id = product_img_table.product_id";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            print('SQLエラー：' . $e->getMessage());
-            die();
-        }
-    }
-
-    /**
-     * 全商品取得
-     * @return array $stmt 商品一覧
-     */
-    public function get_product($id)
-    {
-        try {
-            $id_nine = $id + 8;
-            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
-                    product_img_table.product_img AS product_img
-                    FROM product_table
-                    LEFT JOIN product_img_table
-                    ON product_table.product_id = product_img_table.product_id
-                    WHERE product_table.product_id BETWEEN " . "$id " . "AND " . "$id_nine";
+            $sql = "SELECT product.product_id AS product_id, product.name AS name,
+                    product.price AS price, product.evaluation AS evaluation, product_image.img AS img
+                    FROM product
+                    LEFT JOIN product_image
+                    ON product.product_id = product_image.product_id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -82,16 +58,16 @@ class Model
     public function search_products($keyword)
     {
         try {
-            $sql = "SELECT product_table.product_id AS product_id, product_table.product_name AS product_name, product_table.product_unit_price AS product_unit_price,
-                    product_img_table.product_img AS product_img,
-                    category_table.category_name AS category_name
-                    FROM product_table
-                    LEFT JOIN product_img_table
-                    ON product_table.product_id = product_img_table.product_id
-                    LEFT JOIN product_category_table
-                    ON product_table.product_id = product_category_table.product_id
-                    LEFT JOIN category_table
-                    ON category_table.category_id = product_category_table.category_id
+            $sql = "SELECT product.product_id AS product_id, product.name AS name, product.price AS price,
+                    product_image.img AS img,
+                    category.category_name AS category_name
+                    FROM product
+                    LEFT JOIN product_image
+                    ON product.product_id = product_img.product_id
+                    LEFT JOIN product_category
+                    ON product.product_id = product_category.product_id
+                    LEFT JOIN category
+                    ON category.category_id = product_category.category_id
                     WHERE product_name LIKE '%" . $keyword . "%'" . " OR category_name LIKE '%" . $keyword . "%'";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
@@ -107,10 +83,13 @@ class Model
      * @param string $user_id ユーザーID
      * @return array $stmt ユーザー情報
      */
-    public function search_user($user_id)
+    public function select_user($user_id)
     {
         try {
-            $sql = "SELECT * FROM `user_table` WHERE `user_id` = " . $user_id;
+            $sql = "SELECT user_id, password, last_name, first_name, last_furigana, first_furigana, birthday, gender,
+                    postal_code, prefectures, address01, address02, address03, tel, mail
+                    FROM user
+                    WHERE user_id = " . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -128,22 +107,41 @@ class Model
     public function update_info($new_info, $user_id)
     {
         try {
-            $sql = "UPDATE `user_table` SET "
-                . "`user_last_name`=" . "'" . $new_info['surname'] . "'"
-                . ",`user_first_name`=" . "'" . $new_info['name'] . "'"
-                . ",`user_last_furigana`=" . "'" . $new_info['surname_furigana'] . "'"
-                . ",`user_first_furigana`=" . "'" . $new_info['name_furigana'] . "'"
-                . ",`user_gender`=" . $new_info['user_gender']
-                . ",`user_postal_code`=" . "'" . $new_info['postal_code'] . "'"
-                . ",`user_prefectures`=" . "'" . $new_info['prefectures'] . "'"
-                . ",`user_address1`=" . "'" . $new_info['address1'] . "'"
-                . ",`user_address2`=" . "'" . $new_info['address2'] . "'"
-                . ",`user_address3`=" . "'" . $new_info['address3'] . "'"
-                . ",`user_tel`=" . "'" . $new_info['tel'] . "'"
-                . ",`user_email`=" . "'" . $new_info['email'] . "'"
-                . " WHERE `user_id`=" . $user_id;
+            $sql = "UPDATE user SET "
+                . "last_name=" . "'" . $new_info['last_name'] . "'"
+                . ",first_name=" . "'" . $new_info['first_name'] . "'"
+                . ",last_furigana=" . "'" . $new_info['last_furigana'] . "'"
+                . ",first_furigana=" . "'" . $new_info['first_furigana'] . "'"
+                . ",gender=" . $new_info['gender']
+                . ",postal_code=" . "'" . $new_info['postal_code'] . "'"
+                . ",prefectures=" . "'" . $new_info['prefectures'] . "'"
+                . ",address01=" . "'" . $new_info['address01'] . "'"
+                . ",address02=" . "'" . $new_info['address02'] . "'"
+                . ",address03=" . "'" . $new_info['address03'] . "'"
+                . ",tel=" . "'" . $new_info['tel'] . "'"
+                . ",mail=" . "'" . $new_info['mail'] . "'"
+                . " WHERE user_id=" . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
+        } catch (PDOException $e) {
+            print('SQL実行エラー：' . $e->getMessage());
+            die();
+        }
+    }
+
+    /**
+     * 登録されているパスワードを取得
+     * @param string $user_id ユーザーID
+     */
+    public function select_pass($user_id)
+    {
+        try {
+            $sql = "SELECT password
+                    FROM user
+                    WHERE password = " . $user_id;
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
         } catch (PDOException $e) {
             print('SQL実行エラー：' . $e->getMessage());
             die();
@@ -158,7 +156,7 @@ class Model
     public function update_pass($new_password, $user_id)
     {
         try {
-            $sql = "UPDATE `user_table` SET `login_password`=" . "'" . $new_password . "'" . "WHERE `user_id`=" . $user_id;
+            $sql = "UPDATE user SET password=" . "'" . $new_password . "'" . "WHERE user_id=" . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
         } catch (PDOException $e) {

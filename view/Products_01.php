@@ -4,7 +4,7 @@
  *@file   Products_01.php
  *@brief  商品一覧画面
  *@author 佐藤大介
- *@date   2021/11/12
+ *@date   2022/01/06
  */
 ?>
 
@@ -29,7 +29,7 @@
     } else {
         $now = $_GET['page_id'];
     }
-    $start_no = ($now - 1) * MAX;
+    $start_no = ($now - 1) * MAX; //配列の何番目から取得すればよいか
     $disp_data = array_slice($products_data, $start_no, MAX, true); //array_sliceは、配列の何番目($start_no)から何番目(MAX)まで切り取る関数
     ?>
     <link href="css/products_01.css" rel="stylesheet">
@@ -54,7 +54,6 @@
                         <form action="Products_01.php" method="GET">
                             <td align="left">
                                 <input type="search" name="keyword" id="keyword" placeholder="検索" required>
-                                <input type="hidden" name="products_data" id="products_data" value=<?php echo $products_data; ?>>
                                 <button type="submit" name="search" id="search">検索</button>
                                 <?php if (isset($_GET["search"])) { ?>
                                     <p>
@@ -104,12 +103,12 @@
                                     <table class="table-light">
                                         <tr>
                                             <td>
-                                                <input type="image" src="<?php print $val['product_img']; ?>" class="card-img-top" alt="img" />
+                                                <input type="image" src="<?php print $val['img']; ?>" class="card-img-top" alt="img" />
                                                 <div class="card-body">
-                                                    <a class="card-text" id="product_name"><?php echo $val['product_name']; ?></a>
+                                                    <a class="card-text" id="name"><?php echo $val['name']; ?></a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p class="card-text"><?php echo $val['product_unit_price']; ?>円</p>
+                                                    <p class="card-text"><?php echo $val['price']; ?>円</p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -128,7 +127,7 @@
                 <?php if ($now > 1) { //リンクをつけるかの判定
                 ?>
                     <li class="page-item disabled">
-                        <a class="page-link" href="<?php '/paging.php?page_id=' . ($now - 1); ?>" tabindex="-1" aria-disabled="true">戻る</a>
+                        <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . ($now - 1); ?> tabindex="-1" aria-disabled="true">戻る</a>
                     </li>
                 <?php } else { ?>
                     <li class="page-item disabled">
@@ -142,14 +141,14 @@
                         </li>
                     <?php } else { ?>
                         <li class="page-item">
-                            <a class="page-link" href="<?php '/Products_01.php?page_id=' . $i; ?>"><?php echo $i; ?></a>
+                            <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . $i; ?>><?php echo $i; ?></a>
                         </li>
                     <?php } ?>
                 <?php } ?>
                 <?php if ($now < $max_page) { //リンクをつけるかの判定
                 ?>
                     <li class="page-item">
-                        <a class="page-link" href="<?php '/paging.php?page_id=' . ($now + 1); ?>">次へ</a>
+                        <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . ($now + 1); ?>>次へ</a>
                     </li>
                 <?php } else { ?>
                     <li class="page-item">

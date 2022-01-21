@@ -21,7 +21,7 @@ class Control_User_pass extends Control
      */
     public function get_old_pass()
     {
-        return $this->model->search_user($this->user_id);
+        return $this->model->select_pass($this->user_id);
     }
 
     /**

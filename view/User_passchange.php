@@ -12,11 +12,12 @@ $user_id = $_SESSION['logged_in_id'];
     include '../controller/Control_user_pass.php';
     $user_pass_change = new Control_User_pass($user_id);
     $user_old_pass = $user_pass_change->get_old_pass();
-    $old_pass = "";
+    $old_pass = $user_old_pass['password'];
+    echo $old_pass;
+    //foreach($user_old_pass as $val) {
+    //    $old_pass = $val['password'];
+    //}
     $error_message = "";
-    foreach ($user_old_pass as $value) {
-        $old_pass = $value['login_password'];
-    }
     if (isset($_POST["confirm"])) {
         $old_password = $_POST["old_password"];
         $new_password = $_POST["new_password"];
