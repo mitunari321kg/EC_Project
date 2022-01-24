@@ -11,7 +11,7 @@ class Model
 
     private $pdo;
 
-    private $DSN = 'mysql:dbname=82_ver0.6.7;host=localhost;charset=utf8;';
+    private $DSN = 'mysql:dbname=82;host=localhost;charset=utf8;';
     private $DB_USERNAME = 'office3';
     private $DB_PASSWORD = 'kamogawa';
 
