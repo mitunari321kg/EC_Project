@@ -85,12 +85,12 @@ class Verification_DB extends Control
 
         );
         
-        $this->db->exec_sql_insert_kai('delivery', $params01, $styles01);
-        $this->db->exec_sql_insert_kai('an_order', $params02, $styles02);
-        $this->db->exec_sql_insert_kai('order_detail', $params03, $styles03);
+        // $this->db->exec_sql_insert_kai('delivery', $params01, $styles01);
+        // $this->db->exec_sql_insert_kai('an_order', $params02, $styles02);
+        // $this->db->exec_sql_insert_kai('order_detail', $params03, $styles03);
 
     }
 }
 
-$Verification_DB= new Verification_DB();
-$Verification_DB->insert_employee();
+ $Verification_DB= new Verification_DB();
+ $Verification_DB->insert_employee();

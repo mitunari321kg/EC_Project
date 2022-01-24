@@ -112,6 +112,7 @@ class Model
             }
             } catch (PDOException $e) {
             die($e->getMessage());
+            $PDO->rollback();
         }
     }
 }

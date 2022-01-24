@@ -173,7 +173,7 @@
                 }
                 //検索でヒットした商品以外の商品を無視する
                 if(search){
-                    if(product['product_name'].indexOf(search) == -1){
+                    if(product['name'].indexOf(search) == -1){
                         p_count--;
                         return;
                     }
@@ -200,7 +200,7 @@
                                             '<td>'+
                                                 '<input type="image" src="'+ product["img"] +'" class="card-img-top" alt="img" />'+
                                                 '<div class="card-body">'+
-                                                 '<a class="card-text">'+ product["product_name"] +'</a>' +
+                                                 '<a class="card-text">'+ product["name"] +'</a>' +
                                                 '</div>' +
                                                 '<div class="card-body">' +
                                                     '<p class="card-text">'+ product["price"] +'円</p>' +

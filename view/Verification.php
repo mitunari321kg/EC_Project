@@ -71,6 +71,7 @@ session_start();
                                             </table>
                                         </td>
                                     </tr>
+                                <input type="hidden" name="products[]['product_id']" value=<?php echo $item['product_id']?>>
                                 <?php
                                 }
                                 ?>

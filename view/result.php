@@ -5,7 +5,7 @@
 session_start();
 $array = array(
     'product_id' => $_POST["product_id"],
-    'product_name' => $_POST["product_name"],
+    'name' => $_POST["name"],
     'img' => $_POST["img"],
     'price' => $_POST["price"],
     'quantity' => $_POST["quantity"]
@@ -35,7 +35,7 @@ $_SESSION['cart'][] = $array;
         <tr>
             <td>
                 <div class="col">
-                    <a class="nav-item nav-link" href="Products.php">
+                    <a class="nav-item nav-link" href="Products02.php">
                         買い物を続ける
                     </a>
                 </div>
