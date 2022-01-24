@@ -66,7 +66,8 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                     </table>
                 </td>
                 <td>
-                        <?php echo $result[0]['price']; ?>円
+                    <a3>
+                        <?php echo $result[0]['price']; ?>円</p>
                     </a3>
                 </td>
             </tr>

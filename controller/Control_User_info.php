@@ -21,7 +21,7 @@ class Control_User_info extends Control
      */
     public function get_user_info()
     {
-        return $this->model->search_user($this->user_id);
+        return $this->model->select_user($this->user_id);
     }
 
     /**

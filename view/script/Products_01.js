@@ -4,27 +4,28 @@
  * @author 佐藤大介
  * @date   2022/01/06
  */
-function search() {
-    for (var i = 0; i < products_data.length; i++) {
-        if (products_data[i].product_name.indexOf(keyword) == -1) {
-            products_data.splice(i, 1);
-            console.log(products_data);
-        }
-    }
-    $.ajax({
-        type: "GET",
-        url: "http://localhost/EC_Project/view/Products_01.php",
-        data: {
-            'Products': products_data
-        },
-        dataType: "json",
-        scriptCharset: 'utf8_unicode_ci'
-    })
-        .then(
-            function (param) { //　paramに処理後のデータが入って戻ってくる
-                console.log(param); //　帰ってきたら実行する処理
-            },
-            function (XMLHttpRequest, textStatus, errorThrown) { //　エラーが起きた時はこちらが実行される
-                console.log(XMLHttpRequest); //　エラー内容表示
-            })
-}
+$(function () {
+    $('#search').click(function () {
+        var keyword = $('#keyword').val();
+        var products_data = JSON.stringify($('#products_data').val());
+        var search_result = products_data.filter(element => element["product_name"].indexOf(keyword) !== -1 | element["product_category_name"].indexOf(keyword) !== -1);
+        // 一覧の表示を空にする
+        $("#product_form").empty();
+        var product =
+            '<input type="hidden" name="product_id" value="' + search_result["product_id"] + '">' +
+            '<table class="table-light">' +
+            '<tr>' +
+            '<td>' +
+            '<input type="image" src="' + search_result["product_img"] + '" class="card-img-top" alt="img" />' +
+            '<div class="card-body">' +
+            '<a class="card-text">' + search_result["product_name"] + '</a>' +
+            '</div>' +
+            '<div class="card-body">' +
+            '<p class="card-text">' + search_result["product_unit_price"] + '円</p>' +
+            '</div>' +
+            '</td>' +
+            '</tr>' +
+            '</table>';
+        document.write(product);
+    });
+});
