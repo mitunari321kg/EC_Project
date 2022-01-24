@@ -16,7 +16,7 @@
     $products_data = $products->get_products();
     ?>
     <!--データベース接続-->
-    <link href="css/products.css" rel="stylesheet" />
+    <link href="css/Home.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>谷原らぁめん</title>
 </head>
@@ -30,13 +30,13 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../img/food_ramen.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/tanihara.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/food_ra-men_gekikara.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/taniharax.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/ramen_shio.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/tanihara.png" class="d-block w-100" alt="Topics" />
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td>
-                <p>おすすめ商品</p>
+                <p1>おすすめ商品</p1>
             </td>
         </tr>
         <!--おすすめ商品-->
@@ -62,15 +62,15 @@
                                 <div class="card text-dark bg-light h-100">
                                     <form action="Product_Details.php" name="product_form" method="post">
                                         <input type="hidden" name="product_id" value=<?php print $value['product_id']?>>
-                                        <table class="table-light">
+                                        <table class="table-light" align="center">
                                             <tr>
                                                 <td>
-                                                    <input type="image" src="<?php echo $value['product_img']; ?>" class="card-img-top" alt="img" />
+                                                    <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                     <div class="card-body">
                                                         <a class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a>
                                                     </div>
                                                     <div class="card-body">
-                                                        <p class="card-text"><?php echo $value['product_unit_price']; ?>円</p>
+                                                        <p class="card-text"><?php echo $value['price']; ?>円</p>
                                                     </div>
                                                 </td>
                                             </tr>

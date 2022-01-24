@@ -30,10 +30,10 @@ class Control_Products
     public function get_products()
     {
         try {
-            $sql = "SELECT product_table.product_id, product_table.product_name, product_table.product_unit_price, product_img_table.product_img
-                    FROM product_table
-                    RIGHT OUTER JOIN product_img_table
-                    ON product_table.product_id = product_img_table.product_id";
+            $sql = "SELECT product.product_id, product.product_name, product.price, product_image.img
+                    FROM product
+                    RIGHT OUTER JOIN product_image
+                    ON product.product_id = product_image.product_id";
             return $this->model->exec_sql($sql);
         } catch (PDOException $e) {
             print('商品一覧を取得できません：'.$e->getMessage());

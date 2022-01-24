@@ -48,7 +48,7 @@ if (isset($_SESSION['logged_in_id'])) {
                                         パスワード
                                     </th>
                                     <td>
-                                        <input type="password" name="login_password" value="" size="24" maxlength="40" minlength="4" required pattern="^[0-9A-Za-z]+$" 　placeholder="半角英数字で入力してください">
+                                        <input type="password" name="password" value="" size="24" maxlength="40" minlength="4" required pattern="^[0-9A-Za-z]+$" 　placeholder="半角英数字で入力してください">
                                     </td>
                                 </tr>
                                 <tr>

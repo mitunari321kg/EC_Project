@@ -52,7 +52,7 @@ if(isset($_SESSION['logged_in_id']) && !isset($_SESSION['shipping_info'])){
                                     <div align="left" valign="top">
                                         <font size="2" class="text-muted">お名前</font>
                                     </div>
-                                    <?php echo  $_SESSION['shipping_info']['user_last_name'].' '.  $_SESSION['shipping_info']['user_first_name']; ?>
+                                    <?php echo  $_SESSION['shipping_info']['last_name'].' '.  $_SESSION['shipping_info']['first_name']; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -60,7 +60,7 @@ if(isset($_SESSION['logged_in_id']) && !isset($_SESSION['shipping_info'])){
                                     <div align="left" valign="top">
                                         <font size="2" class="text-muted">お届け先住所</font>
                                     </div>
-                                    <?php echo  $_SESSION['shipping_info']['user_prefectures'].$_SESSION['shipping_info']['user_address1']. $_SESSION['shipping_info']['user_address2']. $_SESSION['shipping_info']['user_address3']; ?>
+                                    <?php echo  $_SESSION['shipping_info']['prefectures'].$_SESSION['shipping_info']['address01']. $_SESSION['shipping_info']['address02']. $_SESSION['shipping_info']['address03']; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -68,7 +68,7 @@ if(isset($_SESSION['logged_in_id']) && !isset($_SESSION['shipping_info'])){
                                     <div align="left" valign="top">
                                         <font size="2" class="text-muted">電話番号</font>
                                     </div>
-                                    <?php echo  $_SESSION['shipping_info']['user_tel']; ?>
+                                    <?php echo  $_SESSION['shipping_info']['tel']; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -76,7 +76,7 @@ if(isset($_SESSION['logged_in_id']) && !isset($_SESSION['shipping_info'])){
                                     <div align="left" valign="top">
                                         <font size="2" class="text-muted">メールアドレス</font>
                                     </div>
-                                    <?php echo  $_SESSION['shipping_info']['user_email']; ?>
+                                    <?php echo  $_SESSION['shipping_info']['mail']; ?>
                                 </td>
                             </tr>
                             <tr height="50px">

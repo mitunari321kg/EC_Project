@@ -37,7 +37,7 @@
 
                         <div class=" mb-3" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">お名前（必須）</label>
-                            <input type="text" class="form-control" id="contact_name" name="contact_name" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
 
                         </div>
                     </td>
@@ -47,7 +47,7 @@
 
                         <div class=" mb-3" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">メールアドレス（必須）</label>
-                            <input type="mail" class="form-control" id="contact_mail" name="contact_mail" required>
+                            <input type="mail" class="form-control" id="mail" name="mail" required>
 
                         </div>
                     </td>
@@ -56,7 +56,7 @@
                     <td align="center">
                         <div class="mb-3" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">件名（必須）</label>
-                            <input type="text" class="form-control" id="contact_subject" name="contact_subject" required>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
                         </div>
                     </td>
                 </tr>
@@ -64,7 +64,7 @@
                     <td align="center">
                         <div class="mb-3 form-group" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">お問い合わせ内容（必須）</label>
-                            <textarea class="form-control" id="contact_contents" rows="6" name="contact_contents" required></textarea>
+                            <textarea class="form-control" id="contents" rows="6" name="contents" required></textarea>
                         </div>
                     </td>
                 </tr>
