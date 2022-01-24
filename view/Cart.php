@@ -45,7 +45,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                                             <?php
                                             $item_count = 0;
                                             foreach ($_SESSION['cart'] as $item) {
-                                                $goukei += $item['price'] * $item['quantity'];
+                                                $total_fee += $item['price'] * $item['quantity'];
                                             ?>
                                                 <!------------------------------------------- Sample Data ------------------------------------------->
                                                 <tr>
@@ -105,7 +105,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                 <tr>
                     <td>
                         <div class="h6" align="center" id="goukei">
-                            合計金額:<?php echo $goukei ?>円
+                            合計金額:<?php echo $total_fee?>円
                         </div>
                     </td>
                     <td align="right">
@@ -144,7 +144,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
         price = <?php echo $price ?>;
         var num = 0;
         var quantityr = document.getElementsByName("quantity[]");
-        var goukei = document.getElementById("goukei");
+        var total_fee = document.getElementById("total_fee");
         var i = 0;
         quantityr.forEach((q) => {
             num += price[i++] * q['value'];

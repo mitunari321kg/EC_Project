@@ -34,7 +34,7 @@ session_start();
                                 <?php
                                 $item_count = 0;
                                 foreach ($_SESSION['cart'] as $item) {
-                                    $goukei += $item['price'] * $item['quantity'];
+                                    $total_fee += $item['price'] * $item['quantity'];
                                     $num += $item['quantity'];
                                 ?>
                                     <tr>
@@ -91,7 +91,7 @@ session_start();
                         </td>
                         <td align="right">
                             <p class="h6" align="right">
-                                ご請求額:<?php echo $goukei ?>円
+                                ご請求額:<?php echo $total_fee ?>円
                             </p>
                         </td>
                     </tr>
@@ -108,7 +108,7 @@ session_start();
                     <div align="left" valign="top" class="border-top">
                         <font size="2" class="text-muted">お届け先住所</font>
                     </div>
-                    <?php echo  $_SESSION['shipping_info']['prefectures'] . $_SESSION['shipping_info']['address01'] . $_SESSION['shipping_info']['address02'] . $_SESSION['shipping_info']['address03']; ?>
+                    <?php echo  $_SESSION['shipping_info']['prefactures'] . $_SESSION['shipping_info']['address01'] . $_SESSION['shipping_info']['address02'] . $_SESSION['shipping_info']['address03']; ?>
                 </div>
             </td>
         </tr>

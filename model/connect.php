@@ -8,10 +8,11 @@
 
 /**
  * データベース接続用クラス
-*/
-class Model{
-    private $DSN ='mysql:dbname=82;host=localhost;charset=utf8;';
-    private $DB_USERNAME ='office3';
+ */
+class Model
+{
+    private $DSN = 'mysql:dbname=82;host=localhost;charset=utf8;';
+    private $DB_USERNAME = 'office3';
     private $DB_PASSWORD = 'kamogawa';
     private $db;
     function __construct()
@@ -86,6 +87,30 @@ class Model{
 
             return $stmt->fetchAll();
         } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+    public function exec_sql_insert_kai($table_name, $params, $styles)
+    {
+        try {
+            $PDO = new PDO($this->DSN, $this->DB_USERNAME, $this->DB_PASSWORD);
+            $PDO->beginTransaction();
+            $keys = array_keys($params);
+            $columns = implode(',', $keys);
+            $nobindparams = ':' . implode(',:', $keys);
+            $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ')';
+            $stmt = $this->db->prepare($sql);
+            $cnt = 0;
+            foreach (explode(',', $nobindparams) as $nobindparam) {
+                $stmt->bindParam($nobindparam, $params[$keys[$cnt]], $styles[$cnt]);
+                $cnt++;
+            }
+            $res = $stmt->execute();
+
+            if($res){
+                $PDO->commit();
+            }
+            } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
