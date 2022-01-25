@@ -18,14 +18,16 @@
         <tr>
             <td height="80px">
                 <p class="h2">
-                    お問い合わせ完了しました！
+                    お問い合わせが完了しました！
                 </p>
             </td>
         </tr>
         <tr>
             <td>
                 <label class="bg-light text-muted h6" align="left" id="inquiry-form">
-                    お問い合わせありがとうございます！いつかお返しします
+                お問い合わせありがとうございました。
+                内容を確認のうえ、回答させて頂きます。
+                しばらくお待ちください。
                 </label>
             </td>
         </tr>
