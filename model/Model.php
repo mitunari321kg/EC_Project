@@ -79,6 +79,41 @@ class Model
     }
 
     /**
+     * 商品をソートして取得
+     * @return array 商品一覧（人気順）
+     */
+    public function select_order_products($order, $keyword)
+    {
+        try {
+            $sql = "SELECT product.product_id AS product_id, product.product_name AS name,
+                    product.price AS price, product.evaluation AS evaluation, product_image.img AS img
+                    FROM product
+                    LEFT JOIN product_image
+                    ON product.product_id = product_image.product_id";
+            switch ($order) {
+                case "pop":
+                    $sql = $sql . " ORDER BY product.evaluation DESC";
+                    break;
+                case "pri":
+                    $sql = $sql . " ORDER BY product.price ASC";
+                    break;
+                case "new":
+                    $sql = $sql . " ORDER BY product.registration_date DESC";
+                    break;
+            }
+            if ($keyword != "") {
+                $sql = $sql . " WHERE product_name LIKE '%" . $keyword . "%'" . " OR category_name LIKE '%" . $keyword . "%'";
+            }
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            print('SQLエラー：' . $e->getMessage());
+            die();
+        }
+    }
+
+    /**
      * ユーザー情報検索
      * @param string $user_id ユーザーID
      * @return array $stmt ユーザー情報

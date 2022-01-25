@@ -17,11 +17,40 @@
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
-    $products_data = $products->get_all_products();
-    define('MAX', '9');
-    if (isset($_GET["search"])) {
-        $products_data = $products->get_search_products($_GET["keyword"]);
-    }
+    $products_data = $products->get_sort_products("pop", "");
+    define('MAX', '9'); ?>
+    <script type="text/javascript">
+        var keyword = <?php echo $_GET["keyword"]; ?>
+        var sort = document.getElementById("sort").value;
+        function sort() {
+            if (keyword == "") {
+                switch (sort) {
+                    case "pop":
+                        <?php $products_data = $products->get_sort_products("pop", ""); ?>
+                        break;
+                    case "pri":
+                        <?php $products_data = $products->get_sort_products("pri", ""); ?>
+                        break;
+                    case "pri":
+                        <?php $products_data = $products->get_sort_products("new", ""); ?>
+                        break;
+                }
+            } else {
+                switch (sort) {
+                    case "pop":
+                        <?php $products_data = $products->get_sort_products("pop", $_GET["keyword"]); ?>
+                        break;
+                    case "pri":
+                        <?php $products_data = $products->get_sort_products("pri", $_GET["keyword"]); ?>
+                        break;
+                    case "pri":
+                        <?php $products_data = $products->get_sort_products("new", $_GET["keyword"]); ?>
+                        break;
+                }
+            }
+        }
+    </script>
+    <?php
     $products_num = count($products_data); //トータルデータ件数
     $max_page = ceil($products_num / MAX); //トータルページ数※ceilは小数点を切り捨てる関数
     if (!isset($_GET['page_id'])) { //$_GET['page_id'] はURLに渡された現在のページ数
@@ -63,10 +92,10 @@
                             </td>
                         </form>
                         <td align="right">
-                            <select name="sort">
-                                <option value="rec">おすすめ</option>
-                                <option value="pri">価格</option>
-                                <option value="new">新着</option>
+                            <select name="change_sort" id="change_sort" onchange="sort()">
+                                <option value="pop" selected>人気順</option>
+                                <option value="pri">価格順</option>
+                                <option value="new">新着順</option>
                             </select>
                         </td>
                     </tr>
@@ -135,7 +164,8 @@
                     </li>
                 <?php } ?>
                 <?php for ($i = 1; $i <= $max_page; $i++) { //最大ページ数分リンクを作成
-                    if ($i == $now) { //現在表示中のページ数の場合はリンクを貼らない ?>
+                    if ($i == $now) { //現在表示中のページ数の場合はリンクを貼らない 
+                ?>
                         <li class="page-item">
                             <p class="page-link"><?php echo $now; ?></p>
                         </li>
@@ -159,7 +189,7 @@
         </nav>
     <?php } ?>
     <?php if (count($disp_data) != 0) { ?>
-        <p><?php echo $products_num ?>商品中 １～９商品</p>
+        <p><?php echo $products_num; ?>商品中 <?php echo key($disp_data) + 1; ?>～<?php echo array_key_last($disp_data) + 1; ?>商品</p>
     <?php } ?>
     <?php if (isset($_GET["search"]) || $disp_data == NULL) { ?>
         <a class="page-link" href="Products_01.php">一覧へ戻る</a>
