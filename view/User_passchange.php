@@ -7,13 +7,13 @@ $user_id = $_SESSION['logged_in_id'];
 <html lang="en">
 
 <head>
-    <?php include 'frame/basic_style_info.php'; ?>
     <?php
+    include 'frame/basic_style_info.php';
     include '../controller/Control_user_pass.php';
     $user_pass_change = new Control_User_pass($user_id);
     $user_old_pass = $user_pass_change->get_old_pass();
     $old_pass = "";
-    foreach($user_old_pass as $val) {
+    foreach ($user_old_pass as $val) {
         $old_pass = $val['password'];
     }
     $error_message = "";
@@ -22,10 +22,9 @@ $user_id = $_SESSION['logged_in_id'];
         $new_password = $_POST["new_password"];
         $confirm_password = $_POST["confirm_password"];
         if (password_verify($old_password, $old_pass) && $new_password == $confirm_password) {
-            //パスワードをハッシュ化してデータベースに保存
-            $user_pass_change->change_pass(password_hash($new_password, PASSWORD_DEFAULT), $user_id);
-            header('Location:Pass_result.php');
-            exit;
+            $user_pass_change->change_pass(password_hash($new_password, PASSWORD_DEFAULT)); //パスワードをハッシュ化してデータベースに保存
+            header('Location: Pass_result.php');
+            exit();
         } elseif (password_verify($old_password, $old_pass) && $new_password != $confirm_password) {
             $error_message = '<p class="alert">※現在のパスワード、新しいパスワード、確認用:入力されたパスワードが一致しません</p>';
         } elseif (password_verify($old_password, $old_pass)) {
@@ -66,7 +65,7 @@ $user_id = $_SESSION['logged_in_id'];
                                     現在のパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="old_password" id="old_password" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <input type="password" name="old_password" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                     <div class="field-icon">
                                         <i toggle="password-field" class="zmdi zmdi-eye toggle-password"></i>
                                     </div>
@@ -77,7 +76,7 @@ $user_id = $_SESSION['logged_in_id'];
                                     新しいパスワード　
                                 </td>
                                 <td>
-                                    <input type="password" name="new_password" id="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <input type="password" name="new_password" size="24" placeholder="半角英数字4～40文字で入力してください" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                     <div class="field-icon">
                                         <i toggle="password-field" class="zmdi zmdi-eye toggle-password"></i>
                                     </div>
@@ -88,7 +87,7 @@ $user_id = $_SESSION['logged_in_id'];
                                     確認用　
                                 </td>
                                 <td>
-                                    <input type="password" name="confirm_password" id="confirm_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
+                                    <input type="password" name="confirm_password" placeholder="確認のためもう一度入力してください" size="24" required minlength="4" pattern="^[0-9a-zA-Z]+$">
                                     <div class="field-icon">
                                         <i toggle="password-field" class="zmdi zmdi-eye toggle-password"></i>
                                     </div>
@@ -122,4 +121,5 @@ $user_id = $_SESSION['logged_in_id'];
     <?php include 'frame/footer.php'; ?>
     <!------------------------------------------- footer ------------------------------------------->
 </body>
+
 </html>
