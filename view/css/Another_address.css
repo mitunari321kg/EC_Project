@@ -1,4 +1,9 @@
 input {
     display: block;
-    width: 400px;
+    margin: 1em auto;
+    padding: 1em;
+ width: 90%;
+ height: 10px;
+ background-color: rgb(251, 251, 251); /* 背景色 */
+ border: 1px solid rgb(0, 0, 0); /* 枠線 */
 }

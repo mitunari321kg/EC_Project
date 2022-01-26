@@ -5,7 +5,7 @@
  * @brief 商品一覧取得コントローラ
  * @author 佐藤大介
  * @date 2021/12/01
- * @update 佐藤 2022/01/13
+ * @update 佐藤 2022/01/21
  */
 include '../model/Model.php';
 
@@ -27,9 +27,9 @@ class Control_Products
     /**
      * 商品一覧を取得
      */
-    public function get_products()
+    public function get_all_products()
     {
-        return $this->model->get_all_product();
+        return $this->model->select_all_product();
     }
 
     /**

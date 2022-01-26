@@ -37,12 +37,13 @@ if (isset($_SESSION['shipping_info'])) {
                             <tr>
                                 <td>
                                     姓
+
                                     <input type="text" name="last_name" size="24" required value="<?php echo $value['last_name']; ?>">
                                 </td>
                                 <td>
                                     名
                                     <input type="text" name="first_name" size="24" required value="<?php echo $value['first_name']; ?>">
-                                </td>
+
                             </tr>
                             <tr>
                                 <td>
@@ -86,7 +87,7 @@ if (isset($_SESSION['shipping_info'])) {
                                         <option value="埼玉県" <?php if ($value['prefactures'] == '埼玉県') { ?> selected <?php } ?>>埼玉県</option>
                                         <option value="千葉県" <?php if ($value['prefactures'] == '千葉県') { ?> selected <?php } ?>>千葉県</option>
                                         <option value="東京都" <?php if ($value['prefactures'] == '東京都') { ?> selected <?php } ?>>東京都</option>
-                                        <option value="神奈川県" <?php if ($value['prefactures'] == '神奈川県') { ?> selected <?php } ?>>神奈川県</opti <option value="新潟県" <?php if ($value['prefactures'] == '新潟県') { ?> selected <?php } ?>>新潟県</option>
+                                        <option value="神奈川県" <?php if ($value['prefactures'] == '神奈川県') { ?> selected <?php } ?>>神奈川県 <option value="新潟県" <?php if ($value['prefactures'] == '新潟県') { ?> selected <?php } ?>>新潟県</option>
                                         <option value="富山県" <?php if ($value['prefactures'] == '富山県') { ?> selected <?php } ?>>富山県</option>
                                         <option value="石川県" <?php if ($value['prefactures'] == '石川県') { ?> selected <?php } ?>>石川県</option>
                                         <option value="福井県" <?php if ($value['prefactures'] == '福井県') { ?> selected <?php } ?>>福井県</option>
@@ -101,7 +102,7 @@ if (isset($_SESSION['shipping_info'])) {
                                         <option value="大阪府" <?php if ($value['prefactures'] == '大阪府') { ?> selected <?php } ?>>大阪府</option>
                                         <option value="兵庫県" <?php if ($value['prefactures'] == '兵庫県') { ?> selected <?php } ?>>兵庫県</option>
                                         <option value="奈良県" <?php if ($value['prefactures'] == '奈良県') { ?> selected <?php } ?>>奈良県</option>
-                                        <option value="和歌山県" <?php if ($value['prefactures'] == '和歌山県') { ?> selected <?php } ?>>和歌山県</opti <option value="鳥取県" <?php if ($value['prefactures'] == '鳥取県') { ?> selected <?php } ?>>鳥取県</option>
+                                        <option value="和歌山県" <?php if ($value['prefactures'] == '和歌山県') { ?> selected <?php } ?>>和歌山県 <option value="鳥取県" <?php if ($value['prefactures'] == '鳥取県') { ?> selected <?php } ?>>鳥取県</option>
                                         <option value="島根県" <?php if ($value['prefactures'] == '島根県') { ?> selected <?php } ?>>島根県</option>
                                         <option value="岡山県" <?php if ($value['prefactures'] == '岡山県') { ?> selected <?php } ?>>岡山県</option>
                                         <option value="広島県" <?php if ($value['prefactures'] == '広島県') { ?> selected <?php } ?>>広島県</option>
@@ -116,7 +117,7 @@ if (isset($_SESSION['shipping_info'])) {
                                         <option value="熊本県" <?php if ($value['prefactures'] == '熊本県') { ?> selected <?php } ?>>熊本県</option>
                                         <option value="大分県" <?php if ($value['prefactures'] == '大分県') { ?> selected <?php } ?>>大分県</option>
                                         <option value="宮崎県" <?php if ($value['prefactures'] == '宮崎県') { ?> selected <?php } ?>>宮崎県</option>
-                                        <option value="鹿児島県" <?php if ($value['prefactures'] == '鹿児島県') { ?> selected <?php } ?>>鹿児島県</opti <option value="沖縄県" <?php if ($value['prefactures'] == '沖縄県') { ?> selected <?php } ?>>沖縄県</option>
+                                        <option value="鹿児島県" <?php if ($value['prefactures'] == '鹿児島県') { ?> selected <?php } ?>>鹿児島県 <option value="沖縄県" <?php if ($value['prefactures'] == '沖縄県') { ?> selected <?php } ?>>沖縄県</option>
                                     </select>
                                 </td>
                             </tr>

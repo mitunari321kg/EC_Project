@@ -7,21 +7,21 @@
     include '../controller/Control_User_info.php';
     $new_info =
         array(
-            'surname' => $_POST["surname"],
-            'name' => $_POST["name"],
-            'surname_furigana' => $_POST["surname_furigana"],
-            'name_furigana' => $_POST["name_furigana"],
-            'user_gender' => $_POST["user_gender"],
+            'last_name' => $_POST["last_name"],
+            'first_name' => $_POST["first_name"],
+            'last_furigana' => $_POST["last_furigana"],
+            'first_furigana' => $_POST["first_furigana"],
+            'gender' => $_POST["gender"],
             'postal_code' => $_POST["postal_code"],
-            'user_prefectures' => $_POST["user_prefectures"],
-            'address1' => $_POST["address1"],
-            'address2' => $_POST["address2"],
-            'address3' => $_POST["address3"],
+            'prefectures' => $_POST["prefectures"],
+            'address01' => $_POST["address01"],
+            'address02' => $_POST["address02"],
+            'address03' => $_POST["address03"],
             'tel' => $_POST["tel"],
-            'user_mail' => $_POST["user_mail"]
+            'mail' => $_POST["mail"]
         );
     $user_id = $_POST["user_id"];
-    $user_birthday = $_POST["user_birthday"];
+    $birthday = $_POST["birthday"];
     $user_data = new Control_User_info($user_id);
     if (isset($_POST["submit"])) {
         $user_data->update_user_info($new_info);
@@ -60,8 +60,8 @@
                                         姓　
                                     </td>
                                     <td>
-                                        <?php print $new_info['surname']; ?>
-                                        <input type="hidden" name="surname" value="<?php echo $new_info['surname']; ?>">
+                                        <?php print $new_info['last_name']; ?>
+                                        <input type="hidden" name="last_name" value="<?php echo $new_info['last_name']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,8 +69,8 @@
                                         名　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['name']; ?>
-                                        <input type="hidden" name="name" value="<?php echo $new_info['name'] ?>">
+                                        <?php echo $new_info['first_name']; ?>
+                                        <input type="hidden" name="first_name" value="<?php echo $new_info['first_name'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -78,8 +78,8 @@
                                         姓フリガナ　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['surname_furigana']; ?>
-                                        <input type="hidden" name="surname_furigana" value="<?php echo $new_info['surname_furigana'] ?>">
+                                        <?php echo $new_info['last_furigana']; ?>
+                                        <input type="hidden" name="last_furigana" value="<?php echo $new_info['last_furigana'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -87,8 +87,8 @@
                                         名フリガナ　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['name_furigana']; ?>
-                                        <input type="hidden" name="name_furigana" value="<?php echo $new_info['name_furigana'] ?>">
+                                        <?php echo $new_info['first_furigana']; ?>
+                                        <input type="hidden" name="first_furigana" value="<?php echo $new_info['first_furigana'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,21 +106,21 @@
                                     </td>
                                     <td>
                                         <?php
-                                        if ($new_info['user_gender'] == 0) {
+                                        if ($new_info['gender'] == 0) {
                                             echo "男性";
-                                        } elseif ($new_info['user_gender'] == 1) {
+                                        } elseif ($new_info['gender'] == 1) {
                                             echo "女性";
                                         } else {
                                             echo "その他";
                                         } ?>
-                                        <input type="hidden" name="user_gender" value="<?php echo $new_info['user_gender'] ?>">
+                                        <input type="hidden" name="gender" value="<?php echo $new_info['gender'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right">生年月日　</td>
                                     <td>
-                                        <?php echo $user_birthday; ?>
-                                        <input type="hidden" name="user_birthday" value="<?php echo $user_birthday; ?>">
+                                        <?php echo $birthday; ?>
+                                        <input type="hidden" name="birthday" value="<?php echo $birthday; ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -135,8 +135,8 @@
                                 <tr>
                                     <td align="right">都道府県　
                                     <td>
-                                        <?php echo $new_info['user_prefectures']; ?>
-                                        <input type="hidden" name="user_prefectures" value="<?php echo $new_info['user_prefectures'] ?>">
+                                        <?php echo $new_info['prefectures']; ?>
+                                        <input type="hidden" name="prefectures" value="<?php echo $new_info['prefectures'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -144,8 +144,8 @@
                                         市区町村　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['address1']; ?>
-                                        <input type="hidden" name="address1" value="<?php echo $new_info['address1'] ?>">
+                                        <?php echo $new_info['address01']; ?>
+                                        <input type="hidden" name="address01" value="<?php echo $new_info['address01'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -153,8 +153,8 @@
                                         番地以下　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['address2']; ?>
-                                        <input type="hidden" name="address2" value="<?php echo $new_info['address2'] ?>">
+                                        <?php echo $new_info['address02']; ?>
+                                        <input type="hidden" name="address02" value="<?php echo $new_info['address02'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -162,8 +162,8 @@
                                         建物名・部屋番号　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['address3']; ?>
-                                        <input type="hidden" name="address3" value="<?php echo $new_info['address3'] ?>">
+                                        <?php echo $new_info['address03']; ?>
+                                        <input type="hidden" name="address03" value="<?php echo $new_info['address03'] ?>">
                                     </td>
                                 </tr>
                                 <tr>
@@ -180,8 +180,8 @@
                                         メールアドレス　
                                     </td>
                                     <td>
-                                        <?php echo $new_info['user_mail']; ?>
-                                        <input type="hidden" name="user_mail" value="<?php echo $new_info['user_mail'] ?>">
+                                        <?php echo $new_info['mail']; ?>
+                                        <input type="hidden" name="mail" value="<?php echo $new_info['mail'] ?>">
                                     </td>
                                 </tr>
                             </table>
