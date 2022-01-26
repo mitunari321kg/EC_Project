@@ -111,11 +111,9 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                                                     <td>
                                                         <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                         <div class="card-body">
-<<<<<<< HEAD
+
                                                             <a class="card-text" href="Product_Details.php"><?php echo $value['name']; ?></a>
-=======
-                                                            <a4 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a4>
->>>>>>> 671e3da88d0b2cd3f53430b7f773609a27fda8e6
+
                                                         </div>
                                                         <div class="card-body">
                                                             <p class="card-text"><?php echo $value['price']; ?>円</p>
