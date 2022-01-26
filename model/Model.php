@@ -138,7 +138,7 @@ class Model
         try {
             $sql = "SELECT password
                     FROM user
-                    WHERE password = " . $user_id;
+                    WHERE user_id = " . $user_id;
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();

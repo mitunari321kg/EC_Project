@@ -36,7 +36,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                 <td colspan="2">
                     <a1>
                         <?php
-                        echo $result[0]['product_name'];
+                        echo $result[0]['name'];
                         ?>
                     </a1>
                 </td>
@@ -49,7 +49,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                 </td>
                 <td>
                     <a2>
-                        <?php echo $result[0]['product_detail']; ?>
+                        <?php echo $result[0]['detail']; ?>
                     </a2>
                 </td>
             </tr>
@@ -83,7 +83,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                 <td>
                     <input type="hidden" name="product_id" value='<?php echo $_POST['product_id']; ?>'>
                     <input type="hidden" name="img" value='<?php echo $result[0]['img']; ?>'>
-                    <input type="hidden" name="product_name" value='<?php echo $result[0]['product_name']; ?>'>
+                    <input type="hidden" name="name" value='<?php echo $result[0]['name']; ?>'>
                     <input type="hidden" name="price" value='<?php echo $result[0]['price']; ?>'>
                     <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit">
                         <font color="white"><i class="bi bi-cart-fill">カートに入れる</i></font>
@@ -111,7 +111,9 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                                                     <td>
                                                         <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                         <div class="card-body">
-                                                            <a4 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a4>
+
+                                                            <a class="card-text" href="Product_Details.php"><?php echo $value['name']; ?></a>
+
                                                         </div>
                                                         <div class="card-body">
                                                             <p class="card-text"><?php echo $value['price']; ?>円</p>

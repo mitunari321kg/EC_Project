@@ -11,7 +11,7 @@
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
     <!--データベース接続-->
-    <?php include '../controller/Control_Products.php';
+    <?php include '../controller/Control_Products_02.php';
     $products = new Control_Products();
     $products_data = $products->get_products();
     ?>
@@ -67,7 +67,9 @@
                                                 <td>
                                                     <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                     <div class="card-body">
-                                                        <a1 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a1>
+
+                                                        <a class="card-text" href="Product_Details.php"><?php echo $value['name']; ?></a>
+
                                                     </div>
                                                     <div class="card-body">
                                                         <p class="card-text"><?php echo $value['price']; ?>円</p>

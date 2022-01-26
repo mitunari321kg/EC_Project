@@ -102,7 +102,7 @@ $user_id = $_SESSION['logged_in_id'];
                                             郵便番号　
                                         </td>
                                         <td>
-                                            <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="例:0001111" onKeyUp="AjaxZip3.zip2addr(this,'','prefectures','address1');" size="7" value="<?php echo $value['postal_code']; ?>" maxlength="7" required>
+                                            <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="例:0001111" onKeyUp="AjaxZip3.zip2addr(this,'','prefectures','address01');" size="7" value="<?php echo $value['postal_code']; ?>" maxlength="7" required>
                                         </td>
                                     </tr>
                                     <tr>
