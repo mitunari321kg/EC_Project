@@ -68,7 +68,7 @@ class Verification_DB extends Control
              'user_id'           =>  $user_id,
              'delivery_id'       =>  $delivery_id,
              'date'              =>  date("Y/m/d"),
-             'order_total_fee'   =>  $_POST['total_fee']
+             'total_fee'   =>  $_POST['total_fee']
          );
          $styles = array(
              PDO::PARAM_STR,
