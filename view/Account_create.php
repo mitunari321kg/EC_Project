@@ -86,7 +86,7 @@ if (isset($_SESSION['user_id'])) {
                                             郵便番号
                                         </td>
                                         <td>
-                                            <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7">
+                                            <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7" placeholder="ハイフンなしの、半角で入力してください">
                                         </td>
                                     </tr>
                                     <tr>
