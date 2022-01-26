@@ -63,7 +63,7 @@ if (isset($_SESSION['shipping_info'])) {
                                     郵便番号
                                 </td>
                                 <td>
-                                    <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7" value="<?php echo $value['user_postal_code']; ?>">
+                                    <input type="text" name="postal_code" pattern="\d{3}-?\d{4}" class="p-postal-code" size="8" maxlength="7" value="<?php echo $value['postal_code']; ?>">
                                 </td>
                             </tr>
                             <tr>
