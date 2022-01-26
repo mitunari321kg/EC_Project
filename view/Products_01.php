@@ -17,33 +17,34 @@
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
-    $products_data = $products->get_sort_products("pop", "");
+    $products_data = $products->get_all_products();
     define('MAX', '9'); ?>
     <script type="text/javascript">
         var keyword = <?php echo $_GET["keyword"]; ?>
-        var sort = document.getElementById("sort").value;
+        var sort = document.getElementById('change_sort').value;
+
         function sort() {
             if (keyword == "") {
                 switch (sort) {
-                    case "pop":
+                    case 'pop':
                         <?php $products_data = $products->get_sort_products("pop", ""); ?>
                         break;
-                    case "pri":
+                    case 'pri':
                         <?php $products_data = $products->get_sort_products("pri", ""); ?>
                         break;
-                    case "pri":
+                    case 'new':
                         <?php $products_data = $products->get_sort_products("new", ""); ?>
                         break;
                 }
             } else {
                 switch (sort) {
-                    case "pop":
+                    case 'pop':
                         <?php $products_data = $products->get_sort_products("pop", $_GET["keyword"]); ?>
                         break;
-                    case "pri":
+                    case 'pri':
                         <?php $products_data = $products->get_sort_products("pri", $_GET["keyword"]); ?>
                         break;
-                    case "pri":
+                    case 'new':
                         <?php $products_data = $products->get_sort_products("new", $_GET["keyword"]); ?>
                         break;
                 }
@@ -93,9 +94,9 @@
                         </form>
                         <td align="right">
                             <select name="change_sort" id="change_sort" onchange="sort()">
-                                <option value="pop" selected>人気順</option>
-                                <option value="pri">価格順</option>
-                                <option value="new">新着順</option>
+                                <option value="pop" selected><button type="submit" name="pop" id="pop">人気順</button></option>
+                                <option value="pri"><button type="submit" name="pop" id="pri">価格順</button></option>
+                                <option value="new"><button type="submit" name="pop" id="new">新着順</button></option>
                             </select>
                         </td>
                     </tr>
@@ -153,20 +154,20 @@
     <?php if (count($disp_data) != 0) { ?>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <?php if ($now > 1) { //リンクをつけるかの判定
+                <?php if ($now != 1) { //リンクをつけるかの判定
                 ?>
-                    <li class="page-item disabled">
+                    <li class="page-item">
                         <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . ($now - 1); ?> tabindex="-1" aria-disabled="true">戻る</a>
                     </li>
                 <?php } else { ?>
                     <li class="page-item disabled">
-                        <p class="page-link" tabindex="-1" aria-disabled="true">戻る</p>
+                        <a class="page-link" tabindex="-1" aria-disabled="true">戻る</a>
                     </li>
                 <?php } ?>
                 <?php for ($i = 1; $i <= $max_page; $i++) { //最大ページ数分リンクを作成
                     if ($i == $now) { //現在表示中のページ数の場合はリンクを貼らない 
                 ?>
-                        <li class="page-item">
+                        <li class="page-item disabled">
                             <p class="page-link"><?php echo $now; ?></p>
                         </li>
                     <?php } else { ?>
@@ -181,8 +182,8 @@
                         <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . ($now + 1); ?>>次へ</a>
                     </li>
                 <?php } else { ?>
-                    <li class="page-item">
-                        <p class="page-link">次へ</p>
+                    <li class="page-item disabled">
+                        <a class="page-link">次へ</a>
                     </li>
                 <?php } ?>
             </ul>

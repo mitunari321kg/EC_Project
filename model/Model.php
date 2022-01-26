@@ -36,11 +36,12 @@ class Model
     public function select_all_product()
     {
         try {
-            $sql = "SELECT product.product_id AS product_id, product.name AS name,
+            $sql = "SELECT product.product_id AS product_id, product.product_name AS name,
                     product.price AS price, product.evaluation AS evaluation, product_image.img AS img
                     FROM product
                     LEFT JOIN product_image
-                    ON product.product_id = product_image.product_id";
+                    ON product.product_id = product_image.product_id
+                    ORDER BY product.evaluation DESC";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -58,7 +59,7 @@ class Model
     public function search_products($keyword)
     {
         try {
-            $sql = "SELECT product.product_id AS product_id, product.name AS name, product.price AS price,
+            $sql = "SELECT product.product_id AS product_id, product.product_name AS name, product.price AS price,
                     product_image.img AS img,
                     category.category_name AS category_name
                     FROM product
@@ -92,7 +93,7 @@ class Model
                     ON product.product_id = product_image.product_id";
             switch ($order) {
                 case "pop":
-                    $sql = $sql . " ORDER BY product.evaluation DESC";
+                    $sql = $sql . " ORDER BY product.product_id ASC, product.evaluation DESC";
                     break;
                 case "pri":
                     $sql = $sql . " ORDER BY product.price ASC";
