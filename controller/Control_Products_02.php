@@ -30,7 +30,7 @@ class Control_Products
     public function get_products()
     {
         try {
-            $sql = "SELECT product.product_id, product.product_name, product.price, product_image.img, product.evaluation, product.registration_date	
+            $sql = "SELECT product.product_id, product.name, product.price, product_image.img, product.evaluation, product.registration_date	
                     FROM product
                     RIGHT OUTER JOIN product_image
                     ON product.product_id = product_image.product_id
@@ -48,7 +48,7 @@ class Control_Products
                         pct.category_id, pct.product_id
                     FROM
                         (SELECT 
-                            ct.category_id, ct.category_name, pct.product_id
+                            ct.category_id, ct.name, pct.product_id
                         FROM
                             product_category AS pct
                         LEFT OUTER JOIN
