@@ -1,3 +1,10 @@
+<?php
+session_start();
+include '../controller/Order_history.php';
+$order_history = new Order_history();
+$result = $order_history->get_order();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,254 +38,78 @@
                 <div class="card border-muted w-100 border-2">
                     <div class="card-body overflow-auto text-muted" id="order-history-overflow">
                         <table class="table h-50" style="max-height:300px">
+                            <?php
+                            if(!empty($result[0])){
+                                foreach($result as $item){
+                                ?>
+                                <tr>
+                                    <td>
+                                        <table class="table">
+                                            <tr>
+                                                <td rowspan="4" align="center" class="w-25 border-0">
+                                                    <figure class="figure">
+                                                        <img src="<?php echo $item['img']?>" class="figure-img img-fluid rounded" id="order-img">
+                                                    </figure>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="w-25">
+                                                    注文時点の日付：
+                                                </td>
+                                                <td align="center" class="w-50">
+                                                    <?php echo $item['date'];?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    商品名：
+                                                </td>
+                                                <td align="center">
+                                                    <?php echo $item['name'];?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    購入数：
+                                                </td>
+                                                <td align="center">
+                                                    <?php echo $item['quantity'];?>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td align="center" valign="middle" class="w-25">
+                                        <?php
+                                        if(strtotime(date('Y-m-d')) < strtotime($item['order_date'])){
+                                        ?>  
+                                        <p class="text-danger">
+                                            配送中
+                                            <br>
+                                            <?php echo $item['order_date'] ?> 19:00に到着予定
+                                        </p>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <p class="text-success">
+                                                配送完了
+                                                <br><?php echo $item['order_date'] ?> 19:00
+                                            </p>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
+                            } else {?>
                             <tr>
-                                <td>
-                                    <table class="table">
-                                        <!------------------------------------------- Sample Data ------------------------------------------->
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25 border-0">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                注文時点の日付：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                2021/11/17 19:00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                商品名：
-                                            </td>
-                                            <td align="center">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                8
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="center" valign="middle" class="w-25 text-danger">
-                                    配送中
-                                    <br>2021/11/18 19:00に到着予定
+                                <td align="center">
+                                    注文記録がありません
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <table class="table">
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25 border-0">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                注文時点の日付：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                2021/11/17 19:00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                商品名：
-                                            </td>
-                                            <td align="center">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                8
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="center" valign="middle" class="w-25 text-success">
-                                    完了
-                                    <br>2021/11/17 19:00
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="table">
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25 border-0">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                注文時点の日付：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                2021/11/17 19:00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                商品名：
-                                            </td>
-                                            <td align="center">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                8
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="center" valign="middle" class="w-25 text-success">
-                                    完了
-                                    <br>2021/11/16 19:00
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="table">
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25 border-0">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                注文時点の日付：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                2021/11/17 19:00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                商品名：
-                                            </td>
-                                            <td align="center">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                8
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="center" valign="middle" class="w-25 text-success">
-                                    完了
-                                    <br>2021/11/16 19:00
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="table">
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25 border-0">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                注文時点の日付：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                2021/11/17 19:00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                商品名：
-                                            </td>
-                                            <td align="center">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                8
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="center" valign="middle" class="w-25 text-success">
-                                    完了
-                                    <br>2021/11/16 19:00
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table class="table">
-                                        <tr>
-                                            <td rowspan="4" align="center" class="w-25 border-0">
-                                                <figure class="figure">
-                                                    <img src="../img/food_ramen.png" class="figure-img img-fluid rounded" id="order-img">
-                                                </figure>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" class="w-25">
-                                                注文時点の日付：
-                                            </td>
-                                            <td align="center" class="w-50">
-                                                2021/11/17 19:00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                商品名：
-                                            </td>
-                                            <td align="center">
-                                                豚骨ラーメン
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                購入数：
-                                            </td>
-                                            <td align="center">
-                                                8
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td align="center" valign="middle" class="w-25 text-success">
-                                    完了
-                                    <br>2021/11/16 19:00
-                                </td>
-                            </tr>
-                            <!------------------------------------------- Sample Data ------------------------------------------->
+                            <?php
+                            }
+                            ?>
                         </table>
                     </div>
                 </div>
@@ -287,7 +118,7 @@
     </table>
     <table width="100%">
         <tr>
-            <td>
+            <td align="center">
                 <div class="button_wrapper">
                     <a href="Mypage.php">
                         <button>マイページへ戻る</button>
