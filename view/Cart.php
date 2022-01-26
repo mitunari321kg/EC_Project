@@ -67,7 +67,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
                                                         商品名：
                                                     </td>
                                                     <td align="center" class="w-50">
-                                                        <?php echo $item['product_name']; ?>
+                                                        <?php echo $item['name']; ?>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -128,7 +128,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
     ?>
     <tr>
         <td>
-        <a href="Products.php">カートに何も入っていません、買い物を続ける場合はこちらから</a>
+        <a href="Products_02.php">カートに何も入っていません、買い物を続ける場合はこちらから</a>
         </td>
     </tr>
     <?php

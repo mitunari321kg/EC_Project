@@ -66,7 +66,7 @@ class Model
         $keys = array_keys($params);
         $columns = implode(',', $keys);
         $nobindparams = ':' . implode(',:', $keys);
-        $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ')';
+        $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ');';
         $stmt = $this->db->prepare($sql);
         $cnt = 0;
         foreach (explode(',', $nobindparams) as $nobindparam) {
@@ -74,7 +74,6 @@ class Model
             $cnt++;
         }
         return $stmt->execute();
-        //return print_r($sql);
     }
     /**
      * SQL文実行
@@ -90,29 +89,31 @@ class Model
             die($e->getMessage());
         }
     }
-    public function exec_sql_insert_kai($table_name, $params, $styles)
+    public function exec_sql_insert_tra($table_name, $params, $styles)
     {
         try {
-            $PDO = new PDO($this->DSN, $this->DB_USERNAME, $this->DB_PASSWORD);
-            $PDO->beginTransaction();
-            $keys = array_keys($params);
-            $columns = implode(',', $keys);
-            $nobindparams = ':' . implode(',:', $keys);
-            $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ')';
-            $stmt = $this->db->prepare($sql);
-            $cnt = 0;
-            foreach (explode(',', $nobindparams) as $nobindparam) {
-                $stmt->bindParam($nobindparam, $params[$keys[$cnt]], $styles[$cnt]);
-                $cnt++;
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->db->beginTransaction();
+            
+            foreach($params as $param){
+                $keys = array_keys($param);
+                $columns = implode(',', $keys);
+                $nobindparams = ':' . implode(',:', $keys);
+                $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ');';
+                $stmt = $this->db->prepare($sql);
+                $cnt = 0;
+                foreach (explode(',', $nobindparams) as $nobindparam) {
+                    $stmt->bindParam($nobindparam, $param[$keys[$cnt]], $styles[$cnt]);
+                    $cnt++;
+                }
+                if(!$stmt->execute()){
+                    $this->db->rollback();
+                } 
             }
-            $res = $stmt->execute();
-
-            if($res){
-                $PDO->commit();
-            }
+            return $this->db->commit();
             } catch (PDOException $e) {
             die($e->getMessage());
-            $PDO->rollback();
+            $this->db->rollback();
         }
     }
 }

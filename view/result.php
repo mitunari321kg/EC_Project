@@ -4,11 +4,11 @@
 <?php
 session_start();
 $array = array(
-    'product_id' => $_POST["product_id"],
-    'name' => $_POST["name"],
-    'img' => $_POST["img"],
-    'price' => $_POST["price"],
-    'quantity' => $_POST["quantity"]
+    'product_id'    => $_POST["product_id"],
+    'name'          => $_POST["name"],
+    'img'           => $_POST["img"],
+    'price'         => $_POST["price"],
+    'quantity'      => $_POST["quantity"]
 );
 $_SESSION['cart'][] = $array;
 //print_r($_SESSION['cart']);
@@ -35,7 +35,7 @@ $_SESSION['cart'][] = $array;
         <tr>
             <td>
                 <div class="col">
-                    <a class="nav-item nav-link" href="Products02.php">
+                    <a class="nav-item nav-link" href="Products_02.php">
                         買い物を続ける
                     </a>
                 </div>

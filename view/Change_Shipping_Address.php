@@ -51,7 +51,7 @@ if (isset($_SESSION['shipping_info'])) {
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="_first_furigana" size="24" required value="<?php echo $value['first_furigana']; ?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                                    <input type="text" name="first_furigana" size="24" required value="<?php echo $value['first_furigana']; ?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                             </tr>
                         </table>

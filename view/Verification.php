@@ -2,6 +2,9 @@
 作成者　梅原------->
 <?php
 session_start();
+if(!isset($_SESSION['cart']) || !isset($_SESSION['shipping_info'])){
+    header('location: Home.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +55,7 @@ session_start();
                                                         商品名：
                                                     </td>
                                                     <td align="center">
-                                                        <?php echo $item['product_name']; ?>
+                                                        <?php echo $item['name']; ?>
                                                     </td>
                                                 </tr>
                                                 <td align="right">
@@ -71,8 +74,11 @@ session_start();
                                             </table>
                                         </td>
                                     </tr>
-                                <input type="hidden" name="products[]['product_id']" value=<?php echo $item['product_id']?>>
+                                <input type="hidden" name="products[<?php echo $item_count?>][product_id]" value=<?php echo $item['product_id']?>>
+                                <input type="hidden" name="products[<?php echo $item_count?>][price]" value=<?php echo $item['price']?>>
+                                <input type="hidden" name="products[<?php echo $item_count?>][quantity]" value=<?php echo $item['quantity']?>>
                                 <?php
+                                $item_count++;
                                 }
                                 ?>
                                 <!------------------------------------------- Sample Data ------------------------------------------->
@@ -92,6 +98,7 @@ session_start();
                         </td>
                         <td align="right">
                             <p class="h6" align="right">
+                                <input type="hidden" name="total_fee" value=<?php echo $total_fee ?>>
                                 ご請求額:<?php echo $total_fee ?>円
                             </p>
                         </td>
