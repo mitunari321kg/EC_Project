@@ -1,11 +1,16 @@
-a1{
+.card-text{
     font-size: 25px;
 }
 p1{
-    font-size: 25px;
+    font-size: 30px;
 }
 .d-block{
     object-fit: cover;
     width: auto;
     height: 250px;
+}
+.card-img-top{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
 }
