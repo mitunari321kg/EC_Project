@@ -52,6 +52,9 @@
         }
     </script>
     <?php
+    if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+        $products_data = $products->get_search_products($_GET["keyword"]);
+    }
     $products_num = count($products_data); //トータルデータ件数
     $max_page = ceil($products_num / MAX); //トータルページ数※ceilは小数点を切り捨てる関数
     if (!isset($_GET['page_id'])) { //$_GET['page_id'] はURLに渡された現在のページ数
@@ -83,9 +86,9 @@
                     <tr>
                         <form action="Products_01.php" method="GET">
                             <td align="left">
-                                <input type="search" name="keyword" id="keyword" placeholder="検索" required>
+                                <input type="search" name="keyword" id="keyword" placeholder="検索">
                                 <button type="submit" name="search" id="search">検索</button>
-                                <?php if (isset($_GET["search"])) { ?>
+                                <?php if (isset($_GET["search"]) && $_GET["keyword"] != "") { ?>
                                     <p>
                                         検索ワード "<?php echo $_GET["keyword"]; ?>"
                                     </p>

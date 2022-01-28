@@ -37,11 +37,15 @@ class Model
     {
         try {
             $sql = "SELECT product.product_id AS product_id, product.product_name AS name,
-                    product.price AS price, product.evaluation AS evaluation, product_image.img AS img
+                    product.price AS price, product.evaluation AS evaluation,
+                    product_image.img AS img,
+                    product_category.category_id AS category_id
                     FROM product
-                    LEFT JOIN product_image
+                    RIGHT OUTER JOIN product_image
                     ON product.product_id = product_image.product_id
-                    ORDER BY product.evaluation DESC";
+                    RIGHT OUTER JOIN product_category
+                    ON product.product_id = product_category.product_id
+                    ORDER BY product.evaluation DESC, product_category.category_id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
