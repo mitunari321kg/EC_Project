@@ -91,6 +91,7 @@ class Verification_DB extends Control
         $p_array = array();
         $i = 1;
         //ここから
+        date_default_timezone_set('Asia/Tokyo');
         foreach($_POST['products'] as $product){
             $params = array(
                 'order_id'          =>  $order_id,
@@ -99,7 +100,7 @@ class Verification_DB extends Control
                 'quantity'          =>  $product['quantity'],
                 'price'             =>  $product['price'],
                 'total_fee'         =>  $product['price'] * $product['quantity'],
-                'order_date'        =>  date("Y/m/d", strtotime("3 day"))
+                'order_date'        =>  date("Y/m/d H", strtotime("3 day"))
             );
             $p_array[] = $params;
         }

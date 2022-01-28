@@ -53,28 +53,32 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                     </a2>
                 </td>
             </tr>
-            <tr>
+            <!--tr>
                 <td>
                     <table class="table table-bordered">
                         <tr>
-                            <?php for ($i = 0; $i < 4; $i++) { ?>
+                            <?php /* for ($i = 0; $i < 4; $i++) { ?>
                                 <td>
                                     <img src="<?php print $result[0]['img']; ?>" class="img-fluid min-vh-25 min-vw-25" alt="img" />
                                 </td>
-                            <?php } ?>
+                            <?php } */?>
                         </tr>
                     </table>
                 </td>
-                <td>
-                    <a3>
+                
+            </tr-->
+            <tr>
+                <td align="left" rowspan="3" valign="top">
+                    <h4>賞味期限</h4>
+                    配送をしてから<?php echo $result[0]['quality_period']?>日以内にお召し上がりください
+                </td>
+                <td valign="middle">
+                    <h2>
                         <?php echo $result[0]['price']; ?>円</p>
-                    </a3>
+                    </h2>
                 </td>
             </tr>
             <tr>
-                <td align="left" rowspan="2">
-                    <p>賞味期限</p>
-                </td>
                 <td>
                     購入数: <input type="number" name="quantity" value="1" min="1" max="20">
                 </td>

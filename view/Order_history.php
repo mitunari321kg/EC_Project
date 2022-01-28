@@ -85,14 +85,14 @@ $result = $order_history->get_order();
                                         <p class="text-danger">
                                             配送中
                                             <br>
-                                            <?php echo $item['order_date'] ?> 19:00に到着予定
+                                            <?php echo substr($item['order_date'], 0, 13)?>時に到着予定
                                         </p>
                                         <?php
                                         } else {
                                         ?>
                                             <p class="text-success">
                                                 配送完了
-                                                <br><?php echo $item['order_date'] ?> 19:00
+                                                <br><?php echo substr($item['order_date'], 0, 13) ?>時
                                             </p>
                                         <?php
                                         }
