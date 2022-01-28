@@ -40,7 +40,7 @@ class Order_history extends Control{
                 WHERE 
                     an.user_id = ?
                 ORDER BY
-                    an.order_id, ode.product_id ASC";
+                    an.order_id DESC, ode.product_id ASC";
         $params = array(
             $_SESSION['logged_in_id']
         );
