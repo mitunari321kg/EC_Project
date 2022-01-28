@@ -43,21 +43,21 @@ if (isset($_SESSION['user_id'])) {
                                     <tr>
                                         <td>
                                             姓
-                                            <input type="text" name="last_name" size="24" required>
+                                            <input type="text" name="last_name" size="30" required>
                                         </td>
                                         <td>
                                             名
-                                            <input type="text" name="first_name" size="24" required>
+                                            <input type="text" name="first_name" size="30" required>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             姓フリガナ
-                                            <input type="text" name="last_furigana" size="24" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                                            <input type="text" name="last_furigana" size="30" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                         </td>
                                         <td>
                                             名フリガナ
-                                            <input type="text" name="first_furigana" size="24" required required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                                            <input type="text" name="first_furigana" size="30" required required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                         </td>
                                     </tr>
                                 </table>

@@ -36,7 +36,7 @@
                             <img src="../img/taniharax.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/tanihara.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/taniharay.png" class="d-block w-100" alt="Topics" />
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                                                 <td>
                                                     <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                     <div class="card-body">
-                                                        <a class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a>
+                                                        <a1 class="card-text" href="Product_Details.php"><?php echo $value['product_name']; ?></a1>
                                                     </div>
                                                     <div class="card-body">
                                                         <p class="card-text"><?php echo $value['price']; ?>円</p>

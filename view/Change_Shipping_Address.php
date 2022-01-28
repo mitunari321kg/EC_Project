@@ -37,21 +37,21 @@ if(isset($_SESSION['shipping_info'])){
                             <tr>
                                 <td>
                                     姓
-                                    <input type="text" name="last_name" size="24" required value="<?php echo $value['last_name'];?>">
+                                    <input type="text" name="last_name" size="30" required value="<?php echo $value['last_name'];?>">
                                 </td>
                                 <td>
                                     名
-                                    <input type="text" name="first_name" size="24" required value="<?php echo $value['first_name'];?>">
+                                    <input type="text" name="first_name" size="30" required value="<?php echo $value['first_name'];?>">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     姓フリガナ
-                                    <input type="text" name="last_furigana" size="24" required value="<?php echo $value['last_furigana'];?>" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" >
+                                    <input type="text" name="last_furigana" size="30" required value="<?php echo $value['last_furigana'];?>" pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*" >
                                 </td>
                                 <td>
                                     名フリガナ
-                                    <input type="text" name="_first_furigana" size="24" required value="<?php echo $value['first_furigana'];?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
+                                    <input type="text" name="_first_furigana" size="30" required value="<?php echo $value['first_furigana'];?>" required pattern="(?=.*?[\u30A1-\u30FC])[\u30A1-\u30FC\s]*">
                                 </td>
                             </tr>
                         </table>

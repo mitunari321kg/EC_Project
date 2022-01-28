@@ -15,6 +15,7 @@ if (isset($_SESSION['cart']) and !empty($_SESSION['cart'])) {
 ?>
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
+    <link href="css/Cart.css" rel="stylesheet" />
     <meta charset="utf8-unicode-ci">
     <title>カート画面</title>
 </head>
