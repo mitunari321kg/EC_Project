@@ -36,7 +36,7 @@ class Another_address extends Control
                 'last_furigana'                 => $_POST['last_furigana'],
                 'first_furigana'                => $_POST['first_furigana'],
                 'postal_code'                   => $_POST['postal_code'],
-                'prefactures'                   => $_POST['prefactures'],
+                'prefectures'                   => $_POST['prefectures'],
                 'address'                       => $_POST['address'],
                 'tel'                           => $_POST['tel'],
                 'email'                         => $_POST['mail'],

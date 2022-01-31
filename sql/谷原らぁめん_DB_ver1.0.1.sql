@@ -35,26 +35,6 @@ CREATE TABLE `an_order` (
   `total_fee` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- テーブルのデータのダンプ `an_order`
---
-
-INSERT INTO `an_order` (`order_id`, `user_id`, `delivery_id`, `date`, `total_fee`) VALUES
-(1, NULL, 2, '2022-01-26', 110),
-(2, NULL, 3, '2022-01-26', 440),
-(3, NULL, 4, '2022-01-26', 2451),
-(4, 'test01', 5, '2022-01-26', 2400),
-(5, 'test02', 6, '2022-01-26', 9504),
-(6, 'test03', 7, '2022-01-26', 9698),
-(7, 'test01', 8, '2022-01-28', 7199),
-(8, 'test01', 9, '2022-01-28', 4717),
-(9, 'test01', 10, '2022-01-28', 3991),
-(10, 'test01', 11, '2022-01-28', 3991),
-(11, 'test01', 12, '2022-01-28', 2475),
-(12, 'test01', 13, '2022-01-28', 817),
-(13, 'test01', 14, '2022-01-28', 660),
-(14, 'test01', 15, '2022-01-28', 833);
-
 -- --------------------------------------------------------
 
 --
@@ -116,32 +96,11 @@ CREATE TABLE `delivery` (
   `name` varchar(255) DEFAULT NULL,
   `name_furigana` varchar(255) DEFAULT NULL,
   `postal_code` char(7) NOT NULL,
-  `prefactures` varchar(4) DEFAULT NULL,
+  `prefectures` varchar(4) DEFAULT NULL,
   `address01` varchar(255) DEFAULT NULL,
   `address02` varchar(255) DEFAULT NULL,
   `address03` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- テーブルのデータのダンプ `delivery`
---
-
-INSERT INTO `delivery` (`delivery_id`, `user_id`, `name`, `name_furigana`, `postal_code`, `prefactures`, `address01`, `address02`, `address03`) VALUES
-(1, NULL, 'オオモリ ミツナリ', 'オオモリ ミツナリ', '', '京都府', '城陽市寺田島垣内', '1234', '1234'),
-(2, NULL, 'オオモリ ミツナリ', 'オオモリ ミツナリ', '', '京都府', '城陽市寺田島垣内', '1234', '1234'),
-(3, NULL, 'オオモリ ミツナリ', 'オオモリ ミツナリ', '', '京都府', '城陽市寺田島垣内', '1234', '1234'),
-(4, NULL, 'オオモリ ミツナリ', 'オオモリ ミツナリ', '6101111', '京都府', '城陽市寺田島垣内', '1234', '1234'),
-(5, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(6, 'test02', 'えててて てててｔ', 'テスト テスト', '1111111', '福井県', '宇治市何々まち　', '333', ''),
-(7, 'test03', 'テスト三 テスト三', 'テストサン テストサン', '6128416', '京都府', '山口市谷原宅', '1-1', ''),
-(8, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(9, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(10, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(11, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(12, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(13, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(14, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', ''),
-(15, 'test01', '谷原 二郎', 'タニハラ ジロウ', '6100121', '京都府', '城陽市寺田島垣内', '4-8', '');
 
 -- --------------------------------------------------------
 
@@ -196,35 +155,6 @@ CREATE TABLE `order_detail` (
   `total_fee` int(11) DEFAULT NULL,
   `order_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- テーブルのデータのダンプ `order_detail`
---
-
-INSERT INTO `order_detail` (`order_id`, `line_code`, `product_id`, `quantity`, `price`, `total_fee`, `order_date`) VALUES
-(1, 1, 47, 1, 110, 110, '2022-01-29 00:00:00'),
-(2, 1, 46, 4, 110, 440, '2022-01-29 00:00:00'),
-(3, 1, 16, 3, 817, 2451, '2022-01-29 00:00:00'),
-(4, 1, 14, 3, 800, 2400, '2022-01-29 00:00:00'),
-(5, 1, 55, 6, 180, 1080, '2022-01-29 00:00:00'),
-(5, 2, 7, 8, 873, 6984, '2022-01-29 00:00:00'),
-(5, 3, 56, 8, 180, 1440, '2022-01-29 00:00:00'),
-(6, 1, 24, 4, 800, 3200, '2022-01-29 00:00:00'),
-(6, 2, 8, 6, 903, 5418, '2022-01-29 00:00:00'),
-(6, 3, 56, 6, 180, 1080, '2022-01-29 00:00:00'),
-(7, 1, 23, 4, 811, 3244, '2022-01-31 00:00:00'),
-(7, 2, 40, 5, 791, 3955, '2022-01-31 00:00:00'),
-(8, 1, 25, 5, 857, 4285, '2022-01-31 00:00:00'),
-(8, 2, 42, 4, 108, 432, '2022-01-31 00:00:00'),
-(9, 1, 40, 1, 791, 791, '2022-01-31 00:00:00'),
-(9, 2, 24, 4, 800, 3200, '2022-01-31 00:00:00'),
-(10, 1, 40, 1, 791, 791, '2022-01-31 00:00:00'),
-(10, 2, 24, 4, 800, 3200, '2022-01-31 00:00:00'),
-(11, 1, 41, 1, 875, 875, '2022-01-31 00:00:00'),
-(11, 2, 35, 2, 800, 1600, '2022-01-31 00:00:00'),
-(12, 1, 16, 1, 817, 817, '2022-01-31 07:07:09'),
-(13, 1, 50, 3, 220, 660, '2022-01-31 07:00:00'),
-(14, 1, 15, 1, 833, 833, '2022-01-31 15:00:00');
 
 -- --------------------------------------------------------
 
@@ -486,7 +416,7 @@ CREATE TABLE `user` (
   `birthday` date DEFAULT NULL,
   `gender` tinyint(2) DEFAULT NULL,
   `postal_code` char(7) DEFAULT NULL,
-  `prefactures` varchar(4) DEFAULT NULL,
+  `prefectures` varchar(4) DEFAULT NULL,
   `address01` varchar(255) DEFAULT NULL,
   `address02` varchar(255) DEFAULT NULL,
   `address03` varchar(255) DEFAULT NULL,
@@ -501,10 +431,8 @@ CREATE TABLE `user` (
 -- テーブルのデータのダンプ `user`
 --
 
-INSERT INTO `user` (`user_id`, `password`, `last_name`, `first_name`, `last_furigana`, `first_furigana`, `birthday`, `gender`, `postal_code`, `prefactures`, `address01`, `address02`, `address03`, `tel`, `mail`, `paid_menber_flag`, `brack_flag`, `delete_flag`) VALUES
-('test01', '$2y$10$y5tTdnkzh9I4W2BOAgSBpuvHsQeCK8y./XtcV4X/pOnqgmMLEjSBi', '谷原', '二郎', 'タニハラ', 'ジロウ', '1996-09-25', 0, '6100121', '京都府', '城陽市寺田島垣内', '4-8', '', '09081433994', 'aaa@aaaa.jp', NULL, NULL, NULL),
-('test02', '$2y$10$3uAM1pycr.WQNrN5zqxx8.WlLxGbpfOLwXU9wzsHZ3QpFFgpcdOH2', 'えててて', 'てててｔ', 'テスト', 'テスト', '1111-01-01', 2, '1111111', '福井県', '宇治市何々まち　', '333', '', '0711234333', 'aaa@aaaa.jp', NULL, NULL, NULL),
-('test03', '$2y$10$tFA10HRq0bu/M9Z47yHba.QVaQqgiNouFFsu.rYU.S2XBgqNczNAq', 'テスト三', 'テスト三', 'テストサン', 'テストサン', '1111-11-11', 0, '6128416', '京都府', '山口市谷原宅', '1-1', '', '0901435111', 'aaa@aaaa.jp', NULL, NULL, NULL);
+INSERT INTO `user` (`user_id`, `password`, `last_name`, `first_name`, `last_furigana`, `first_furigana`, `birthday`, `gender`, `postal_code`, `prefectures`, `address01`, `address02`, `address03`, `tel`, `mail`, `paid_menber_flag`, `brack_flag`, `delete_flag`) VALUES
+('test01', '$2y$10$y5tTdnkzh9I4W2BOAgSBpuvHsQeCK8y./XtcV4X/pOnqgmMLEjSBi', '谷原', '二郎', 'タニハラ', 'ジロウ', '1991-01-25', 0, '6128416', '京都府', '京都市伏見区竹田流池町', '121-3', '', '0756424451', 'aaa@aaaa.jp', NULL, NULL, NULL);
 
 --
 -- ダンプしたテーブルのインデックス

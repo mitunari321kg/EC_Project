@@ -116,7 +116,7 @@ if(!isset($_SESSION['cart']) || !isset($_SESSION['shipping_info'])){
                     <div align="left" valign="top" class="border-top">
                         <font size="2" class="text-muted">お届け先住所</font>
                     </div>
-                    <?php echo  $_SESSION['shipping_info']['prefactures'] . $_SESSION['shipping_info']['address01'] . $_SESSION['shipping_info']['address02'] . $_SESSION['shipping_info']['address03']; ?>
+                    <?php echo  $_SESSION['shipping_info']['prefectures'] . $_SESSION['shipping_info']['address01'] . $_SESSION['shipping_info']['address02'] . $_SESSION['shipping_info']['address03']; ?>
                 </div>
             </td>
         </tr>

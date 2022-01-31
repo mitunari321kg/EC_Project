@@ -37,7 +37,7 @@ class Verification_DB extends Control
              'name'          =>  $_SESSION['shipping_info']['last_name'] .' '. $_SESSION['shipping_info']['first_name'],
              'name_furigana' =>  $_SESSION['shipping_info']['last_furigana'] .' '. $_SESSION['shipping_info']['first_furigana'],
              'postal_code'   =>  $_SESSION['shipping_info']['postal_code'],
-             'prefactures'   =>  $_SESSION['shipping_info']['prefactures'],
+             'prefectures'   =>  $_SESSION['shipping_info']['prefectures'],
              'address01'     =>  $_SESSION['shipping_info']['address01'],
              'address02'     =>  $_SESSION['shipping_info']['address02'],
              'address03'     =>  $_SESSION['shipping_info']['address03']

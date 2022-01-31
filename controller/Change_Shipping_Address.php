@@ -8,7 +8,7 @@ if($_POST['button_action'] === 'shipping_change'){
     $_SESSION['shipping_info']['last_furigana'] = $_POST['last_furigana'];
     $_SESSION['shipping_info']['first_furigana'] = $_POST['first_furigana'];
     $_SESSION['shipping_info']['postal_code'] = $_POST['postal_code'];
-    $_SESSION['shipping_info']['prefactures'] = $_POST['prefactures'];
+    $_SESSION['shipping_info']['prefectures'] = $_POST['prefectures'];
     $_SESSION['shipping_info']['address01'] = $_POST['address01'];
     $_SESSION['shipping_info']['address02'] = $_POST['address02'];
     $_SESSION['shipping_info']['address03'] = $_POST['address03'];
