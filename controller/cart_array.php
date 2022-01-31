@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+if($_POST['button_action'] === 'button'){
 $array = array(
     'product_id'    => $_POST["product_id"],
     'name'          => $_POST["name"],
@@ -8,6 +8,10 @@ $array = array(
     'price'         => $_POST["price"],
     'quantity'      => $_POST["quantity"]
 );
-$_SESSION['cart'][] = $array;
-//print_r($_SESSION['cart']);
+print_r($array);
+}
+
+// $_SESSION['cart'][] = $array;
+// print_r($_SESSION['cart']);
+//header('location: ../view/result.php');
 ?>

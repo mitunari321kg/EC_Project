@@ -33,7 +33,7 @@ class Verification_DB extends Control
         }
         // 配送先登録
           $params = array(
-             'user_id'	    =>  $user_id,
+             'user_id'	     =>  $user_id,
              'name'          =>  $_SESSION['shipping_info']['last_name'] .' '. $_SESSION['shipping_info']['first_name'],
              'name_furigana' =>  $_SESSION['shipping_info']['last_furigana'] .' '. $_SESSION['shipping_info']['first_furigana'],
              'postal_code'   =>  $_SESSION['shipping_info']['postal_code'],

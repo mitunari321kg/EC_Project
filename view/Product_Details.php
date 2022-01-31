@@ -15,7 +15,6 @@ $result = $control->get_Product_Details($_POST['product_id']);
 $products_data = $control->get_popular_products($_POST['product_id']);
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -31,7 +30,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
     <!------------------------------------------- header ------------------------------------------->
     <table class="table" width="100%">
         <tbody>
-            <form action="result.php" method="POST">
+            <form action="../controller/cart_array.php" method="POST">
             <tr>
                 <td colspan="2">
                     <a1>
@@ -85,7 +84,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                     <input type="hidden" name="img" value='<?php echo $result[0]['img']; ?>'>
                     <input type="hidden" name="name" value='<?php echo $result[0]['name']; ?>'>
                     <input type="hidden" name="price" value='<?php echo $result[0]['price']; ?>'>
-                    <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit">
+                    <button type="submit" class="nav-item btn btn-dark text-nowrap" type="submit" name="button_action" value="botton">
                         <font color="white"><i class="bi bi-cart-fill">カートに入れる</i></font>
                     </button>
                 </td>
@@ -111,9 +110,7 @@ $products_data = $control->get_popular_products($_POST['product_id']);
                                                     <td>
                                                         <input type="image" src="<?php echo $value['img']; ?>" class="card-img-top" alt="img" />
                                                         <div class="card-body">
-
                                                             <a class="card-text" href="Product_Details.php"><?php echo $value['name']; ?></a>
-
                                                         </div>
                                                         <div class="card-body">
                                                             <p class="card-text"><?php echo $value['price']; ?>円</p>
