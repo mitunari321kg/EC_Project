@@ -27,25 +27,25 @@
             if (keyword == "") {
                 switch (sort) {
                     case 'pop':
-                        <?php $products_data = $products->get_sort_products("pop", ""); ?>
+                        <?php echo $products_data = $products->get_sort_products("pop", ""); ?>
                         break;
                     case 'pri':
-                        <?php $products_data = $products->get_sort_products("pri", ""); ?>
+                        <?php echo $products_data = $products->get_sort_products("pri", ""); ?>
                         break;
                     case 'new':
-                        <?php $products_data = $products->get_sort_products("new", ""); ?>
+                        <?php echo $products_data = $products->get_sort_products("new", ""); ?>
                         break;
                 }
             } else {
                 switch (sort) {
                     case 'pop':
-                        <?php $products_data = $products->get_sort_products("pop", $_GET["keyword"]); ?>
+                        <?php echo $products_data = $products->get_sort_products("pop", $_GET["keyword"]); ?>
                         break;
                     case 'pri':
-                        <?php $products_data = $products->get_sort_products("pri", $_GET["keyword"]); ?>
+                        <?php echo $products_data = $products->get_sort_products("pri", $_GET["keyword"]); ?>
                         break;
                     case 'new':
-                        <?php $products_data = $products->get_sort_products("new", $_GET["keyword"]); ?>
+                        <?php echo $products_data = $products->get_sort_products("new", $_GET["keyword"]); ?>
                         break;
                 }
             }
