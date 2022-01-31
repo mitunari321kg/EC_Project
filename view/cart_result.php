@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
+
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <title>カートに入ったよ</title>
+    <title>購入完了</title>
     <link href="css/inquiry.css" rel="stylesheet" />
 </head>
+
 <body>
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
@@ -14,7 +16,7 @@
         <tr>
             <td height="80px" colspan="3">
                 <p class="h2">
-                    カートに入りました
+                   お買い上げありがとうございました💛
                 </p>
             </td>
         </tr>
@@ -26,16 +28,15 @@
                     </a>
                 </div>
             </td>
-        <td>
-        </td>
-        <td>
-            <div class="col">
-            <a class="nav-item nav-link" href="Cart.php">
-                    買い物を終える
-            </a>
-            </div>
-        </td>
-
+            <td>
+            </td>
+            <td>
+                <div class="col">
+                    <a class="nav-item nav-link" href="Home.php">
+                        ホームに戻る
+                    </a>
+                </div>
+            </td>
         </tr>
     </table>
     <!------------------------------------------- footer ------------------------------------------->

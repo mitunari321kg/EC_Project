@@ -117,7 +117,7 @@ class Verification_DB extends Control
         if($this->db->exec_sql_insert_tra('order_detail', $p_array, $styles)){
             //echo '注文詳細テーブルに登録完了';
             unset($_SESSION['cart']);
-            header('location: ../view/Home.php');
+            header('location: ../view/cart_result.php');
          } else {
             //echo '注文詳細テーブルに登録失敗';
             header('location: ../view/cart.php');
