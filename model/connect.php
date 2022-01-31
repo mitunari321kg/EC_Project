@@ -8,10 +8,11 @@
 
 /**
  * データベース接続用クラス
-*/
-class Model{
-    private $DSN ='mysql:dbname=82;host=localhost;charset=utf8;';
-    private $DB_USERNAME ='office3';
+ */
+class Model
+{
+    private $DSN = 'mysql:dbname=82;host=localhost;charset=utf8;';
+    private $DB_USERNAME = 'office3';
     private $DB_PASSWORD = 'kamogawa';
     private $db;
     function __construct()
@@ -65,7 +66,7 @@ class Model{
         $keys = array_keys($params);
         $columns = implode(',', $keys);
         $nobindparams = ':' . implode(',:', $keys);
-        $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ')';
+        $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ');';
         $stmt = $this->db->prepare($sql);
         $cnt = 0;
         foreach (explode(',', $nobindparams) as $nobindparam) {
@@ -73,7 +74,6 @@ class Model{
             $cnt++;
         }
         return $stmt->execute();
-        //return print_r($sql);
     }
     /**
      * SQL文実行
@@ -87,6 +87,33 @@ class Model{
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             die($e->getMessage());
+        }
+    }
+    public function exec_sql_insert_tra($table_name, $params, $styles)
+    {
+        try {
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->db->beginTransaction();
+            
+            foreach($params as $param){
+                $keys = array_keys($param);
+                $columns = implode(',', $keys);
+                $nobindparams = ':' . implode(',:', $keys);
+                $sql = 'INSERT INTO ' . $table_name . '(' . $columns . ') VALUES(' . $nobindparams . ');';
+                $stmt = $this->db->prepare($sql);
+                $cnt = 0;
+                foreach (explode(',', $nobindparams) as $nobindparam) {
+                    $stmt->bindParam($nobindparam, $param[$keys[$cnt]], $styles[$cnt]);
+                    $cnt++;
+                }
+                if(!$stmt->execute()){
+                    $this->db->rollback();
+                } 
+            }
+            return $this->db->commit();
+            } catch (PDOException $e) {
+            die($e->getMessage());
+            $this->db->rollback();
         }
     }
 }
