@@ -40,7 +40,7 @@ class Account_create_db extends Control
                 'gender'                        => $_POST['gender'],
                 'postal_code'                   => $_POST['postal_code'],
 
-                'prefactures'                   => $_POST['prefactures'],
+                'prefectures'                   => $_POST['prefectures'],
                 'address01'                      => $_POST['address01'],
                 'address02'                      => $_POST['address02'],
 
