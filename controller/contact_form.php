@@ -9,14 +9,14 @@
 
 ini_set('mbstring.internal_encoding', 'UTF-8');
 try {
-    $dsn = 'mysql:dbname=ec_project;host=localhost;charset=utf8;';
-    $user = 'tanihara';
-    $password = '1234';
+    $dsn = 'mysql:dbname=82;host=localhost;charset=utf8;';
+	$user = 'office3';
+	$password = 'kamogawa';
 
     $db = new PDO($dsn, $user, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = $db->prepare('INSERT INTO contact (name,mail,subject,contents) VALUES(:name,:cmail,:subject,:contents)');
+    $sql = $db->prepare('INSERT INTO contact (name,mail,subject,contents) VALUES(:name,:mail,:subject,:contents)');
     $sql->bindValue(':name', $_POST['name']);
     $sql->bindValue(':mail', $_POST['mail']);
     $sql->bindValue(':subject', $_POST['subject']);
