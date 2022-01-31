@@ -47,7 +47,7 @@
 
                         <div class=" mb-3" align="left" id="contact-form">
                             <label for="contact-name" class="form-label text-muted">メールアドレス（必須）</label>
-                            <input type="mail" class="form-control" id="mail" name="mail" required>
+                            <input type="mail" class="form-control" id="mail" name="mail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="半角で入力してください">
 
                         </div>
                     </td>
