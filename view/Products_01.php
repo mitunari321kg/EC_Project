@@ -13,46 +13,22 @@
 <html>
 
 <head>
+    <script type="text/javascript">
+        var select = document.getElementById('change_sort');
+        select.addEventListener('change', function() {
+            console.log(this);
+            this.form.submit();
+        }, false);
+    </script>
     <?php
     include 'frame/basic_style_info.php';
     include '../controller/Control_Products_01.php';
     $products = new Control_Products();
     $products_data = $products->get_all_products();
-    define('MAX', '9'); ?>
-    <script type="text/javascript">
-        var keyword = <?php echo $_GET["keyword"]; ?>
-        var sort = document.getElementById('change_sort').value;
-
-        function sort() {
-            if (keyword == "") {
-                switch (sort) {
-                    case 'pop':
-                        <?php echo $products_data = $products->get_sort_products("pop", ""); ?>
-                        break;
-                    case 'pri':
-                        <?php echo $products_data = $products->get_sort_products("pri", ""); ?>
-                        break;
-                    case 'new':
-                        <?php echo $products_data = $products->get_sort_products("new", ""); ?>
-                        break;
-                }
-            } else {
-                switch (sort) {
-                    case 'pop':
-                        <?php echo $products_data = $products->get_sort_products("pop", $_GET["keyword"]); ?>
-                        break;
-                    case 'pri':
-                        <?php echo $products_data = $products->get_sort_products("pri", $_GET["keyword"]); ?>
-                        break;
-                    case 'new':
-                        <?php echo $products_data = $products->get_sort_products("new", $_GET["keyword"]); ?>
-                        break;
-                }
-            }
-        }
-    </script>
-    <?php
-    if (isset($_GET["search"]) && $_GET["keyword"] != "") {
+    define('MAX', '9');
+    if (isset($_GET["search"]) && $_GET["change_sort"] != "" && $_GET["keyword"] == "") {
+        $products_data = $products->get_sort_products($_GET["change_sort"], "");
+    } elseif (isset($_GET["search"]) && $_GET["keyword"] != "") {
         $products_data = $products->get_search_products($_GET["keyword"]);
     }
     $products_num = count($products_data); //トータルデータ件数
@@ -65,7 +41,7 @@
     $start_no = ($now - 1) * MAX; //配列の何番目から取得すればよいか
     $disp_data = array_slice($products_data, $start_no, MAX, true); //array_sliceは、配列の何番目($start_no)から何番目(MAX)まで切り取る関数
     ?>
-    <link href="css/products_01.css" rel="stylesheet">
+    <link href="css/products.css" rel="stylesheet">
     <meta charset="utf8_unicode_ci">
     <title>商品一覧｜谷原らぁめん</title>
 </head>
@@ -95,13 +71,15 @@
                                 <?php } ?>
                             </td>
                         </form>
-                        <td align="right">
-                            <select name="change_sort" id="change_sort" onchange="sort()">
-                                <option value="pop" selected><button type="submit" name="pop" id="pop">人気順</button></option>
-                                <option value="pri"><button type="submit" name="pop" id="pri">価格順</button></option>
-                                <option value="new"><button type="submit" name="pop" id="new">新着順</button></option>
-                            </select>
-                        </td>
+                        <form action="Products_01.php" method="GET">
+                            <td align="right">
+                                <select name="change_sort" id="change_sort">
+                                    <option value="pop" selected>人気順</option>
+                                    <option value="pri">価格順</option>
+                                    <option value="new">新着順</option>
+                                </select>
+                            </td>
+                        </form>
                     </tr>
                 </table>
             </td>
@@ -133,7 +111,7 @@
                                 <form action="Product_Details.php" id="product_form" name="product_form" method="post">
                                     <input type="hidden" name="product_id" value=<?php print $val['product_id'] ?>>
                                     <input type="hidden" name="evaluation" value=<?php print $val['evaluation'] ?>>
-                                    <table class="table-light">
+                                    <table class="table-light" align="center">
                                         <tr>
                                             <td>
                                                 <input type="image" src="<?php print $val['img']; ?>" class="card-img-top" alt="img" />
@@ -160,7 +138,12 @@
                 <?php if ($now != 1) { //リンクをつけるかの判定
                 ?>
                     <li class="page-item">
-                        <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . ($now - 1); ?> tabindex="-1" aria-disabled="true">戻る</a>
+                        <a class="page-link" href=<?php
+                                                    if ($_GET["keyword"] != "") {
+                                                        echo '/EC_Project/view/Products_01.php?keyword=' . $_GET["keyword"] . '&search=&page_id=' . ($now - 1);
+                                                    } else {
+                                                        echo '/EC_Project/view/Products_01.php?page_id=' . ($now - 1);
+                                                    } ?> tabindex="-1" aria-disabled="true">戻る</a>
                     </li>
                 <?php } else { ?>
                     <li class="page-item disabled">
@@ -168,21 +151,32 @@
                     </li>
                 <?php } ?>
                 <?php for ($i = 1; $i <= $max_page; $i++) { //最大ページ数分リンクを作成
-                    if ($i == $now) { //現在表示中のページ数の場合はリンクを貼らない 
                 ?>
+                    <?php if ($i == $now) { //現在表示中のページ数の場合はリンクを貼らない 
+                    ?>
                         <li class="page-item disabled">
                             <p class="page-link"><?php echo $now; ?></p>
                         </li>
                     <?php } else { ?>
                         <li class="page-item">
-                            <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . $i; ?>><?php echo $i; ?></a>
+                            <a class="page-link" href=<?php
+                                                        if ($_GET["keyword"] != "") {
+                                                            echo '/EC_Project/view/Products_01.php?keyword=' . $_GET["keyword"] . '&search=&page_id=' . $i;
+                                                        } else {
+                                                            echo '/EC_Project/view/Products_01.php?page_id=' . $i;
+                                                        } ?>><?php echo $i; ?></a>
                         </li>
                     <?php } ?>
                 <?php } ?>
                 <?php if ($now < $max_page) { //リンクをつけるかの判定
                 ?>
                     <li class="page-item">
-                        <a class="page-link" href=<?php echo '/EC_Project/view/Products_01.php?page_id=' . ($now + 1); ?>>次へ</a>
+                        <a class="page-link" href=<?php
+                                                    if ($_GET["keyword"] != "") {
+                                                        echo '/EC_Project/view/Products_01.php?keyword=' . $_GET["keyword"] . '&search=&page_id=' . ($now + 1);
+                                                    } else {
+                                                        echo '/EC_Project/view/Products_01.php?page_id=' . ($now + 1);
+                                                    } ?>>次へ</a>
                     </li>
                 <?php } else { ?>
                     <li class="page-item disabled">
@@ -193,7 +187,15 @@
         </nav>
     <?php } ?>
     <?php if (count($disp_data) != 0) { ?>
-        <p><?php echo $products_num; ?>商品中 <?php echo key($disp_data) + 1; ?>～<?php echo array_key_last($disp_data) + 1; ?>商品</p>
+        <p><?php echo $products_num; ?>商品中
+            <?php
+            if ($products_num <= 9) {
+                echo count($disp_data);
+            } else {
+                echo key($disp_data) + 1 . "～" . array_key_last($disp_data) + 1;
+            }
+            ?>商品
+        </p>
     <?php } ?>
     <?php if (isset($_GET["search"]) || $disp_data == NULL) { ?>
         <a class="page-link" href="Products_01.php">一覧へ戻る</a>

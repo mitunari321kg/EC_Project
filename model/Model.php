@@ -45,7 +45,7 @@ class Model
                     ON product.product_id = product_image.product_id
                     RIGHT OUTER JOIN product_category
                     ON product.product_id = product_category.product_id
-                    ORDER BY product.evaluation DESC, product_category.category_id ASC";
+                    ORDER BY product.evaluation DESC, product_category.category_id";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -65,15 +65,15 @@ class Model
         try {
             $sql = "SELECT product.product_id AS product_id, product.name AS name, product.price AS price,
                     product_image.img AS img,
-                    category.category_name AS category_name
+                    category.name AS category_name
                     FROM product
                     LEFT JOIN product_image
-                    ON product.product_id = product_img.product_id
+                    ON product.product_id = product_image.product_id
                     LEFT JOIN product_category
                     ON product.product_id = product_category.product_id
                     LEFT JOIN category
                     ON category.category_id = product_category.category_id
-                    WHERE product_name LIKE '%" . $keyword . "%'" . " OR category_name LIKE '%" . $keyword . "%'";
+                    WHERE product.name LIKE '%" . $keyword . "%'" . " OR category.name LIKE '%" . $keyword . "%'";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -85,7 +85,9 @@ class Model
 
     /**
      * 商品をソートして取得
-     * @return array 商品一覧（人気順）
+     * @param string $order ソートのキーワード
+     * @param string $keyword 検索ワード
+     * @return array ソートした商品一覧
      */
     public function select_order_products($order, $keyword)
     {
