@@ -13,7 +13,7 @@ if (isset($_SESSION['shipping_info'])) {
 
 <head>
     <?php include 'frame/basic_style_info.php'; ?>
-    <link href="css/Another_address.css" rel="stylesheet" />
+    <link href="css/Another_address.css" rel="stylesheet"/>
     <title>お届け先情報入力・変更</title>
 </head>
 
@@ -37,13 +37,11 @@ if (isset($_SESSION['shipping_info'])) {
                             <tr>
                                 <td>
                                     姓
-
                                     <input type="text" name="last_name" size="24" required value="<?php echo $value['last_name']; ?>">
                                 </td>
                                 <td>
                                     名
                                     <input type="text" name="first_name" size="24" required value="<?php echo $value['first_name']; ?>">
-
                             </tr>
                             <tr>
                                 <td>
