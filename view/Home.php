@@ -16,6 +16,7 @@
     $products_data = $products->get_products();
     ?>
     <!--データベース接続-->
+    <link href="css/products.css" rel="stylesheet" />
     <link href="css/Home.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>谷原らぁめん</title>
