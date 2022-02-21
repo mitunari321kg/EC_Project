@@ -32,13 +32,13 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../img/shio01.jpg" class="d-block w-100" alt="Topics" />
+                            <img src="../img/tanihara.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/miso01.jpg" class="d-block w-100" alt="Topics" />
+                            <img src="../img/taniharax.png" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/ramen_hito.jpg" class="d-block w-100" alt="Topics" />
+                            <img src="../img/taniharay.png" class="d-block w-100" alt="Topics" />
                         </div>
                     </div>
                 </div>
