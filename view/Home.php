@@ -16,6 +16,7 @@
     $products_data = $products->get_products();
     ?>
     <!--データベース接続-->
+    <link href="css/products.css" rel="stylesheet" />
     <link href="css/Home.css" rel="stylesheet" />
     <meta charset="utf8_unicode_ci">
     <title>谷原らぁめん</title>
@@ -24,19 +25,20 @@
     <!------------------------------------------- header ------------------------------------------->
     <?php include 'frame/header.php'; ?>
     <!------------------------------------------- header ------------------------------------------->
+    <br>
     <table width="100%">
         <tr>
             <td align="center">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="../img/tanihara.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/shio01.jpg" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/taniharax.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/miso01.jpg" class="d-block w-100" alt="Topics" />
                         </div>
                         <div class="carousel-item">
-                            <img src="../img/taniharay.png" class="d-block w-100" alt="Topics" />
+                            <img src="../img/ramen_hito.jpg" class="d-block w-100" alt="Topics" />
                         </div>
                     </div>
                 </div>
